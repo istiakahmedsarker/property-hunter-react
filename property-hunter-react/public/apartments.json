@@ -1,0 +1,317 @@
+[
+    {
+        "propertyTitle": "Metropolitan Lofts",
+        "propertyType": "Apartment",
+        "location": {
+            "address": "789 Loft Avenue",
+            "city": "Metroville",
+            "state": "Metroland",
+            "zipCode": "34567",
+            "latitude": 34.0522,
+            "longitude": -118.2437
+        },
+        "price": 890000,
+        "squareFootage": 2200,
+        "easement": [
+            "Rooftop Lounge",
+            "Gymnasium",
+            "City View Balcony"
+        ],
+        "description": "Embrace city living at its finest at Metropolitan Lofts. These stylish lofts in Metroville offer contemporary design, upscale amenities, and a vibrant urban lifestyle.",
+        "propertyImages": [
+            "metro1.jpg",
+            "metro2.jpg",
+            "metro3.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Fiber Internet"
+        ],
+        "parking": {
+            "included": true,
+            "spaces": 2
+        },
+        "yearBuilt": 2017,
+        "propertyStatus": "sale",
+        "ownerInformation": {
+            "name": "Metro Realty Solutions",
+            "email": "info@metrorealty.com",
+            "phone": "555-456-7890"
+        },
+        "floor_number": 8,
+        "room": 4,
+        "block_name": "Block C",
+        "apartment_number": "C501"
+    },
+    {
+        "propertyTitle": "Nature's Edge Apartments",
+        "propertyType": "Apartment",
+        "location": {
+            "address": "456 Serene Street",
+            "city": "Greenhaven",
+            "state": "Greenscape",
+            "zipCode": "87654",
+            "latitude": 38.5816,
+            "longitude": -121.4944
+        },
+        "price": 780000,
+        "squareFootage": 2000,
+        "easement": [
+            "Nature Trail Access",
+            "Yoga Studio",
+            "Garden Terrace"
+        ],
+        "description": "Immerse yourself in the tranquility of Nature's Edge Apartments. Nestled in the green surroundings of Greenhaven, these apartments offer a peaceful retreat from city life.",
+        "propertyImages": [
+            "nature1.jpg",
+            "nature2.jpg",
+            "nature3.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Fiber Internet"
+        ],
+        "parking": {
+            "included": true,
+            "spaces": 1
+        },
+        "yearBuilt": 2016,
+        "propertyStatus": "sale",
+        "ownerInformation": {
+            "name": "Greenhaven Realty Group",
+            "email": "info@greenhavenrealty.com",
+            "phone": "555-345-6789"
+        },
+        "floor_number": 4,
+        "room": 3,
+        "block_name": "Block B",
+        "apartment_number": "B301"
+    },
+    {
+        "propertyTitle": "Downtown Heights Residences",
+        "propertyType": "Apartment",
+        "location": {
+            "address": "890 Urban Plaza",
+            "city": "Downtown City",
+            "state": "Cityscape",
+            "zipCode": "23456",
+            "latitude": 41.8781,
+            "longitude": -87.6298
+        },
+        "price": 980000,
+        "squareFootage": 2400,
+        "easement": [
+            "Sky Deck",
+            "Theater Room",
+            "Business Center"
+        ],
+        "description": "Experience urban sophistication at Downtown Heights Residences. Situated in the heart of Downtown City, these residences offer unparalleled luxury and convenience.",
+        "propertyImages": [
+            "downtown1.jpg",
+            "downtown2.jpg",
+            "downtown3.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Fiber Internet"
+        ],
+        "parking": {
+            "included": true,
+            "spaces": 2
+        },
+        "yearBuilt": 2019,
+        "propertyStatus": "sale",
+        "ownerInformation": {
+            "name": "Downtown Realty Solutions",
+            "email": "info@downtownrealty.com",
+            "phone": "555-901-2345"
+        },
+        "floor_number": 6,
+        "room": 4,
+        "block_name": "Block C",
+        "apartment_number": "C402"
+    },
+    {
+        "propertyTitle": "Greenwood Gardens Apartments",
+        "propertyType": "Apartment",
+        "location": {
+            "address": "789 Nature Lane",
+            "city": "Greenfield",
+            "state": "Greenscape",
+            "zipCode": "56789",
+            "latitude": 37.7749,
+            "longitude": -122.4194
+        },
+        "price": 750000,
+        "squareFootage": 1800,
+        "easement": [
+            "Community Gardens",
+            "Fitness Trail",
+            "Picnic Areas"
+        ],
+        "description": "Experience the beauty of nature at Greenwood Gardens Apartments. Nestled in a green oasis, these eco-friendly residences offer a harmonious blend of modern living and natural surroundings.",
+        "propertyImages": [
+            "greenwood1.jpg",
+            "greenwood2.jpg",
+            "greenwood3.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Fiber Internet"
+        ],
+        "parking": {
+            "included": true,
+            "spaces": 1
+        },
+        "yearBuilt": 2017,
+        "propertyStatus": "sale",
+        "ownerInformation": {
+            "name": "Greenfield Realty Solutions",
+            "email": "info@greenfieldrealty.com",
+            "phone": "555-567-8901"
+        },
+        "floor_number": 5,
+        "room": 5,
+        "block_name": "Block A",
+        "apartment_number": "A220"
+    },
+    {
+        "propertyTitle": "Skyline Tower Apartments",
+        "propertyType": "Apartment",
+        "location": {
+            "address": "456 Highrise Avenue",
+            "city": "Skytop City",
+            "state": "Cloudscape",
+            "zipCode": "12345",
+            "latitude": 41.8781,
+            "longitude": -87.6298
+        },
+        "price": 850000,
+        "squareFootage": 2000,
+        "easement": [
+            "Sky Lounge",
+            "Indoor Basketball Court",
+            "Rooftop Terrace"
+        ],
+        "description": "Live above the clouds at Skyline Tower Apartments. These high-rise residences offer luxurious amenities and breathtaking views of the city skyline, creating an unparalleled living experience.",
+        "propertyImages": [
+            "skyline1.jpg",
+            "skyline2.jpg",
+            "skyline3.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Fiber Internet"
+        ],
+        "parking": {
+            "included": true,
+            "spaces": 1
+        },
+        "yearBuilt": 2016,
+        "propertyStatus": "sale",
+        "ownerInformation": {
+            "name": "Skytop Realty Group",
+            "email": "info@skytoprealty.com",
+            "phone": "555-456-7890"
+        },
+        "floor_number": 4,
+        "room": 3,
+        "block_name": "Block B",
+        "apartment_number": "B325"
+    },
+    {
+        "propertyTitle": "Harbor View Residences",
+        "propertyType": "Apartment",
+        "location": {
+            "address": "789 Waterfront Drive",
+            "city": "Seaville",
+            "state": "CoastalLand",
+            "zipCode": "98765",
+            "latitude": 34.0522,
+            "longitude": -118.2437
+        },
+        "price": 950000,
+        "squareFootage": 2200,
+        "easement": [
+            "Private Marina Access",
+            "Gymnasium",
+            "Oceanfront Balcony"
+        ],
+        "description": "Enjoy the serenity of coastal living at Harbor View Residences. These waterfront apartments offer unparalleled views of the ocean and exclusive access to a private marina.",
+        "propertyImages": [
+            "harbor1.jpg",
+            "harbor2.jpg",
+            "harbor3.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Fiber Internet"
+        ],
+        "parking": {
+            "included": true,
+            "spaces": 2
+        },
+        "yearBuilt": 2018,
+        "propertyStatus": "sale",
+        "ownerInformation": {
+            "name": "Coastal Realty Solutions",
+            "email": "info@coastalrealty.com",
+            "phone": "555-345-6789"
+        },
+        "floor_number": 6,
+        "room": 4,
+        "block_name": "Block F",
+        "apartment_number": "F302"
+    },
+    {
+        "propertyTitle": "Modern Living Apartments",
+        "propertyType": "Apartment",
+        "location": {
+            "address": "123 Urban Avenue",
+            "city": "Metropolis",
+            "state": "Cityscape",
+            "zipCode": "54321",
+            "latitude": 40.7128,
+            "longitude": -74.0060
+        },
+        "price": 700000,
+        "squareFootage": 1800,
+        "easement": [
+            "Fitness Center",
+            "Swimming Pool",
+            "Roof Garden"
+        ],
+        "description": "Experience modern living at its finest in these upscale apartments. Conveniently located in the heart of Metropolis, these residences offer luxurious amenities and stunning city views.",
+        "propertyImages": [
+            "modern1.jpg",
+            "modern2.jpg",
+            "modern3.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Fiber Internet"
+        ],
+        "parking": {
+            "included": true,
+            "spaces": 1
+        },
+        "yearBuilt": 2015,
+        "propertyStatus": "sale",
+        "ownerInformation": {
+            "name": "Metropolitan Realty Group",
+            "email": "info@metropolitanrealty.com",
+            "phone": "555-234-5678"
+        },
+        "floor_number": 6,
+        "room": 4,
+        "block_name": "Block D",
+        "apartment_number": "D402"
+    }
+]

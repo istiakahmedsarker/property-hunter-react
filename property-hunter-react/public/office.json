@@ -1,0 +1,318 @@
+[
+  {
+    "propertyTitle": "Metro Office Plaza",
+    "propertyType": "office",
+    "location": {
+      "address": "1202 W Commerce St",
+      "city": "San Antonio",
+      "state": "Texas",
+      "zipCode": "78207",
+      "latitude": 29.424977,
+      "longitude": -98.508136
+    },
+    "price": 50000,
+    "squareFootage": 5000,
+    "easement": ["Modern Lobby", "Executive Offices", "Conference Rooms"],
+    "description": "A sophisticated office space in the bustling downtown business hub. Metro Office Plaza offers modern amenities, executive offices, and well-equipped conference rooms for your business needs.",
+    "rooms": {
+      "officeRooms": 20,
+      "conferenceRooms": 3
+    },
+    "bathrooms": 3,
+    "propertyImages": [
+      "https://i.ibb.co/qxTLzw9/office-11.jpg",
+      "https://i.ibb.co/chmj6XJ/restroom-3.jpg",
+      "https://i.ibb.co/hgn80xh/conference-12.jpg"
+    ],
+    "utilities": ["High-Speed Internet", "Central Heating", "24/7 Security"],
+    "parking": {
+      "included": true,
+      "spaces": 20
+    },
+    "propertyStatus": "rent",
+    "yearBuilt": 2005,
+    "ownerInformation": {
+      "name": "Alex Johnson",
+      "email": "alex@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Executive Corporate Suites",
+    "description": "Elevate your business presence with our Executive Corporate Suites. This prestigious office space offers a blend of modern design and professional amenities, creating an environment conducive to productivity and success.",
+    "easement": ["Modern Lobby", "Executive Offices", "Conference Rooms"],
+    "utilities": ["High-Speed Internet", "Central Heating", "Smart Lighting"],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "E 5th St.",
+      "city": "Austin",
+      "state": "Texas",
+      "zipCode": "22222",
+      "latitude": 30.266344,
+      "longitude": -97.73866
+    },
+    "price": 35000,
+    "squareFootage": 3000,
+    "rooms": {
+      "officeRooms": 10,
+      "conferenceRooms": 2
+    },
+    "bathrooms": 2,
+    "propertyImages": [
+      "https://i.ibb.co/tccn4KJ/office-10.jpg",
+      "https://i.ibb.co/sCbwGm9/restroom-1.jpg",
+      "https://i.ibb.co/wrDCRPy/conference-11.jpg"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 30
+    },
+    "yearBuilt": 2010,
+    "ownerInformation": {
+      "name": "Emily Parker",
+      "email": "emily@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Downtown Business Center",
+    "description": "Position your business at the heart of commerce in our Downtown Business Center. Immerse yourself in the dynamic energy of the city, with state-of-the-art offices and collaborative spaces designed for innovation.",
+    "easement": [
+      "Professional Reception",
+      "Collaborative Spaces",
+      "Tech Lounge"
+    ],
+    "utilities": ["Fiber Optic Internet", "Climate Control", "Secure Access"],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "999 S Harwood St",
+      "city": "Dallas",
+      "state": "Texas",
+      "zipCode": "75201",
+      "latitude": 32.775866,
+      "longitude": -96.791751
+    },
+    "price": 20000,
+    "squareFootage": 4000,
+    "rooms": {
+      "officeRooms": 5,
+      "conferenceRooms": 1
+    },
+    "bathrooms": 2,
+    "propertyImages": [
+      "https://i.ibb.co/tQBchH4/office-1.jpg",
+      "https://i.ibb.co/jZWnrbV/restroom-5.jpg",
+      "https://i.ibb.co/f1tyP3b/conference-8.png"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 25
+    },
+    "yearBuilt": 2012,
+    "ownerInformation": {
+      "name": "Jordan Carter",
+      "email": "jordan@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Metro Office Tower",
+    "description": "Reach new heights with Metro Office Tower, a landmark for success in the business world. Enjoy panoramic views, cutting-edge technology, and a strategic location that defines your business as a leader.",
+    "easement": ["Sky Lounge", "Panoramic Views", "Premium Amenities"],
+    "utilities": ["High-Speed Elevators", "Backup Power", "Advanced Security"],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "111 Walnut Boulevard",
+      "city": "Miami",
+      "state": "Florida",
+      "zipCode": "33101",
+      "latitude": 25.7617,
+      "longitude": -80.1918
+    },
+    "price": 60000,
+    "squareFootage": 4000,
+    "rooms": {
+      "officeRooms": 10,
+      "conferenceRooms": 4
+    },
+    "bathrooms": 2,
+    "propertyImages": [
+      "https://i.ibb.co/gSzDvS8/office-2.jpg",
+      "https://i.ibb.co/SX1hzMg/conference-9.jpg",
+      "https://i.ibb.co/Xjq3zw5/restroom-6.jpg"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 20
+    },
+    "yearBuilt": 1999,
+    "ownerInformation": {
+      "name": "Olivia Taylor",
+      "email": "olivia@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Professional Plaza Offices",
+    "description": "Discover a haven of professionalism at Professional Plaza Offices. Elegant and functional, our offices provide a sophisticated setting for your business endeavors, ensuring a positive and impactful impression.",
+    "easement": ["Elegant Lobby", "Private Workspaces", "Client Meeting Rooms"],
+    "utilities": [
+      "Central Air Conditioning",
+      "Video Conferencing",
+      "Biometric Access"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "890 Birch Street",
+      "city": "Portland",
+      "state": "Oregon",
+      "zipCode": "97201",
+      "latitude": 45.5051,
+      "longitude": -122.675
+    },
+    "price": 25000,
+    "squareFootage": 2000,
+    "rooms": {
+      "officeRooms": 10,
+      "conferenceRooms": 1
+    },
+    "bathrooms": 2,
+    "propertyImages": [
+      "https://i.ibb.co/g7fvdHH/office-5.jpg",
+      "https://i.ibb.co/zm6R8wm/office-7.jpg",
+      "https://i.ibb.co/wLCm70f/conference-5.jpg"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 10
+    },
+    "yearBuilt": 2015,
+    "ownerInformation": {
+      "name": "Mason Mitchell",
+      "email": "mason@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Central Workspace Hub",
+    "description": "Forge connections and thrive in the heart of business at Central Workspace Hub. Our flexible offices and collaborative spaces offer a central location for networking and growth in the corporate landscape.",
+    "easement": ["Collaborative Workspaces", "Networking Events", "Cafeteria"],
+    "utilities": [
+      "Flexible Office Configurations",
+      "High-Speed Wi-Fi",
+      "24/7 Accessibility"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "567 Maple Drive",
+      "city": "Atlanta",
+      "state": "Georgia",
+      "zipCode": "30301",
+      "latitude": 33.749,
+      "longitude": -84.388
+    },
+    "price": 60000,
+    "squareFootage": 6000,
+    "rooms": {
+      "officeRooms": 20,
+      "conferenceRooms": 3
+    },
+    "bathrooms": 4,
+    "propertyImages": [
+      "https://i.ibb.co/ts9h100/office-15.jpg",
+      "https://i.ibb.co/zsYSQfK/conference-3.jpg",
+      "https://i.ibb.co/ZVZd6gG/restroom-4.jpg"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 30
+    },
+    "yearBuilt": 2015,
+    "ownerInformation": {
+      "name": "Ethan Hayes",
+      "email": "eithan@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Urban Office Residences",
+    "description": "Urban sophistication meets productivity at Urban Office Residences. Unleash your business potential in a contemporary setting, with versatile workspaces and a vibrant atmosphere that inspires creativity.",
+    "easement": ["Modern Interiors", "Creative Spaces", "Breakout Zones"],
+    "utilities": [
+      "Smart Thermostats",
+      "Virtual Meeting Technology",
+      "Energy-Efficient Lighting"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "234 Cedar Road",
+      "city": "Seattle",
+      "state": "Washington",
+      "zipCode": "98101",
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    },
+    "price": 20000,
+    "squareFootage": 2000,
+    "rooms": {
+      "officeRooms": 15,
+      "conferenceRooms": 2
+    },
+    "bathrooms": 2,
+    "propertyImages": [
+      "https://i.ibb.co/f9bZqLt/office-17.jpg",
+      "https://i.ibb.co/zm6R8wm/office-7.jpg",
+      "https://i.ibb.co/kBbkbtF/conference-6.jpg"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 10
+    },
+    "yearBuilt": 2007,
+    "ownerInformation": {
+      "name": "Ava Simmons",
+      "email": "ava@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "City View Business Park",
+    "description": "Experience the perfect blend of work and nature at City View Business Park. Surrounded by greenery, our office spaces offer a tranquil environment with the convenience of city amenities for seamless business operations.",
+    "easement": ["Green Spaces", "Walking Trails", "Outdoor Workstations"],
+    "utilities": [
+      "Green Energy Solutions",
+      "Waste Recycling",
+      "Natural Lighting"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "101 Elm Street",
+      "city": "Austin",
+      "state": "Texas",
+      "zipCode": "78701",
+      "latitude": 30.25,
+      "longitude": -97.75
+    },
+    "price": 55000,
+    "squareFootage": 3500,
+    "rooms": {
+      "officeRooms": 25,
+      "conferenceRooms": 3
+    },
+    "bathrooms": 4,
+    "propertyImages": [
+      "https://i.ibb.co/fxC4hqD/office-14.jpg",
+      "https://i.ibb.co/7p3nXSq/office-6.jpg",
+      "https://i.ibb.co/y5WLQm6/restroom-2.jpg"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 15
+    },
+    "yearBuilt": 2009,
+    "ownerInformation": {
+      "name": "Lucas Rivera",
+      "email": "lucas@gmail.com"
+    }
+  }
+]

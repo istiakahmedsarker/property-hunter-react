@@ -1,0 +1,40 @@
+{
+        "blogs": [
+                {
+                    "id": 1,
+                    "heading": "Eiffel Tower, Paris",
+                    "shortDescription": "Iconic symbol of Paris, the Eiffel Tower is a wrought-iron masterpiece offering breathtaking views of the city.",
+                    "description": "Built in 1889, the Eiffel Tower stands as one of the world's most recognizable landmarks. It attracts millions of visitors each year who ascend to its observation decks for panoramic views of Paris. Whether during the day or illuminated at night, the Eiffel Tower is a must-visit destination.",
+                    "comment": "Absolutely stunning views from the top! A must-see when in Paris.",
+                    "images": [
+                        "eiffel_tower_day.jpg",
+                        "eiffel_tower_night.jpg",
+                        "eiffel_tower_interior.jpg"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "heading": "Machu Picchu, Peru",
+                    "shortDescription": "An ancient Incan citadel nestled in the Andes, Machu Picchu is a marvel of engineering and a UNESCO World Heritage Site.",
+                    "description": "Perched high in the Andes mountains, Machu Picchu is a breathtaking archaeological site that showcases the advanced engineering of the ancient Inca civilization. Visitors can explore the terraced fields, intricate stone structures, and majestic views of the surrounding mountains.",
+                    "comment": "A mystical experience exploring the ruins and connecting with history.",
+                    "images": [
+                        "machu_picchu_panorama.jpg",
+                        "machu_picchu_terrace.jpg",
+                        "machu_picchu_sunrise.jpg"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "heading": "Great Barrier Reef, Australia",
+                    "shortDescription": "The world's largest coral reef system, the Great Barrier Reef is a wonder of marine biodiversity and vibrant underwater life.",
+                    "description": "Stretching over 2,300 kilometers, the Great Barrier Reef is a mesmerizing underwater world of colorful coral formations and diverse marine species. Snorkeling or diving in these crystal-clear waters offers an unforgettable experience, allowing visitors to witness the beauty and fragility of this natural wonder.",
+                    "comment": "Swimming alongside the vibrant coral and marine life was a dream come true!",
+                    "images": [
+                        "great_barrier_reef_coral.jpg",
+                        "great_barrier_reef_fish.jpg",
+                        "great_barrier_reef_diving.jpg"
+                    ]
+                }
+        ]
+}

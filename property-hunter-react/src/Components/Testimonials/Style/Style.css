@@ -1,0 +1,7 @@
+/* Add these styles to your CSS */
+@media (max-width: 640px) {
+    .mySwiper .swiper-slide {
+      width: 100% !important;
+    }
+  }
+  

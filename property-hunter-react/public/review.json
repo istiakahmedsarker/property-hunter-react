@@ -1,0 +1,82 @@
+[
+    {
+      "id": 1,
+      "client": {
+        "name": "Sophia Grace",
+        "email": "john.doe@example.com",
+        "profileImage": "https://res.cloudinary.com/debqyv4o6/image/upload/v1705411057/zoe-fernandez--zqoE7jnQgw-unsplash_1_heinq5.jpg"
+      },
+      "rating": 4.5,
+      "date": "2024-01-16",
+      "property": {
+        "name": "Beautiful Villa",
+        "location": "123 Main Street, Cityville",
+        "type": "Residential"
+      },
+      "comment": "I loved the spacious layout and the scenic view from this property. The neighborhood is peaceful, and the amenities are top-notch. The entire home-buying experience was smooth, thanks to the helpful staff."
+    },
+    {
+      "id": 2,
+      "client": {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com",
+        "profileImage": "https://res.cloudinary.com/debqyv4o6/image/upload/v1705411090/vince-veras-AJIqZDAUD7A-unsplash_1_l0gfmt.jpg"
+      },
+      "rating": 5.0,
+      "date": "2024-01-14",
+      "property": {
+        "name": "Downtown Loft",
+        "location": "456 Oak Avenue, Urbantown",
+        "type": "Commercial"
+      },
+      "comment": "The location of this loft is perfect for my business. The modern design and convenient facilities make it an excellent choice. The real estate agent was very knowledgeable and assisted me throughout the buying process."
+    },
+    {
+      "id": 3,
+      "client": {
+        "name": "Olivia Rose",
+        "email": "sam.johnson@example.com",
+        "profileImage": "https://res.cloudinary.com/debqyv4o6/image/upload/v1705411101/michael-dam-mEZ3PoFGs_k-unsplash_1_rfjcm6.jpg"
+      },
+      "rating": 3.0,
+      "date": "2024-01-12",
+      "property": {
+        "name": "Cozy Cottage",
+        "location": "789 Pine Lane, Suburbia",
+        "type": "Residential"
+      },
+      "comment": "The cottage is charming, but I faced some issues with the plumbing. The maintenance response was a bit slow, but once addressed, everything else has been satisfactory. It's a good home for a small family."
+    },
+    {
+      "id": 4,
+      "client": {
+        "name": "James Miller",
+        "email": "emily.white@example.com",
+        "profileImage": "https://res.cloudinary.com/debqyv4o6/image/upload/v1705411113/joseph-gonzalez-iFgRcqHznqg-unsplash_1_qfpgkb.jpg"
+      },
+      "rating": 4.0,
+      "date": "2024-01-10",
+      "property": {
+        "name": "Modern Apartment",
+        "location": "567 Maple Street, Trendytown",
+        "type": "Residential"
+      },
+      "comment": "The apartment's contemporary design and location are fantastic. It's close to public transportation and has great nearby amenities. The buying process was straightforward, and I'm happy with my new home."
+    },
+    {
+      "id": 5,
+      "client": {
+        "name": "Emily White",
+        "email": "michael.brown@example.com",
+        "profileImage": "https://res.cloudinary.com/debqyv4o6/image/upload/v1705411136/christopher-campbell-rDEOVtE7vOs-unsplash_1_uwjjcv.jpg"
+      },
+      "rating": 4.8,
+      "date": "2024-01-08",
+      "property": {
+        "name": "Luxury Penthouse",
+        "location": "890 Pinecrest Drive, Uptown",
+        "type": "Residential"
+      },
+      "comment": "Living in the penthouse is a dream come true. The panoramic views are breathtaking, and the interior is elegantly designed. The real estate team provided excellent service, making the purchase seamless."
+    }
+  ]

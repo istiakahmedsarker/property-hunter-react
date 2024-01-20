@@ -1,0 +1,314 @@
+[
+    {
+        "propertyTitle": "Sunset Villa",
+        "propertyType": "house",
+        "location": {
+            "address": "123 Oceanview Drive",
+            "city": "Coastal City",
+            "state": "Seaside",
+            "zipCode": "90210",
+            "latitude": 34.0900,
+            "longitude": -118.4065
+        },
+        "price": 750000,
+        "squareFootage": 2800,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "garage": true,
+        "features": [
+            "Ocean View",
+            "Spacious Kitchen",
+            "Private Garden"
+        ],
+        "description": "A beautiful house with an ocean view, spacious kitchen, and a private garden. Perfect for those seeking a seren coastal lifestyle.",
+        "propertyImages": [
+            "https://i.ibb.co/TMk44cX/pexels-photo-164522.jpg",
+            "https://i.ibb.co/1LBW3Zb/pexels-photo-259962.jpg",
+            "https://i.ibb.co/j8PkDgz/pexels-photo-271624.webp"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 2005,
+        "ownerInformation": {
+            "name": "Seaside Realty Group",
+            "email": "info@seasiderealty.com",
+            "phone": "555-123-4567"
+        }
+    },
+    {
+        "propertyTitle": "Forest Retreat",
+        "propertyType": "house",
+        "location": {
+            "address": "789 Woodland Lane",
+            "city": "Green Valley",
+            "state": "Forestland",
+            "zipCode": "45678",
+            "latitude": 39.7392,
+            "longitude": -104.9903
+        },
+        "price": 550000,
+        "squareFootage": 2000,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "garage": true,
+        "features": [
+            "Secluded Location",
+            "Fireplace",
+            "Wooden Floors"
+        ],
+        "description": "A cozy house nestled in the forest with a secluded location, fireplace, and beautiful wooden floors. Ideal for nature lovers.",
+        "propertyImages": [
+            "https://i.ibb.co/J7zdVxL/pexels-photo-208736.jpg",
+            "https://i.ibb.co/Xtk7qD3/pexels-photo-276554.jpg",
+            "https://i.ibb.co/YQD4B4P/pexels-photo-279607.webp"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 1990,
+        "ownerInformation": {
+            "name": "Nature Homes Realty",
+            "email": "info@naturehomes.com",
+            "phone": "555-987-6543"
+        }
+    },
+    {
+        "propertyTitle": "Mountainview Haven",
+        "propertyType": "house",
+        "location": {
+            "address": "456 Summit Street",
+            "city": "High Peaks",
+            "state": "Mountainville",
+            "zipCode": "78901",
+            "latitude": 37.7749,
+            "longitude": -122.4194
+        },
+        "price": 950000,
+        "squareFootage": 3200,
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "garage": true,
+        "features": [
+            "Panoramic Windows",
+            "Mountain View",
+            "Gourmet Kitchen"
+        ],
+        "description": "A spacious house with panoramic windows, mountain views, and a gourmet kitchen. Perfect for those who love the mountainous surroundings.",
+        "propertyImages": [
+            "https://i.ibb.co/SKtbBGL/pexels-photo-209315.jpg",
+            "https://i.ibb.co/X3Vyp7v/pexels-photo-534151.jpg",
+            "https://i.ibb.co/X7K24Z2/pexels-photo-262048.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 2008,
+        "ownerInformation": {
+            "name": "Mountain Realty Group",
+            "email": "info@mountainrealty.com",
+            "phone": "555-789-0123"
+        }
+    },
+    {
+        "propertyTitle": "Urban Oasis",
+        "propertyType": "house",
+        "location": {
+            "address": "101 Cityscape Lane",
+            "city": "Metropolis",
+            "state": "Cityville",
+            "zipCode": "34567",
+            "latitude": 40.7128,
+            "longitude": -74.0060
+        },
+        "price": 1200000,
+        "squareFootage": 4000,
+        "bedrooms": 6,
+        "bathrooms": 5,
+        "garage": true,
+        "features": [
+            "City View",
+            "Rooftop Terrace",
+            "Smart Home System"
+        ],
+        "description": "An urban house with a city view, rooftop terrace, and a smart home system. Ideal for those who love the hustle and bustle of the city.",
+        "propertyImages": [
+            "https://i.ibb.co/GvttKL1/pexels-photo-210617.jpg",
+            "https://i.ibb.co/L0fRFqc/pexels-photo-2724748.webp",
+            "https://i.ibb.co/NsSfjsk/pexels-photo-2134224.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 2012,
+        "ownerInformation": {
+            "name": "Cityscape Realty Solutions",
+            "email": "info@cityscaperealty.com",
+            "phone": "555-234-5678"
+        }
+    },
+    {
+        "propertyTitle": "Lakefront Retreat",
+        "propertyType": "house",
+        "location": {
+            "address": "789 Lakeside Drive",
+            "city": "Tranquil Town",
+            "state": "Lakeview",
+            "zipCode": "56789",
+            "latitude": 41.8781,
+            "longitude": -87.6298
+        },
+        "price": 850000,
+        "squareFootage": 3500,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "garage": true,
+        "features": [
+            "Lake View",
+            "Boat Dock",
+            "Outdoor Fireplace"
+        ],
+        "description": "A serene house with a lake view, boat dock, and outdoor fireplace. Ideal for those who appreciate the tranquility of lakeside living.",
+        "propertyImages": [
+            "https://i.ibb.co/3mjk7DG/pexels-photo-1438834.jpg",
+            "https://i.ibb.co/pQJfkmv/pexels-photo-1571463.jpg",
+            "https://i.ibb.co/ByX21d7/pexels-photo-1643383.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 2000,
+        "ownerInformation": {
+            "name": "Lakefront Realty Group",
+            "email": "info@lakefrontrealty.com",
+            "phone": "555-345-6789"
+        }
+    },
+    {
+        "propertyTitle": "Country Charm Cottage",
+        "propertyType": "house",
+        "location": {
+            "address": "222 Countryside Lane",
+            "city": "Ruralville",
+            "state": "Countryland",
+            "zipCode": "23456",
+            "latitude": 38.8951,
+            "longitude": -77.0364
+        },
+        "price": 450000,
+        "squareFootage": 1800,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "garage": false,
+        "features": [
+            "Front Porch",
+            "Wooden Floors",
+            "Country Atmosphere"
+        ],
+        "description": "A charming cottage with a front porch, wooden floors, and a peaceful country atmosphere. Perfect for those seeking a rural lifestyle.",
+        "propertyImages": [
+            "https://i.ibb.co/kBsK29Z/pexels-photo-1732414.jpg",
+            "https://i.ibb.co/tPy1sGL/pexels-photo-2089698.jpg",
+            "https://i.ibb.co/zFdkrvC/pexels-photo-2121120.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 1985,
+        "ownerInformation": {
+            "name": "Country Homes Realty",
+            "email": "info@countryhomes.com",
+            "phone": "555-456-7890"
+        }
+    },
+    {
+        "propertyTitle": "City Center Loft",
+        "propertyType": "house",
+        "location": {
+            "address": "333 Downtown Avenue",
+            "city": "Central City",
+            "state": "Downtown",
+            "zipCode": "67890",
+            "latitude": 34.0522,
+            "longitude": -118.2437
+        },
+        "price": 1100000,
+        "squareFootage": 3000,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "garage": true,
+        "features": [
+            "Loft Design",
+            "City View",
+            "Modern Interior"
+        ],
+        "description": "A stylish loft in the heart of the city with loft design, city views, and modern interior. Ideal for those who love urban living.",
+        "propertyImages": [
+            "https://i.ibb.co/q9Wjz6f/pexels-photo-2155202.jpg",
+            "https://i.ibb.co/0j4wDZ3/pexels-photo-2251247.webp",
+            "https://i.ibb.co/mC1RQCN/pexels-photo-2631746.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 2017,
+        "ownerInformation": {
+            "name": "City Loft Realty",
+            "email": "info@cityloftrealty.com",
+            "phone": "555-567-8901"
+        }
+    },
+    {
+        "propertyTitle": "Serenity House",
+        "propertyType": "house",
+        "location": {
+            "address": "555 Tranquil Street",
+            "city": "Peacefulville",
+            "state": "Calmland",
+            "zipCode": "12345",
+            "latitude": 37.7749,
+            "longitude": -122.4194
+        },
+        "price": 620000,
+        "squareFootage": 2400,
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "garage": true,
+        "features": [
+            "Quiet Neighborhood",
+            "Garden Patio",
+            "Home Office"
+        ],
+        "description": "A peaceful house in a quiet neighborhood with a garden patio and a home office. Ideal for those seeking serenity.",
+        "propertyImages": [
+            "https://i.ibb.co/7vDGkym/pexels-pixabay-164558.jpg",
+            "https://i.ibb.co/FwjC1fL/pexels-photo-2635038.webp",
+            "https://i.ibb.co/dMQQvvn/pexels-photo-2988860.jpg"
+        ],
+        "utilities": [
+            "Water",
+            "Electricity",
+            "High-speed Internet"
+        ],
+        "yearBuilt": 1998,
+        "ownerInformation": {
+            "name": "Serenity Homes Realty",
+            "email": "info@serenityhomes.com",
+            "phone": "555-678-9012"
+        }
+    }
+]
