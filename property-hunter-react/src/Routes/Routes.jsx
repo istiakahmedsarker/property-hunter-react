@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Home from "../Pages/Home/Home";
 import Blogs from "../Pages/Blogs/Blogs";
 import BlogCard from "../Components/BlogCard/BlogCard";
+import BlogDetails from "../Components/BlogDetails/BlogDetails";
 // import 
 const router = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/blogs/:id',
-                element: <BlogCard/>
+                element: <BlogDetails/>
             },
             {
                 path: '/login',
