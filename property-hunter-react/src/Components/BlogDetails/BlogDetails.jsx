@@ -4,7 +4,6 @@ import BlogComments from "../BlogComments/page";
 
 const BlogDetails = ({blogs}) => {
   const {heading,shortDescription,description,images,comments:comment} = blogs;
-  // console.log(blogs)
   return (
     <div className=" max-w-6xl mx-auto mt-10">
       <div className="grid grid-cols-2 gap-4">

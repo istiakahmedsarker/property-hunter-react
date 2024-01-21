@@ -14,7 +14,7 @@ const BlogPost = () => {
         <input
           type="text"
           placeholder="Type Your name"
-          class="input input-bordered w-full"
+          className="input input-bordered w-full"
         />
         <input
           className="textarea textarea-bordered w-full"
