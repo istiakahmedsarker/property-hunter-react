@@ -18,7 +18,7 @@ const BlogDetails = () => {
             alt="blog details image"
           ></img>
         </div>
-        <div className="bg-slate-100 px-4 py-7 rounded-md">
+        <div className="bg-slate-100 px-4 py-7 ">
           <h2 className="text-3xl font-bold">{heading}</h2>
           <h3 className="text-2xl text-gray-500 ">{shortDescription}</h3>
           <p className="text-lg mt-4">{description}</p>
