@@ -1,5 +1,5 @@
-import BlogCard from '@/Components/BlogCard/BlogCard';
 import React, { useEffect, useState } from 'react';
+import BlogCard from '../../Components/BlogCard/BlogCard';
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -20,7 +20,7 @@ const Blogs = () => {
         };
 
         fetchData();
-    }, []); // Empty dependency array ensures this effect runs once when the component mounts
+    }, []);
 
     return (
         <div>

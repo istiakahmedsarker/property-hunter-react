@@ -1,10 +1,8 @@
-import Link from 'next/link';
-import React from 'react';
+import { Link } from "react-router-dom";
 
 const BlogCard = ({blog}) => {
 
     const {title,_id,img,shortDescription} = blog;
-    console.log(_id)
     return (
         <div>
             {
