@@ -21,7 +21,6 @@ const Blogs = () => {
 
         fetchData();
     }, []);
-
     return (
         <div>
             {loading && <p>Loading...</p>}
