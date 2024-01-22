@@ -1,14 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 import { IoBedOutline } from 'react-icons/io5';
 import { PiBathtub } from 'react-icons/pi';
 import { BiShapeSquare } from 'react-icons/bi';
 import { HiArrowTopRightOnSquare } from 'react-icons/hi2';
 import { GiSelfLove } from 'react-icons/gi';
+import { Link } from 'react-router-dom';
 const PropertiesCard = ({ card }) => {
-  // const { title, body } = card;
   const {
+    _id,
     propertyTitle,
     propertyImages,
     location,
@@ -26,15 +25,12 @@ const PropertiesCard = ({ card }) => {
             alt={propertyTitle}
             className="w-11/12 mx-auto h-56  rounded-lg "
           ></img>
-          // <Image
-          //   src={propertyImages[0]}
-          //   alt={propertyTitle}
-          //   width={400}
-          //   height={200}
-          // />
         )}
       </div>
-      <h3 className="font-bold my-2">{card.propertyTitle}</h3>
+
+      <Link to={`/propertiesDetails/${card._id}`}>
+        <h3 className="font-bold my-2 underline ">{card.propertyTitle}</h3>
+      </Link>
       <div>
         <h3>
           {card.location.city},{card.location.state}
