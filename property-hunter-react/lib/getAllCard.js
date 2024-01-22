@@ -9,11 +9,14 @@ export default async function getAllCard() {
     //   }
     // );
     // https://property-hunter-server.vercel.app/api/v1/properties
-    const res = await fetch('villa.json', {
-      next: {
-        revalidate: 10,
-      },
-    });
+    const res = await fetch(
+      ' https://property-hunter-server.vercel.app/api/v1/properties'
+      // {
+      //   next: {
+      //     revalidate: 10,
+      //   },
+      // }
+    );
     return res.json();
   } catch (error) {
     console.error('Something went wrong for fetching card:', error.message);
