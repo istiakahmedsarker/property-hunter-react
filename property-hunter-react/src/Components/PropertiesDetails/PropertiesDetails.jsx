@@ -39,7 +39,7 @@ const PropertiesDetails = () => {
               <img
                 src={details.propertyImages[0]}
                 alt={details.propertyTitle}
-                className="w-11/12 mx-auto rounded-lg "
+                className="w-11/12 mx-auto h-full rounded-lg "
               ></img>
             </div>
             <div className="grid grid-cols-1 space-y-4">
