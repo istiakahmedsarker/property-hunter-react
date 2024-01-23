@@ -26,7 +26,7 @@ const Register = () => {
     //   });
   };
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex w-[850px] rounded-lg shadow-sm border bg-white ">
+    <div className="flex w-[850px] mx-auto  rounded-lg shadow-sm border bg-white my-10">
       <div className="bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center w-1/3 rounded-l-lg"></div>
       <div className="w-2/3 py-8 px-10">
         <h2 className="font-bold mb-10 text-3xl">Please! Register Here</h2>

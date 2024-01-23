@@ -32,14 +32,7 @@ const router = createBrowserRouter([
         path: "/blogs/:id",
         element: <BlogDetails />,
       },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
+
       {
         path: "/properties",
         element: <Properties></Properties>,
@@ -52,10 +45,14 @@ const router = createBrowserRouter([
             `https://property-hunter-server.vercel.app/api/v1/properties/${params.id}`
           ),
       },
-      // {
-      //     path: '/signUp',
-      //     element: <SignUp></SignUp>
-      // }
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
     ],
   },
   {
