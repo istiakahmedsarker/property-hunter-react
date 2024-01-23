@@ -175,7 +175,7 @@ const PropertiesDetails = () => {
                   </h3>
                   <h3 className="grid grid-cols-2 py-2">
                     <span className="font-semibold">Year of Build </span>
-                    <span>: {details.yearBuilt} sq Ft</span>
+                    <span>: {details.yearBuilt} </span>
                   </h3>
                   <h3 className="grid grid-cols-2 py-2">
                     <span className="font-semibold">property Type </span>
