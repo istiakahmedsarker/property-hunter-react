@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaUpload } from "react-icons/fa";
+import { GrFormPrevious } from "react-icons/gr";
 
 const AddProperties = () => {
   const [formStep, setFormStep] = useState(0);
+  // const [imagePreview, setImagePreview] = useState('');
+  const [imagePreviews, setImagePreviews] = useState([]);
 
   const completeFormStep = () => {
     setFormStep((curr) => curr + 1);
   };
 
+  const goToPreviousStep = () => {
+    setFormStep((curr) => curr - 1);
+  }
+
   const renderButton = () => {
+
     if (formStep > 3) {
       return undefined;
     } else if (formStep === 3) {
       return (
         <div className="form-control mt-6">
           <button
-            disabled={!isValid}
-            onClick={completeFormStep}
-            type="button"
+            type="submit"
             className="btn bg-[#eb6753] text-white border-none"
           >
             Add Property
@@ -28,7 +35,6 @@ const AddProperties = () => {
       return (
         <div className="form-control mt-6">
           <button
-            disabled={!isValid}
             onClick={completeFormStep}
             type="button"
             className="btn bg-[#eb6753] text-white border-none"
@@ -49,37 +55,78 @@ const AddProperties = () => {
   } = useForm({ mode: "all" });
 
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data)
+    const image1  = data.propertyImg;
+    console.log('image', image1[0]);
+    completeFormStep();
 
-  const handleTab = (step) => {
-    setFormStep(step);
+    const imageInput = data.propertyImg[0];
+
   };
+
+  //? Multiple image handler
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+
+    if (imagePreviews.length === 3) {
+      // If there are already three images, remove the last one
+      setImagePreviews((prevPreviews) => prevPreviews.slice(0, -1));
+    }
+  
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        setImagePreviews((prevPreviews) => ([
+          ...prevPreviews,
+         reader.result
+        ]));
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
+  
   return (
-    <div className="relative min-h-screen flex items-center justify-center  bg-[#fff7f5] bg-[url('https://i.ibb.co/4W9YMVZ/7598163.jpg')] bg-cover">
+    <div className="relative min-h-screen flex items-center justify-center  bg-[#f6fff5] bg-[url('https://i.ibb.co/4W9YMVZ/7598163.jpg')] bg-cover">
         <div className="h-full w-full absolute z-0 opacity-50 bg-black"></div>
       
-      <div className="px-8 relative z-20 min-h-[80vh] min-w-[1240px] mx-auto flex flex-col items-center justify-center bg-white rounded-xl py-12">
+      <div className="px-8 relative z-20 min-h-[80vh] min-w-[1240px] mx-auto flex flex-col items-center justify-center bg-[#8dcd86ea] rounded-xl py-12">
 
       <div className="absolute z-10 top-4 right-4">
             <h1 className="text-xl text-black font-medium">{formStep + 1} / 5</h1>
         </div>
+      <div className="absolute z-10 top-4 left-4">
+     {
+      formStep > 0 &&  <button
+      onClick={goToPreviousStep}
+      type="button"
+      className="px-5 py-2 flex items-center justify-center hover:text-[#eb6753] text-xl text-gray-800 border-none"
+    >
+    <GrFormPrevious/>
+    </button>
+     }
+        </div>
       <div className="mb-6 w-full flex flex-col items-center justify-center gap-3">
-        <h1 className="text-4xl text-gray-800 font-bold text-left">
+        <h1 className="text-4xl text-white font-bold text-left">
           Add New Property
         </h1>
-        <p className="text-gray-600 text-2xl font-thin">
+        <p className="text-gray-100 text-2xl font-thin">
           We are glad to see you again!
         </p>
       </div>
     
       <div className="w-full">
         <div
-          className={`h-2 rounded-xl bg-green-800 ${formStep === 0 && "w-2/4"}  ${
+          className={`h-2 rounded-xl bg-[#eb6753] ${formStep === 0 && "w-2/4"}  ${
             formStep === 4 && "w-full"
-          }  ${formStep === 0 && "w-1/5"} ${formStep === 1 && "w-2/5"} ${formStep === 2 && "w-3/5"} ${formStep === 3 && "w-4/5"}`}
+          }  ${formStep === 0 && "w-[20%]"} ${formStep === 1 && "w-2/5"} ${formStep === 2 && "w-3/5"} ${formStep === 3 && "w-4/5"}`}
         ></div>
 
-        <div className=" w-full h-full bg-[#fff7f5]  relative rounded-xl z-10 ">
+        <div className=" w-full h-full   relative rounded-xl z-10 ">
          
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -91,13 +138,13 @@ const AddProperties = () => {
                 <h1 className="text-4xl text-black col-span-6 font-semibold">Property Description</h1>
                 <div className="form-control col-span-3">
                   <label className="label">
-                    <span className="label-text">Property</span>
+                    <span className="label-text">Property Title</span>
                   </label>
                   <input
                     {...register("propertyTitles", { required: true })}
                     name="propertyTitles"
                     type="text"
-                    placeholder="Property Titles"
+                    placeholder="property title"
                     className="input input-bordered "
                   />
 
@@ -111,7 +158,7 @@ const AddProperties = () => {
                     {...register("propertyType", { required: true })}
                     name="propertyType"
                     type="text"
-                    placeholder="Property Type"
+                    placeholder="property type"
                     className="input input-bordered "
                   />
 
@@ -119,7 +166,7 @@ const AddProperties = () => {
                 </div>
                 <div className="form-control col-span-2">
                   <label className="label">
-                    <span className="label-text">Email</span>
+                    <span className="label-text">Name</span>
                   </label>
                   <input
                     {...register("name", { required: true })}
@@ -164,15 +211,33 @@ const AddProperties = () => {
                <div className="grid grid-cols-6 gap-4 py-8 min-h-[40vh] ">
                <h1 className=" text-4xl text-black col-span-6 mb-0 font-semibold">Upload photos of your property</h1>
                <div className=" col-span-6 w-full h-[40vh] border-dashed border-2 rounded-xl border-gray-500 flex items-center justify-center ">
-               <div className="form-control bg-[] h-1/3 col-span-3 border-2 rounded-xl flex items-center justify-center">
+               <div className="form-control bg-[] h-1/3 col-span-3 rounded-xl flex gap-4 items-center justify-center">
+                <h1 className="text-2xl text-gray-800 font-thin text-center">Main Property Image</h1>
+                  <div className="flex items-center justify-between">
+                    {
+                      imagePreviews && 
+                      imagePreviews?.map((imagePreview, i) => 
+                        <img key={i} id="propertyImg" src={imagePreview} alt="" className="h-20 w-20"/>
+                        )
+                    }
+                  </div>
                   <input 
-                    {...register("propertyTitles", { required: true })}
-                    name="propertyTitles"
+                    {...register("propertyImg", { required: true })}
+                    name="propertyImg"
                     type="file"
-                    className=" rounded-xl border-gray-800 p-10 "
+                    className="hidden rounded-xl"
+                    accept="image/*"
+                    id="file"
+                    required
+                    // onChange={handleFileChange} // handle file change here
+                    onChange={handleFileChange}
                   />
+                  <label htmlFor="file" className="py-5 px-8 text-white bg-[#eb6753] rounded-lg text-center flex items-center text-xl justify-center gap-3">
+                    <FaUpload/>
+                    Upload Photo
+                  </label>
 
-                  {errors.propertyImage && <span>This field is required</span>}
+                  {errors.propertyImg && <span>This field is required</span>}
 
                  
                 </div>
@@ -181,15 +246,22 @@ const AddProperties = () => {
                </div>
                <div className="form-control col-span-3">
                   <label className="label">
-                    <span className="label-text">Property</span>
+                    <span className="label-text">Property Image 1</span>
                   </label>
                   <input
-                    {...register("propertyImage1", { required: true })}
+                    {...register("propertyImg1", { required: true })}
                     name="propertyImg1"
                     type="file"
-                    placeholder="Property Image"
-                    className="input input-bordered "
+                    id="file2"
+                    placeholder="property image"
+                    className="input input-bordered hidden"
+                    onChange={handleFileChange}
+                    required
                   />
+                   <label htmlFor="file2" className="py-5 px-8 text-white bg-[#eb6753] rounded-lg text-center flex items-center text-xl justify-center gap-3">
+                    <FaUpload/>
+                    Upload Photo
+                  </label>
 
                   {errors.propertyImg1 && <span>This field is required</span>}
                 </div>
@@ -201,9 +273,16 @@ const AddProperties = () => {
                     {...register("propertyImg2", { required: true })}
                     name="propertyImg2"
                     type="file"
-                    placeholder="Property Image"
-                    className="input input-bordered "
+                    id="file3"
+                    placeholder="property image"
+                    className="input input-bordered hidden"
+                    onChange={handleFileChange}
+                    required
                   />
+                   <label htmlFor="file3" className="py-5 px-8 text-white bg-[#eb6753] rounded-lg text-center flex items-center text-xl justify-center gap-3">
+                    <FaUpload/>
+                    Upload Photo
+                  </label>
 
                   {errors.propertyImg2 && <span>This field is required</span>}
                 </div>
@@ -223,6 +302,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="address"
                    className="input input-bordered "
+                   required
                  />
 
                  {errors.address && <span>This field is required</span>}
@@ -237,6 +317,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="state"
                    className="input input-bordered "
+                   required
                  />
 
                  {errors.state && <span>This field is required</span>}
@@ -251,6 +332,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="city"
                    className="input input-bordered "
+                   required
                  />
                  {errors.city && <span>This field is required</span>}
                </div>
@@ -264,6 +346,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="zip code "
                    className="input input-bordered "
+                   required
                  />
                  {errors.zipCode && <span>This field is required</span>}
                </div>
@@ -277,6 +360,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="latitude"
                    className="input input-bordered"
+                   required
                  />
 
                  {errors.latitude && <span>This field is required</span>}
@@ -291,6 +375,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="longitude"
                    className="input input-bordered"
+                   required
                  />
 
                  {errors.longitude && <span>This field is required</span>}
@@ -311,6 +396,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="floor number"
                    className="input input-bordered "
+                   required
                  />
 
                  {errors.floorNumber && <span>This field is required</span>}
@@ -325,6 +411,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="rooms"
                    className="input input-bordered "
+                   required
                  />
 
                  {errors.floorNumber && <span>This field is required</span>}
@@ -339,6 +426,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="block name"
                    className="input input-bordered "
+                   required
                  />
                  {errors.blockName && <span>This field is required</span>}
                </div>
@@ -352,6 +440,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="apartment number"
                    className="input input-bordered "
+                   required
                  />
                  {errors.apartmentNumber && <span>This field is required</span>}
                </div>
@@ -365,6 +454,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="price"
                    className="input input-bordered"
+                   required
                  />
 
                  {errors.price && <span>This field is required</span>}
@@ -379,6 +469,7 @@ const AddProperties = () => {
                    type="text"
                    placeholder="year built"
                    className="input input-bordered"
+                   required
                  />
 
                  {errors.yearBuilt && <span>This field is required</span>}
