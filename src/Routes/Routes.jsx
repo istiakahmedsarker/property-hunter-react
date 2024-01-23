@@ -8,6 +8,8 @@ import BlogDetails from "../Components/BlogDetails/BlogDetails";
 import Properties from "../Pages/Properties/Properties";
 import PropertiesDetails from "../Components/PropertiesDetails/PropertiesDetails";
 import Register from "../Pages/Register/Register";
+import Dashboard from "../Layout/Dashboard";
+import HomeDashboard from "../Pages/Dashboard/HomeDashboard/HomeDashboard";
 // import
 const router = createBrowserRouter([
   {
@@ -54,6 +56,17 @@ const router = createBrowserRouter([
       //     path: '/signUp',
       //     element: <SignUp></SignUp>
       // }
+    ],
+  },
+  {
+    // dashboard routes
+    path: "/dashboard",
+    element: <Dashboard />,
+    children: [
+      {
+        path: "/dashboard/home",
+        element: <HomeDashboard />,
+      },
     ],
   },
 ]);
