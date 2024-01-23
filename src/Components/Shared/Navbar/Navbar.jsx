@@ -1,52 +1,55 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import "./navbar.css";
+
 
 const Navbar = () => {
   const { pathname } = useLocation();
-
-  const pages = (
-    <>
-      <li>
-        <Link
-          className={` ${
-            pathname === "/" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
-          href={"/"}
-        >
-          Home
-        </Link>
-      </li>
-      <li className="dropdown dropdown-hover">
-        <Link
-          className={` ${
-            pathname === "/properties" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
-          href={"/properties"}
-        >
-          Properties
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={` ${
-            pathname === "/blog" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
-          href={"/blogs"}
-        >
-          Blogs
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={` ${
-            pathname === "/blog" ? "text-[#eb6753]" : "inline-block md:hidden text-gray-700"
-          } no-underline`}
-          href={"/"}
-        >
-          Add Property
-        </Link>
-      </li>
-    </>
-  );
+  const navigate = useNavigate();
+  
+    const pages = (
+      <>
+        <li className="nav-link relative">
+          <Link
+            className={` ${
+              pathname === "/" ? "text-[#eb6753]" : "text-gray-700"
+            } no-underline`}
+            to={"/"}
+          >
+            Home
+          </Link>
+        </li>
+        <li className="nav-link relative dropdown dropdown-hover">
+          <Link
+            className={` ${
+              pathname === "/properties" ? "text-[#eb6753]" : "text-gray-700"
+            } no-underline`}
+            to={"/properties"}
+          >
+            Properties
+          </Link>
+        </li>
+        <li className="nav-link relative">
+          <Link
+            className={` ${
+              pathname === "/blogs" ? "text-[#eb6753]" : "text-gray-700"
+            } no-underline`}
+            to={"/blogs"}
+          >
+            Blogs
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={` ${
+              pathname === "/add-property" ? "text-[#eb6753]" : "inline-block md:hidden text-gray-700"
+            } no-underline`}
+            to={"/add-property"}
+          >
+            Add Property
+          </Link>
+        </li>
+      </>
+    );
 
   return (
     <div >
@@ -85,7 +88,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <Link to="/login" className="px-5 border-2 border-[#eb6753] md:border-none md:hover:border-2  md:hover:border-[#eb6753] rounded-full text-sm hover:bg-[#eb6753]  md:bg-none py-2 text-gray-700 hover:text-gray-100">Login/Register</Link>
-          <button className="px-5 py-2 hidden md:block rounded-full ml-2 text-sm hover:border-[#eb6753] text-gray-700 hover:text-gray-100 border-2 border-gray-700 hover:bg-[#eb6753]">
+          <button onClick={() => {
+            navigate('/addProperties')
+          }} className="px-5 py-2 hidden md:block rounded-full ml-2 text-sm hover:border-[#eb6753] text-gray-700 hover:text-gray-100 border-2 border-gray-700 hover:bg-[#eb6753]">
             Add Property
           </button>
         </div>

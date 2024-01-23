@@ -1,4 +1,3 @@
-"use client";
 import { AiOutlineMail } from "react-icons/ai";
 import { CiLock } from "react-icons/ci";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";

@@ -9,9 +9,11 @@ const Blogs = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch('https://property-hunter-server.vercel.app/api/v1/blogs');
-                const blogsData = await res.json();
-                setBlogs(blogsData.data.blogs);
+                fetch('https://property-hunter-server.vercel.app/api/v1/blogs')
+                .then(res => res.json())
+                .then(data => setBlogs(data.data.blogs))
+
+                // setBlogs(blogsData.data.blogs);
             } catch (error) {
                 setError(error);
             } finally {
@@ -21,7 +23,6 @@ const Blogs = () => {
 
         fetchData();
     }, []);
-
     return (
         <div>
             {loading && <p>Loading...</p>}
@@ -31,7 +32,7 @@ const Blogs = () => {
                 <div className="col-span-2">
                     <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 '>
                         {
-                            blogs.map((blog) => <BlogCard key={blog._id} blog={blog} />)
+                            blogs?.map((blog) => <BlogCard key={blog._id} blog={blog} />)
                         }
                     </div>
                 </div>
