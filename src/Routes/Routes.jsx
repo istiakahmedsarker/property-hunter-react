@@ -7,6 +7,7 @@ import BlogCard from '../Components/BlogCard/BlogCard';
 import BlogDetails from '../Components/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
+import AddProperties from '../Pages/AddProperties/AddProperties';
 // import
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
           fetch(
             `https://property-hunter-server.vercel.app/api/v1/properties/${params.id}`
           ),
+      },
+      {
+        path: '/addProperties',
+        element: <AddProperties/>
       },
       // {
       //     path: '/signUp',
