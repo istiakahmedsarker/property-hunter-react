@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
 import { IoBedOutline, IoHomeOutline } from 'react-icons/io5';
 import { PiBathtub } from 'react-icons/pi';
@@ -21,6 +21,13 @@ const PropertiesDetails = () => {
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
+
+  useEffect(() => {
+    const ifameData = document.getElementById('iframeId');
+    const lat = details.location.latitude;
+    const lon = details.location.longitude;
+    ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
+  });
 
   console.log(details);
   return (
@@ -229,7 +236,9 @@ const PropertiesDetails = () => {
               </div>
             </div>
             {/* map section */}
-            <div></div>
+            <div>
+              <iframe id="iframeId" height="400px" width="100%"></iframe>
+            </div>
           </div>
         </div>
         <div className="w-1/3">
@@ -266,7 +275,27 @@ const PropertiesDetails = () => {
 
               {isFormOpen && (
                 <div>
-                  <h3>show the form</h3>
+                  <form>
+                    <div>
+                      <label htmlFor="">Customer Name</label>
+                      <input
+                        className="w-full px-4 py-2"
+                        type="text"
+                        placeholder="Name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="">Customer Salary</label>
+                      <input
+                        className="w-full px-4 py-2"
+                        type="text"
+                        placeholder="salary"
+                      />
+                    </div>
+                    <button className="px-4 py-2 rounded-lg bg-blue-700 text-white">
+                      Submit
+                    </button>
+                  </form>
                 </div>
               )}
             </div>
