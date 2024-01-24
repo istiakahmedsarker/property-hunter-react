@@ -3,10 +3,14 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
-// import BlogCard from '../Components/BlogCard/BlogCard';
+// import BlogCard from "../Components/BlogCard/BlogCard";
 import BlogDetails from '../Components/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
+import Register from '../Pages/Register/Register';
+import Dashboard from '../Layout/Dashboard';
+import HomeDashboard from '../Pages/Dashboard/HomeDashboard/HomeDashboard';
+import AddProperties from '../Pages/AddProperties/AddProperties';
 import BlogPost from '../Components/BlogPost/BlogPost';
 // import
 const router = createBrowserRouter([
@@ -34,10 +38,7 @@ const router = createBrowserRouter([
         //   fetch(`http://localhost:7000/api/v1/blogs/${params.id}`);
         // },
       },
-      {
-        path: '/login',
-        element: <Login />,
-      },
+
       {
         path: '/properties',
         element: <Properties></Properties>,
@@ -51,10 +52,29 @@ const router = createBrowserRouter([
             `https://property-hunter-server.vercel.app/api/v1/properties/${params.id}`
           ),
       },
-      // {
-      //     path: '/signUp',
-      //     element: <SignUp></SignUp>
-      // }
+      {
+        path: '/addProperties',
+        element: <AddProperties />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/register',
+        element: <Register />,
+      },
+    ],
+  },
+  {
+    // dashboard routes
+    path: '/dashboard',
+    element: <Dashboard />,
+    children: [
+      {
+        path: '/dashboard/home',
+        element: <HomeDashboard />,
+      },
     ],
   },
 ]);
