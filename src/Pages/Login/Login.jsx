@@ -5,20 +5,20 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 const Login = () => {
-  // const { signIn } = useAuth();
+  const { signIn } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    // signIn(email, password)
-    //   .then(() => {
-    //     toast.success("Logged in successful");
-    //   })
-    //   .catch(() => {
-    //     toast.error("Login Failed!");
-    //   });
+    signIn(email, password)
+      .then(() => {
+        toast.success("Logged in successful");
+      })
+      .catch(() => {
+        toast.error("Login Failed!");
+      });
   };
   return (
     <div className="flex w-[850px] mx-auto my-10 rounded-lg shadow-sm border bg-white">

@@ -6,7 +6,7 @@ import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 const Register = () => {
   const toHome = useNavigate();
-  // const { createUser } = useAuth();
+  const { createUser } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,15 +15,15 @@ const Register = () => {
     // const image = form.files[0];
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(name, email, password);
-    // createUser(email, password)
-    //   .then(() => {
-    //     toast.success("Registration Successful");
-    //     toHome("/");
-    //   })
-    //   .catch(() => {
-    //     toast.error("Registration Failed!");
-    //   });
+    
+    createUser(email, password)
+      .then(() => {
+        toast.success("Registration Successful");
+        toHome("/");
+      })
+      .catch(() => {
+        toast.error("Registration Failed!");
+      });
   };
   return (
     <div className="flex w-[850px] mx-auto  rounded-lg shadow-sm border bg-white my-10">
