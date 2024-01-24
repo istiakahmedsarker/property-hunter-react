@@ -3,10 +3,11 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
-import BlogCard from '../Components/BlogCard/BlogCard';
+// import BlogCard from '../Components/BlogCard/BlogCard';
 import BlogDetails from '../Components/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
+import BlogPost from '../Components/BlogPost/BlogPost';
 // import
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/blogs/:id',
         element: <BlogDetails />,
+        // loader: ({ params }) => {
+        //   console.log(params.id);
+        //   fetch(`http://localhost:7000/api/v1/blogs/${params.id}`);
+        // },
       },
       {
         path: '/login',
@@ -37,6 +42,7 @@ const router = createBrowserRouter([
         path: '/properties',
         element: <Properties></Properties>,
       },
+      { path: '/createBlog', element: <BlogPost /> },
       {
         path: '/propertiesDetails/:id',
         element: <PropertiesDetails></PropertiesDetails>,
