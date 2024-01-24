@@ -22,12 +22,12 @@ const PropertiesDetails = () => {
     setIsFormOpen(!isFormOpen);
   };
 
-  useEffect(() => {
-    const ifameData = document.getElementById('iframeId');
-    const lat = details.location.latitude;
-    const lon = details.location.longitude;
-    ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
-  });
+  // useEffect(() => {
+  //   const ifameData = document.getElementById('iframeId');
+  //   const lat = details.location.latitude;
+  //   const lon = details.location.longitude;
+  //   ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
+  // });
 
   console.log(details);
   return (
@@ -236,9 +236,9 @@ const PropertiesDetails = () => {
               </div>
             </div>
             {/* map section */}
-            <div>
+            {/* <div>
               <iframe id="iframeId" height="400px" width="100%"></iframe>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="w-1/3">
@@ -292,7 +292,7 @@ const PropertiesDetails = () => {
                         placeholder="salary"
                       />
                     </div>
-                    <button className="px-4 py-2 rounded-lg bg-blue-700 text-white">
+                    <button className="px-4 py-2 rounded-lg bg-blue-700 text-white text-lg">
                       Submit
                     </button>
                   </form>
