@@ -10,6 +10,7 @@ import PropertiesDetails from "../Components/PropertiesDetails/PropertiesDetails
 import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
 import HomeDashboard from "../Pages/Dashboard/HomeDashboard/HomeDashboard";
+import Announcement from "../Pages/Dashboard/Announcement/Announcement";
 // import
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/home",
         element: <HomeDashboard />,
+      },
+      {
+        path: "/dashboard/announcement",
+        element: <Announcement />,
       },
     ],
   },
