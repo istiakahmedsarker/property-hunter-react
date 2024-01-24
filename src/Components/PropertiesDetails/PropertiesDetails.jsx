@@ -228,7 +228,7 @@ const PropertiesDetails = () => {
                 </h3>
               </div>
             </div>
-
+            {/* map section */}
             <div></div>
           </div>
         </div>
@@ -267,7 +267,6 @@ const PropertiesDetails = () => {
               {isFormOpen && (
                 <div>
                   <h3>show the form</h3>
-                  <form></form>
                 </div>
               )}
             </div>

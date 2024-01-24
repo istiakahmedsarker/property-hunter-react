@@ -23,7 +23,7 @@ const PropertiesCard = ({ card }) => {
           <img
             src={propertyImages[0]}
             alt={propertyTitle}
-            className="w-11/12 mx-auto h-56  rounded-lg "
+            className="w-full mx-auto h-56  rounded-lg "
           ></img>
         )}
       </div>
@@ -33,26 +33,26 @@ const PropertiesCard = ({ card }) => {
       </Link>
       <div>
         <h3>
-          {card.location.city},{card.location.state}
+          {card.location.city}, {card.location.state}
         </h3>
-        <div className="grid grid-cols-3 gap-5">
-          <h3 className="flex items-center gap-3">
+        <div className="flex justify-between items-center mt-3  gap-5">
+          <h3 className="flex items-center gap-2">
             <span>
               <IoBedOutline />
             </span>
-            <span> {card.bedroom} Bed</span>
+            <span className="text-sm"> {card.bedroom} Bed</span>
           </h3>
-          <h3 className="flex items-center gap-3">
+          <h3 className="flex items-center gap-2">
             <span>
               <PiBathtub />
             </span>
-            <span> {card.bathroom} Bath</span>
+            <span className="text-sm"> {card.bathroom} Bath</span>
           </h3>
-          <h3 className="flex items-center gap-3">
+          <h3 className="flex items-center gap-1">
             <span>
               <BiShapeSquare />
             </span>
-            <span> {card.squareFootage} sq Ft</span>
+            <span className="text-sm">{card.squareFootage} sqFt</span>
           </h3>
         </div>
         <hr className="my-3" />
@@ -64,12 +64,6 @@ const PropertiesCard = ({ card }) => {
           </h3>
         </div>
       </div>
-
-      {/* <Link href={`/cards/${card.id}`}>
-        <button className="px-4 py-2 my-2 bg-blue-300 rounded-lg">
-          See Details
-        </button>
-      </Link> */}
     </div>
   );
 };
