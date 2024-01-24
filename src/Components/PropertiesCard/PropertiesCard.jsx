@@ -36,17 +36,23 @@ const PropertiesCard = ({ card }) => {
           {card.location.city},{card.location.state}
         </h3>
         <div className="grid grid-cols-3 gap-5">
-          <h3 className="flex items-center">
-            <IoBedOutline />
-            {card.bedroom} Bed
+          <h3 className="flex items-center gap-3">
+            <span>
+              <IoBedOutline />
+            </span>
+            <span> {card.bedroom} Bed</span>
           </h3>
-          <h3 className="flex items-center">
-            <PiBathtub />
-            {card.bathroom} Bath
+          <h3 className="flex items-center gap-3">
+            <span>
+              <PiBathtub />
+            </span>
+            <span> {card.bathroom} Bath</span>
           </h3>
-          <h3 className="flex items-center">
-            <BiShapeSquare />
-            {card.squareFootage} sq Ft
+          <h3 className="flex items-center gap-3">
+            <span>
+              <BiShapeSquare />
+            </span>
+            <span> {card.squareFootage} sq Ft</span>
           </h3>
         </div>
         <hr className="my-3" />
