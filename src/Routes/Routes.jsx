@@ -11,6 +11,7 @@ import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
 import HomeDashboard from "../Pages/Dashboard/HomeDashboard/HomeDashboard";
 import AddProperties from '../Pages/AddProperties/AddProperties';
+import AllProperties from "../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties";
 // import
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/home",
         element: <HomeDashboard />,
+      },
+      {
+        path: "/dashboard/all-properties",
+        element: <AllProperties/>,
       },
     ],
   },
