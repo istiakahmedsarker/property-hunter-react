@@ -4,6 +4,7 @@ import { IoBedOutline, IoHomeOutline } from 'react-icons/io5';
 import { PiBathtub } from 'react-icons/pi';
 import { useLoaderData } from 'react-router-dom';
 import { IoCalendarClearOutline } from 'react-icons/io5';
+import AddProperties from '../../Pages/AddProperties/AddProperties';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -11,9 +12,16 @@ const PropertiesDetails = () => {
   const details = cardDetails?.data?.property || {};
   const [showFullDescription, setShowFullDescription] = useState(false);
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
   };
+
+  const toggleForm = () => {
+    setIsFormOpen(!isFormOpen);
+  };
+
   console.log(details);
   return (
     <div className="w-11/12 mx-auto">
@@ -220,6 +228,8 @@ const PropertiesDetails = () => {
                 </h3>
               </div>
             </div>
+
+            <div></div>
           </div>
         </div>
         <div className="w-1/3">
@@ -239,6 +249,27 @@ const PropertiesDetails = () => {
                 <span> Phone</span>
                 <span>: {details.ownerInformation.phone}</span>
               </h3>
+            </div>
+          </div>
+          {/*from open  */}
+          <div>
+            <div className=" w-full my-6 rounded-lg shadow-lg px-7 py-6">
+              <h3 className="text-xl font-semibold py-5">
+                Essential information Submit
+              </h3>
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded"
+                onClick={toggleForm}
+              >
+                {isFormOpen ? 'Close Form' : 'Open Form'}
+              </button>
+
+              {isFormOpen && (
+                <div>
+                  <h3>show the form</h3>
+                  <form></form>
+                </div>
+              )}
             </div>
           </div>
         </div>

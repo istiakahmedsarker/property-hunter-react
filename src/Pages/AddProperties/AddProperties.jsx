@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const AddProperties = () => {
-  
-
-  
-  return (
-    <div>
-      
-    </div>
-  );
+  return <div></div>;
 };
 
 export default AddProperties;
