@@ -10,3 +10,4 @@ npm i swiper
 npm install firebase
 npm install react-hook-form
 npm install react react-icons tailwindcss
+npm i @tanstack/react-query
