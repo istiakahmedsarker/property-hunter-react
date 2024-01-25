@@ -5,6 +5,7 @@ import { PiBathtub } from 'react-icons/pi';
 import { useLoaderData } from 'react-router-dom';
 import { IoCalendarClearOutline } from 'react-icons/io5';
 import AddProperties from '../../Pages/AddProperties/AddProperties';
+import BuyerInquiryForm from './Buyer Inquiry Form/BuyerInquiryForm';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -265,10 +266,7 @@ const PropertiesDetails = () => {
               </button>
 
               {isFormOpen && (
-                <div>
-                  <h3>show the form</h3>
-                  <form></form>
-                </div>
+                <BuyerInquiryForm/>
               )}
             </div>
           </div>
