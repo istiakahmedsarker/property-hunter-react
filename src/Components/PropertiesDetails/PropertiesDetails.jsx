@@ -5,6 +5,7 @@ import { PiBathtub } from 'react-icons/pi';
 import { useLoaderData } from 'react-router-dom';
 import { IoCalendarClearOutline } from 'react-icons/io5';
 import AddProperties from '../../Pages/AddProperties/AddProperties';
+import BuyerInquiryForm from './Buyer Inquiry Form/BuyerInquiryForm';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -274,29 +275,7 @@ const PropertiesDetails = () => {
               </button>
 
               {isFormOpen && (
-                <div>
-                  <form>
-                    <div>
-                      <label htmlFor="">Customer Name</label>
-                      <input
-                        className="w-full px-4 py-2"
-                        type="text"
-                        placeholder="Name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="">Customer Salary</label>
-                      <input
-                        className="w-full px-4 py-2"
-                        type="text"
-                        placeholder="salary"
-                      />
-                    </div>
-                    <button className="px-4 py-2 rounded-lg bg-blue-700 text-white text-lg">
-                      Submit
-                    </button>
-                  </form>
-                </div>
+                <BuyerInquiryForm/>
               )}
             </div>
           </div>

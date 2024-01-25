@@ -7,7 +7,7 @@ const Dashboard = () => {
       <div className=" w-1/4  bg-slate-100">
         <SideNav />
       </div>
-      <div className=" w-3/4">
+      <div className="w-3/4">
         <Outlet />
       </div>
     </div>
