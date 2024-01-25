@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
 import { IoBedOutline, IoHomeOutline } from 'react-icons/io5';
 import { PiBathtub } from 'react-icons/pi';
@@ -22,6 +22,13 @@ const PropertiesDetails = () => {
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
+
+  // useEffect(() => {
+  //   const ifameData = document.getElementById('iframeId');
+  //   const lat = details.location.latitude;
+  //   const lon = details.location.longitude;
+  //   ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
+  // });
 
   console.log(details);
   return (
@@ -229,8 +236,10 @@ const PropertiesDetails = () => {
                 </h3>
               </div>
             </div>
-
-            <div></div>
+            {/* map section */}
+            {/* <div>
+              <iframe id="iframeId" height="400px" width="100%"></iframe>
+            </div> */}
           </div>
         </div>
         <div className="w-1/3">

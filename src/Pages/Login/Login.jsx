@@ -1,10 +1,12 @@
 import { AiOutlineMail } from "react-icons/ai";
 import { CiLock } from "react-icons/ci";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 const Login = () => {
+  const toHome = useNavigate();
+
   const { signIn } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const Login = () => {
     signIn(email, password)
       .then(() => {
         toast.success("Logged in successful");
+        toHome("/");
       })
       .catch(() => {
         toast.error("Login Failed!");
