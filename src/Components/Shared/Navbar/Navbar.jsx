@@ -180,7 +180,7 @@ const Navbar = () => {
           )}
           <button
             onClick={() => {
-              if (user) {
+              if (!user) {
                 return;
               } else {
                 navigate("/addProperties");
