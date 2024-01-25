@@ -13,6 +13,7 @@ import HomeDashboard from '../Pages/Dashboard/HomeDashboard/HomeDashboard';
 import AddProperties from '../Pages/AddProperties/AddProperties';
 import AllProperties from "../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties";
 import BlogPost from '../Components/BlogPost/BlogPost';
+import Announcement from "../Pages/Dashboard/Announcement/Announcement";
 // import
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/home',
         element: <HomeDashboard />,
+      },
+      {
+        path: "/dashboard/announcement",
+        element: <Announcement />,
       },
       {
         path: "/dashboard/all-properties",
