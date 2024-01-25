@@ -38,6 +38,16 @@ const Navbar = () => {
             Blogs
           </Link>
         </li>
+        <li className="nav-link relative">
+          <Link
+            className={` ${
+              pathname === "/dashboard" ? "text-[#eb6753]" : "text-gray-700"
+            } no-underline`}
+            to={"/dashboard"}
+          >
+            Dashboard
+          </Link>
+        </li>
         <li>
           <Link
             className={` ${

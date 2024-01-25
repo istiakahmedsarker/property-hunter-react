@@ -1,4 +1,3 @@
-"use client";
 
 import React, { useEffect, useState } from "react";
 import AOS from "aos";
@@ -29,9 +28,9 @@ const Banner = () => {
     };
 
     return (
-        <div>
-            <div className="hero min-h-screen"
-                 data-aos="zoom-out-down"
+        <div className="">
+            <div className="hero min-h-[60vh]"
+                data-aos="zoom-out-down"
                 style={{ backgroundImage: 'url(https://i.ibb.co/gRHfWXv/sun-sunlight-bright-outdoor-sky.jpg)' }}>
                 <img
                     data-aos="fade-up"
