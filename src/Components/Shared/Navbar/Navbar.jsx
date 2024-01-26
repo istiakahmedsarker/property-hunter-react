@@ -137,7 +137,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[1] shadow dropdown-content px-8 py-8 text-xl bg-[#fafdf9] rounded-box w-[250px] max-w-[300px] flex flex-col items-center justify-center gap-2"
+                className="mt-3 z-[9999] shadow dropdown-content px-8 py-8 text-xl bg-[#fafdf9] rounded-box w-[250px] max-w-[300px] flex flex-col items-center justify-center gap-2"
               >
                 <li className="flex items-center justify-center">
                   <div className="w-16 flex items-center justify-center h-16 border-2 hover:border-gray-800 rounded-full">
