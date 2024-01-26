@@ -11,7 +11,7 @@ const BlogDetails = () => {
 
   useEffect(() => {
     const getBlog = async () => {
-      const res = await axios.get(`http://localhost:7000/api/v1/blogs/${id}`);
+      const res = await axios.get(`https://property-hunter-server.vercel.app/api/v1/blogs/${id}`);
       console.log(res);
       setData(res.data.data.blog);
     };
@@ -28,7 +28,7 @@ const BlogDetails = () => {
   } = data || {};
   return (
     <div className=" max-w-6xl mx-auto mt-10">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid ">
         <div>
           <img
             className="rounded-md"
@@ -51,7 +51,7 @@ const BlogDetails = () => {
       <BlogComments comments={comment} />
       
       <CommentTemplate avatar={'https://res.cloudinary.com/debqyv4o6/image/upload/v1705411057/zoe-fernandez--zqoE7jnQgw-unsplash_1_heinq5.jpg'} username="kyle" content="Very intersting blog"/>
-      <CommentTemplate avatar={'https://res.cloudinary.com/debqyv4o6/image/upload/v1705411090/vince-veras-AJIqZDAUD7A-unsplash_1_l0gfmt.jpg'} username="farhan" content="excellent"/>
+      <CommentTemplate avatar={'https://res.cloudinary.com/debqyv4o6/image/upload/v1705411090/vince-veras-AJIqZDAUD7A-unsplash_1_l0gfmt.jpg'} username="jully" content="excellent"/>
 
     </div>
   );
