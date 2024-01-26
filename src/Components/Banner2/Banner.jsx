@@ -12,8 +12,13 @@ import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 import Container from '../Container/Container';
 import './Banner.css';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const Banner = () => {
+
+    const navigate = useNavigate();
+    const {user} = useAuth();
     const images = ["https://i.ibb.co/3N2Y5Fd/florian-schmidinger-b-79n-Oqf95-I-unsplash.jpg", "https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg", "https://i.ibb.co/dMt9qmj/digital-marketing-agency-ntwrk-g39p1k-Djv-SY-unsplash.jpg"]
 
   useEffect(() => {
@@ -62,7 +67,13 @@ const Banner = () => {
           Hunt Your <br /> Dream Home
         </h1>
         </div>
-        <button className='text-animation py-3 px-6 lg:px-8 rounded-sm text-white bg-[#eb6753]'>Get Started</button>
+        <button onClick={() => {
+            if(!user) {
+              return navigate('/login')
+            }else {
+                navigate('/properties')
+            }
+        }} className='text-animation py-3 px-6 lg:px-8 rounded-sm text-white hover:bg-[#fd8572] hover:drop-shadow-xl bg-[#eb6753]'>Get Started</button>
       </div>
       <div className="flex-1 z-40 h-full">
         <div className="rounded-xl slide-right w-[35vw] ml-auto hidden  md:block  md:h-[300px] lg:h-[450px]">
