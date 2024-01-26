@@ -51,7 +51,7 @@ const Login = () => {
                 <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
                 <input
                   name="password"
-                  type="text"
+                  type="password"
                   placeholder="Password"
                   className="input input-bordered w-full pl-8 bg-white"
                   required
