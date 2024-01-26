@@ -1,6 +1,6 @@
 import { AiOutlineMail } from "react-icons/ai";
 import { CiLock, CiUser } from "react-icons/ci";
-import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { FaGoogle, FaFacebookF, FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
@@ -11,6 +11,7 @@ import axios from "axios";
 const preset_key = "property-hunter";
 const cloud_name = "dwopkbaby";
 const Register = () => {
+  const [passShow, setPassShow] = useState(false);
   const [termShow, setTermShow] = useState(false);
   const [checked, setChecked] = useState("");
   const toHome = useNavigate();
@@ -104,11 +105,17 @@ const Register = () => {
                   <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
                   <input
                     name="password"
-                    type="password"
+                    type={passShow ? "text" : "password"}
                     placeholder="Password"
                     className="input input-bordered w-full pl-8 bg-white"
                     required
                   />
+                  <div
+                    onClick={() => setPassShow(!passShow)}
+                    className="text-xl text-[#eb6753] absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
+                  >
+                    {passShow ? <FaEyeSlash /> : <FaRegEye />}
+                  </div>
                 </div>
               </div>
             </div>
