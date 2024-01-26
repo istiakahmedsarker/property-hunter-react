@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
-
+import { GrAnnounce } from "react-icons/gr";
+import { MdSpaceDashboard } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
 const SideNav = () => {
   return (
     <div className="pt-20 px-4">
@@ -8,41 +10,40 @@ const SideNav = () => {
           to={"/dashboard/all-properties"}
           className={({ isActive }) =>
             isActive
-              ? "py-2 bg-slate-400 text-white px-2 rounded-md"
+              ? "py-2 bg-[#eb6753] text-white px-2 rounded-md"
               : "py-2 bg-white px-2 rounded-md"
           }
         >
-         All Properties
+          <div className="flex items-center gap-2">
+            <MdSpaceDashboard />
+            Dashboard
+          </div>
         </NavLink>
         <NavLink
-          to={"/dashboard/home"}
+          to={"/dashboard/announcement"}
           className={({ isActive }) =>
             isActive
-              ? "py-2 bg-slate-400 text-white px-2 rounded-md"
+              ? "py-2 bg-[#eb6753] text-white px-2 rounded-md"
               : "py-2 bg-white px-2 rounded-md"
           }
         >
-          Dashboard
+          <div className="flex items-center gap-2">
+            <GrAnnounce />
+            Announcement
+          </div>
         </NavLink>
         <NavLink
-          to={"/dashboard/home"}
+          to={"/dashboard/profile"}
           className={({ isActive }) =>
             isActive
-              ? "py-2 bg-slate-400 text-white px-2 rounded-md"
+              ? "py-2 bg-[#eb6753] text-white px-2 rounded-md"
               : "py-2 bg-white px-2 rounded-md"
           }
         >
-          Dashboard
-        </NavLink>
-        <NavLink
-          to={"/dashboard/home"}
-          className={({ isActive }) =>
-            isActive
-              ? "py-2 bg-slate-400 text-white px-2 rounded-md"
-              : "py-2 bg-white px-2 rounded-md"
-          }
-        >
-          Dashboard
+          <div className="flex items-center gap-2">
+            <FaUser />
+            Profile
+          </div>
         </NavLink>
       </ul>
     </div>
