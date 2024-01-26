@@ -4,25 +4,49 @@ import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import axios from "axios";
+
+const preset_key = "property-hunter";
+const cloud_name = "dwopkbaby";
 const Register = () => {
   const toHome = useNavigate();
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
-
+    const image = form.image.files[0];
     const name = form.name.value;
-    // const image = form.files[0];
     const email = form.email.value;
     const password = form.password.value;
-    
-    createUser(email, password)
-      .then(() => {
-        toast.success("Registration Successful");
-        toHome("/");
-      })
-      .catch(() => {
-        toast.error("Registration Failed!");
+
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", preset_key);
+    formData.append("folder", "property-hunter");
+
+    axios
+      .post(
+        `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+        formData
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          const imageURL = res.data.url;
+          createUser(email, password)
+            .then(() => {
+              updateUserProfile(name, imageURL)
+                .then(() => {
+                  toast.success("Registration Successful");
+                  toHome("/");
+                })
+                .catch(() => {
+                  toast.error("Registration Failed!");
+                });
+            })
+            .catch((err) => {
+              toast.error(err.message);
+            });
+        }
       });
   };
   return (
@@ -37,6 +61,7 @@ const Register = () => {
               <div className="relative">
                 <CiUser className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
                 <input
+                  required
                   name="name"
                   type="text"
                   placeholder="Name"
@@ -59,6 +84,7 @@ const Register = () => {
               <div className="relative">
                 <AiOutlineMail className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
                 <input
+                  required
                   name="email"
                   type="text"
                   placeholder="Email"
@@ -71,6 +97,7 @@ const Register = () => {
               <div className="relative">
                 <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
                 <input
+                  required
                   name="password"
                   type="text"
                   placeholder="Password"

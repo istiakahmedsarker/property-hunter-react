@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 const Login = () => {
+  const { user } = useAuth();
+  console.log(user);
   const toHome = useNavigate();
 
   const { signIn } = useAuth();
@@ -39,6 +41,7 @@ const Login = () => {
                   type="text"
                   placeholder="Email"
                   className="input input-bordered w-full pl-8 bg-white"
+                  required
                 />
               </div>
             </div>
@@ -51,6 +54,7 @@ const Login = () => {
                   type="text"
                   placeholder="Password"
                   className="input input-bordered w-full pl-8 bg-white"
+                  required
                 />
               </div>
             </div>
