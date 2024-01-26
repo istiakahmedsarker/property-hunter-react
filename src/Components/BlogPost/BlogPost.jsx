@@ -198,7 +198,7 @@ const BlogPost = () => {
             </div>
 
             <button className="mt-24 md:mt-16 bg-[#EB6753] px-4 py-2 font-semibold rounded-sm text-red-50 ">
-              Create Blog
+              Post Blog
             </button>
           </div>
         </div>
