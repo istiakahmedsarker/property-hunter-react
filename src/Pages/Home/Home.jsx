@@ -11,7 +11,7 @@ const Home = () => {
       {/* <Banner/> */}
       <Banner />
       <Testimonials />
-      <CommentTemplate />
+
       <Chatbot />
     </div>
   );

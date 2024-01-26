@@ -2,6 +2,7 @@ import axios from 'axios';
 import BlogComments from '../BlogComments/BlogComments';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import CommentTemplate from '../Comments/Comments';
 
 const BlogDetails = () => {
   const [data, setData] = useState({});
@@ -16,7 +17,6 @@ const BlogDetails = () => {
     };
     getBlog();
   }, [id]);
-  console.log(data);
 
   console.log();
   const {
@@ -49,6 +49,10 @@ const BlogDetails = () => {
         </div>
       </div>
       <BlogComments comments={comment} />
+      
+      <CommentTemplate avatar={'https://res.cloudinary.com/debqyv4o6/image/upload/v1705411057/zoe-fernandez--zqoE7jnQgw-unsplash_1_heinq5.jpg'} username="kyle" content="Very intersting blog"/>
+      <CommentTemplate avatar={'https://res.cloudinary.com/debqyv4o6/image/upload/v1705411090/vince-veras-AJIqZDAUD7A-unsplash_1_l0gfmt.jpg'} username="farhan" content="excellent"/>
+
     </div>
   );
 };

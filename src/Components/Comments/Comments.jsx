@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 
-const Comment = ({ avatar, username, timestamp, content }) => {
+const Comment = ({ avatar, username, content }) => {
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [liked, setLiked] = useState(false);
@@ -34,58 +34,44 @@ const Comment = ({ avatar, username, timestamp, content }) => {
   };
 
   return (
-    <div className="comment">
+    <div className="comment mt-2">
       <div className="comment-header">
-        <img className="comment-avatar" src={avatar} alt={`${username}'s avatar`} />
-        <div className="comment-user-info">
-          <span className="comment-username">{username}</span>
-          <span className="comment-timestamp">{timestamp}</span>
+        <div className="flex items-center gap-2">
+
+          <img className="comment-avatar rounded-full h-10 w-10" src={avatar} alt={`${username}'s avatar`} />
+          <div className="comment-user-info">
+            <span className="comment-username">{username}</span>
+          </div>
         </div>
+
+        <p className="comment-content text-xl">{content}</p>
         <div className="comment-actions">
-          <button className={`comment-action-button ${liked ? 'liked' : ''}`} onClick={handleLike}>
-            <FaThumbsUp className="icon" /> Like ({likes})
+          <button
+            className={`comment-action-button`}
+            onClick={handleLike}
+          >
+            {liked ? (
+              <FaThumbsUp className="icon text-green-500" />
+            ) : (
+              <FaThumbsUp className="icon" />
+            )}{' '}
+            Like ({likes})
           </button>
-          <button className={`comment-action-button ${disliked ? 'disliked' : ''}`} onClick={handleDislike}>
-            <FaThumbsDown className="icon" /> Dislike ({dislikes})
+          <button
+            className={`comment-action-button`}
+            onClick={handleDislike}
+          >
+            {disliked ? (
+              <FaThumbsDown className="icon text-red-500" />
+            ) : (
+              <FaThumbsDown className="icon" />
+            )}{' '}
+            Dislike ({dislikes})
           </button>
         </div>
       </div>
-      <p className="comment-content">{content}</p>
     </div>
   );
 };
 
-const CommentList = ({ comments }) => (
-  <div className="comment-list">
-    {comments.map((comment, index) => (
-      <Comment key={index} {...comment} />
-    ))}
-  </div>
-);
-
-const CommentTemplate = () => {
-  const sampleComments = [
-    {
-      avatar: 'path/to/avatar1.jpg',
-      username: 'User1',
-      timestamp: '2 hours ago',
-      content: 'This is a great comment!',
-    },
-    {
-      avatar: 'path/to/avatar2.jpg',
-      username: 'User2',
-      timestamp: '1 day ago',
-      content: 'I totally agree with you!',
-    },
-    // Add more comments as needed
-  ];
-
-  return (
-    <div className="comment-template">
-      <h2 className="comment-heading">Comments</h2>
-      <CommentList comments={sampleComments} />
-    </div>
-  );
-};
-
-export default CommentTemplate;
+export default Comment;
