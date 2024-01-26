@@ -74,7 +74,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-gray-50">
+    <div className=" bg-gray-50">
       <div className="navbar px-4 md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto py-4  text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
@@ -100,7 +100,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="flex flex-col gap-2 menu menu-sm dropdown-content px-5 py-3 mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="flex flex-col gap-2 menu menu-sm dropdown-content px-5 py-3 mt-3 z-[9999] p-2 shadow bg-base-100 rounded-box w-52"
             >
               {pages}
             </ul>

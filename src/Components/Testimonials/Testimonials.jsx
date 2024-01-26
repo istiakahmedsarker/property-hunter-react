@@ -28,13 +28,13 @@ const Testimonials = () => {
 
   // console.log(reviews);
   return (
-    <div className="bg-[#fff7f5] bg-[url('https://res.cloudinary.com/debqyv4o6/image/upload/v1705426954/Vector_11_skdxn1.png')] bg-cover bg-right-bottom">
-      <div className="px-4 md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto py-6 md:py-8 lg:py-16 ">
+    <div className="bg-gray-50 bg-[url('https://res.cloudinary.com/debqyv4o6/image/upload/v1705426954/Vector_11_skdxn1.png')] bg-cover bg-right-bottom">
+      <div className="px-4 h-[90vh] md:h-full md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto   py-8 md:py-6 pb-2 md:pb-8 lg:py-16 ">
         <div className="relative z-5 flex flex-col gap-2">
-          <h3 className="text-[#eb6753] text-lg md:text-sm  text-center md:text-left font-medium">
+          <h3 className="text-[#eb6753] text-[12px] md:text-sm  text-center md:text-left font-medium">
             Testimonials
           </h3>
-          <h1 className="text-gray-900 text-xl md:text-2xl lg:text-4xl text-center md:text-left font-bold md:mb-3 lg:mb-8">
+          <h1 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center md:text-left font-bold md:mb-3 lg:mb-8">
             Real Estate Tales Shared by Our Clients
           </h1>
         </div>
@@ -82,9 +82,9 @@ const Testimonials = () => {
             reviews?.map((review, idx) => (
               <SwiperSlide
                 key={idx}
-                className="swiper-slide h-full py-8 overflow-visible relative z-[10]"
+                className="swiper-slide h-full pt-0 md:pt-0 lg:pt-8 pb-8 md:pb-8 overflow-visible relative z-[10]"
               >
-                <div className="bg-white drop-shadow-md p-10 rounded-xl relative overflow-visible flex flex-col items-center justify-between  gap-3 h-full z-30 ">
+                <div className="bg-white drop-shadow-md p-6 md:p-10 rounded-xl relative overflow-visible flex flex-col items-center justify-between  gap-3 h-full z-30 ">
                   <div className=" text-lg  rounded-full p-3 py-2 text-gray-100 z-40 w-full flex items-center justify-between gap-4">
                     <img
                       className="h-10 w-10 md:h-16 md:w-16 rounded-[100%] object-cover"
@@ -93,10 +93,10 @@ const Testimonials = () => {
                       srcset=""
                     />
                     <div>
-                      <h3 className="text-sm md:text-lg text-gray-700 font-medium flex-grow">
+                      <h3 className="text-[12px] md:text-lg text-gray-700 font-medium flex-grow">
                         {review?.client?.name}
                       </h3>
-                      <div className="rating ">
+                      <div className="rating w-[60px] md:w-[100px]">
                         <input
                           type="radio"
                           name="rating-2"
@@ -127,7 +127,7 @@ const Testimonials = () => {
                     </div>
                   </div>
                   <div className="h-[1px] w-full bg-gray-500"></div>
-                  <p className="text-gray-600 text-left text-sm md:text-md">
+                  <p className="text-gray-600 text-left text-[10px] md:text-[16px] lg:text-[16px]">
                     {review?.comment}
                   </p>
                   <div className="flex items-center justify-center w-full "></div>
