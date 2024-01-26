@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         element: <BlogDetails />,
         // loader: ({ params }) => {
         //   console.log(params.id);
-        //   fetch(`http://localhost:7000/api/v1/blogs/${params.id}`);
+        //   fetch(`https://property-hunter-server.vercel.app/api/v1/blogs/${params.id}`);
         // },
       },
 
