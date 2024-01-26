@@ -56,9 +56,9 @@ const Register = () => {
   return (
     <>
       {termShow && <TermCondition onClose={setTermShow} />}
-      <div className="flex w-[850px] mx-auto  rounded-lg shadow-sm border bg-white my-10">
-        <div className="bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center w-1/3 rounded-l-lg"></div>
-        <div className="w-2/3 py-8 px-10">
+      <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white">
+        <div className="hidden lg:block  bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center w-1/3 rounded-l-lg"></div>
+        <div className="w-full lg:w-2/3 py-8 px-10">
           <h2 className="font-bold mb-10 text-3xl">Please! Register Here</h2>
           <form onSubmit={handleLogin} className="flex flex-col gap-4">
             <div className="space-y-8">
