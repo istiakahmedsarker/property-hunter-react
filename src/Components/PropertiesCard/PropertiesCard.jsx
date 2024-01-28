@@ -48,7 +48,7 @@ const PropertiesCard = ({ card }) => {
               <div className="w-full h-full rounded-lg">
                 <img
                   src={img}
-                  alt=""
+                  alt={propertyTitle}
                   className="w-full mx-auto h-56  rounded-lg object-cover "
                 />
               </div>
