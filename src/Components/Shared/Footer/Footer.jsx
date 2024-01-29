@@ -1,8 +1,11 @@
+import Container from "../../Container/Container";
+
 const Footer = () => {
     return (
         <div>
             <footer className="py-6 bg-[#10141d]">
-                <div className="container px-6 mx-auto space-y-6 divide-y  md:space-y-12 divide-opacity-50">
+               <Container>
+               <div className="container px-6 mx-auto space-y-6 divide-y  md:space-y-12 divide-opacity-50">
                     <div className="grid grid-cols-12">
                         <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
                             <a rel="noopener noreferrer" href="#" className="flex justify-center space-x-3 md:justify-start">
@@ -59,6 +62,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
+               </Container>
             </footer>
         </div>
     );

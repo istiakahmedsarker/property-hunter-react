@@ -19,9 +19,10 @@
         ],
         "description": "Embrace city living at its finest at Metropolitan Lofts. These stylish lofts in Metroville offer contemporary design, upscale amenities, and a vibrant urban lifestyle.",
         "propertyImages": [
-            "metro1.jpg",
-            "metro2.jpg",
-            "metro3.jpg"
+            "https://i.ibb.co/wdKfjtF/Apartment-1-balcony.webp",
+            "https://i.ibb.co/yV9z28x/Apartment-1-gym.webp",
+            "https://i.ibb.co/sw5pZFC/Apartment-1-swimming-pool.webp",
+            "https://i.ibb.co/h23fvLV/Apartment-1.webp"
         ],
         "utilities": [
             "Water",
@@ -64,9 +65,10 @@
         ],
         "description": "Immerse yourself in the tranquility of Nature's Edge Apartments. Nestled in the green surroundings of Greenhaven, these apartments offer a peaceful retreat from city life.",
         "propertyImages": [
-            "nature1.jpg",
-            "nature2.jpg",
-            "nature3.jpg"
+            "https://i.ibb.co/KFdRy0T/Apartment-2.webp",
+            "https://i.ibb.co/m5Lsngm/Elevator-1.webp",
+            "https://i.ibb.co/pftXMfR/Parking-lot.webp",
+            "https://i.ibb.co/60dbqnk/Security-system.webp"
         ],
         "utilities": [
             "Water",
@@ -109,9 +111,10 @@
         ],
         "description": "Experience urban sophistication at Downtown Heights Residences. Situated in the heart of Downtown City, these residences offer unparalleled luxury and convenience.",
         "propertyImages": [
-            "downtown1.jpg",
-            "downtown2.jpg",
-            "downtown3.jpg"
+            "https://i.ibb.co/yVGptfB/Apartment-3.webp",
+            "https://i.ibb.co/8xkCT3Y/Fireplace.webp",
+            "https://i.ibb.co/XW158J9/fitness-center.webp",
+            "https://i.ibb.co/X3k8hMm/Walk-in-closet-1.webp"
         ],
         "utilities": [
             "Water",
@@ -154,9 +157,10 @@
         ],
         "description": "Experience the beauty of nature at Greenwood Gardens Apartments. Nestled in a green oasis, these eco-friendly residences offer a harmonious blend of modern living and natural surroundings.",
         "propertyImages": [
-            "greenwood1.jpg",
-            "greenwood2.jpg",
-            "greenwood3.jpg"
+            "https://i.ibb.co/7tSPvmd/Apartment-4.webp",
+            "https://i.ibb.co/xDQx9jk/private-garden.webp",
+            "https://i.ibb.co/7gBD3Vs/smart-house-system-1.webp",
+            "https://i.ibb.co/2KQ5jSG/Spa.webp"
         ],
         "utilities": [
             "Water",
@@ -199,9 +203,10 @@
         ],
         "description": "Live above the clouds at Skyline Tower Apartments. These high-rise residences offer luxurious amenities and breathtaking views of the city skyline, creating an unparalleled living experience.",
         "propertyImages": [
-            "skyline1.jpg",
-            "skyline2.jpg",
-            "skyline3.jpg"
+            "https://i.ibb.co/kKqQZw9/Apartment-5.webp",
+            "https://i.ibb.co/kyF1RQz/balcony.webp",
+            "https://i.ibb.co/B2wtzxc/swimming-pool.webp",
+            "https://i.ibb.co/SPXvV0T/Tennis-court.webp"
         ],
         "utilities": [
             "Water",
@@ -244,9 +249,9 @@
         ],
         "description": "Enjoy the serenity of coastal living at Harbor View Residences. These waterfront apartments offer unparalleled views of the ocean and exclusive access to a private marina.",
         "propertyImages": [
-            "harbor1.jpg",
-            "harbor2.jpg",
-            "harbor3.jpg"
+            "https://i.ibb.co/qrqZgD2/Apartment-6.webp",
+            "https://i.ibb.co/85wWjD2/Home-theatre.webp",
+            "https://i.ibb.co/rGksT5t/Root-taf-terrace.webp"
         ],
         "utilities": [
             "Water",
@@ -289,9 +294,10 @@
         ],
         "description": "Experience modern living at its finest in these upscale apartments. Conveniently located in the heart of Metropolis, these residences offer luxurious amenities and stunning city views.",
         "propertyImages": [
-            "modern1.jpg",
-            "modern2.jpg",
-            "modern3.jpg"
+            "https://i.ibb.co/mXXYHcW/Apartment-7.webp",
+            "https://i.ibb.co/Js1Ymj2/fitness-center.webp",
+            "https://i.ibb.co/SQR1Gdf/panaramic-view.webp",
+            "https://i.ibb.co/2ntLtN0/sauna.webp"
         ],
         "utilities": [
             "Water",

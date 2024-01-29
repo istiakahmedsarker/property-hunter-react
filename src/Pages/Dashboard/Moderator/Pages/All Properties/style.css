@@ -1,0 +1,25 @@
+.fade-in-right {
+    animation: fade-in-right 1000ms ease-in-out backwards;
+}
+.fade-in-left {
+    animation: fade-in-left 500ms ease-in-out backwards;
+}
+
+@keyframes fade-in-right {
+    0% {
+        transform: translateX(200%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes fade-in-left {
+    0% {
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
