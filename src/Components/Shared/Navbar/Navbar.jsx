@@ -2,51 +2,51 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const { pathname } = useLocation();
-
-  const pages = (
-    <>
-      <li>
-        <Link
-          className={` ${
-            pathname === "/" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
-          href={"/"}
-        >
-          Home
-        </Link>
-      </li>
-      <li className="dropdown dropdown-hover">
-        <Link
-          className={` ${
-            pathname === "/properties" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
-          href={"/properties"}
-        >
-          Properties
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={` ${
-            pathname === "/blog" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
-          href={"/blogs"}
-        >
-          Blogs
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={` ${
-            pathname === "/blog" ? "text-[#eb6753]" : "inline-block md:hidden text-gray-700"
-          } no-underline`}
-          href={"/"}
-        >
-          Add Property
-        </Link>
-      </li>
-    </>
-  );
+  
+    const pages = (
+      <>
+        <li>
+          <Link
+            className={` ${
+              pathname === "/" ? "text-[#eb6753]" : "text-gray-700"
+            } no-underline`}
+            to={"/"}
+          >
+            Home
+          </Link>
+        </li>
+        <li className="dropdown dropdown-hover">
+          <Link
+            className={` ${
+              pathname === "/properties" ? "text-[#eb6753]" : "text-gray-700"
+            } no-underline`}
+            to={"/properties"}
+          >
+            Properties
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={` ${
+              pathname === "/blogs" ? "text-[#eb6753]" : "text-gray-700"
+            } no-underline`}
+            to={"/blogs"}
+          >
+            Blogs
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={` ${
+              pathname === "/add-property" ? "text-[#eb6753]" : "inline-block md:hidden text-gray-700"
+            } no-underline`}
+            to={"/add-property"}
+          >
+            Add Property
+          </Link>
+        </li>
+      </>
+    );
 
   return (
     <div >
