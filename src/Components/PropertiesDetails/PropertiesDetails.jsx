@@ -216,25 +216,6 @@ const PropertiesDetails = () => {
                   <span className="font-semibold">property Status </span>
                   <span>: {details.propertyStatus}</span>
                 </h3>
-
-                {/* <div>
-                  <h3 className="grid grid-cols-2 py-2">
-                    <span className="font-semibold">property Size</span>
-                    <span>: {details.squareFootage} sq Ft</span>
-                  </h3>
-                  <h3 className="grid grid-cols-2 py-2">
-                    <span className="font-semibold">Year of Build </span>
-                    <span>: {details.yearBuilt} </span>
-                  </h3>
-                  <h3 className="grid grid-cols-2 py-2">
-                    <span className="font-semibold">property Type </span>
-                    <span>: {details.propertyType}</span>
-                  </h3>
-                  <h3 className="grid grid-cols-2 py-2">
-                    <span className="font-semibold">property Status </span>
-                    <span>: {details.propertyStatus}</span>
-                  </h3>
-                </div> */}
               </div>
             </div>
           </div>

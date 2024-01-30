@@ -4,6 +4,7 @@ import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
 // import BlogCard from "../Components/BlogCard/BlogCard";
+import BlogDetails from '../Components/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
@@ -15,6 +16,7 @@ import BlogPost from '../Components/BlogPost/BlogPost';
 import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
+import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 // import
 const router = createBrowserRouter([
   {
@@ -81,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/all-properties',
         element: <AllProperties />,
+      },
+      {
+        path: '/dashboard/userManagement',
+        element: <UserManagement />,
       },
       {
         path: '/dashboard/profile',
