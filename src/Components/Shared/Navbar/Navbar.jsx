@@ -19,8 +19,8 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-            pathname === "/" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
+            pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
+          } no-underline font-semibold text-lg`}
           to={"/"}
         >
           Home
@@ -29,8 +29,8 @@ const Navbar = () => {
       <li className="nav-link relative dropdown dropdown-hover">
         <Link
           className={` ${
-            pathname === "/properties" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
+            pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
+          } no-underline font-semibold text-lg`}
           to={"/properties"}
         >
           Properties
@@ -39,8 +39,8 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-            pathname === "/blogs" ? "text-[#eb6753]" : "text-gray-700"
-          } no-underline`}
+            pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
+          } no-underline font-semibold text-lg`}
           to={"/blogs"}
         >
           Blogs
@@ -50,8 +50,8 @@ const Navbar = () => {
         <li className="nav-link relative">
           <Link
             className={` ${
-              pathname === "/dashboard" ? "text-[#eb6753]" : "text-gray-700"
-            } no-underline`}
+              pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg`}
             to={"/dashboard"}
           >
             Dashboard
@@ -62,10 +62,10 @@ const Navbar = () => {
         <Link
           className={` ${
             pathname === "/add-property"
-              ? "text-[#eb6753]"
+              ? "text-[#eb6753] font-bold"
               : "inline-block md:hidden text-gray-700"
-          } no-underline`}
-          to={"/add-property"}
+          } no-underline font-semibold text-lg`}
+          to={"/addProperties"}
         >
           Add Property
         </Link>
@@ -108,7 +108,7 @@ const Navbar = () => {
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
          <img  className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
       
-            <h3 className="font-medium">Property-Hunter</h3>
+            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl ">Property-Hunter</h3>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -122,9 +122,9 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="btn mt-2 btn-ghost btn-circle avatar"
               >
-                <div className="w-10 h-10 flex items-center justify-center border-2 hover:border-gray-800 rounded-full">
+                <div className="w-16  flex items-center justify-center border-2 hover:border-gray-800 rounded-full">
                   <img
                     alt="user"
                     src={
@@ -132,6 +132,7 @@ const Navbar = () => {
                         ? user?.photoURL
                         : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU"
                     }
+                    className="h-full w-full rounded-full object-cover"
                   />
                 </div>
               </div>
@@ -140,7 +141,7 @@ const Navbar = () => {
                 className="mt-3 z-[9999] shadow dropdown-content px-8 py-8 text-xl bg-[#fafdf9] rounded-box w-[250px] max-w-[300px] flex flex-col items-center justify-center gap-2"
               >
                 <li className="flex items-center justify-center">
-                  <div className="w-16 flex items-center justify-center h-16 border-2 hover:border-gray-800 rounded-full">
+                  <div className="w-20 flex items-center justify-center h-20 border-2 border-[#eb6753] hover:border-gray-800 rounded-full">
                     <img
                       alt="user"
                       src={
@@ -148,18 +149,18 @@ const Navbar = () => {
                           ? user?.photoURL
                           : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU"
                       }
-                      className="rounded-full object-cover"
+                      className="h-full w-full rounded-full object-cover"
                     />
                   </div>
                 </li>
                 <li className="w-full">
-                  <a className="  mt-4 flex items-center justify- text-sm">
+                  <a className="  mt-4 flex items-center justify- text-lg font-medium">
                     {user?.email}
                   </a>
                 </li>
                 <div className="h-[1px] bg-gray-400 w-full"></div>
                 <li onClick={handleLogOut} className="w-full">
-                  <a className=" flex items-center gap-2  w-full text-sm cursor-pointer">
+                  <a className=" flex items-center gap-2  w-full text-lg font-medium cursor-pointer">
                     Logout
                     <span className="text-[#eb6753]">
                       <RiLogoutBoxLine />
@@ -173,7 +174,7 @@ const Navbar = () => {
           {!user && (
             <Link
               to="/login"
-              className="px-5 border-2 border-[#eb6753] md:border-none md:hover:border-2  md:hover:border-[#eb6753] rounded-full text-xs md:text-sm hover:bg-[#eb6753]  md:bg-none py-2 text-gray-700 hover:text-gray-100"
+              className="px-7 py-3 lg:px-5 xl:px-7 border-2 border-[#eb6753] md:border-2 md:border-[#eb6753] lg:border-none lg:hover:border-2  lg:hover:border-[#eb6753] rounded-full text-sm md:text-lg lg:text-[16px] xl:text-lg hover:bg-[#eb6753] font-medium  md:bg-none lg:py-2 xl:py-3 text-gray-700 hover:text-gray-100"
             >
               Login/Register
             </Link>
@@ -186,7 +187,7 @@ const Navbar = () => {
                 navigate("/addProperties");
               }
             }}
-            className="px-5 py-2 hidden md:block rounded-full ml-2 text-sm hover:border-[#eb6753] text-gray-700 hover:text-gray-100 border-2 border-gray-700 hover:bg-[#eb6753]"
+            className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-full ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium hover:border-[#eb6753] text-gray-700 hover:text-gray-100 border-2 border-gray-700 hover:bg-[#eb6753]"
           >
             Add Property
           </button>
