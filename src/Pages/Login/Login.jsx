@@ -1,13 +1,13 @@
 import { AiOutlineMail } from "react-icons/ai";
 import { CiLock } from "react-icons/ci";
-import { FaGoogle, FaFacebookF, FaRegEye, FaEyeSlash } from "react-icons/fa";
+import { FaFacebookF, FaRegEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 const Login = () => {
   const [passShow, setPassShow] = useState(false);
-  const { user } = useAuth();
   const toHome = useNavigate();
   const { signIn } = useAuth();
   const handleLogin = (e) => {
@@ -88,10 +88,7 @@ const Login = () => {
             <p className="text-gray-500">or login with</p>
           </div>
           <div className="mt-10 flex gap-3">
-            <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
-              <FaGoogle className="text-2xl " />
-              Google
-            </div>
+            <GoogleLogin />
             <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
               <FaFacebookF lassName="text-2xl" />
               Facebook
