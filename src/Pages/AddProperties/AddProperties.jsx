@@ -209,7 +209,7 @@ const AddProperties = () => {
             </h1>
           </div>
           <div className="absolute z-10 top-4 left-4">
-            {formStep > 0 && (
+            {formStep > 0 && formStep < 4 && (
               <button
                 onClick={goToPreviousStep}
                 type="button"
