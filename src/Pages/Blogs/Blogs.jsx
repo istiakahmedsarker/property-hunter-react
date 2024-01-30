@@ -1,51 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import BlogCard from '../../Components/BlogCard/BlogCard';
 import { Link } from 'react-router-dom';
+import useAxios from '../../Hooks/useAxios';
+import useDebounce from '../../Hooks/useDebounce';
+import { useQuery } from '@tanstack/react-query';
 
 const Blogs = () => {
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchText, setSearchText] = useState('');
+  const debouncedSearchValue = useDebounce(searchText, 500);
+  const axios = useAxios();
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const { isPending, data: blogs = [] } = useQuery({
+    queryKey: ['blogs', debouncedSearchValue],
+    queryFn: async () => {
       try {
-        const res = await fetch(
-          'https://property-hunter-server.vercel.app/api/v1/blogs'
-        );
-        const data = await res.json();
-
-        setBlogs(data?.data.blogs);
-        setLoading(false);
-
-        // setBlogs(blogsData.data.blogs);
+        console.log('fetching...');
+        const res = await axios.get(`/blogs?title=${searchText}`);
+        return res?.data?.data?.blogs;
       } catch (error) {
-        setError(error);
+        setError(error.message);
       }
-      console.log(loading);
-    };
+    },
+  });
 
-    fetchData();
-  }, []);
   return (
     <div>
-      {loading && (
+      {isPending && (
         <p className="h-[90vh] flex flex-col items-center justify-center text-center">
           Loading...
         </p>
       )}
-      {error && <p>Error: {error.message}</p>}
+      {error && <p>{error}</p>}
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 px-4 md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto my-10">
-        <div className="col-span-2">
-          <div className="grid  md:grid-cols-2 grid-cols-1 ">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-7xl mx-auto my-10 ">
+        <div className="col-span-8 sm:w-[70%] mx-auto md:w-full">
+          <div className="grid  md:grid-cols-2 gap-6 lg:gap-10 xl:gap-x-28 gap-y-10  grid-cols-1 ">
             {blogs?.map((blog) => (
               <BlogCard key={blog._id} blog={blog} />
             ))}
           </div>
         </div>
-        <div className="flex flex-col justify-between items-start">
+        <div className="col-span-4 flex flex-col  items-start">
           <div className="">Featured Blogs</div>
+          <input
+            className="border-2"
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
           <Link
             to="/createBlog"
             className="bg-[#EF7E53] px-4 py-1.5 rounded-sm text-white font-semibold"
