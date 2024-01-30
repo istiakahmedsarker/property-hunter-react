@@ -1,25 +1,22 @@
 import React from 'react';
-import TableRow from './TableRow';
+import UserTableRow from './UserTableRow';
 
-const Table = ({ properties = [] }) => {
+const UserTable = ({ userCards }) => {
+  console.log(userCards);
   return (
-    <div className="overflow-x-auto bg-white w-full px-0 py-4">
+    <div>
       <table className="table">
-        {/* head */}
+        {/* table heading */}
         <thead className="bg-gray-50 ">
-          {/* <thead className='bg-[#eb6753] '> */}
           <tr>
             <th>
               <label></label>
             </th>
             <th className="text-xs md:text-md lg:text-lg text-gray-800 font-bold ">
-              Property
+              User Name
             </th>
             <th className="text-xs md:text-md lg:text-lg text-gray-800 font-bold ">
-              Owner
-            </th>
-            <th className="text-xs md:text-md lg:text-lg text-gray-800 font-bold ">
-              Status
+              User Role
             </th>
             <th className="text-xs md:text-md lg:text-lg text-center text-gray-800 font-bold ">
               Actions
@@ -27,15 +24,14 @@ const Table = ({ properties = [] }) => {
           </tr>
         </thead>
         <tbody>
-          {/* row */}
-          {properties &&
-            properties?.map((prop, i) => (
-              <TableRow index={i} properties={prop} key={prop?._id} />
-            ))}
+          {/* table row */}
+          {userCards.map((user, i) => (
+            <UserTableRow index={i} key={user._id} user={user}></UserTableRow>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
 
-export default Table;
+export default UserTable;

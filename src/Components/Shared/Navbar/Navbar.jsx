@@ -1,8 +1,7 @@
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import "./navbar.css";
-import useAuth from "../../../Hooks/useAuth";
-import { RiLogoutBoxLine } from "react-icons/ri";
-
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import './navbar.css';
+import useAuth from '../../../Hooks/useAuth';
+import { RiLogoutBoxLine } from 'react-icons/ri';
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -11,7 +10,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut();
-    navigate("/login");
+    navigate('/login');
   };
 
   const pages = (
@@ -19,9 +18,15 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
+<<<<<<< HEAD
             pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
           } no-underline font-semibold text-lg`}
           to={"/"}
+=======
+            pathname === '/' ? 'text-[#eb6753]' : 'text-gray-700'
+          } no-underline`}
+          to={'/'}
+>>>>>>> 3804d20694e80077d7b284e5070c0aa6b13e25c8
         >
           Home
         </Link>
@@ -29,9 +34,15 @@ const Navbar = () => {
       <li className="nav-link relative dropdown dropdown-hover">
         <Link
           className={` ${
+<<<<<<< HEAD
             pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
           } no-underline font-semibold text-lg`}
           to={"/properties"}
+=======
+            pathname === '/properties' ? 'text-[#eb6753]' : 'text-gray-700'
+          } no-underline`}
+          to={'/properties'}
+>>>>>>> 3804d20694e80077d7b284e5070c0aa6b13e25c8
         >
           Properties
         </Link>
@@ -39,9 +50,15 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
+<<<<<<< HEAD
             pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
           } no-underline font-semibold text-lg`}
           to={"/blogs"}
+=======
+            pathname === '/blogs' ? 'text-[#eb6753]' : 'text-gray-700'
+          } no-underline`}
+          to={'/blogs'}
+>>>>>>> 3804d20694e80077d7b284e5070c0aa6b13e25c8
         >
           Blogs
         </Link>
@@ -50,9 +67,15 @@ const Navbar = () => {
         <li className="nav-link relative">
           <Link
             className={` ${
+<<<<<<< HEAD
               pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
             } no-underline font-semibold text-lg`}
             to={"/dashboard"}
+=======
+              pathname === '/dashboard' ? 'text-[#eb6753]' : 'text-gray-700'
+            } no-underline`}
+            to={'/dashboard'}
+>>>>>>> 3804d20694e80077d7b284e5070c0aa6b13e25c8
           >
             Dashboard
           </Link>
@@ -61,11 +84,19 @@ const Navbar = () => {
       <li>
         <Link
           className={` ${
+<<<<<<< HEAD
             pathname === "/add-property"
               ? "text-[#eb6753] font-bold"
               : "inline-block md:hidden text-gray-700"
           } no-underline font-semibold text-lg`}
           to={"/addProperties"}
+=======
+            pathname === '/add-property'
+              ? 'text-[#eb6753]'
+              : 'inline-block md:hidden text-gray-700'
+          } no-underline`}
+          to={'/add-property'}
+>>>>>>> 3804d20694e80077d7b284e5070c0aa6b13e25c8
         >
           Add Property
         </Link>
@@ -75,7 +106,7 @@ const Navbar = () => {
 
   return (
     <div className=" bg-gray-50">
-      <div className="navbar px-4 md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto py-6  text-gray-700">
+      <div className="navbar px-4 md:px-0 max-w-7xl mx-auto py-4  text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -106,9 +137,19 @@ const Navbar = () => {
             </ul>
           </div>
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
+<<<<<<< HEAD
          <img  className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
       
             <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl ">Property-Hunter</h3>
+=======
+            <img
+              className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover"
+              src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png"
+              alt=""
+            />
+
+            <h3 className="font-medium">Property-Hunter</h3>
+>>>>>>> 3804d20694e80077d7b284e5070c0aa6b13e25c8
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -130,7 +171,7 @@ const Navbar = () => {
                     src={
                       user?.photoURL
                         ? user?.photoURL
-                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU"
+                        : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU'
                     }
                     className="h-full w-full rounded-full object-cover"
                   />
@@ -147,7 +188,7 @@ const Navbar = () => {
                       src={
                         user?.photoURL
                           ? user?.photoURL
-                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU"
+                          : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU'
                       }
                       className="h-full w-full rounded-full object-cover"
                     />
@@ -184,7 +225,7 @@ const Navbar = () => {
               if (!user) {
                 return;
               } else {
-                navigate("/addProperties");
+                navigate('/addProperties');
               }
             }}
             className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-full ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium hover:border-[#eb6753] text-gray-700 hover:text-gray-100 border-2 border-gray-700 hover:bg-[#eb6753]"

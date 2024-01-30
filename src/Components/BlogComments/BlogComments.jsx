@@ -1,83 +1,54 @@
-import React, { useRef, useState } from "react";
-import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
+import Star from '../Star/Star';
+import avatar from '../../assets/avatar.webp';
 
-const BlogComments = () => {
-  const commentInputRef = useRef(null);
-  const [comment, setComment] = useState("");
-
-  const handleChange = (event) => {
-    setComment(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Send the comment data to the backend using Axios
-    const commentPromise = axios.post('http://localhost:5000/comments', { comment });
-
-    toast.promise(
-      commentPromise,
-      {
-        loading: 'Submitting comment...',
-        success: (response) => {
-          if (response.status === 200) {
-            return <b>Comment submitted successfully!</b>;
-          } else {
-            return <b>Unexpected response from server.</b>;
-          }
-        },
-        error: (error) => <b>Error submitting comment: {error.message}</b>,
-      }
-    );
-
-    commentPromise
-      .then(response => {
-        // Additional actions after comment submission if needed
-        // console.log('Comment submitted successfully:', response);
-      })
-      .catch(error => {
-        // console.error('Error submitting comment:', error);
-      });
-  };
-
+const BlogComments = ({ comments }) => {
   return (
-    <div className="mt-10">
-      <Toaster
-        position="top-center"
-        reverseOrder={false}
-      />
-      <h3 className="text-2xl mb-4 font-bold">Comments:</h3>
-      <form className="flex flex-col items-start" onSubmit={handleSubmit}>
-        <div className="relative">
-          <textarea
-            ref={commentInputRef}
-            className="border border-gray-400 pr-10"
-            rows={12}
-            cols={60}
-            placeholder="Type your comments here...."
-            value={comment}
-            onChange={handleChange}
-          ></textarea>
-          <span
-            className="absolute right-3 top-3 cursor-pointer"
-            role="img"
-            aria-label="Emoji"
-            onClick={() => {
-              // Add your logic to open an emoji picker or do something with emojis
-              console.log("Emoji icon clicked");
-            }}
-          >
-            😀
-          </span>
-        </div>
-        <button
-          className="px-4 py-2 mt-4 bg-green-500 text-white rounded-lg"
-          type="submit"
-        >
-          Comment
-        </button>
-      </form>
+    <div className="mt-5">
+      <h3 className="text-xl md:text-2xl mb-2 md:mb-4 font-bold">
+        Comments({comments.length})
+      </h3>
+      <div className="flex flex-col divide-y-2 divide-stone-200">
+        {comments.map((comment, i) => {
+          const date = new Date(comment.createdDate);
+          const options = { year: 'numeric', month: 'short', day: 'numeric' };
+          const formattedDate = date.toLocaleDateString('en-US', options);
+          return (
+            <div
+              key={i}
+              className="flex flex-col md:flex-row gap-4 items-start py-4 md:py-8"
+            >
+              {comment?.authorImg ? (
+                <img
+                  className="w-16 h-16 object-cover rounded-2xl"
+                  src={comment.authorImg}
+                  alt="author"
+                />
+              ) : (
+                <img
+                  className="w-16 h-16 object-cover rounded-2xl"
+                  src={avatar}
+                  alt="author"
+                />
+              )}
+
+              <div className="flex-1">
+                <div className="flex justify-between items-start mb-3">
+                  <div>
+                    <h5 className="text-lg font-bold text-stone-800 mb-1">
+                      {comment.name}
+                    </h5>
+                    <Star rating={comment.rating} />
+                  </div>
+                  {/* <h6 className="text-sm font-semibold text-stone-500">
+                    {formattedDate}
+                  </h6> */}
+                </div>
+                <p className="">{comment.commentMsg}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

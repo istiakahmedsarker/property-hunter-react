@@ -144,9 +144,19 @@ const Properties = ({ initialCards = [] }) => {
               Show for All Properties :{filteredCards.length || 0}
             </h4>
             {!isGrid ? (
-              <button onClick={() => setIsGrid(true)}>List view</button>
+              <button
+                onClick={() => setIsGrid(true)}
+                className="text-[#eb6753] font-semibold"
+              >
+                List view
+              </button>
             ) : (
-              <button onClick={() => setIsGrid(false)}>Grid View</button>
+              <button
+                onClick={() => setIsGrid(false)}
+                className="text-[#eb6753] font-semibold"
+              >
+                Grid View
+              </button>
             )}
           </div>
           {!isGrid ? (

@@ -5,6 +5,11 @@ import { BiShapeSquare } from 'react-icons/bi';
 import { HiArrowTopRightOnSquare } from 'react-icons/hi2';
 import { GiSelfLove } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
+// for slider
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination, Autoplay } from 'swiper/modules';
 const PropertiesCard = ({ card }) => {
   const {
     _id,
@@ -19,13 +24,45 @@ const PropertiesCard = ({ card }) => {
   return (
     <div className="px-4 py-5 rounded-lg shadow-lg">
       <div className=" w-full">
-        {propertyImages && propertyImages.length > 0 && (
+        {/* for slider */}
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={0}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination, Autoplay]}
+          className="mySwiper h-full"
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: true,
+          }}
+        >
+          {propertyImages.map((img, i) => (
+            <SwiperSlide
+              key={i}
+              style={{ width: '100%' }}
+              className=" h-full relative"
+            >
+              <div className="h-full w-full absolute z-30 bg-[#0b48ff] opacity-10"></div>
+              <div className="w-full h-full rounded-lg">
+                <img
+                  src={img}
+                  alt={propertyTitle}
+                  className="w-full mx-auto h-56  rounded-lg object-cover "
+                />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* {propertyImages && propertyImages.length > 0 && (
           <img
             src={propertyImages[0]}
             alt={propertyTitle}
             className="w-full mx-auto h-56  rounded-lg "
           ></img>
-        )}
+        )} */}
       </div>
 
       <Link to={`/propertiesDetails/${card._id}`}>
