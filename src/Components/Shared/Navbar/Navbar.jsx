@@ -1,8 +1,7 @@
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
-import "./navbar.css";
-import useAuth from "../../../Hooks/useAuth";
-import { RiLogoutBoxLine } from "react-icons/ri";
-
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import './navbar.css';
+import useAuth from '../../../Hooks/useAuth';
+import { RiLogoutBoxLine } from 'react-icons/ri';
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -11,7 +10,7 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut();
-    navigate("/login");
+    navigate('/login');
   };
 
   const pages = (
@@ -19,9 +18,9 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-            pathname === "/" ? "text-[#eb6753]" : "text-gray-700"
+            pathname === '/' ? 'text-[#eb6753]' : 'text-gray-700'
           } no-underline`}
-          to={"/"}
+          to={'/'}
         >
           Home
         </Link>
@@ -29,9 +28,9 @@ const Navbar = () => {
       <li className="nav-link relative dropdown dropdown-hover">
         <Link
           className={` ${
-            pathname === "/properties" ? "text-[#eb6753]" : "text-gray-700"
+            pathname === '/properties' ? 'text-[#eb6753]' : 'text-gray-700'
           } no-underline`}
-          to={"/properties"}
+          to={'/properties'}
         >
           Properties
         </Link>
@@ -39,9 +38,9 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-            pathname === "/blogs" ? "text-[#eb6753]" : "text-gray-700"
+            pathname === '/blogs' ? 'text-[#eb6753]' : 'text-gray-700'
           } no-underline`}
-          to={"/blogs"}
+          to={'/blogs'}
         >
           Blogs
         </Link>
@@ -50,9 +49,9 @@ const Navbar = () => {
         <li className="nav-link relative">
           <Link
             className={` ${
-              pathname === "/dashboard" ? "text-[#eb6753]" : "text-gray-700"
+              pathname === '/dashboard' ? 'text-[#eb6753]' : 'text-gray-700'
             } no-underline`}
-            to={"/dashboard"}
+            to={'/dashboard'}
           >
             Dashboard
           </Link>
@@ -61,11 +60,11 @@ const Navbar = () => {
       <li>
         <Link
           className={` ${
-            pathname === "/add-property"
-              ? "text-[#eb6753]"
-              : "inline-block md:hidden text-gray-700"
+            pathname === '/add-property'
+              ? 'text-[#eb6753]'
+              : 'inline-block md:hidden text-gray-700'
           } no-underline`}
-          to={"/add-property"}
+          to={'/add-property'}
         >
           Add Property
         </Link>
@@ -75,7 +74,7 @@ const Navbar = () => {
 
   return (
     <div className=" bg-gray-50">
-      <div className="navbar px-4 md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto py-6  text-gray-700">
+      <div className="navbar px-4 md:px-0 max-w-7xl mx-auto py-4  text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -106,8 +105,12 @@ const Navbar = () => {
             </ul>
           </div>
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
-         <img  className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
-      
+            <img
+              className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover"
+              src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png"
+              alt=""
+            />
+
             <h3 className="font-medium">Property-Hunter</h3>
           </a>
         </div>
@@ -130,7 +133,7 @@ const Navbar = () => {
                     src={
                       user?.photoURL
                         ? user?.photoURL
-                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU"
+                        : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU'
                     }
                   />
                 </div>
@@ -146,7 +149,7 @@ const Navbar = () => {
                       src={
                         user?.photoURL
                           ? user?.photoURL
-                          : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU"
+                          : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGf_8UZ3xLijdkOtv3qWnUpyknARbKMrcVJA&usqp=CAU'
                       }
                       className="rounded-full object-cover"
                     />
@@ -183,7 +186,7 @@ const Navbar = () => {
               if (!user) {
                 return;
               } else {
-                navigate("/addProperties");
+                navigate('/addProperties');
               }
             }}
             className="px-5 py-2 hidden md:block rounded-full ml-2 text-sm hover:border-[#eb6753] text-gray-700 hover:text-gray-100 border-2 border-gray-700 hover:bg-[#eb6753]"

@@ -15,6 +15,7 @@ import AllProperties from '../Pages/Dashboard/Moderator/Pages/All Properties/All
 import BlogPost from '../Components/BlogPost/BlogPost';
 import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
+import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 // import
 const router = createBrowserRouter([
@@ -37,10 +38,6 @@ const router = createBrowserRouter([
       {
         path: '/blogs/:id',
         element: <BlogDetails />,
-        // loader: ({ params }) => {
-        //   console.log(params.id);
-        //   fetch(`https://property-hunter-server.vercel.app/api/v1/blogs/${params.id}`);
-        // },
       },
 
       {
