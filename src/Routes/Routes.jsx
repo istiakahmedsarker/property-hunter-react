@@ -3,7 +3,7 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
-// import BlogCard from "../Components/BlogCard/BlogCard";
+import BlogDetails from '../Components/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
@@ -14,7 +14,6 @@ import AllProperties from '../Pages/Dashboard/Moderator/Pages/All Properties/All
 import BlogPost from '../Components/BlogPost/BlogPost';
 import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
-import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 // import
 const router = createBrowserRouter([
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
       },
-      // {
-      //     path: '/properties',
-      //     element: <Apartment></Apartment>
-      // },
       {
         path: '/blogs',
         element: <Blogs />,

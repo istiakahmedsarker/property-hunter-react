@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { useState } from 'react';
 import TermCondition from '../TermCondition/TermCondition';
 import axios from 'axios';
+import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
 import useAxios from '../../Hooks/useAxios';
 
 const preset_key = 'property-hunter';
@@ -175,10 +176,7 @@ const Register = () => {
               <p className="text-gray-500">or login with</p>
             </div>
             <div className="mt-10 flex gap-3">
-              <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
-                <FaGoogle className="text-2xl " />
-                Google
-              </div>
+              <GoogleLogin />
               <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
                 <FaFacebookF lassName="text-2xl" />
                 Facebook
