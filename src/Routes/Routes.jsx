@@ -4,7 +4,7 @@ import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
 // import BlogCard from "../Components/BlogCard/BlogCard";
-import BlogDetails from '../Components/BlogDetails/BlogDetails';
+// import BlogDetails from '../Components/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
