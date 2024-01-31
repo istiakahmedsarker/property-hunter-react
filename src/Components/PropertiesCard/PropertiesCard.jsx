@@ -20,6 +20,7 @@ const PropertiesCard = ({ card }) => {
     bedroom,
     bathroom,
     propertyStatus,
+    price,
   } = card;
   return (
     <div className="px-4 py-5 rounded-lg shadow-lg">
@@ -34,7 +35,7 @@ const PropertiesCard = ({ card }) => {
           modules={[Pagination, Autoplay]}
           className="mySwiper h-full"
           autoplay={{
-            delay: 2000,
+            delay: 3000,
             disableOnInteraction: true,
           }}
         >
@@ -44,13 +45,18 @@ const PropertiesCard = ({ card }) => {
               style={{ width: '100%' }}
               className=" h-full relative"
             >
-              <div className="h-full w-full absolute z-30 bg-[#0b48ff] opacity-10"></div>
-              <div className="w-full h-full rounded-lg">
+              <div className="h-full w-full absolute z-30 bg-[#0b48ff] opacity-10 "></div>
+              <div className="w-full h-full rounded-lg ">
                 <img
                   src={img}
                   alt={propertyTitle}
-                  className="w-full mx-auto h-56  rounded-lg object-cover "
+                  className="w-full mx-auto h-56  rounded-lg object-cover relative "
                 />
+                <div className="absolute inset-0 flex items-end justify-end">
+                  <h3 className="text-white bottom-0 text-sm  bg-[#eb6753] px-3 py-3 rounded-l-2xl">
+                    ${price}
+                  </h3>
+                </div>
               </div>
             </SwiperSlide>
           ))}
