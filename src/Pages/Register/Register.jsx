@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 import { useState } from 'react';
 import TermCondition from '../TermCondition/TermCondition';
 import axios from 'axios';
+import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
+import useAxios from '../../Hooks/useAxios';
 
 const preset_key = 'property-hunter';
 const cloud_name = 'dwopkbaby';
@@ -16,7 +18,9 @@ const Register = () => {
   const [checked, setChecked] = useState('');
   const toHome = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
-  const handleLogin = e => {
+  const myAxios = useAxios();
+
+  const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const image = form.image.files[0];
@@ -34,9 +38,18 @@ const Register = () => {
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
         formData
       )
-      .then(res => {
+      .then(async (res) => {
         if (res.status === 200) {
           const imageURL = res.data.url;
+          try {
+            await myAxios.post('/users', { name, email, role: 'user' });
+          } catch (error) {
+            if (error.response.data.status === 'Fail') {
+              toast.error('This email already exist');
+              return;
+            }
+          }
+
           createUser(email, password)
             .then(() => {
               updateUserProfile(name, imageURL)
@@ -44,11 +57,12 @@ const Register = () => {
                   toast.success('Registration Successful');
                   toHome('/');
                 })
-                .catch(() => {
+                .catch((err) => {
+                  console.log({ err });
                   toast.error('Registration Failed!');
                 });
             })
-            .catch(err => {
+            .catch((err) => {
               toast.error(err.message);
             });
         }
@@ -162,10 +176,7 @@ const Register = () => {
               <p className="text-gray-500">or login with</p>
             </div>
             <div className="mt-10 flex gap-3">
-              <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
-                <FaGoogle className="text-2xl " />
-                Google
-              </div>
+              <GoogleLogin />
               <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
                 <FaFacebookF lassName="text-2xl" />
                 Facebook

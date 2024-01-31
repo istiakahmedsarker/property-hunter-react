@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import getAllCard from '../../../lib/getAllCard';
 import PropertiesCard from '../../Components/PropertiesCard/PropertiesCard';
 import PropertiesCardList from '../../Components/PropertiesCard/PropertiesCardList';
+import { IoArrowUpOutline } from 'react-icons/io5';
 
 const Properties = ({ initialCards = [] }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -49,12 +50,15 @@ const Properties = ({ initialCards = [] }) => {
 
     return isTitleMatch && isPropertyTypeMatch;
   });
-
+  // for scroll to top
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   console.log(filteredCards);
   return (
     <div className="w-11/12 mx-auto">
-      <div className="my-4">
-        <h3 className="text-3xl font-semibold">Homes For Sale</h3>
+      <div className="my-6">
+        <h3 className="text-3xl font-semibold">Properties For Sale</h3>
         <h3>Homes/For Rent</h3>
       </div>
       <div className="grid grid-cols-12">
@@ -176,6 +180,15 @@ const Properties = ({ initialCards = [] }) => {
             </div>
           )}
         </div>
+      </div>
+      {/* for scroll to top button */}
+      <div className="fixed bottom-10 right-5">
+        <button
+          onClick={scrollToTop}
+          className="bg-[#eb6753] text-white px-4 py-4 rounded-t-2xl"
+        >
+          <IoArrowUpOutline />
+        </button>
       </div>
     </div>
   );
