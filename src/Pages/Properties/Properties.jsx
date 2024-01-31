@@ -3,6 +3,7 @@ import getAllCard from '../../../lib/getAllCard';
 import PropertiesCard from '../../Components/PropertiesCard/PropertiesCard';
 import PropertiesCardList from '../../Components/PropertiesCard/PropertiesCardList';
 import { IoArrowUpOutline } from 'react-icons/io5';
+import TopButton from '../../Components/Shared/TopButton/TopButton';
 
 const Properties = ({ initialCards = [] }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -182,14 +183,15 @@ const Properties = ({ initialCards = [] }) => {
         </div>
       </div>
       {/* for scroll to top button */}
-      <div className="fixed bottom-10 right-5">
+      {/* <div className="fixed bottom-10 right-5">
         <button
           onClick={scrollToTop}
           className="bg-[#eb6753] text-white px-4 py-4 rounded-t-2xl"
         >
           <IoArrowUpOutline />
         </button>
-      </div>
+      </div> */}
+      <TopButton></TopButton>
     </div>
   );
 };

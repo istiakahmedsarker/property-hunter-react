@@ -34,10 +34,7 @@ const PropertiesCard = ({ card }) => {
           }}
           modules={[Pagination, Autoplay]}
           className="mySwiper h-full"
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: true,
-          }}
+          loop={true}
         >
           {propertyImages.map((img, i) => (
             <SwiperSlide
@@ -61,14 +58,6 @@ const PropertiesCard = ({ card }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-
-        {/* {propertyImages && propertyImages.length > 0 && (
-          <img
-            src={propertyImages[0]}
-            alt={propertyTitle}
-            className="w-full mx-auto h-56  rounded-lg "
-          ></img>
-        )} */}
       </div>
 
       <Link to={`/propertiesDetails/${card._id}`}>

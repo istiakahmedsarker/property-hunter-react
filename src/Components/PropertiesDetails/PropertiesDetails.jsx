@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
-import { IoBedOutline, IoHomeOutline } from 'react-icons/io5';
+import { IoArrowUpOutline, IoBedOutline, IoHomeOutline } from 'react-icons/io5';
 import { PiBathtub } from 'react-icons/pi';
 import { useLoaderData } from 'react-router-dom';
 import { IoCalendarClearOutline } from 'react-icons/io5';
 import AddProperties from '../../Pages/AddProperties/AddProperties';
 import BuyerInquiryForm from './Buyer Inquiry Form/BuyerInquiryForm';
+import TopButton from '../Shared/TopButton/TopButton';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -29,6 +30,9 @@ const PropertiesDetails = () => {
     const lon = details.location.longitude;
     ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
   });
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // };
 
   console.log(details);
   return (
@@ -298,6 +302,8 @@ const PropertiesDetails = () => {
           </div>
         </div>
       </div>
+      {/* for scroll to top button */}
+      <TopButton></TopButton>
     </div>
   );
 };
