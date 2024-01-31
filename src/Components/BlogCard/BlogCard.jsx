@@ -17,7 +17,7 @@ const BlogCard = ({ blog }) => {
             dangerouslySetInnerHTML={{
               __html: description.substring(0, 110),
             }}
-            className="-mt-2 text-lg font- text-stone-400 "
+            className="-mt-2 text-lg leading-6 text-stone-400 "
           ></p>
           <Link to={`/blogs/${_id}`}>
             <button className="bg-[#EB6753] px-5 py-2 rounded-sm text-red-50 font-semibold ">
