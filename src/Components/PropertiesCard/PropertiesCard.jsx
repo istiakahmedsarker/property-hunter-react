@@ -23,7 +23,7 @@ const PropertiesCard = ({ card }) => {
     price,
   } = card;
   return (
-    <div className="px-4 py-5 rounded-lg shadow-lg">
+    <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white my-6">
       <div className=" w-full">
         {/* for slider */}
         <Swiper

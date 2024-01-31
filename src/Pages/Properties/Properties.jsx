@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import getAllCard from '../../../lib/getAllCard';
 import PropertiesCard from '../../Components/PropertiesCard/PropertiesCard';
 import PropertiesCardList from '../../Components/PropertiesCard/PropertiesCardList';
-import { IoArrowUpOutline } from 'react-icons/io5';
+// import { IoArrowUpOutline } from 'react-icons/io5';
 import TopButton from '../../Components/Shared/TopButton/TopButton';
+import './PropertiesStyle.css';
 
 const Properties = ({ initialCards = [] }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -76,27 +77,36 @@ const Properties = ({ initialCards = [] }) => {
           </div>
 
           {/* Listing status checkboxes */}
-          <div>
+          <div className="w-full rounded-lg shadow-lg drop-shadow-lg bg-white px-5 py-6 my-4 ">
             <h3 className="text-xl font-semibold py-3">Listing Status</h3>
             <div className="flex flex-col space-y-2">
-              <label>
+              <label
+              // className="custom-checkbox"
+              >
                 <input
+                  className="mr-2"
                   type="checkbox"
                   checked={showAll}
                   onChange={() => setShowAll(!showAll)}
                 />
                 Show All
               </label>
-              <label>
+              <label
+              // className="custom-checkbox"
+              >
                 <input
+                  className="mr-2"
                   type="checkbox"
                   checked={showBuy}
                   onChange={() => setShowBuy(!showBuy)}
                 />
                 For Sale
               </label>
-              <label>
+              <label
+              // className="custom-checkbox"
+              >
                 <input
+                  className="mr-2 px-1 py-1"
                   type="checkbox"
                   checked={showRent}
                   onChange={() => setShowRent(!showRent)}
@@ -106,11 +116,12 @@ const Properties = ({ initialCards = [] }) => {
             </div>
           </div>
           {/* Property type checkboxes */}
-          <div>
+          <div className="w-full rounded-lg shadow-lg drop-shadow-lg bg-white  px-5 py-6 my-4">
             <h3 className="text-xl font-semibold py-3">Property Type</h3>
             <div className="flex flex-col space-y-2">
               <label>
                 <input
+                  className="mr-2"
                   type="checkbox"
                   checked={showAllPropertyTypes}
                   onChange={() => {
@@ -126,7 +137,9 @@ const Properties = ({ initialCards = [] }) => {
 
               <label>
                 <input
+                  className="mr-2"
                   type="checkbox"
+                  // type="text"
                   checked={showApartment}
                   onChange={() => setShowApartment(!showApartment)}
                 />
@@ -134,6 +147,7 @@ const Properties = ({ initialCards = [] }) => {
               </label>
               <label>
                 <input
+                  className="mr-2"
                   type="checkbox"
                   checked={showBuilding}
                   onChange={() => setShowBuilding(!showBuilding)}
@@ -183,14 +197,6 @@ const Properties = ({ initialCards = [] }) => {
         </div>
       </div>
       {/* for scroll to top button */}
-      {/* <div className="fixed bottom-10 right-5">
-        <button
-          onClick={scrollToTop}
-          className="bg-[#eb6753] text-white px-4 py-4 rounded-t-2xl"
-        >
-          <IoArrowUpOutline />
-        </button>
-      </div> */}
       <TopButton></TopButton>
     </div>
   );

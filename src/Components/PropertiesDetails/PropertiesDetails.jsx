@@ -30,10 +30,6 @@ const PropertiesDetails = () => {
     const lon = details.location.longitude;
     ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
   });
-  // const scrollToTop = () => {
-  //   window.scrollTo({ top: 0, behavior: 'smooth' });
-  // };
-
   console.log(details);
   return (
     <div className="w-11/12 mx-auto">
@@ -92,7 +88,7 @@ const PropertiesDetails = () => {
       <div className="flex lg:flex-row flex-col gap-5 ">
         <div className="lg:w-2/3 w-full">
           {/* overview */}
-          <div className="w-full my-6 rounded-lg shadow-lg px-7 py-6 ">
+          <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl font-semibold py-5">Overview</h3>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-6">
               <div className="flex items-center gap-5">
@@ -164,7 +160,7 @@ const PropertiesDetails = () => {
             </div>
           </div>
           {/* properties Description */}
-          <div className="w-full my-6 rounded-lg shadow-lg px-7 py-6 ">
+          <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl  font-semibold py-5">
               Properties Description
             </h3>
@@ -224,21 +220,21 @@ const PropertiesDetails = () => {
             </div>
           </div>
           {/* property feature */}
-          <div className=" w-full my-6 rounded-lg shadow-lg px-7 py-6">
+          <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Properties Features</h3>
             <li className="py-2">{details.easement[0]}</li>
             <li className="py-2">{details.easement[1]}</li>
             <li className="py-2">{details.easement[2]}</li>
           </div>
           {/* properties utilities */}
-          <div className=" w-full my-6 rounded-lg shadow-lg px-7 py-6">
+          <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Utilities</h3>
             <li className="py-2">{details.utilities[0]}</li>
             <li className="py-2">{details.utilities[1]}</li>
             <li className="py-2">{details.utilities[2]}</li>
           </div>
           {/* properties Address */}
-          <div className=" w-full my-6 rounded-lg shadow-lg px-7 py-6">
+          <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Address</h3>
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
               <div>
@@ -267,7 +263,7 @@ const PropertiesDetails = () => {
         </div>
         <div className="lg:w-1/3 w-full">
           {/* owner information */}
-          <div className="w-full my-6 rounded-lg shadow-lg px-7 py-6 ">
+          <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl font-semibold py-5">Owner address</h3>
             <div>
               <h3 className="flex gap-5 py-2">
@@ -286,7 +282,7 @@ const PropertiesDetails = () => {
           </div>
           {/*from open  */}
           <div>
-            <div className=" w-full my-6 rounded-lg shadow-lg px-7 py-6">
+            <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
               <h3 className="text-xl font-semibold py-5">
                 Essential information Submit
               </h3>
