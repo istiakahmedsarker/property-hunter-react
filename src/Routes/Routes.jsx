@@ -4,7 +4,7 @@ import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
 // import BlogCard from "../Components/BlogCard/BlogCard";
-import BlogDetails from '../Components/BlogDetails/BlogDetails';
+// import BlogDetails from '../Components/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
@@ -17,6 +17,7 @@ import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
+import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 // import
 const router = createBrowserRouter([
   {
@@ -91,6 +92,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/profile',
         element: <Profile />,
+      },
+      //? Member only routes
+      {
+        path: '/dashboard/payment-history',
+        element: <PaymentHistory/>
       },
     ],
   },
