@@ -10,7 +10,14 @@ import { Toaster } from 'react-hot-toast';
 // import { Provider } from 'react-redux';
 // import store from '../lib/store';
 // Create a client
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: 60000, // 1 minute cache time for all queries
+      staleTime: 30000, // 30 seconds stale time for all queries
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
