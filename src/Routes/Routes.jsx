@@ -15,6 +15,7 @@ import AllProperties from "../Pages/Dashboard/Moderator/Pages/All Properties/All
 import BlogPost from "../Components/BlogPost/BlogPost";
 import Announcement from "../Pages/Dashboard/Announcement/Announcement";
 import Profile from "../Pages/Dashboard/Profile/Profile";
+import StripePayment from "../Components/PaymentMethod/StripePayment/StripePayment";
 // import
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: '/payment',
+        element: <StripePayment/>
+      }
     ],
   },
   {
