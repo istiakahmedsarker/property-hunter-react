@@ -18,8 +18,8 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-            pathname === '/' ? 'text-[#eb6753]' : 'text-gray-700'
-          } no-underline`}
+            pathname === '/' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
+          } no-underline font-semibold text-lg`}
           to={'/'}
         >
           Home
@@ -28,8 +28,10 @@ const Navbar = () => {
       <li className="nav-link relative dropdown dropdown-hover">
         <Link
           className={` ${
-            pathname === '/properties' ? 'text-[#eb6753]' : 'text-gray-700'
-          } no-underline`}
+            pathname === '/properties'
+              ? 'text-[#eb6753] font-bold'
+              : 'text-gray-700'
+          } no-underline font-semibold text-lg`}
           to={'/properties'}
         >
           Properties
@@ -38,8 +40,8 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-            pathname === '/blogs' ? 'text-[#eb6753]' : 'text-gray-700'
-          } no-underline`}
+            pathname === '/blogs' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
+          } no-underline font-semibold text-lg`}
           to={'/blogs'}
         >
           Blogs
@@ -49,8 +51,10 @@ const Navbar = () => {
         <li className="nav-link relative">
           <Link
             className={` ${
-              pathname === '/dashboard' ? 'text-[#eb6753]' : 'text-gray-700'
-            } no-underline`}
+              pathname === '/dashboard'
+                ? 'text-[#eb6753] font-bold'
+                : 'text-gray-700'
+            } no-underline font-semibold text-lg`}
             to={'/dashboard'}
           >
             Dashboard
@@ -61,10 +65,10 @@ const Navbar = () => {
         <Link
           className={` ${
             pathname === '/add-property'
-              ? 'text-[#eb6753]'
+              ? 'text-[#eb6753] font-bold'
               : 'inline-block md:hidden text-gray-700'
-          } no-underline`}
-          to={'/add-property'}
+          } no-underline font-semibold text-lg`}
+          to={'/addProperties'}
         >
           Add Property
         </Link>
@@ -111,7 +115,9 @@ const Navbar = () => {
               alt=""
             />
 
-            <h3 className="font-medium">Property-Hunter</h3>
+            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl ">
+              Property-Hunter
+            </h3>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
