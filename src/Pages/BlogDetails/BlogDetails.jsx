@@ -12,7 +12,7 @@ const BlogDetails = () => {
   const axios = useAxios();
 
   const { isPending, error, data, refetch } = useQuery({
-    queryKey: ['blogsDetails'],
+    queryKey: ['blogsDetails', id],
     queryFn: async () => {
       const res = await axios.get(`/blogs/${id}`);
       return res?.data?.data?.blog;

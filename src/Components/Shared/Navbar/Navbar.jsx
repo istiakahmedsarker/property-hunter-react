@@ -18,13 +18,8 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-<<<<<<< HEAD
-            pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            pathname === '/' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
           } no-underline font-semibold text-lg`}
-          to={"/"}
-=======
-            pathname === '/' ? 'text-[#eb6753]' : 'text-gray-700'
-          } no-underline`}
           to={'/'}
 >>>>>>> e863252058105c45503b485267cb121e4ed37866
         >
@@ -34,13 +29,10 @@ const Navbar = () => {
       <li className="nav-link relative dropdown dropdown-hover">
         <Link
           className={` ${
-<<<<<<< HEAD
-            pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            pathname === '/properties'
+              ? 'text-[#eb6753] font-bold'
+              : 'text-gray-700'
           } no-underline font-semibold text-lg`}
-          to={"/properties"}
-=======
-            pathname === '/properties' ? 'text-[#eb6753]' : 'text-gray-700'
-          } no-underline`}
           to={'/properties'}
 >>>>>>> e863252058105c45503b485267cb121e4ed37866
         >
@@ -50,13 +42,8 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-<<<<<<< HEAD
-            pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            pathname === '/blogs' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
           } no-underline font-semibold text-lg`}
-          to={"/blogs"}
-=======
-            pathname === '/blogs' ? 'text-[#eb6753]' : 'text-gray-700'
-          } no-underline`}
           to={'/blogs'}
 >>>>>>> e863252058105c45503b485267cb121e4ed37866
         >
@@ -67,13 +54,10 @@ const Navbar = () => {
         <li className="nav-link relative">
           <Link
             className={` ${
-<<<<<<< HEAD
-              pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
+              pathname === '/dashboard'
+                ? 'text-[#eb6753] font-bold'
+                : 'text-gray-700'
             } no-underline font-semibold text-lg`}
-            to={"/dashboard"}
-=======
-              pathname === '/dashboard' ? 'text-[#eb6753]' : 'text-gray-700'
-            } no-underline`}
             to={'/dashboard'}
 >>>>>>> e863252058105c45503b485267cb121e4ed37866
           >
@@ -92,11 +76,10 @@ const Navbar = () => {
           to={"/addProperties"}
 =======
             pathname === '/add-property'
-              ? 'text-[#eb6753]'
+              ? 'text-[#eb6753] font-bold'
               : 'inline-block md:hidden text-gray-700'
-          } no-underline`}
-          to={'/add-property'}
->>>>>>> e863252058105c45503b485267cb121e4ed37866
+          } no-underline font-semibold text-lg`}
+          to={'/addProperties'}
         >
           Add Property
         </Link>
@@ -148,8 +131,9 @@ const Navbar = () => {
               alt=""
             />
 
-            <h3 className="font-medium">Property-Hunter</h3>
->>>>>>> e863252058105c45503b485267cb121e4ed37866
+            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl ">
+              Property-Hunter
+            </h3>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
