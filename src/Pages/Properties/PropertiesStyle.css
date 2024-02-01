@@ -1,0 +1,33 @@
+.custom-checkbox {
+  position: relative;
+  padding-left: 30px; /* Adjust the spacing between the checkbox and text */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-checkbox::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px; /* Adjust the size of the custom checkbox */
+  height: 20px; /* Adjust the size of the custom checkbox */
+  border: 2px solid #ff0000; /* Red border for the checkbox */
+  background-color: white; /* Background color when unchecked */
+}
+
+.custom-checkbox input:checked::before,
+.custom-checkbox input:active::before {
+  background-color: #ff0000; /* Red background color when checked or active */
+}
+
+.custom-checkbox input:checked + span {
+  color: #ff0000; /* Red color for the text when checkbox is checked */
+}
