@@ -21,7 +21,6 @@ const Navbar = () => {
             pathname === '/' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
           } no-underline font-semibold text-lg`}
           to={'/'}
->>>>>>> e863252058105c45503b485267cb121e4ed37866
         >
           Home
         </Link>
@@ -34,7 +33,6 @@ const Navbar = () => {
               : 'text-gray-700'
           } no-underline font-semibold text-lg`}
           to={'/properties'}
->>>>>>> e863252058105c45503b485267cb121e4ed37866
         >
           Properties
         </Link>
@@ -45,7 +43,6 @@ const Navbar = () => {
             pathname === '/blogs' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
           } no-underline font-semibold text-lg`}
           to={'/blogs'}
->>>>>>> e863252058105c45503b485267cb121e4ed37866
         >
           Blogs
         </Link>
@@ -59,7 +56,6 @@ const Navbar = () => {
                 : 'text-gray-700'
             } no-underline font-semibold text-lg`}
             to={'/dashboard'}
->>>>>>> e863252058105c45503b485267cb121e4ed37866
           >
             Dashboard
           </Link>
@@ -68,13 +64,6 @@ const Navbar = () => {
       <li>
         <Link
           className={` ${
-<<<<<<< HEAD
-            pathname === "/add-property"
-              ? "text-[#eb6753] font-bold"
-              : "inline-block md:hidden text-gray-700"
-          } no-underline font-semibold text-lg`}
-          to={"/addProperties"}
-=======
             pathname === '/add-property'
               ? 'text-[#eb6753] font-bold'
               : 'inline-block md:hidden text-gray-700'
@@ -120,11 +109,6 @@ const Navbar = () => {
             </ul>
           </div>
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
-<<<<<<< HEAD
-         <img  className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
-      
-            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl ">Property-Hunter</h3>
-=======
             <img
               className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover"
               src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png"
