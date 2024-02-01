@@ -3,12 +3,8 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
-<<<<<<< HEAD
 // import BlogCard from "../Components/BlogCard/BlogCard";
 // import BlogDetails from '../Components/BlogDetails/BlogDetails';
-=======
-import BlogDetails from '../Components/BlogDetails/BlogDetails';
->>>>>>> e863252058105c45503b485267cb121e4ed37866
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
