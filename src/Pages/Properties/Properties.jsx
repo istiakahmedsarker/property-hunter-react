@@ -6,6 +6,7 @@ import { FiSearch } from 'react-icons/fi';
 import useGetData from '../../Hooks/useGetData';
 import './Properties.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
+import TopButton from '../../Components/Shared/TopButton/TopButton';
 
 const Properties = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -292,14 +293,7 @@ const Properties = () => {
         </div>
       </div>
       {/* for scroll to top button */}
-      <div className="fixed bottom-10 right-5">
-        <button
-          onClick={scrollToTop}
-          className="bg-[#eb6753] text-white px-4 py-4 rounded-t-2xl"
-        >
-          <IoArrowUpOutline />
-        </button>
-      </div>
+      <TopButton></TopButton>
     </div>
   );
 };
