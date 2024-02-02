@@ -7,10 +7,15 @@ import useGetData from '../../Hooks/useGetData';
 import './Properties.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import TopButton from '../../Components/Shared/TopButton/TopButton';
+import useDebounce from '../../Hooks/useDebounce';
 
 const Properties = () => {
   const [selectedOption, setSelectedOption] = useState('');
   const [activePage, setActivePage] = useState(1);
+  const [searchText, setSearchText] = useState('');
+  const [isGrid, setIsGrid] = useState(false);
+  const debouncedSearchValue = useDebounce(searchText, 800);
+
   const limit = 6;
   const [checkboxes, setCheckboxes] = useState({
     all: true,
@@ -52,10 +57,7 @@ const Properties = () => {
     (checkbox) => typecCheckboxes[checkbox]
   );
 
-  const [searchText, setSearchText] = useState('');
-  const [isGrid, setIsGrid] = useState(false);
-
-  const { data: propertiesData } = useGetData({
+  const { data: propertiesData, isPending } = useGetData({
     key: [
       'properties',
       checkedItem,
@@ -63,7 +65,7 @@ const Properties = () => {
       selectedOption,
       limit,
       activePage,
-      searchText,
+      debouncedSearchValue,
     ],
     api: `/properties?propertyStatus=${
       checkedItem === 'all' ? '' : checkedItem
@@ -97,6 +99,14 @@ const Properties = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   // console.log(filteredCards);
+
+  if (isPending) {
+    return (
+      <p className="h-[90vh] flex flex-col items-center justify-center text-center">
+        Loading...
+      </p>
+    );
+  }
   return (
     <div className="max-w-7xl mx-auto pt-8 pb-20">
       <div className="my-6">
@@ -204,93 +214,96 @@ const Properties = () => {
               </div>
             </div>
           </div>
-
-          {/* Listing status checkboxes */}
-
-          {/* Property type checkboxes */}
-
-          {/* order */}
         </div>
-        <div
-          className="col-span-8 flex flex-col gap-16
+
+        {!propertiesData?.properties?.length ? (
+          <div className="md:col-span-8 sm:w-[70%] mx-auto md:w-full">
+            <p className=" h-[70vh] flex-col flex items-center justify-center">
+              No more items available
+            </p>
+          </div>
+        ) : (
+          <div
+            className="col-span-8 flex flex-col gap-16
         "
-        >
-          <div>
-            <div className="flex justify-between">
-              <h4 className="text-xl font-semibold">
-                {/* Show for All Properties :{propertiesCards.length || 0} */}
-              </h4>
+          >
+            <div>
+              <div className="flex justify-between">
+                <h4 className="text-xl font-semibold">
+                  {/* Show for All Properties :{propertiesCards.length || 0} */}
+                </h4>
+                {!isGrid ? (
+                  <button
+                    onClick={() => setIsGrid(true)}
+                    className="text-[#eb6753] font-semibold"
+                  >
+                    List view
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setIsGrid(false)}
+                    className="text-[#eb6753] font-semibold"
+                  >
+                    Grid View
+                  </button>
+                )}
+              </div>
               {!isGrid ? (
-                <button
-                  onClick={() => setIsGrid(true)}
-                  className="text-[#eb6753] font-semibold"
-                >
-                  List view
-                </button>
+                <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-5">
+                  {propertiesData?.properties?.map((card) => (
+                    <PropertiesCard key={card._id} card={card}></PropertiesCard>
+                  ))}
+                </div>
               ) : (
-                <button
-                  onClick={() => setIsGrid(false)}
-                  className="text-[#eb6753] font-semibold"
-                >
-                  Grid View
-                </button>
+                <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5  my-6">
+                  {propertiesData?.properties?.map((card) => (
+                    <PropertiesCardList
+                      key={card._id}
+                      card={card}
+                    ></PropertiesCardList>
+                  ))}
+                </div>
               )}
             </div>
-            {!isGrid ? (
-              <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-5">
-                {propertiesData?.properties?.map((card) => (
-                  <PropertiesCard key={card._id} card={card}></PropertiesCard>
-                ))}
-              </div>
-            ) : (
-              <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5  my-6">
-                {propertiesData?.properties?.map((card) => (
-                  <PropertiesCardList
-                    key={card._id}
-                    card={card}
-                  ></PropertiesCardList>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="flex items-center justify-center gap-5">
-            <button
-              className={`${
-                activePage === 1
-                  ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                  : 'bg-white p-3 shadow-md rounded-full'
-              }`}
-              onClick={previousPage}
-            >
-              <FaArrowLeft />
-            </button>
-
-            {pages.map((pageNo) => (
+            <div className="flex items-center justify-center gap-5">
               <button
                 className={`${
-                  activePage === pageNo
-                    ? 'bg-[#EB6753] font-semibold text-white px-4 py-2 rounded-full'
-                    : 'px-4 py-2 rounded-full font-semibold bg-white shadow-md'
-                } `}
-                key={pageNo}
-                onClick={() => setActivePage(pageNo)}
+                  activePage === 1
+                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                    : 'bg-white p-3 shadow-md rounded-full'
+                }`}
+                onClick={previousPage}
               >
-                {pageNo}
+                <FaArrowLeft />
               </button>
-            ))}
 
-            <button
-              className={`${
-                activePage === totalPage
-                  ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                  : 'bg-white p-3 shadow-md rounded-full'
-              }`}
-              onClick={nextPage}
-            >
-              <FaArrowRight />
-            </button>
+              {pages.map((pageNo) => (
+                <button
+                  className={`${
+                    activePage === pageNo
+                      ? 'bg-[#EB6753] font-semibold text-white px-4 py-2 rounded-full'
+                      : 'px-4 py-2 rounded-full font-semibold bg-white shadow-md'
+                  } `}
+                  key={pageNo}
+                  onClick={() => setActivePage(pageNo)}
+                >
+                  {pageNo}
+                </button>
+              ))}
+
+              <button
+                className={`${
+                  activePage === totalPage
+                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                    : 'bg-white p-3 shadow-md rounded-full'
+                }`}
+                onClick={nextPage}
+              >
+                <FaArrowRight />
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       {/* for scroll to top button */}
       <TopButton></TopButton>
