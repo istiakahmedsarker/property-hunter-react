@@ -2,22 +2,51 @@ import Star from '../Star/Star';
 import avatar from '../../assets/avatar.webp';
 import { useState } from 'react';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import axios from 'axios';
 
 const Comment = ({ comment }) => {
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
+  const [likes, setLikes] = useState(comment?.likesCount || 0);
+  const [dislikes, setDislikes] = useState(comment?.dislikesCount || 0);
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
-  const decreaseLikes = ()=>{
-    
+  console.log(comment)
+
+  const handleLikesCount = () => {
+    const updatedLikes = likes;
+
+    axios.put(`http://localhost:5000/service/${id}`, updatedLikes, {
+    })
+      .then((response) => {
+        console.log(response.data);
+        console.log('Item updated successfully!!!');
+      })
+      .catch((error) => {
+        console.error('Error updating item:', error);
+      });
+  }
+
+  const handleDislikesCount = () => {
+    const updatedDislikes = dislikes;
+
+    axios.put(`http://localhost:5000/service/${id}`, updatedDislikes, {
+    })
+      .then((response) => {
+        console.log(response.data);
+        console.log('Item updated successfully!!!');
+      })
+      .catch((error) => {
+        console.error('Error updating item:', error);
+      });
   }
 
   const handleLike = () => {
     if (liked) {
       setLikes(likes - 1);
+      handleLikesCount()
     } else {
       setLikes(likes + 1);
+      handleLikesCount()
       if (disliked) {
         setDislikes(dislikes - 1);
         setDisliked(false);
@@ -29,8 +58,10 @@ const Comment = ({ comment }) => {
   const handleDislike = () => {
     if (disliked) {
       setDislikes(dislikes - 1);
+      handleDislikesCount()
     } else {
       setDislikes(dislikes + 1);
+      handleDislikesCount()
       if (liked) {
         setLikes(likes - 1);
         setLiked(false);
