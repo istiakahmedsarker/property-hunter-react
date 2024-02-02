@@ -10,12 +10,14 @@ const Comment = ({ comment }) => {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
-  console.log(comment)
+  // console.log(comment)
 
-  const handleLikesCount = () => {
-    const updatedLikes = likes;
+  const handleLikesCount = (_id) => {
+    const updatedLikes = likes +1;
+    // console.log(_id)
+    // console.log("LIKES:" , updatedLikes )
 
-    axios.put(`http://localhost:5000/service/${id}`, updatedLikes, {
+    axios.put(`http://localhost:5000/service/${_id}`, updatedLikes, {
     })
       .then((response) => {
         console.log(response.data);
@@ -26,10 +28,10 @@ const Comment = ({ comment }) => {
       });
   }
 
-  const handleDislikesCount = () => {
+  const handleDislikesCount = (_id) => {
     const updatedDislikes = dislikes;
 
-    axios.put(`http://localhost:5000/service/${id}`, updatedDislikes, {
+    axios.put(`http://localhost:5000/service/${_id}`, updatedDislikes, {
     })
       .then((response) => {
         console.log(response.data);
@@ -40,13 +42,13 @@ const Comment = ({ comment }) => {
       });
   }
 
-  const handleLike = () => {
+  const handleLike = (_id) => {
     if (liked) {
       setLikes(likes - 1);
-      handleLikesCount()
+      handleLikesCount(_id)
     } else {
       setLikes(likes + 1);
-      handleLikesCount()
+      handleLikesCount(_id)
       if (disliked) {
         setDislikes(dislikes - 1);
         setDisliked(false);
@@ -55,13 +57,13 @@ const Comment = ({ comment }) => {
     setLiked(!liked);
   };
 
-  const handleDislike = () => {
+  const handleDislike = (_id) => {
     if (disliked) {
       setDislikes(dislikes - 1);
-      handleDislikesCount()
+      handleDislikesCount(_id)
     } else {
       setDislikes(dislikes + 1);
-      handleDislikesCount()
+      handleDislikesCount(_id)
       if (liked) {
         setLikes(likes - 1);
         setLiked(false);
@@ -107,7 +109,7 @@ const Comment = ({ comment }) => {
       <div className="comment-actions flex items-center space-x-2">
         <button
           className={`comment-action-button flex items-center`}
-          onClick={handleLike}
+          onClick={()=> handleLike(comment._id)}
         >
           {liked ? (
             <FaThumbsUp className="icon text-green-500 mr-1" />
@@ -118,7 +120,7 @@ const Comment = ({ comment }) => {
         </button>
         <button
           className={`comment-action-button flex items-center`}
-          onClick={handleDislike}
+          onClick={()=>handleDislike(comment._id)}
         >
           {disliked ? (
             <FaThumbsDown className="icon text-red-500 mr-1" />
