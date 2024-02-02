@@ -6,7 +6,6 @@ import Blogs from '../Pages/Blogs/Blogs';
 import BlogCard from '../Components/BlogCard/BlogCard';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
-import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
 import Dashboard from '../Layout/Dashboard';
@@ -18,6 +17,7 @@ import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
+import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
 
 const router = createBrowserRouter([
   {

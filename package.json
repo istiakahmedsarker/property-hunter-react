@@ -34,6 +34,7 @@
     "react-select-country-list": "^2.2.3",
     "react-simple-chatbot": "^0.6.1",
     "sort-by": "^1.2.0",
+    "stripe": "^14.14.0",
     "swiper": "^11.0.5"
   },
   "devDependencies": {
