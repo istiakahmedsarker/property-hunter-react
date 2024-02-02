@@ -62,6 +62,10 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register />,
       },
+      {
+        path: '/payment',
+        element: <StripePayment/>
+      }
     ],
   },
   {
