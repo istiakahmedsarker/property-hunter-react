@@ -3,7 +3,7 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
-import BlogCard from "../Components/BlogCard/BlogCard";
+import BlogCard from '../Components/BlogCard/BlogCard';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
@@ -20,29 +20,29 @@ import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/Paym
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Main></Main>,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/blogs",
+        path: '/blogs',
         element: <Blogs />,
       },
       {
-        path: "/blogs/:id",
+        path: '/blogs/:id',
         element: <BlogDetails />,
       },
 
       {
-        path: "/properties",
+        path: '/properties',
         element: <Properties></Properties>,
       },
-      { path: "/createBlog", element: <BlogPost /> },
+      { path: '/createBlog', element: <BlogPost /> },
       {
-        path: "/propertiesDetails/:id",
+        path: '/propertiesDetails/:id',
         element: <PropertiesDetails></PropertiesDetails>,
         loader: ({ params }) =>
           fetch(
@@ -50,48 +50,48 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/addProperties",
+        path: '/addProperties',
         element: <AddProperties />,
       },
       {
-        path: "/login",
+        path: '/login',
         element: <Login />,
       },
       {
-        path: "/register",
+        path: '/register',
         element: <Register />,
       },
     ],
   },
   {
     // dashboard routes
-    path: "/dashboard",
+    path: '/dashboard',
     element: <Dashboard />,
     children: [
       {
-        path: "/dashboard/home",
+        path: '/dashboard/home',
         element: <HomeDashboard />,
       },
       {
-        path: "/dashboard/announcement",
+        path: '/dashboard/announcement',
         element: <Announcement />,
       },
       {
-        path: "/dashboard/all-properties",
+        path: '/dashboard/all-properties',
         element: <AllProperties />,
       },
       {
-        path: "/dashboard/userManagement",
+        path: '/dashboard/userManagement',
         element: <UserManagement />,
       },
       {
-        path: "/dashboard/profile",
+        path: '/dashboard/profile',
         element: <Profile />,
       },
       //? Member only routes
       {
         path: '/dashboard/payment-history',
-        element: <PaymentHistory/>
+        element: <PaymentHistory />,
       },
     ],
   },

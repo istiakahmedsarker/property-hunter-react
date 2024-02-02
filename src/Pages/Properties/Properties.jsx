@@ -5,6 +5,7 @@ import PropertiesCardList from '../../Components/PropertiesCard/PropertiesCardLi
 // import { IoArrowUpOutline } from 'react-icons/io5';
 import TopButton from '../../Components/Shared/TopButton/TopButton';
 import './PropertiesStyle.css';
+import { FcNext, FcPrevious } from 'react-icons/fc';
 
 const Properties = ({ initialCards = [] }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,6 +23,8 @@ const Properties = ({ initialCards = [] }) => {
   const [showBuilding, setShowBuilding] = useState(true);
   // const [showOffice, setShowOffice] = useState(true);
   // const cards = await getAllCard();
+  // for pagination
+  // const [page, setPage] = useState(1);
   useEffect(() => {
     const fetchCards = async () => {
       const allCards = await getAllCard();
@@ -53,9 +56,28 @@ const Properties = ({ initialCards = [] }) => {
     return isTitleMatch && isPropertyTypeMatch;
   });
   // for scroll to top
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // };
+  // for pagination
+  // const limit = 5;
+  // const totalPage = cards?.data?.total
+  //   ? Math.ceil(parseInt(data.data.total) / limit)
+  //   : 0;
+  // // const totalPage = Math.ceil(parseInt(data?.data?.total) / limit);
+  // console.log(totalPage);
+  // const handlePrev = () => {
+  //   if (page > 1) {
+  //     setPage(page - 1);
+  //     console.log(page);
+  //   }
+  // };
+  // const handleNext = () => {
+  //   if (page < totalPage) {
+  //     setPage(page + 1);
+  //     console.log(page);
+  //   }
+  // };
   console.log(filteredCards);
   return (
     <div className="w-11/12 mx-auto">
@@ -64,7 +86,7 @@ const Properties = ({ initialCards = [] }) => {
         <h3>Homes/For Rent</h3>
       </div>
       <div className="grid grid-cols-12">
-        <div className="col-span-3 px-3">
+        <div className="lg:col-span-3 md:col-span-4 col-span-12 px-3">
           {/* search field filtering */}
           <div className="w-full rounded-lg shadow-lg">
             <input
@@ -157,7 +179,7 @@ const Properties = ({ initialCards = [] }) => {
             </div>
           </div>
         </div>
-        <div className="col-span-9">
+        <div className="lg:col-span-9 md:col-span-8 col-span-12">
           <div className="flex justify-between">
             <h4 className="text-xl font-semibold">
               Show for All Properties :{filteredCards.length || 0}
@@ -179,7 +201,7 @@ const Properties = ({ initialCards = [] }) => {
             )}
           </div>
           {!isGrid ? (
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5 lg:px-5">
+            <div className="grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-5 lg:px-5">
               {filteredCards.map(card => (
                 <PropertiesCard key={card._id} card={card}></PropertiesCard>
               ))}
@@ -196,6 +218,43 @@ const Properties = ({ initialCards = [] }) => {
           )}
         </div>
       </div>
+      {/* for pagination */}
+      {/* <div className="flex justify-center items-center">
+        <button
+          className="bg-[#eb6753] h-7 w-7 rounded-full "
+          onClick={handlePrev}
+        >
+          <span>
+            <FcPrevious></FcPrevious>{' '}
+          </span>
+        </button>
+        {Array(totalPage)
+          .fill(0)
+          .map((item, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                key={pageNumber}
+                onClick={() => setPage(pageNumber)}
+                className={`${
+                  pageNumber === page
+                    ? 'bg-blue-400  h-7 w-7 m-2 rounded-full  '
+                    : ' bg-white  m-2 rounded-lg'
+                }`}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+        <button
+          className="bg-[#eb6753] h-7 w-7 rounded-full "
+          onClick={handleNext}
+        >
+          <span>
+            <FcNext className="text-white text-center"></FcNext>
+          </span>
+        </button>
+      </div> */}
       {/* for scroll to top button */}
       <TopButton></TopButton>
     </div>

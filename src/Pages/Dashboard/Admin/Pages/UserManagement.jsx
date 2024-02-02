@@ -18,8 +18,8 @@ const UserManagement = () => {
 
   return (
     <div>
-      <div className="fade-in-left ml-6">
-        <h1 className="text-2xl lg:text-4xl text-gray-900 text-left font-medium mb-2">
+      <div className="fade-in-left ml-6 mt-7 px-7 py-7 shadow-lg drop-shadow-lg bg-white">
+        <h1 className="text-2xl lg:text-4xl text-black text-left font-medium mb-2">
           Welcome back to Admin Dashboard!
         </h1>
         <p className="text-md lg:text-xl text-gray-600 font-thin">
