@@ -53,6 +53,11 @@ const Properties = () => {
   );
 
   const [searchText, setSearchText] = useState('');
+import './PropertiesStyle.css';
+import { FcNext, FcPrevious } from 'react-icons/fc';
+
+const Properties = ({ initialCards = [] }) => {
+  const [searchQuery, setSearchQuery] = useState('');
   const [isGrid, setIsGrid] = useState(false);
 
   const { data: propertiesData } = useGetData({
@@ -92,18 +97,82 @@ const Properties = () => {
     setActivePage(activePage + 1);
   };
 
+  const [cards, setCards] = useState(initialCards);
+  // filter with listing status
+  const [showAll, setShowAll] = useState(true);
+  const [showBuy, setShowBuy] = useState(true);
+  const [showRent, setShowRent] = useState(true);
+
+  // Filter with property type
+  const [showAllPropertyTypes, setShowAllPropertyTypes] = useState(true);
+  // const [showHouse, setShowHouse] = useState(true);
+  const [showApartment, setShowApartment] = useState(true);
+  const [showBuilding, setShowBuilding] = useState(true);
+  // const [showOffice, setShowOffice] = useState(true);
+  // const cards = await getAllCard();
+  // for pagination
+  // const [page, setPage] = useState(1);
+  useEffect(() => {
+    const fetchCards = async () => {
+      const allCards = await getAllCard();
+      setCards(allCards);
+    };
+    fetchCards();
+  }, []);
+  // console.log(cards.data);
+  const propertiesCards = cards?.data?.properties || [];
+  const filteredCards = propertiesCards.filter(card => {
+    const lowerCaseTitle = card.propertyTitle.toLowerCase();
+    const lowerCaseSearchQuery = searchQuery.toLowerCase();
+    const isTitleMatch = lowerCaseTitle.includes(lowerCaseSearchQuery);
+
+    // Apply listing status filters
+    if (showAll) return isTitleMatch;
+    if (showBuy && card.propertyStatus === 'sale') return isTitleMatch;
+    if (showRent && card.propertyStatus === 'rent') return isTitleMatch;
+
+    // Apply property type filters
+    const isPropertyTypeMatch =
+      showAllPropertyTypes ||
+      // (showHouse && card.propertyType === 'house')
+
+      (showApartment && card.propertyType === 'apartment') ||
+      (showBuilding && card.propertyType === 'villa');
+    // ||(showOffice && card.propertyType === 'office');
+
+    return isTitleMatch && isPropertyTypeMatch;
+  });
   // for scroll to top
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // };
+  // for pagination
+  // const limit = 5;
+  // const totalPage = cards?.data?.total
+  //   ? Math.ceil(parseInt(data.data.total) / limit)
+  //   : 0;
+  // // const totalPage = Math.ceil(parseInt(data?.data?.total) / limit);
+  // console.log(totalPage);
+  // const handlePrev = () => {
+  //   if (page > 1) {
+  //     setPage(page - 1);
+  //     console.log(page);
+  //   }
+  // };
+  // const handleNext = () => {
+  //   if (page < totalPage) {
+  //     setPage(page + 1);
+  //     console.log(page);
+  //   }
+  // };
   // console.log(filteredCards);
   return (
     <div className="max-w-7xl mx-auto pt-8 pb-20">
       <div className="my-6">
         <h3 className="text-3xl font-semibold">Properties Forsale</h3>
       </div>
-      <div className="grid grid-cols-12 gap-6 ">
-        <div className="col-span-4">
+      <div className="grid grid-cols-12">
+        <div className="lg:col-span-3 md:col-span-4 col-span-12 px-3">
           {/* search field filtering */}
           <div className="bg-white flex flex-col gap-9 shadow-sm rounded-md p-8 w-full ">
             <h3 className="text-lg text-[#041e42] font-semibold ">
@@ -211,87 +280,82 @@ const Properties = () => {
 
           {/* order */}
         </div>
-        <div
-          className="col-span-8 flex flex-col gap-16
-        "
-        >
-          <div>
-            <div className="flex justify-between">
-              <h4 className="text-xl font-semibold">
-                {/* Show for All Properties :{propertiesCards.length || 0} */}
-              </h4>
-              {!isGrid ? (
-                <button
-                  onClick={() => setIsGrid(true)}
-                  className="text-[#eb6753] font-semibold"
-                >
-                  List view
-                </button>
-              ) : (
-                <button
-                  onClick={() => setIsGrid(false)}
-                  className="text-[#eb6753] font-semibold"
-                >
-                  Grid View
-                </button>
-              )}
-            </div>
+        <div className="lg:col-span-9 md:col-span-8 col-span-12">
+          <div className="flex justify-between">
+            <h4 className="text-xl font-semibold">
+              Show for All Properties :{filteredCards.length || 0}
+            </h4>
             {!isGrid ? (
-              <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-5">
-                {propertiesData?.properties?.map((card) => (
-                  <PropertiesCard key={card._id} card={card}></PropertiesCard>
-                ))}
-              </div>
+              <button
+                onClick={() => setIsGrid(true)}
+                className="text-[#eb6753] font-semibold"
+              >
+                List view
+              </button>
             ) : (
-              <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5  my-6">
-                {propertiesData?.properties?.map((card) => (
-                  <PropertiesCardList
-                    key={card._id}
-                    card={card}
-                  ></PropertiesCardList>
-                ))}
-              </div>
+              <button
+                onClick={() => setIsGrid(false)}
+                className="text-[#eb6753] font-semibold"
+              >
+                Grid View
+              </button>
             )}
           </div>
-          <div className="flex items-center justify-center gap-5">
-            <button
-              className={`${
-                activePage === 1
-                  ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                  : 'bg-white p-3 shadow-md rounded-full'
-              }`}
-              onClick={previousPage}
-            >
-              <FaArrowLeft />
-            </button>
-
-            {pages.map((pageNo) => (
-              <button
-                className={`${
-                  activePage === pageNo
-                    ? 'bg-[#EB6753] font-semibold text-white px-4 py-2 rounded-full'
-                    : 'px-4 py-2 rounded-full font-semibold bg-white shadow-md'
-                } `}
-                key={pageNo}
-                onClick={() => setActivePage(pageNo)}
-              >
-                {pageNo}
-              </button>
-            ))}
-
-            <button
-              className={`${
-                activePage === totalPage
-                  ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                  : 'bg-white p-3 shadow-md rounded-full'
-              }`}
-              onClick={nextPage}
-            >
-              <FaArrowRight />
-            </button>
-          </div>
+          {!isGrid ? (
+            <div className="grid lg:grid-cols-3 md:grid-cols-1 sm:grid-cols-1 gap-5 lg:px-5">
+              {filteredCards.map(card => (
+                <PropertiesCard key={card._id} card={card}></PropertiesCard>
+              ))}
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5 lg:px-5 my-6">
+              {filteredCards.map(card => (
+                <PropertiesCardList
+                  key={card._id}
+                  card={card}
+                ></PropertiesCardList>
+              ))}
+            </div>
+          )}
         </div>
       </div>
+      {/* for pagination */}
+      {/* <div className="flex justify-center items-center">
+        <button
+          className="bg-[#eb6753] h-7 w-7 rounded-full "
+          onClick={handlePrev}
+        >
+          <span>
+            <FcPrevious></FcPrevious>{' '}
+          </span>
+        </button>
+        {Array(totalPage)
+          .fill(0)
+          .map((item, index) => {
+            const pageNumber = index + 1;
+            return (
+              <button
+                key={pageNumber}
+                onClick={() => setPage(pageNumber)}
+                className={`${
+                  pageNumber === page
+                    ? 'bg-blue-400  h-7 w-7 m-2 rounded-full  '
+                    : ' bg-white  m-2 rounded-lg'
+                }`}
+              >
+                {pageNumber}
+              </button>
+            );
+          })}
+        <button
+          className="bg-[#eb6753] h-7 w-7 rounded-full "
+          onClick={handleNext}
+        >
+          <span>
+            <FcNext className="text-white text-center"></FcNext>
+          </span>
+        </button>
+      </div> */}
       {/* for scroll to top button */}
       <TopButton></TopButton>
     </div>
