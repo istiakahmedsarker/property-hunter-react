@@ -1,48 +1,57 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import BlogCard from '../../Components/BlogCard/BlogCard';
 import { Link } from 'react-router-dom';
 import useAxios from '../../Hooks/useAxios';
 import useDebounce from '../../Hooks/useDebounce';
-import { useQuery } from '@tanstack/react-query';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa6';
 import { FiSearch } from 'react-icons/fi';
 import LatestBlog from '../../Components/LatestBlogs/LatestBlog';
+import useGetData from '../../Hooks/useGetData';
 
 const Blogs = () => {
-  const [error, setError] = useState(null);
+  // const [error, setError] = useState(null);
   const [searchText, setSearchText] = useState('');
   const debouncedSearchValue = useDebounce(searchText, 800);
   const [activePage, setActivePage] = useState(1);
-  const axios = useAxios();
   const limit = 4;
 
-  const { data: latestBlogsData = [] } = useQuery({
-    queryKey: ['latestBlogs'],
-    queryFn: async () => {
-      try {
-        const res = await axios.get(
-          `/blogs?sort=-createdAt&limit=3&select=heading,images`
-        );
-        return res?.data?.data;
-      } catch (error) {
-        setError(error.message);
-      }
-    },
+  // const { data: latestBlogsData = [] } = useQuery({
+  //   queryKey: ['latestBlogs'],
+  //   queryFn: async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `/blogs?sort=-createdAt&limit=3&select=heading,images`
+  //       );
+  //       return res?.data?.data;
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   },
+  // });
+
+  const { data: latestBlogsData } = useGetData({
+    key: ['latestBlogs'],
+    api: `/blogs?sort=-createdAt&limit=3&select=heading,images`,
   });
 
-  const { isPending, data = [] } = useQuery({
-    queryKey: ['blogs', debouncedSearchValue, activePage],
-    queryFn: async () => {
-      try {
-        const res = await axios.get(
-          `/blogs?title=${searchText}&page=${activePage}&limit=${limit}`
-        );
-        return res?.data?.data;
-      } catch (error) {
-        console.log(error);
-        setError(error.message);
-      }
-    },
+  // const { isPending, data = [], error: err } = useQuery({
+  //   queryKey: ['blogs', debouncedSearchValue, activePage],
+  //   queryFn: async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         `/blosgs?title=${searchText}&page=${activePage}&limit=${limit}`
+  //       );
+  //       return res?.data?.data;
+  //     } catch (error) {
+  //       // console.log(error);
+  //       setError(error.message);
+  //     }
+  //   },
+  // });
+
+  const { data, isPending, error } = useGetData({
+    key: ['blogs', debouncedSearchValue, activePage],
+    api: `/blogs?title=${searchText}&page=${activePage}&limit=${limit}`,
   });
 
   const totalPage = Math.ceil(parseInt(data?.totalBlogs) / limit);
@@ -65,13 +74,16 @@ const Blogs = () => {
     setActivePage(activePage + 1);
   };
 
+  if (isPending) {
+    return (
+      <p className="h-[90vh] flex flex-col items-center justify-center text-center">
+        Loading...
+      </p>
+    );
+  }
   return (
     <div>
-      {isPending && (
-        <p className="h-[90vh] flex flex-col items-center justify-center text-center">
-          Loading...
-        </p>
-      )}
+      {}
       {error && <p>{error}</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-7xl mx-auto my-10 items-start">
