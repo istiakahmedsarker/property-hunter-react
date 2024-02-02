@@ -216,7 +216,7 @@ const Properties = () => {
           </div>
         </div>
 
-        {!propertiesData ? (
+        {!propertiesData?.properties?.length ? (
           <div className="md:col-span-8 sm:w-[70%] mx-auto md:w-full">
             <p className=" h-[70vh] flex-col flex items-center justify-center">
               No more items available
