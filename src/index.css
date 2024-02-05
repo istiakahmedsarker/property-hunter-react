@@ -9,7 +9,7 @@
 /* Track */
 ::-webkit-scrollbar-track {
   background: white;
-  box-shadow: inset 3px 3px 3px #eb6753;
+  /* box-shadow: inset 3px 3px 3px #eb6753; */
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
