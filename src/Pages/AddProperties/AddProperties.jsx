@@ -4,10 +4,12 @@ import { FaUpload } from "react-icons/fa";
 import { GrFormPrevious } from "react-icons/gr";
 import Container from "../../Components/Container/Container";
 import toast from "react-hot-toast";
+import imagesUpload from "./UploadImage";
 import axios from "axios";
 
 const AddProperties = () => {
   const [formStep, setFormStep] = useState(0);
+  const [propertyType, setPropertyType] = useState('');
   // const [imagePreview, setImagePreview] = useState('');
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -22,13 +24,13 @@ const AddProperties = () => {
   };
 
   const renderButton = () => {
-    if (formStep > 3) {
+    if (formStep > 4) {
       return undefined;
-    } else if (formStep === 3) {
+    } else if (formStep === 4) {
       return (
         <div className="form-control mt-6">
           <button
-            type={`${formStep === 3 && "submit"}`}
+            type={`${formStep === 4 && "submit"}`}
             className="btn bg-[#eb6753] text-white border-none"
           >
             Add Property
@@ -39,13 +41,12 @@ const AddProperties = () => {
       return (
         <div className="form-control mt-6">
           <button
-           onClick={(event) => completeFormStep(event)}
+            onClick={(event) => completeFormStep(event)}
             type="button"
             className="btn bg-[#eb6753] text-white border-none"
           >
             Next
           </button>
-         
         </div>
       );
     }
@@ -59,11 +60,13 @@ const AddProperties = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
 
+ 
+
   const onSubmit = async (data) => {
     // console.log(data)
     //? Property description
     const propertyTitle = data.propertyTitle;
-    const propertyType = data.propertyType;
+    const propertyTYPE = data.propertyType || propertyType;
     const name = data.name;
     const email = data.email;
     const phone = data.phone;
@@ -76,43 +79,64 @@ const AddProperties = () => {
     const state = data.state;
     const city = data.city;
     const zipCode = data.zipCode;
+    const neighborhood = data.neighborhood;
     const latitude = data.latitude;
     const longitude = data.longitude;
     //? Property details
     const floorNumber = data.floorNumber;
-    const rooms = data.rooms;
+    const bedroom = data.rooms;
+    const bathroom = data.bathroom;
     const blockName = data.blockName;
+    const squareFootage = data.squareFootage;
     const apartmentNumber = data.apartmentNumber;
     const price = data.price;
     const yearBuilt = data.yearBuilt;
+    const easement = data.easement.split(',');
+    const utilities = data.utilities.split(',');
 
-    console.log(
-      propertyTitle,
-      propertyType,
-      name,
-      email,
-      phone,
-      propertyImg,
-      propertyImg1,
-      propertyImg2,
-      address,
-      state,
-      city,
-      zipCode,
-      latitude,
-      longitude,
-      floorNumber,
-      rooms,
-      blockName,
-      apartmentNumber,
-      price,
-      yearBuilt
-    );
+    //? Additional information
+    const parkingIncluded = data.parking;
+    const parkingSpace = data.parkingSpace;
+    const propertyStatus = data.propertyStatus;
+    const description = data.description;
+
+    // console.log(
+    //   propertyTitle,
+    //   propertyType,
+    //   neighborhood,
+    //   name,
+    //   squareFootage,
+    //   email,
+    //   phone,
+    //   propertyImg,
+    //   propertyImg1,
+    //   propertyImg2,
+    //   address,
+    //   state,
+    //   city,
+    //   zipCode,
+    //   latitude,
+    //   longitude,
+    //   floorNumber,
+    //   bedroom,
+    //   bathroom,
+    //   blockName,
+    //   apartmentNumber,
+    //   price,
+    //   yearBuilt,
+    //   parkingIncluded,
+    //   parkingSpace,
+    //   propertyStatus,
+    //   description,
+    //   easement,
+    //   utilities
+    // );
 
     //? Validation
     if (
       !propertyTitle ||
-      !propertyType ||
+      !propertyTYPE ||
+      !squareFootage ||
       !name ||
       !email ||
       !phone ||
@@ -123,26 +147,100 @@ const AddProperties = () => {
       !state ||
       !city ||
       !zipCode ||
+      !neighborhood ||
       !latitude ||
       !longitude ||
-      !floorNumber ||
-      !rooms ||
-      !blockName ||
-      !apartmentNumber ||
+      // !floorNumber ||
+      // !bedroom ||
+      !bathroom ||
+      // !blockName ||
+      // !apartmentNumber ||
       !price ||
-      !yearBuilt
+      !yearBuilt ||
+      !parkingIncluded ||
+      !parkingSpace ||
+      !propertyStatus ||
+      !description || 
+      !utilities ||
+      !easement
     ) {
       return toast.error("Please fill out the form correctly.");
     }
+
+
+
+    //  //? Validation if property is apartment
+   //? Validation if property is apartment
+   if (propertyTYPE === 'apartment') {
+    if (
+      !floorNumber ||
+      !bedroom ||
+      !blockName ||
+      !apartmentNumber
+    ) {
+      toast.error("Please fill out the apartment details correctly.");
+      return;
+    }
+  }
+
+
+
     try {
-      //? Save to database.
-      //  const { data } = await axios.post('/url');
-      //  if(data) {
-      toast.success("Successfully added the property.");
-      completeFormStep(event);
+      
+      const images = await imagesUpload(imageFiles);
+      // console.log(images);
+      
+      if(images.length > 0) {
+        
       //  }
+
+      //? Save to database.
+
+      const property = {
+        propertyTitle: propertyTitle,
+        propertyType: propertyTYPE || propertyType,
+        location: {
+          address: address,
+          city: city,
+          state: state,
+          zipCode: parseInt(zipCode),
+          neighborhood: neighborhood,
+          latitude: parseInt(latitude),
+          longitude: parseInt(longitude),
+        },
+        price: parseInt(price),
+        squareFootage: parseInt(squareFootage),
+        easement: easement,
+        bedroom: parseInt(bedroom),
+        bathroom: parseInt(bathroom),
+        description: description,
+        propertyImages: [
+          images[0], images[1], images[2]
+        ],
+        utilities: utilities,
+        parking: {
+          included: parkingIncluded,
+          spaces: parseInt(parkingSpace),
+        },
+        yearBuilt: parseInt(yearBuilt),
+        propertyStatus: propertyStatus,
+        ownerInformation: {
+          name: name,
+          email: email,
+          phone: parseInt(phone),
+        },
+      };
+       const { data } = await axios.post('https://property-hunter-server.vercel.app/api/v1/properties/', property);
+       console.log(data);
+       if(data.status === "success") { 
+        toast.success("Successfully added the property.");
+        completeFormStep(event);
+       }
+        console.log(property, "property Data");
+      }
     } catch (error) {
       console.log(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -197,6 +295,13 @@ const AddProperties = () => {
 
   const formRef = useRef(null);
 
+  //? Handle the property type
+  const handlePropertyType = (e) => {
+      const propertyType = e.target.value;
+     setPropertyType(propertyType);
+     console.log(propertyType);
+  }
+
   return (
     <div className="relative min-h-screen flex items-center justify-center  bg-[#f6fff5] bg-[url('https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg')] bg-cover">
       <div className="h-full w-full absolute z-0 opacity-60 bg-[#05133d]"></div>
@@ -205,11 +310,11 @@ const AddProperties = () => {
         <div className="px-8 relative z-20 min-h-[80vh] ml-6 mr-6 mb-6 mt-[32px] mx-auto flex flex-col items-center justify-center bg-[#ffffff] rounded-xl py-12">
           <div className="absolute z-10 top-4 right-4">
             <h1 className="text-xl text-black font-medium">
-              {formStep + 1} / 5
+              {formStep + 1} / 6
             </h1>
           </div>
           <div className="absolute z-10 top-4 left-4">
-            {formStep > 0 && formStep < 4 && (
+            {formStep > 0 && formStep < 5 && (
               <button
                 onClick={goToPreviousStep}
                 type="button"
@@ -231,9 +336,10 @@ const AddProperties = () => {
           <div className="w-full">
             <div
               className={`h-2 rounded-xl bg-[#eb6753] ${formStep === 0 &&
-                "w-2/4"}  ${formStep === 4 && "w-full"}  ${formStep === 0 &&
-                "w-[20%]"} ${formStep === 1 && "w-2/5"} ${formStep === 2 &&
-                "w-3/5"} ${formStep === 3 && "w-4/5"}`}
+                "w-2/4"}  ${formStep === 4 && "[80%]"}  ${formStep === 0 &&
+                "w-[15%]"} ${formStep === 1 && "w-[30%]"} ${formStep === 2 &&
+                "w-[45%]"} ${formStep === 3 && "w-[60%]"} ${formStep === 5 &&
+                "w-full"}`}
             ></div>
 
             <div className=" w-full h-full   relative rounded-xl z-10 ">
@@ -257,48 +363,37 @@ const AddProperties = () => {
                         name="propertyTitle"
                         type="text"
                         placeholder="property title"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                       />
 
                       {errors.propertyTitles && (
                         <span>This field is required</span>
                       )}
                     </div>
-                    {/* <div className="form-control col-span-3">
-            <label className="label">
-              <span className="label-text">Property Type</span>
-            </label>
-            <input
-              {...register("propertyType", { required: true })}
-              name="propertyType"
-              type="text"
-              placeholder="property type"
-              className="input input-bordered "
-            />
-
-            {errors.propertyType && <span>This field is required</span>}
-          </div> */}
+             
                     <div className="form-control col-span-3">
                       <label className="label">
                         <span className="label-text text-gray-400">
                           Property Type
                         </span>
                       </label>
-                      <select
-                        {...register("propertyType", { required: true })}
+                      <select onChange={handlePropertyType}
+                        // {...register("propertyType", { required: true })}
+                        required
                         name="propertyType"
                         id="type"
-                        className="input input-bordered"
+                        value={propertyType || ""}
+                        className="input border-gray-600 input-bordered"
                       >
                         <option
                           value=""
                           selected
                           disabled
-                          defaultValue="propertyType"
+                          // defaultValue="propertyType"
                         >
                           Type
                         </option>
-                        <option value="home">Home</option>
+                        <option value="home" >Home</option>
                         <option value="apartment">Apartment</option>
                         <option value="villa">Villa</option>
                       </select>
@@ -317,7 +412,7 @@ const AddProperties = () => {
                         name="name"
                         type="text"
                         placeholder="name"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                       />
                       {errors.name && <span>This field is required</span>}
                     </div>
@@ -330,7 +425,7 @@ const AddProperties = () => {
                         name="email"
                         type="email"
                         placeholder="email "
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                       />
                       {errors.email && <span>This field is required</span>}
                     </div>
@@ -343,11 +438,14 @@ const AddProperties = () => {
                         name="phone"
                         type="text"
                         placeholder="phone"
-                        className="input input-bordered"
+                        className="input border-gray-600 input-bordered"
                       />
 
                       {errors.phone && <span>This field is required</span>}
                     </div>
+                    <div>
+     
+    </div>
                   </div>
                 )}
                 {/* step Two */}
@@ -466,13 +564,13 @@ const AddProperties = () => {
                         name="address"
                         type="text"
                         placeholder="address"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                         required
                       />
 
                       {errors.address && <span>This field is required</span>}
                     </div>
-                    <div className="form-control col-span-3">
+                    <div className="form-control col-span-2">
                       <label className="label">
                         <span className="label-text">State</span>
                       </label>
@@ -481,13 +579,13 @@ const AddProperties = () => {
                         name="state"
                         type="text"
                         placeholder="state"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                         required
                       />
 
                       {errors.state && <span>This field is required</span>}
                     </div>
-                    <div className="form-control col-span-3">
+                    <div className="form-control col-span-2">
                       <label className="label">
                         <span className="label-text">City</span>
                       </label>
@@ -496,7 +594,7 @@ const AddProperties = () => {
                         name="city"
                         type="text"
                         placeholder="city"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                         required
                       />
                       {errors.city && <span>This field is required</span>}
@@ -510,10 +608,26 @@ const AddProperties = () => {
                         name="zipCode"
                         type="text"
                         placeholder="zip code "
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                         required
                       />
                       {errors.zipCode && <span>This field is required</span>}
+                    </div>
+                    <div className="form-control col-span-2">
+                      <label className="label">
+                        <span className="label-text">Neighborhood</span>
+                      </label>
+                      <input
+                        {...register("neighborhood", { required: true })}
+                        name="neighborhood"
+                        type="text"
+                        placeholder="neighborhood"
+                        className="input border-gray-600 input-bordered "
+                        required
+                      />
+                      {errors.neighborhood && (
+                        <span>This field is required</span>
+                      )}
                     </div>
                     <div className="form-control col-span-2">
                       <label className="label">
@@ -524,7 +638,7 @@ const AddProperties = () => {
                         name="latitude"
                         type="text"
                         placeholder="latitude"
-                        className="input input-bordered"
+                        className="input border-gray-600 input-bordered"
                         required
                       />
 
@@ -539,7 +653,7 @@ const AddProperties = () => {
                         name="longitude"
                         type="text"
                         placeholder="longitude"
-                        className="input input-bordered"
+                        className="input border-gray-600 input-bordered"
                         required
                       />
 
@@ -549,10 +663,11 @@ const AddProperties = () => {
                 )}
                 {/* step Four */}
                 {formStep === 3 && (
-                  <div className="grid grid-cols-6 py-8 gap-1 md:gap-4">
-                    <h1 className=" text-2xl md:text-4xl text-black col-span-6 font-semibold">
+                  <div className="grid grid-cols-8 py-8 gap-1 md:gap-4">
+                    <h1 className=" text-2xl md:text-4xl text-black col-span-8 font-semibold">
                       Property Details
                     </h1>
+                    {propertyType === "apartment" && <>
                     <div className="form-control col-span-2">
                       <label className="label">
                         <span className="label-text">Floor number</span>
@@ -562,7 +677,7 @@ const AddProperties = () => {
                         name="floorNumber"
                         type="text"
                         placeholder="floor number"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                         required
                       />
 
@@ -579,11 +694,25 @@ const AddProperties = () => {
                         name="rooms"
                         type="text"
                         placeholder="rooms"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                         required
                       />
 
-                      {errors.floorNumber && (
+                      {errors.rooms && <span>This field is required</span>}
+                    </div>
+                    <div className="form-control col-span-2">
+                      <label className="label">
+                        <span className="label-text">Apartment No</span>
+                      </label>
+                      <input
+                        {...register("apartmentNumber", { required: true })}
+                        name="apartmentNumber"
+                        type="text"
+                        placeholder="apartment number"
+                        className="input border-gray-600 input-bordered "
+                        required
+                      />
+                      {errors.apartmentNumber && (
                         <span>This field is required</span>
                       )}
                     </div>
@@ -596,27 +725,46 @@ const AddProperties = () => {
                         name="blockName"
                         type="text"
                         placeholder="block name"
-                        className="input input-bordered "
+                        className="input border-gray-600 input-bordered "
                         required
                       />
                       {errors.blockName && <span>This field is required</span>}
                     </div>
+                    </>
+                    }
                     <div className="form-control col-span-2">
                       <label className="label">
-                        <span className="label-text">Apartment No</span>
+                        <span className="label-text">Bathroom</span>
                       </label>
                       <input
-                        {...register("apartmentNumber", { required: true })}
-                        name="apartmentNumber"
+                        {...register("bathroom", { required: true })}
+                        name="bathroom"
                         type="text"
-                        placeholder="apartment number"
-                        className="input input-bordered "
+                        placeholder="bathroom"
+                        className="input border-gray-600 input-bordered "
                         required
                       />
-                      {errors.apartmentNumber && (
+
+                      {errors.bathroom && <span>This field is required</span>}
+                    </div>
+                  
+                    <div className="form-control col-span-2">
+                      <label className="label">
+                        <span className="label-text">SquareFootage</span>
+                      </label>
+                      <input
+                        {...register("squareFootage", { required: true })}
+                        name="squareFootage"
+                        type="text"
+                        placeholder="square footage"
+                        className="input border-gray-600 input-bordered "
+                        required
+                      />
+                      {errors.squareFootage && (
                         <span>This field is required</span>
                       )}
                     </div>
+                   
                     <div className="form-control col-span-2">
                       <label className="label">
                         <span className="label-text">Price</span>
@@ -626,7 +774,7 @@ const AddProperties = () => {
                         name="price"
                         type="text"
                         placeholder="price"
-                        className="input input-bordered"
+                        className="input border-gray-600 input-bordered"
                         required
                       />
 
@@ -641,16 +789,150 @@ const AddProperties = () => {
                         name="yearBuilt"
                         type="text"
                         placeholder="year built"
-                        className="input input-bordered"
+                        className="input border-gray-600 input-bordered"
                         required
                       />
 
                       {errors.yearBuilt && <span>This field is required</span>}
                     </div>
+                    <div className="form-control col-span-4">
+                      <label className="label">
+                        <span className="label-text">Easement (separated by commas):</span>
+                      </label>
+                      <input
+                        {...register("easement", { required: true })}
+                        name="easement"
+                        type="text"
+                        placeholder="easement"
+                        className="input border-gray-600 input-bordered"
+                        required
+                      />
+
+                      {errors.easement && <span>This field is required</span>}
+                    </div>
+                    <div className="form-control col-span-4">
+                      <label className="label">
+                        <span className="label-text">Utilities (separated by commas):</span>
+                      </label>
+                      <input
+                        {...register("utilities", { required: true })}
+                        name="utilities"
+                        type="text"
+                        placeholder="utilities"
+                        className="input border-gray-600 input-bordered"
+                        required
+                      />
+
+                      {errors.utilities && <span>This field is required</span>}
+                    </div>
+                  </div>
+                )}
+                {/* step Four */}
+                {formStep === 4 && (
+                  <div className="grid grid-cols-6 py-8 gap-1 md:gap-4">
+                    <h1 className=" text-2xl md:text-4xl text-black col-span-6 font-semibold">
+                      Additional information
+                    </h1>
+                    <div className="form-control col-span-2">
+                      <label className="label">
+                        <span className="label-text text-gray-400">
+                          Parking
+                        </span>
+                      </label>
+                      <select
+                        {...register("parking", { required: true })}
+                        name="parking"
+                        id="parking"
+                        className="input border-gray-600 input-bordered"
+                      >
+                        <option
+                          value=""
+                          selected
+                          disabled
+                          defaultValue="parking"
+                        >
+                          Select
+                        </option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                      </select>
+                      {errors.parking && (
+                        <span className="text-red-500">
+                          This field is required
+                        </span>
+                      )}
+                    </div>
+                    <div className="form-control col-span-2">
+                      <label className="label">
+                        <span className="label-text">Parking Space</span>
+                      </label>
+                      <input
+                        {...register("parkingSpace", { required: true })}
+                        name="parkingSpace"
+                        type="number"
+                        placeholder="parkingSpace"
+                        className="input border-gray-600 input-bordered "
+                        required
+                      />
+
+                      {errors.parkingSpace && (
+                        <span>This field is required</span>
+                      )}
+                    </div>
+                    <div className="form-control col-span-2">
+                      <label className="label">
+                        <span className="label-text text-gray-400">
+                          Property Status
+                        </span>
+                      </label>
+                      <select
+                        {...register("propertyStatus", { required: true })}
+                        name="propertyStatus"
+                        id="propertyStatus"
+                        className="input border-gray-600 input-bordered"
+                      >
+                        <option
+                          value=""
+                          selected
+                          disabled
+                          defaultValue="propertyStatus"
+                        >
+                          Status
+                        </option>
+                        <option value="rent">Rent</option>
+                        <option value="sale">Sale</option>
+                      </select>
+                      {errors.propertyStatus && (
+                        <span className="text-red-500">
+                          This field is required
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="form-control col-span-6">
+                      <label className="label">
+                        <span className="label-text">Description</span>
+                      </label>
+
+                      <textarea
+                        {...register("description", { required: true })}
+                        name="description"
+                        placeholder="description"
+                        className="px-5 py-3 border-2 rounded-xl border-gray-400"
+                        required
+                        id=""
+                        cols="30"
+                        rows="10"
+                      ></textarea>
+
+                      {errors.description && (
+                        <span>This field is required</span>
+                      )}
+                    </div>
                   </div>
                 )}
                 {/* submit */}
-                {formStep === 4 && (
+                {formStep === 5 && (
                   <div className="h-[80vh] w-full flex items-center justify-center ">
                     <h1 className="col-span-1 text-2xl md:text-4xl text-black text-center bold font-bold">
                       Congratulations! <br />
