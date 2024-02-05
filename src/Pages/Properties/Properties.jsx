@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import PropertiesCard from '../../Components/PropertiesCard/PropertiesCard';
 import PropertiesCardList from '../../Components/PropertiesCard/PropertiesCardList';
-import { IoArrowUpOutline } from 'react-icons/io5';
 import { FiSearch } from 'react-icons/fi';
 import useGetData from '../../Hooks/useGetData';
 import './Properties.css';
@@ -71,7 +70,7 @@ const Properties = () => {
       checkedItem === 'all' ? '' : checkedItem
     }&propertyType=${
       typeCheckedItem === 'all' ? '' : typeCheckedItem
-    }&sort=${selectedOption}&&page=${activePage}&limit=${limit}&title=${searchText}`,
+    }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
   });
 
   const totalPage = Math.ceil(parseInt(propertiesData?.totalProperty) / limit);
