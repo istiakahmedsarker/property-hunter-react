@@ -15,3 +15,4 @@ react-simple-chatbot
 npm install react-redux   
 npm install redux
 npm i stripe
+npm install react-fast-marquee --save
