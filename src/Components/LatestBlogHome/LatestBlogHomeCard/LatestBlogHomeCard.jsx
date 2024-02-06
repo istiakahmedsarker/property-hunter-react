@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const LatestBlogHomeCard = ({ blog }) => {
   console.log(blog);
-  const { _id, images, heading, description, createdAt } = blog || {};
+  const { _id, images, heading, createdAt } = blog || {};
   return (
     <div className="mr-7 w-96  my-5 rounded-xl shadow-lg shadow-drop px-5 py-4 bg-white">
       <div className="relative">
