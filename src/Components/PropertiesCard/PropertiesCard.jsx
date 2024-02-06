@@ -36,7 +36,7 @@ const PropertiesCard = ({ card }) => {
           className="mySwiper h-full"
           loop={true}
         >
-          {propertyImages.map((img, i) => (
+          {propertyImages?.map((img, i) => (
             <SwiperSlide
               key={i}
               style={{ width: '100%' }}

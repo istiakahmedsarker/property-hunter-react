@@ -10,7 +10,6 @@ function CommentForm({ id, refetch }) {
   const [errorMsg, setErrorMsg] = useState('');
   const axios = useAxios();
   const user = useAuth();
-  console.log(user?.user.photoURL);
 
   const {
     register,

@@ -1,0 +1,1211 @@
+[
+  {
+    "propertyTitle": "Metropolitan Lofts",
+    "propertyType": "apartment",
+    "location": {
+      "address": "789 Loft Avenue",
+      "city": "Metroville",
+      "state": "Metroland",
+      "zipCode": "34567",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    "price": 890000,
+    "squareFootage": 2200,
+    "easement": ["Rooftop Lounge", "Gymnasium", "City View Balcony"],
+    "description": "Embrace city living at its finest at Metropolitan Lofts. These stylish lofts in Metroville offer contemporary design, upscale amenities, and a vibrant urban lifestyle.",
+    "propertyImages": [
+      "https://i.ibb.co/wdKfjtF/Apartment-1-balcony.webp",
+      "https://i.ibb.co/yV9z28x/Apartment-1-gym.webp",
+      "https://i.ibb.co/sw5pZFC/Apartment-1-swimming-pool.webp",
+      "https://i.ibb.co/h23fvLV/Apartment-1.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 2
+    },
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 2
+    },
+    "floorNumber": 8,
+    "blockName": "Block C",
+    "apartmentNumber": "C501",
+    "yearBuilt": 2017,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Metro Realty Solutions",
+      "email": "info@metrorealty.com",
+      "phone": "555-456-7890"
+    }
+  },
+  {
+    "propertyTitle": "Majestic Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "101 Pine Lane",
+      "city": "Sacramento",
+      "state": "California",
+      "zipCode": "95814",
+      "neighborhood": "Old Sacramento",
+      "latitude": 38.5816,
+      "longitude": -121.4944
+    },
+    "price": 1200000,
+    "squareFootage": 1700,
+    "easement": ["Swimming Pool", "Garden", "Mountain View"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 5-bed with a loft, 4-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. The living room and dining room have vaulted ceilings and a beautiful fireplace. You will love spending time on the deck taking in the beautiful views.",
+    "propertyImages": [
+      "https://i.ibb.co/fYQ5Gs4/villa-4-1.jpg",
+      "https://i.ibb.co/Zmt3Xx8/villa-4-2.jpg",
+      "https://i.ibb.co/kHbh6wP/villa-4-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "Wifi"],
+    "parking": {
+      "included": false,
+      "spaces": 0
+    },
+    "yearBuilt": 2017,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "John Sena",
+      "email": "John.sena@.gmail.com",
+      "phone": "555-987-6543"
+    }
+  },
+  {
+    "propertyTitle": "Nature's Edge Apartments",
+    "propertyType": "apartment",
+    "location": {
+      "address": "456 Serene Street",
+      "city": "Greenhaven",
+      "state": "Greenscape",
+      "zipCode": "87654",
+      "latitude": 38.5816,
+      "longitude": -121.4944
+    },
+    "price": 780000,
+    "squareFootage": 2000,
+    "easement": ["Nature Trail Access", "Yoga Studio", "Garden Terrace"],
+    "description": "Immerse yourself in the tranquility of Nature's Edge Apartments. Nestled in the green surroundings of Greenhaven, these apartments offer a peaceful retreat from city life.",
+    "propertyImages": [
+      "https://i.ibb.co/KFdRy0T/Apartment-2.webp",
+      "https://i.ibb.co/m5Lsngm/Elevator-1.webp",
+      "https://i.ibb.co/pftXMfR/Parking-lot.webp",
+      "https://i.ibb.co/60dbqnk/Security-system.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 1
+    },
+    "rooms": {
+      "bedRooms": 3,
+      "bathRooms": 2
+    },
+    "floorNumber": 4,
+    "blockName": "Block B",
+    "apartmentNumber": "B301",
+    "yearBuilt": 2016,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Greenhaven Realty Group",
+      "email": "info@greenhavenrealty.com",
+      "phone": "555-345-6789"
+    }
+  },
+  {
+    "propertyTitle": "Downtown Heights Residences",
+    "propertyType": "apartment",
+    "location": {
+      "address": "890 Urban Plaza",
+      "city": "Downtown City",
+      "state": "Cityscape",
+      "zipCode": "23456",
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    },
+    "price": 980000,
+    "squareFootage": 2400,
+    "easement": ["Sky Deck", "Theater Room", "Business Center"],
+    "description": "Experience urban sophistication at Downtown Heights Residences. Situated in the heart of Downtown City, these residences offer unparalleled luxury and convenience.",
+    "propertyImages": [
+      "https://i.ibb.co/yVGptfB/Apartment-3.webp",
+      "https://i.ibb.co/8xkCT3Y/Fireplace.webp",
+      "https://i.ibb.co/XW158J9/fitness-center.webp",
+      "https://i.ibb.co/X3k8hMm/Walk-in-closet-1.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 2
+    },
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "floorNumber": 6,
+    "blockName": "Block C",
+    "apartmentNumber": "C402",
+    "yearBuilt": 2019,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Downtown Realty Solutions",
+      "email": "info@downtownrealty.com",
+      "phone": "555-901-2345"
+    }
+  },
+  {
+    "propertyTitle": "Eternal Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "303 Maple Drive",
+      "city": "Fresno",
+      "state": "California",
+      "zipCode": "93721",
+      "neighborhood": "Tower District",
+      "latitude": 36.7468,
+      "longitude": -119.7726
+    },
+    "price": 1200000,
+    "squareFootage": 1800,
+    "easement": ["Swimming Pool", "Garden", "Spa"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 3-bed with a loft, 3-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining.In the kitchen, you'll find stainless steel appliances and a tile backsplash, as well as a breakfast bar.",
+    "propertyImages": [
+      "https://i.ibb.co/Wv0Bncb/villa-6-1.jpg",
+      "https://i.ibb.co/g4jP40y/villa-6-2.jpg",
+      "https://i.ibb.co/zRd1DGF/villa-6-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "Wifi", "cafeteria"],
+    "parking": {
+      "included": true,
+      "spaces": 6
+    },
+    "yearBuilt": 2020,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Robert Rechart",
+      "email": "robert.rechart@.gmail.com",
+      "phone": "555-987-6549"
+    }
+  },
+  {
+    "propertyTitle": "Greenwood Gardens Apartments",
+    "propertyType": "apartment",
+    "location": {
+      "address": "789 Nature Lane",
+      "city": "Greenfield",
+      "state": "Greenscape",
+      "zipCode": "56789",
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "price": 750000,
+    "squareFootage": 1800,
+    "easement": ["Community Gardens", "Fitness Trail", "Picnic Areas"],
+    "description": "Experience the beauty of nature at Greenwood Gardens Apartments. Nestled in a green oasis, these eco-friendly residences offer a harmonious blend of modern living and natural surroundings.",
+    "propertyImages": [
+      "https://i.ibb.co/7tSPvmd/Apartment-4.webp",
+      "https://i.ibb.co/xDQx9jk/private-garden.webp",
+      "https://i.ibb.co/7gBD3Vs/smart-house-system-1.webp",
+      "https://i.ibb.co/2KQ5jSG/Spa.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 1
+    },
+    "rooms": {
+      "bedRooms": 5,
+      "bathRooms": 3
+    },
+    "floorNumber": 5,
+    "blockName": "Block A",
+    "apartmentNumber": "A220",
+    "yearBuilt": 2017,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Greenfield Realty Solutions",
+      "email": "info@greenfieldrealty.com",
+      "phone": "555-567-8901"
+    }
+  },
+  {
+    "propertyTitle": "Skyline Tower Apartments",
+    "propertyType": "apartment",
+    "location": {
+      "address": "456 Highrise Avenue",
+      "city": "Skytop City",
+      "state": "Cloudscape",
+      "zipCode": "12345",
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    },
+    "price": 850000,
+    "squareFootage": 2000,
+    "easement": ["Sky Lounge", "Indoor Basketball Court", "Rooftop Terrace"],
+    "description": "Live above the clouds at Skyline Tower Apartments. These high-rise residences offer luxurious amenities and breathtaking views of the city skyline, creating an unparalleled living experience.",
+    "propertyImages": [
+      "https://i.ibb.co/kKqQZw9/Apartment-5.webp",
+      "https://i.ibb.co/kyF1RQz/balcony.webp",
+      "https://i.ibb.co/B2wtzxc/swimming-pool.webp",
+      "https://i.ibb.co/SPXvV0T/Tennis-court.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 1
+    },
+    "rooms": {
+      "bedRooms": 3,
+      "bathRooms": 2
+    },
+    "floorNumber": 4,
+    "blockName": "Block B",
+    "apartmentNumber": "B325",
+    "yearBuilt": 2016,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Skytop Realty Group",
+      "email": "info@skytoprealty.com",
+      "phone": "555-456-7890"
+    }
+  },
+  {
+    "propertyTitle": "Harbor View Residences",
+    "propertyType": "apartment",
+    "location": {
+      "address": "789 Waterfront Drive",
+      "city": "Seaville",
+      "state": "CoastalLand",
+      "zipCode": "98765",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    "price": 950000,
+    "squareFootage": 2200,
+    "easement": ["Private Marina Access", "Gymnasium", "Oceanfront Balcony"],
+    "description": "Enjoy the serenity of coastal living at Harbor View Residences. These waterfront apartments offer unparalleled views of the ocean and exclusive access to a private marina.",
+    "propertyImages": [
+      "https://i.ibb.co/qrqZgD2/Apartment-6.webp",
+      "https://i.ibb.co/85wWjD2/Home-theatre.webp",
+      "https://i.ibb.co/rGksT5t/Root-taf-terrace.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 2
+    },
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "floorNumber": 6,
+    "blockName": "Block F",
+    "apartmentNumber": "F302",
+    "yearBuilt": 2018,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Coastal Realty Solutions",
+      "email": "info@coastalrealty.com",
+      "phone": "555-345-6789"
+    }
+  },
+  {
+    "propertyTitle": "Metro Office Plaza",
+    "propertyType": "office",
+    "location": {
+      "address": "1202 W Commerce St",
+      "city": "San Antonio",
+      "state": "Texas",
+      "zipCode": "78207",
+      "latitude": 29.424977,
+      "longitude": -98.508136
+    },
+    "price": 50000,
+    "squareFootage": 5000,
+    "easement": ["Modern Lobby", "Executive Offices", "Conference Rooms"],
+    "description": "A sophisticated office space in the bustling downtown business hub. Metro Office Plaza offers modern amenities, executive offices, and well-equipped conference rooms for your business needs.",
+    "rooms": {
+      "officeRooms": 20,
+      "conferenceRooms": 3,
+      "bathrooms": 3
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/NFhg4RT/office-11.webp",
+      "https://i.ibb.co/HrvLLQL/restroom-3.webp",
+      "https://i.ibb.co/sPD486t/conference-12.webp"
+    ],
+    "utilities": ["High-Speed Internet", "Central Heating", "24/7 Security"],
+    "parking": {
+      "included": true,
+      "spaces": 20
+    },
+    "propertyStatus": "rent",
+    "yearBuilt": 2005,
+    "ownerInformation": {
+      "name": "Alex Johnson",
+      "email": "alex@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Modern Living Apartments",
+    "propertyType": "apartment",
+    "location": {
+      "address": "123 Urban Avenue",
+      "city": "Metropolis",
+      "state": "Cityscape",
+      "zipCode": "54321",
+      "latitude": 40.7128,
+      "longitude": -74.006
+    },
+    "price": 700000,
+    "squareFootage": 1800,
+    "easement": ["Fitness Center", "Swimming Pool", "Roof Garden"],
+    "description": "Experience modern living at its finest in these upscale apartments. Conveniently located in the heart of Metropolis, these residences offer luxurious amenities and stunning city views.",
+    "propertyImages": [
+      "https://i.ibb.co/mXXYHcW/Apartment-7.webp",
+      "https://i.ibb.co/Js1Ymj2/fitness-center.webp",
+      "https://i.ibb.co/SQR1Gdf/panaramic-view.webp",
+      "https://i.ibb.co/2ntLtN0/sauna.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 1
+    },
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "floorNumber": 6,
+    "blockName": "Block D",
+    "apartmentNumber": "D402",
+    "yearBuilt": 2015,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "Metropolitan Realty Group",
+      "email": "info@metropolitanrealty.com",
+      "phone": "555-234-5678"
+    }
+  },
+  {
+    "propertyTitle": "Golden Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "789 Oak Street",
+      "city": "San Diego",
+      "state": "California",
+      "zipCode": "92101",
+      "neighborhood": "Gaslamp Quarter",
+      "latitude": 32.7157,
+      "longitude": -117.1611
+    },
+    "price": 1200000,
+    "squareFootage": 1500,
+    "easement": ["Swimming Pool", "Spa", "Mountain View"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 5-bed with a loft, 4-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. The living room and dining room have vaulted ceilings and a beautiful fireplace. In the kitchen, you'll find stainless steel appliances and a tile backsplash, as well as a breakfast bar.",
+    "propertyImages": [
+      "https://i.ibb.co/0mcyKFd/villa-3-1.jpg",
+      "https://i.ibb.co/SmKhWxv/villa-3-2.jpg",
+      "https://i.ibb.co/Z1Rt1nV/villa-3-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 5
+    },
+    "yearBuilt": 2016,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "John Doe",
+      "email": "John.doe@.gmail.com",
+      "phone": "555-987-6543"
+    }
+  },
+  {
+    "propertyTitle": "Sunset Villa",
+    "propertyType": "house",
+    "location": {
+      "address": "123 Oceanview Drive",
+      "city": "Coastal City",
+      "state": "Seaside",
+      "zipCode": "90210",
+      "latitude": 34.09,
+      "longitude": -118.4065
+    },
+    "price": 750000,
+    "squareFootage": 2800,
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "parking": {
+      "included": true,
+      "spaces": 2
+    },
+    "easement": ["Ocean View", "Spacious Kitchen", "Private Garden"],
+    "description": "A beautiful house with an ocean view, spacious kitchen, and a private garden. Perfect for those seeking a serene coastal lifestyle.",
+    "propertyImages": [
+      "https://i.ibb.co/TMk44cX/pexels-photo-164522.jpg",
+      "https://i.ibb.co/1LBW3Zb/pexels-photo-259962.jpg",
+      "https://i.ibb.co/j8PkDgz/pexels-photo-271624.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2005,
+    "ownerInformation": {
+      "name": "Seaside Realty Group",
+      "email": "info@seasiderealty.com",
+      "phone": "555-123-4567"
+    }
+  },
+  {
+    "propertyTitle": "Forest Retreat",
+    "propertyType": "house",
+    "location": {
+      "address": "789 Woodland Lane",
+      "city": "Green Valley",
+      "state": "Forestland",
+      "zipCode": "45678",
+      "latitude": 39.7392,
+      "longitude": -104.9903
+    },
+    "price": 550000,
+    "squareFootage": 2000,
+    "rooms": {
+      "bedRooms": 3,
+      "bathRooms": 2
+    },
+    "parking": {
+      "included": false
+    },
+    "easement": ["Secluded Location", "Fireplace", "Wooden Floors"],
+    "description": "A cozy house nestled in the forest with a secluded location, fireplace, and beautiful wooden floors. Ideal for nature lovers.",
+    "propertyImages": [
+      "https://i.ibb.co/J7zdVxL/pexels-photo-208736.jpg",
+      "https://i.ibb.co/Xtk7qD3/pexels-photo-276554.jpg",
+      "https://i.ibb.co/YQD4B4P/pexels-photo-279607.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 1990,
+    "ownerInformation": {
+      "name": "Nature Homes Realty",
+      "email": "info@naturehomes.com",
+      "phone": "555-987-6543"
+    }
+  },
+  {
+    "propertyTitle": "Mountain Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "404 Birch Lane",
+      "city": "Long Beach",
+      "state": "California",
+      "zipCode": "90802",
+      "neighborhood": "Belmont Shore",
+      "latitude": 33.7701,
+      "longitude": -118.1937
+    },
+    "price": 1200000,
+    "squareFootage": 1800,
+    "easement": ["Swimming Pool", "Garden", "Spa", "Mountain View"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 4-bed with a loft, 3-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. ",
+    "propertyImages": [
+      "https://i.ibb.co/Ss2gpjP/villa-7-1.jpg",
+      "https://i.ibb.co/L6FtQ5q/villa-7-2.jpg",
+      "https://i.ibb.co/PFTrH77/villa-7-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet", "park"],
+    "parking": {
+      "included": true,
+      "spaces": 9
+    },
+    "yearBuilt": 2019,
+    "propertyStatus": "rent",
+    "ownerInformation": {
+      "name": "Rich Doe",
+      "email": "rich.doe@.gmail.com",
+      "phone": "555-984-6543"
+    }
+  },
+  {
+    "propertyTitle": "Mountainview Haven",
+    "propertyType": "house",
+    "location": {
+      "address": "456 Summit Street",
+      "city": "High Peaks",
+      "state": "Mountainville",
+      "zipCode": "78901",
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "price": 950000,
+    "squareFootage": 3200,
+    "rooms": {
+      "bedRooms": 5,
+      "bathRooms": 4
+    },
+    "parking": {
+      "included": true,
+      "spaces": 0
+    },
+    "easement": ["Panoramic Windows", "Mountain View", "Gourmet Kitchen"],
+    "description": "A spacious house with panoramic windows, mountain views, and a gourmet kitchen. Perfect for those who love the mountainous surroundings.",
+    "propertyImages": [
+      "https://i.ibb.co/SKtbBGL/pexels-photo-209315.jpg",
+      "https://i.ibb.co/X3Vyp7v/pexels-photo-534151.jpg",
+      "https://i.ibb.co/X7K24Z2/pexels-photo-262048.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2008,
+    "ownerInformation": {
+      "name": "Mountain Realty Group",
+      "email": "info@mountainrealty.com",
+      "phone": "555-789-0123"
+    }
+  },
+  {
+    "propertyTitle": "Urban Oasis",
+    "propertyType": "house",
+    "location": {
+      "address": "101 Cityscape Lane",
+      "city": "Metropolis",
+      "state": "Cityville",
+      "zipCode": "34567",
+      "latitude": 40.7128,
+      "longitude": -74.006
+    },
+    "price": 1200000,
+    "squareFootage": 4000,
+    "rooms": {
+      "bedRooms": 6,
+      "bathRooms": 5
+    },
+    "parking": {
+      "included": true,
+      "spaces": 3
+    },
+    "easement": ["City View", "Rooftop Terrace", "Smart Home System"],
+    "description": "An urban house with a city view, rooftop terrace, and a smart home system. Ideal for those who love the hustle and bustle of the city.",
+    "propertyImages": [
+      "https://i.ibb.co/GvttKL1/pexels-photo-210617.jpg",
+      "https://i.ibb.co/L0fRFqc/pexels-photo-2724748.webp",
+      "https://i.ibb.co/NsSfjsk/pexels-photo-2134224.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2012,
+    "ownerInformation": {
+      "name": "Cityscape Realty Solutions",
+      "email": "info@cityscaperealty.com",
+      "phone": "555-234-5678"
+    }
+  },
+  {
+    "propertyTitle": "Lakefront Retreat",
+    "propertyType": "house",
+    "location": {
+      "address": "789 Lakeside Drive",
+      "city": "Tranquil Town",
+      "state": "Lakeview",
+      "zipCode": "56789",
+      "latitude": 41.8781,
+      "longitude": -87.6298
+    },
+    "price": 850000,
+    "squareFootage": 3500,
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "parking": {
+      "included": true,
+      "spaces": 2
+    },
+    "easement": ["Lake View", "Boat Dock", "Outdoor Fireplace"],
+    "description": "A serene house with a lake view, boat dock, and outdoor fireplace. Ideal for those who appreciate the tranquility of lakeside living.",
+    "propertyImages": [
+      "https://i.ibb.co/3mjk7DG/pexels-photo-1438834.jpg",
+      "https://i.ibb.co/pQJfkmv/pexels-photo-1571463.jpg",
+      "https://i.ibb.co/ByX21d7/pexels-photo-1643383.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2000,
+    "ownerInformation": {
+      "name": "Lakefront Realty Group",
+      "email": "info@lakefrontrealty.com",
+      "phone": "555-345-6789"
+    }
+  },
+
+  {
+    "propertyTitle": "City Center Loft",
+    "propertyType": "house",
+    "location": {
+      "address": "333 Downtown Avenue",
+      "city": "Central City",
+      "state": "Downtown",
+      "zipCode": "67890",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    "price": 1100000,
+    "squareFootage": 3000,
+    "rooms": {
+      "bedRooms": 2,
+      "bathRooms": 2
+    },
+    "parking": {
+      "included": true,
+      "spaces": 1
+    },
+    "easement": ["Loft Design", "City View", "Modern Interior"],
+    "description": "A stylish loft in the heart of the city with loft design, city views, and modern interior. Ideal for those who love urban living.",
+    "propertyImages": [
+      "https://i.ibb.co/q9Wjz6f/pexels-photo-2155202.jpg",
+      "https://i.ibb.co/0j4wDZ3/pexels-photo-2251247.webp",
+      "https://i.ibb.co/mC1RQCN/pexels-photo-2631746.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2017,
+    "ownerInformation": {
+      "name": "City Loft Realty",
+      "email": "info@cityloftrealty.com",
+      "phone": "555-567-8901"
+    }
+  },
+
+  {
+    "propertyTitle": "Executive Corporate Suites",
+    "description": "Elevate your business presence with our Executive Corporate Suites. This prestigious office space offers a blend of modern design and professional amenities, creating an environment conducive to productivity and success.",
+    "easement": ["Modern Lobby", "Executive Offices", "Conference Rooms"],
+    "utilities": ["High-Speed Internet", "Central Heating", "Smart Lighting"],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "E 5th St.",
+      "city": "Austin",
+      "state": "Texas",
+      "zipCode": "22222",
+      "latitude": 30.266344,
+      "longitude": -97.73866
+    },
+    "price": 35000,
+    "squareFootage": 3000,
+    "rooms": {
+      "officeRooms": 10,
+      "conferenceRooms": 2,
+      "bathrooms": 2
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/h9ZXb4y/office-10.webp",
+      "https://i.ibb.co/YXr0V6V/restroom-1.webp",
+      "https://i.ibb.co/9Y6rqJg/conference-11.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 30
+    },
+    "yearBuilt": 2010,
+    "ownerInformation": {
+      "name": "Emily Parker",
+      "email": "emily@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Country Charm Cottage",
+    "propertyType": "house",
+    "location": {
+      "address": "222 Countryside Lane",
+      "city": "Ruralville",
+      "state": "Countryland",
+      "zipCode": "23456",
+      "latitude": 38.8951,
+      "longitude": -77.0364
+    },
+    "price": 450000,
+    "squareFootage": 1800,
+    "rooms": {
+      "bedRooms": 3,
+      "bathRooms": 2
+    },
+    "parking": {
+      "included": false
+    },
+    "easement": ["Front Porch", "Wooden Floors", "Country Atmosphere"],
+    "description": "A charming cottage with a front porch, wooden floors, and a peaceful country atmosphere. Perfect for those seeking a rural lifestyle.",
+    "propertyImages": [
+      "https://i.ibb.co/kBsK29Z/pexels-photo-1732414.jpg",
+      "https://i.ibb.co/tPy1sGL/pexels-photo-2089698.jpg",
+      "https://i.ibb.co/zFdkrvC/pexels-photo-2121120.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 1985,
+    "ownerInformation": {
+      "name": "Country Homes Realty",
+      "email": "info@countryhomes.com",
+      "phone": "555-456-7890"
+    }
+  },
+  {
+    "propertyTitle": "Downtown Business Center",
+    "description": "Position your business at the heart of commerce in our Downtown Business Center. Immerse yourself in the dynamic energy of the city, with state-of-the-art offices and collaborative spaces designed for innovation.",
+    "easement": [
+      "Professional Reception",
+      "Collaborative Spaces",
+      "Tech Lounge"
+    ],
+    "utilities": ["Fiber Optic Internet", "Climate Control", "Secure Access"],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "999 S Harwood St",
+      "city": "Dallas",
+      "state": "Texas",
+      "zipCode": "75201",
+      "latitude": 32.775866,
+      "longitude": -96.791751
+    },
+    "price": 20000,
+    "squareFootage": 4000,
+    "rooms": {
+      "officeRooms": 5,
+      "conferenceRooms": 1,
+      "bathrooms": 2
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/8XGbsZh/office-1.webp",
+      "https://i.ibb.co/9TMD1Gk/restroom-5.webp",
+      "https://i.ibb.co/hmvwTwK/conference-8.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 25
+    },
+    "yearBuilt": 2012,
+    "ownerInformation": {
+      "name": "Jordan Carter",
+      "email": "jordan@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Metro Office Tower",
+    "description": "Reach new heights with Metro Office Tower, a landmark for success in the business world. Enjoy panoramic views, cutting-edge technology, and a strategic location that defines your business as a leader.",
+    "easement": ["Sky Lounge", "Panoramic Views", "Premium Amenities"],
+    "utilities": ["High-Speed Elevators", "Backup Power", "Advanced Security"],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "111 Walnut Boulevard",
+      "city": "Miami",
+      "state": "Florida",
+      "zipCode": "33101",
+      "latitude": 25.7617,
+      "longitude": -80.1918
+    },
+    "price": 60000,
+    "squareFootage": 4000,
+    "rooms": {
+      "officeRooms": 10,
+      "conferenceRooms": 4,
+      "bathrooms": 2
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/wcvfbzj/office-2.webp",
+      "https://i.ibb.co/MP4RWj2/conference-9.webp",
+      "https://i.ibb.co/XDFnstR/restroom-6.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 20
+    },
+    "yearBuilt": 1999,
+    "ownerInformation": {
+      "name": "Olivia Taylor",
+      "email": "olivia@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Professional Plaza Offices",
+    "description": "Discover a haven of professionalism at Professional Plaza Offices. Elegant and functional, our offices provide a sophisticated setting for your business endeavors, ensuring a positive and impactful impression.",
+    "easement": ["Elegant Lobby", "Private Workspaces", "Client Meeting Rooms"],
+    "utilities": [
+      "Central Air Conditioning",
+      "Video Conferencing",
+      "Biometric Access"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "890 Birch Street",
+      "city": "Portland",
+      "state": "Oregon",
+      "zipCode": "97201",
+      "latitude": 45.5051,
+      "longitude": -122.675
+    },
+    "price": 25000,
+    "squareFootage": 2000,
+    "rooms": {
+      "officeRooms": 10,
+      "conferenceRooms": 1,
+      "bathrooms": 2
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/wBH3Y6G/office-5.webp",
+      "https://i.ibb.co/G5HKMSh/office-7.webp",
+      "https://i.ibb.co/mtSjBDC/conference-5.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 10
+    },
+    "yearBuilt": 2015,
+    "ownerInformation": {
+      "name": "Mason Mitchell",
+      "email": "mason@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Eternal Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "202 Cedar Court",
+      "city": "Oakland",
+      "state": "California",
+      "zipCode": "94601",
+      "neighborhood": "Jack London Square",
+      "latitude": 37.8049,
+      "longitude": -122.2708
+    },
+    "price": 1200000,
+    "squareFootage": 1600,
+    "easement": ["Swimming Pool", "Garden", "Spa"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 5-bed with a loft, 4-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. The living room and dining room have vaulted ceilings and a beautiful fireplace.",
+    "propertyImages": [
+      "https://i.ibb.co/b2j8fpB/villa-5-1.jpg",
+      "https://i.ibb.co/vJNpLc3/villa-5-2.jpg",
+      "https://i.ibb.co/TRDbQbV/villa-5-3.jpg"
+    ],
+    "utilities": [
+      "Water",
+      "Electricity",
+      "High-speed Fiber Internet",
+      "cafeteria"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 10
+    },
+    "yearBuilt": 2018,
+    "propertyStatus": "rent",
+    "ownerInformation": {
+      "name": "Robert Doe",
+      "email": "robert.doe@.gmail.com",
+      "phone": "555-987-6547"
+    }
+  },
+  {
+    "propertyTitle": "Serenity House",
+    "propertyType": "house",
+    "location": {
+      "address": "555 Tranquil Street",
+      "city": "Peacefulville",
+      "state": "Calmland",
+      "zipCode": "12345",
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "price": 620000,
+    "squareFootage": 2400,
+    "rooms": {
+      "bedRooms": 3,
+      "bathRooms": 2
+    },
+    "parking": {
+      "included": true,
+      "spaces": 2
+    },
+    "easement": ["Quiet Neighborhood", "Garden Patio", "Home Office"],
+    "description": "A peaceful house in a quiet neighborhood with a garden patio and a home office. Ideal for those seeking serenity.",
+    "propertyImages": [
+      "https://i.ibb.co/7vDGkym/pexels-pixabay-164558.jpg",
+      "https://i.ibb.co/FwjC1fL/pexels-photo-2635038.webp",
+      "https://i.ibb.co/dMQQvvn/pexels-photo-2988860.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 1998,
+    "ownerInformation": {
+      "name": "Serenity Homes Realty",
+      "email": "info@serenityhomes.com",
+      "phone": "555-678-9012"
+    }
+  },
+  {
+    "propertyTitle": "Central Workspace Hub",
+    "description": "Forge connections and thrive in the heart of business at Central Workspace Hub. Our flexible offices and collaborative spaces offer a central location for networking and growth in the corporate landscape.",
+    "easement": ["Collaborative Workspaces", "Networking Events", "Cafeteria"],
+    "utilities": [
+      "Flexible Office Configurations",
+      "High-Speed Wi-Fi",
+      "24/7 Accessibility"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "567 Maple Drive",
+      "city": "Atlanta",
+      "state": "Georgia",
+      "zipCode": "30301",
+      "latitude": 33.749,
+      "longitude": -84.388
+    },
+    "price": 60000,
+    "squareFootage": 6000,
+    "rooms": {
+      "officeRooms": 20,
+      "conferenceRooms": 3,
+      "bathrooms": 4
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/m0gCksk/office-15.webp",
+      "https://i.ibb.co/T8dzqrv/conference-3.webp",
+      "https://i.ibb.co/DwvWp8w/restroom-4.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 30
+    },
+    "yearBuilt": 2015,
+    "ownerInformation": {
+      "name": "Ethan Hayes",
+      "email": "eithan@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "Luxury Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "123 Main Street",
+      "city": "Los Angeles",
+      "state": "California",
+      "zipCode": "90001",
+      "neighborhood": "Downtown",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    "price": 1200000,
+    "squareFootage": 1800,
+    "easement": ["Swimming Pool", "Garden", "Spa", "Mountain View"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 5-bed with a loft, 3-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. The living room and dining room have vaulted ceilings and a beautiful fireplace. You will love spending time on the deck taking in the beautiful views. ",
+    "propertyImages": [
+      "https://i.ibb.co/qpc2m6q/villa-1-1.jpg",
+      "https://i.ibb.co/Dff0Zh6/villa-1-2.jpg",
+      "https://i.ibb.co/8db9HHs/villa-1-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 5
+    },
+    "yearBuilt": 2016,
+    "propertyStatus": "sale",
+    "ownerInformation": {
+      "name": "John Smith",
+      "email": "John.smith@.gmail.com",
+      "phone": "555-987-6543"
+    }
+  },
+  {
+    "propertyTitle": "Urban Office Residences",
+    "description": "Urban sophistication meets productivity at Urban Office Residences. Unleash your business potential in a contemporary setting, with versatile workspaces and a vibrant atmosphere that inspires creativity.",
+    "easement": ["Modern Interiors", "Creative Spaces", "Breakout Zones"],
+    "utilities": [
+      "Smart Thermostats",
+      "Virtual Meeting Technology",
+      "Energy-Efficient Lighting"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "234 Cedar Road",
+      "city": "Seattle",
+      "state": "Washington",
+      "zipCode": "98101",
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    },
+    "price": 20000,
+    "squareFootage": 2000,
+    "rooms": {
+      "officeRooms": 15,
+      "conferenceRooms": 2,
+      "bathrooms": 2
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/K01PYGN/office-17.webp",
+      "https://i.ibb.co/G5HKMSh/office-7.webp",
+      "https://i.ibb.co/tXVfk2w/conference-6.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 10
+    },
+    "yearBuilt": 2007,
+    "ownerInformation": {
+      "name": "Ava Simmons",
+      "email": "ava@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "City View Business Park",
+    "description": "Experience the perfect blend of work and nature at City View Business Park. Surrounded by greenery, our office spaces offer a tranquil environment with the convenience of city amenities for seamless business operations.",
+    "easement": ["Green Spaces", "Walking Trails", "Outdoor Workstations"],
+    "utilities": [
+      "Green Energy Solutions",
+      "Waste Recycling",
+      "Natural Lighting"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "101 Elm Street",
+      "city": "Austin",
+      "state": "Texas",
+      "zipCode": "78701",
+      "latitude": 30.25,
+      "longitude": -97.75
+    },
+    "price": 55000,
+    "squareFootage": 3500,
+    "rooms": {
+      "officeRooms": 25,
+      "conferenceRooms": 3,
+      "bathrooms": 4
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/kJRLVVG/office-14.webp",
+      "https://i.ibb.co/ypc09xk/office-6.webp",
+      "https://i.ibb.co/kmrrmB3/restroom-2.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 15
+    },
+    "yearBuilt": 2009,
+    "ownerInformation": {
+      "name": "Lucas Rivera",
+      "email": "lucas@gmail.com"
+    }
+  },
+
+  {
+    "propertyTitle": "Seaside Paradise Villa",
+    "propertyType": "villa",
+    "location": {
+      "address": "456 Elm Avenue",
+      "city": "San Francisco",
+      "state": "California",
+      "zipCode": "94102",
+      "neighborhood": "Mission District",
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "price": 950000,
+    "squareFootage": 1600,
+    "easement": ["Private Beach Access", "Sun Deck", "Oceanfront Views"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 4-bed with a loft, 3-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. The living room and dining room have vaulted ceilings and a beautiful fireplace. You will love spending time on the deck taking in the beautiful views. In the kitchen, you'll find stainless steel appliances and a tile backsplash, as well as a breakfast bar.",
+    "propertyImages": [
+      "https://i.ibb.co/7Jr3cGg/villa-2-1.jpg",
+      "https://i.ibb.co/bPwmDd6/villa-2-2.jpg",
+      "https://i.ibb.co/drBWTZp/villa-2-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet"],
+    "parking": {
+      "included": true,
+      "spaces": 3
+    },
+    "yearBuilt": 2017,
+    "propertyStatus": "rent",
+    "ownerInformation": {
+      "name": "Jane Smith",
+      "email": "Jane.smith@.gmail.com",
+      "phone": "555-987-6547"
+    }
+  },
+
+  {
+    "propertyTitle": "Royal Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "505 Redwood Road",
+      "city": "Santa Monica",
+      "state": "California",
+      "zipCode": "90401",
+      "neighborhood": "Ocean Park",
+      "latitude": 34.0219,
+      "longitude": -118.4814
+    },
+    "price": 1200000,
+    "squareFootage": 1400,
+    "easement": ["Swimming Pool", "Garden", "Spa", "Mountain View"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 4-bed with a loft, 3-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining.In the kitchen, you'll find stainless steel appliances and a tile backsplash, as well as a breakfast bar.",
+    "propertyImages": [
+      "https://i.ibb.co/RcmQ9wG/villa-8-1.jpg",
+      "https://i.ibb.co/4R0TQxd/villa-8-2.jpg",
+      "https://i.ibb.co/5nxfqcz/villa-8-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "park"],
+    "parking": {
+      "included": false,
+      "spaces": 0
+    },
+    "yearBuilt": 2018,
+    "propertyStatus": "rent",
+    "ownerInformation": {
+      "name": "Regan smith",
+      "email": "regan.smith@.gmail.com",
+      "phone": "555-987-6548"
+    }
+  }
+]
