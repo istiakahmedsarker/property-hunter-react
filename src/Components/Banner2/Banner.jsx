@@ -21,23 +21,6 @@ const Banner = () => {
     const {user} = useAuth();
     const images = ["https://i.ibb.co/3N2Y5Fd/florian-schmidinger-b-79n-Oqf95-I-unsplash.jpg", "https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg", "https://i.ibb.co/dMt9qmj/digital-marketing-agency-ntwrk-g39p1k-Djv-SY-unsplash.jpg"]
 
-  useEffect(() => {
-    const home = document.getElementById("home");
-    const cloud = document.getElementById("cloud");
-
-    const handleScroll = () => {
-      let value = window.scrollY;
-      cloud.style.top = -value + "px";
-      cloud.style.scale = value + "px";
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <div className="min-h-[80vh] md:min-h-screen relative overflow-hidden flex items-center justify-center">
@@ -45,16 +28,10 @@ const Banner = () => {
       <img
         id="home"
         className=" absolute bottom-0 z-20 h-full w-full object-cover"
-        src="https://i.ibb.co/vdrh6LP/pexels-binyamin-mellish-106399-removebg.png"
+        src="https://i.ibb.co/8mTNjxN/New-banner-image-2.jpg"
         alt=""
       />
 
-      <img
-        id="cloud"
-        className="absolute top-20 z-0 w-full scale-100 h-[200%] object-cover"
-        src="https://images.unsplash.com/photo-1498278854500-7c206daa073b?q=80&w=1728&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        alt=""
-      />
       <div className="h-full w-full bg-white absolute z-10 opacity-30"></div>
       <Container>
       <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full">
@@ -105,36 +82,7 @@ const Banner = () => {
                         </SwiperSlide> 
                         )
                 }
-                  {/* <SwiperSlide
-                  style={{width : "100%"}}
-                    className=" h-full"
-                  >
-                    <div className="w-full h-full">
-                      
-                    <img src="https://i.ibb.co/3N2Y5Fd/florian-schmidinger-b-79n-Oqf95-I-unsplash.jpg" alt=""  className="h-full w-full object-cover"/>
-                
-                    </div>
-                  </SwiperSlide> */}
-                  {/* <SwiperSlide
-                  style={{width : "100%"}}
-                    className=" h-full"
-                  >
-                    <div className=" h-full">
-                      
-                    <img src="https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg" alt=""  className="h-full w-full object-cover"/>
-                
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide
-                  style={{width : "100%"}}
-                    className="w-full h-full"
-                  >
-                    <div className="h-full w-full ">
-                      
-                    <img src="https://i.ibb.co/dMt9qmj/digital-marketing-agency-ntwrk-g39p1k-Djv-SY-unsplash.jpg" alt=""  className="h-full w-full object-contain"/>
-                
-                    </div>
-                  </SwiperSlide> */}
+                 
             </Swiper>
           </div>
         </div>
