@@ -12,7 +12,9 @@ const LatestBlogHomeCard = ({ blog }) => {
           src={images[0]}
           alt="blog image"
         />
-        <h3 className="absolute top-0 right-0 bg-slate-300">{createdAt}</h3>
+        <h3 className="absolute top-0 right-0 bg-[#EB6753] px-4 py-2 ">
+          {createdAt}
+        </h3>
       </div>
       <h3 className=" font-semibold my-3 h-10">{heading}</h3>
       <Link to={`/blogs/${_id}`} className="my-3 ">
