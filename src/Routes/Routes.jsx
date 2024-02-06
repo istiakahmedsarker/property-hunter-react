@@ -18,8 +18,6 @@ import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
-
-import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 // import
 const router = createBrowserRouter([
   {
