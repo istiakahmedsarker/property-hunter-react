@@ -3,6 +3,7 @@ import { GrAnnounce } from 'react-icons/gr';
 import { MdSpaceDashboard } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
 import { FaUserGroup } from 'react-icons/fa6';
+import { FaFileInvoiceDollar } from "react-icons/fa6";
 const SideNav = () => {
   return (
     <div className="pt-20 px-4">
@@ -31,6 +32,19 @@ const SideNav = () => {
           <div className="flex items-center gap-2">
             <GrAnnounce />
             Announcement
+          </div>
+        </NavLink>
+        <NavLink
+          to={'/dashboard/payment-history'}
+          className={({ isActive }) =>
+            isActive
+              ? 'py-2 bg-[#eb6753] text-white px-2 rounded-md'
+              : 'py-2 bg-white px-2 rounded-md'
+          }
+        >
+          <div className="flex items-center gap-2">
+            <FaFileInvoiceDollar/>
+            Payment History
           </div>
         </NavLink>
         <NavLink

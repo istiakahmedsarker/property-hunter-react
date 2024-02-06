@@ -3,8 +3,9 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
-import Properties from '../Pages/Properties/Properties';
+import BlogCard from '../Components/BlogCard/BlogCard';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
+import Properties from '../Pages/Properties/Properties';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
 import Dashboard from '../Layout/Dashboard';
@@ -15,6 +16,8 @@ import BlogPost from '../Components/BlogPost/BlogPost';
 import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
+import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
+import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
 // import
 const router = createBrowserRouter([
   {
@@ -31,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/blogs/:id',
-        element: <BlogDetails />,
+        element: <BlogDetails/>
       },
 
       {
@@ -59,6 +62,10 @@ const router = createBrowserRouter([
         path: '/register',
         element: <Register />,
       },
+      {
+        path: '/payment',
+        element: <StripePayment/>
+      }
     ],
   },
   {
@@ -85,6 +92,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/profile',
         element: <Profile />,
+      },
+      //? Member only routes
+      {
+        path: '/dashboard/payment-history',
+        element: <PaymentHistory />,
       },
     ],
   },
