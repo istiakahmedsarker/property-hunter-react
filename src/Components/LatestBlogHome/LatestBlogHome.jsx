@@ -20,7 +20,7 @@ const LatestBlogHome = () => {
         <h3 className="text-sm font-semibold">Take a Moment to Read This</h3>
       </div>
 
-      <div className="w-11/12 mx-auto">
+      <div className="w-full mx-auto">
         <Marquee className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5  ">
           {latestBlogsData?.blogs?.map(blog => (
             <LatestBlogHomeCard key={blog._id} blog={blog}></LatestBlogHomeCard>
