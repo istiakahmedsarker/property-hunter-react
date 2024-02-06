@@ -3,11 +3,8 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
-<<<<<<< HEAD
 // import BlogCard from "../Components/BlogCard/BlogCard";
 // import BlogDetails from '../Components/BlogDetails/BlogDetails';
-=======
->>>>>>> c9e8ec3ba3f7ecf2a8c52b65618a75b81a63790f
 import Properties from '../Pages/Properties/Properties';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
@@ -21,7 +18,8 @@ import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
-import BlogDetails from '../Pages/BlogDetails/BlogDetails';
+// import BlogDetails from '../Pages/BlogDetails/BlogDetails';
+import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary';
 // import
 const router = createBrowserRouter([
   {
@@ -97,6 +95,11 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/payment-history',
         element: <PaymentHistory/>
+      },
+      //? Admin only routes
+      {
+        path: '/dashboard/listing-summary',
+        element: <ListingSummary/>
       },
     ],
   },
