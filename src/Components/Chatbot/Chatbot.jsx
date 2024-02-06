@@ -1,109 +1,108 @@
 import ChatBot from 'react-simple-chatbot';
+import { Link } from 'react-router-dom';
 
 const Chatbot = () => {
   return (
     <ChatBot
       steps={[
         {
+          id: '0',
+          message: 'Welcome to our property services!',
+
+          trigger: '1',
+        },
+        {
           id: '1',
-          message: 'Welcome! Are you looking to buy, sell, or rent a property?',
+          message: 'How can I assist you today?',
 
           trigger: '2',
         },
         {
           id: '2',
-          user: true,
-          trigger: '3',
+          options: [
+            { value: 'buy', label: 'Buy Property', trigger: '3' },
+            { value: 'sell', label: 'Sell Property', trigger: '13' },
+            { value: 'rent', label: 'Rent Property', trigger: '20' },
+          ],
         },
         {
           id: '3',
-          message: 'Great! Are you looking to buy, sell, or rent a property?',
+          message:
+            "That's wonderful! What type of property are you interested in?",
           trigger: '4',
         },
         {
-          id: '4',
-          options: [
-            { value: 'buy', label: 'Buy', trigger: '5' },
-            { value: 'sell', label: 'Sell', trigger: '6' },
-            { value: 'rent', label: 'Rent', trigger: '7' },
-          ],
-        },
-        {
-          id: '5',
+          id: '20',
           message:
-            "That's wonderful! What type of property are you interested in?",
-          trigger: '8',
-        },
-        {
-          id: '6',
-          message: 'Planning to sell? Great! Tell me more about your property.',
-          trigger: '8',
-        },
-        {
-          id: '7',
-          message:
-            'Looking to rent? Sure! What type of property are you looking for?',
-          trigger: '8',
-        },
-        {
-          id: '8',
-          user: true,
-          trigger: '9',
-        },
-        {
-          id: '9',
-          message: 'Thanks for sharing your preferences!',
-          trigger: '10',
-        },
-        {
-          id: '10',
-          message: 'Let me find some options for you...',
-          trigger: '11',
-        },
-        {
-          id: '11',
-          message: 'Here are some properties that match your criteria...',
-          trigger: '12',
-        },
-        {
-          id: '12',
-          component: (
-            <div>
-              <p>Property 1: [Property details]</p>
-              <p>Property 2: [Property details]</p>
-              <p>Property 3: [Property details]</p>
-              <p>Would you like more information on any of these properties?</p>
-            </div>
-          ),
-          trigger: '13',
+            "That's wonderful! What type of property are you interested for rent?",
+          trigger: '4',
         },
         {
           id: '13',
-          options: [
-            { value: 'yes', label: 'Yes', trigger: '14' },
-            { value: 'no', label: 'No', trigger: '15' },
-          ],
+          message: 'Sell your property with us is simple.  ',
+          trigger: '14',
         },
         {
           id: '14',
           message:
-            'Please specify which property you would like more information about.',
-          trigger: '16',
+            'You can provide details about your property, upload photos, and set your desired price.',
+          trigger: '',
+        },
+
+        {
+          id: '4',
+          options: [
+            { value: 'house', label: 'House', trigger: '5' },
+            { value: 'apartment', label: 'Apartment', trigger: '6' },
+            { value: 'office', label: 'Office', trigger: '7' },
+            { value: 'villa', label: 'Villa', trigger: '8' },
+          ],
         },
         {
-          id: '15',
-          message: 'Feel free to ask if you need further assistance.',
-          end: true,
+          id: '5',
+          message: 'Explore our listings and find your dream home today!',
+          trigger: '9',
         },
         {
-          id: '16',
-          user: true,
-          trigger: '17',
+          id: '6',
+          message: 'Explore our listings and find your dream apartment today!',
+          trigger: '9',
         },
         {
-          id: '17',
-          message: 'Here are the details of the property...',
-          end: true,
+          id: '7',
+          message: 'Explore our listings and find your dream office today!',
+          trigger: '9',
+        },
+        {
+          id: '8',
+          message: 'Explore our listings and find your dream office today!',
+
+          trigger: '9',
+        },
+        {
+          id: '9',
+          message: 'Want to check?',
+          trigger: '10',
+        },
+        {
+          id: '10',
+          options: [
+            { value: 'yes', label: 'Yes', trigger: '11' },
+            { value: 'no', label: 'No', trigger: '12' },
+          ],
+        },
+        {
+          id: '11',
+          component: (
+            <Link className="text-blue-500 underline" to="/properties">
+              Check here
+            </Link>
+          ),
+        },
+        {
+          id: '12',
+          message: 'Thanks for coming',
+          ends: true,
         },
       ]}
       floating={true}

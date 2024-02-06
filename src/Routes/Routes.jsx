@@ -3,9 +3,13 @@ import Main from '../Layout/Main';
 import Login from '../Pages/Login/Login';
 import Home from '../Pages/Home/Home';
 import Blogs from '../Pages/Blogs/Blogs';
+<<<<<<< HEAD
 // import BlogCard from "../Components/BlogCard/BlogCard";
 // import BlogDetails from '../Components/BlogDetails/BlogDetails';
+=======
+>>>>>>> c9e8ec3ba3f7ecf2a8c52b65618a75b81a63790f
 import Properties from '../Pages/Properties/Properties';
+import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
 import Register from '../Pages/Register/Register';
 import Dashboard from '../Layout/Dashboard';
