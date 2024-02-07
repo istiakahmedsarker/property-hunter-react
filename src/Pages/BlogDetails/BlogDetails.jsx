@@ -69,27 +69,12 @@ const BlogDetails = () => {
           dangerouslySetInnerHTML={{ __html: description }}
           className="text-lg mt-4"
         />
-        {/* <div className="text-lg mt-4">{parse(description)}</div> */}
       </div>
 
       <hr />
 
       <BlogComments comments={comments} />
 
-      {/* <CommentTemplate
-        avatar={
-          'https://res.cloudinary.com/debqyv4o6/image/upload/v1705411057/zoe-fernandez--zqoE7jnQgw-unsplash_1_heinq5.jpg'
-        }
-        username="kyle"
-        content="Very intersting blog"
-      />
-      <CommentTemplate
-        avatar={
-          'https://res.cloudinary.com/debqyv4o6/image/upload/v1705411090/vince-veras-AJIqZDAUD7A-unsplash_1_l0gfmt.jpg'
-        }
-        username="farhan"
-        content="excellent"
-      /> */}
 
       <CommentForm id={id} refetch={refetch} />
     </div>

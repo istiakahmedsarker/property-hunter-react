@@ -7,6 +7,7 @@ import './Properties.css';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import TopButton from '../../Components/Shared/TopButton/TopButton';
 import useDebounce from '../../Hooks/useDebounce';
+// for explore property
 
 const Properties = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -15,6 +16,8 @@ const Properties = () => {
   const [isGrid, setIsGrid] = useState(false);
   const debouncedSearchValue = useDebounce(searchText, 800);
 
+  // for explore type
+
   const limit = 6;
   const [checkboxes, setCheckboxes] = useState({
     all: true,
@@ -22,7 +25,7 @@ const Properties = () => {
     sale: false,
   });
 
-  const [typecCheckboxes, setTypeCheckboxes] = useState({
+  const [typeCheckboxes, setTypeCheckboxes] = useState({
     all: true,
     apartment: false,
     office: false,
@@ -42,7 +45,7 @@ const Properties = () => {
   const handleTypeCheckboxChange = (checkboxName) => {
     const updatedCheckboxes = {};
 
-    for (let key in typecCheckboxes) {
+    for (let key in typeCheckboxes) {
       updatedCheckboxes[key] = key === checkboxName;
     }
 
@@ -52,9 +55,11 @@ const Properties = () => {
   const checkedItem = Object.keys(checkboxes).find(
     (checkbox) => checkboxes[checkbox]
   );
-  const typeCheckedItem = Object.keys(typecCheckboxes).find(
-    (checkbox) => typecCheckboxes[checkbox]
+  const typeCheckedItem = Object.keys(typeCheckboxes).find(
+    (checkbox) => typeCheckboxes[checkbox]
   );
+  // for explore Type
+  const propertyType = typeCheckedItem || propertyTypeParam || 'all';
 
   const { data: propertiesData, isPending } = useGetData({
     key: [
@@ -65,6 +70,7 @@ const Properties = () => {
       limit,
       activePage,
       debouncedSearchValue,
+      propertyType,
     ],
     api: `/properties?propertyStatus=${
       checkedItem === 'all' ? '' : checkedItem
@@ -72,6 +78,7 @@ const Properties = () => {
       typeCheckedItem === 'all' ? '' : typeCheckedItem
     }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
   });
+  // console.log('API Response:', propertiesData);
 
   const totalPage = Math.ceil(parseInt(propertiesData?.totalProperty) / limit);
 
@@ -94,9 +101,9 @@ const Properties = () => {
   };
 
   // for scroll to top
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({ top: 0, behavior: 'smooth' });
+  // };
   // console.log(filteredCards);
 
   if (isPending) {
@@ -109,7 +116,7 @@ const Properties = () => {
   return (
     <div className="max-w-7xl mx-auto pt-8 pb-20">
       <div className="my-6">
-        <h3 className="text-3xl font-semibold">Properties Forsale</h3>
+        <h3 className="text-3xl font-semibold">Properties For sale</h3>
       </div>
       <div className="grid grid-cols-12 gap-6 ">
         <div className="col-span-4">
@@ -178,7 +185,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.all}
+                    checked={typeCheckboxes.all}
                     onChange={() => handleTypeCheckboxChange('all')}
                   />
                   <label>All</label>
@@ -187,7 +194,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.apartment}
+                    checked={typeCheckboxes.apartment}
                     onChange={() => handleTypeCheckboxChange('apartment')}
                   />
                   <label>Apartment</label>
@@ -196,7 +203,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.office}
+                    checked={typeCheckboxes.office}
                     onChange={() => handleTypeCheckboxChange('office')}
                   />
                   <label>Office</label>
@@ -205,7 +212,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.villa}
+                    checked={typeCheckboxes.villa}
                     onChange={() => handleTypeCheckboxChange('villa')}
                   />
                   <label>Villa</label>
@@ -248,7 +255,7 @@ const Properties = () => {
                 )}
               </div>
               {!isGrid ? (
-                <div className="grid md:grid-cols-2 sm:grid-cols-1 gap-5">
+                <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
                   {propertiesData?.properties?.map((card) => (
                     <PropertiesCard key={card._id} card={card}></PropertiesCard>
                   ))}
@@ -309,5 +316,4 @@ const Properties = () => {
     </div>
   );
 };
-
 export default Properties;
