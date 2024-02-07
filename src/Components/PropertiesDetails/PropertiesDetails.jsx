@@ -235,7 +235,7 @@ const PropertiesDetails = () => {
             <li className="py-2">{details.utilities[2]}</li>
           </div>
           {/* recommended property */}
-          <RecommendedProperty></RecommendedProperty>
+          <RecommendedProperty cardDetails={cardDetails}></RecommendedProperty>
           {/* properties Address */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Address</h3>

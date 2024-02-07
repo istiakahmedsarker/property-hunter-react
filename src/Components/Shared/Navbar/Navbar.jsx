@@ -73,8 +73,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-gray-50">
-      <div className="navbar px-4 md:px-0 max-w-7xl mx-auto py-4  text-gray-700">
+    <div className=" bg-[#ebebeb]">
+      <div className="navbar px-4 md:px-4 max-w-7xl mx-auto py-6  text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -107,7 +107,7 @@ const Navbar = () => {
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
          <img  className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
       
-            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl ">Property-Hunter</h3>
+            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl text-gray-900">Property-Hunter</h3>
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -173,7 +173,7 @@ const Navbar = () => {
           {!user && (
             <Link
               to="/login"
-              className="px-7 py-3 lg:px-5 xl:px-7 border-2 border-[#eb6753] md:border-2 md:border-[#eb6753] lg:border-none lg:hover:border-2  lg:hover:border-[#eb6753] rounded-full text-sm md:text-lg lg:text-[16px] xl:text-lg hover:bg-[#eb6753] font-medium  md:bg-none lg:py-2 xl:py-3 text-gray-700 hover:text-gray-100"
+              className="px-7 py-3 lg:px-5 xl:px-7 border-2 border-[#eb6753] md:border-2 md:border-[#eb6753] lg:border-none lg:hover:border-2  lg:hover:border-[#eb6753] rounded-md text-sm md:text-lg lg:text-[16px] xl:text-lg hover:bg-[#eb6753] md:hover:bg-[#091538] font-medium  md:bg-none lg:py-2 xl:py-3 text-gray-700 hover:text-gray-100"
             >
               Login/Register
             </Link>
@@ -186,7 +186,7 @@ const Navbar = () => {
                 navigate('/addProperties');
               }
             }}
-            className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-full ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium hover:border-[#eb6753] text-gray-700 hover:text-gray-100 border-2 border-gray-700 hover:bg-[#eb6753]"
+            className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-md ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium hover:border-[#eb6753] hover:text-gray-100 border-2 border-gray-700 bg-[#eb6753] border-none text-white hover:bg-[#e67f6f]"
           >
             Add Property
           </button>
