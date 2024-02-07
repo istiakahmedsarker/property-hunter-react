@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import PropertiesCard from '../../Components/PropertiesCard/PropertiesCard';
 import PropertiesCardList from '../../Components/PropertiesCard/PropertiesCardList';
 import { FiSearch } from 'react-icons/fi';
@@ -8,7 +8,6 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
 import TopButton from '../../Components/Shared/TopButton/TopButton';
 import useDebounce from '../../Hooks/useDebounce';
 // for explore property
-import { useLocation } from 'react-router-dom';
 
 const Properties = () => {
   const [selectedOption, setSelectedOption] = useState('');
@@ -16,13 +15,8 @@ const Properties = () => {
   const [searchText, setSearchText] = useState('');
   const [isGrid, setIsGrid] = useState(false);
   const debouncedSearchValue = useDebounce(searchText, 800);
-  // for explore type
-  const location = useLocation();
-  const propertyTypeParam = new URLSearchParams(location.search).get(
-    'propertyType'
-  );
 
-  console.log('Property Type:', propertyTypeParam);
+  // for explore type
 
   const limit = 6;
   const [checkboxes, setCheckboxes] = useState({
@@ -31,14 +25,14 @@ const Properties = () => {
     sale: false,
   });
 
-  const [typecCheckboxes, setTypeCheckboxes] = useState({
+  const [typeCheckboxes, setTypeCheckboxes] = useState({
     all: true,
     apartment: false,
     office: false,
     villa: false,
   });
 
-  const handleCheckboxChange = checkboxName => {
+  const handleCheckboxChange = (checkboxName) => {
     const updatedCheckboxes = {};
 
     for (let key in checkboxes) {
@@ -48,10 +42,10 @@ const Properties = () => {
     setCheckboxes(updatedCheckboxes);
   };
 
-  const handleTypeCheckboxChange = checkboxName => {
+  const handleTypeCheckboxChange = (checkboxName) => {
     const updatedCheckboxes = {};
 
-    for (let key in typecCheckboxes) {
+    for (let key in typeCheckboxes) {
       updatedCheckboxes[key] = key === checkboxName;
     }
 
@@ -59,10 +53,10 @@ const Properties = () => {
   };
 
   const checkedItem = Object.keys(checkboxes).find(
-    checkbox => checkboxes[checkbox]
+    (checkbox) => checkboxes[checkbox]
   );
-  const typeCheckedItem = Object.keys(typecCheckboxes).find(
-    checkbox => typecCheckboxes[checkbox]
+  const typeCheckedItem = Object.keys(typeCheckboxes).find(
+    (checkbox) => typeCheckboxes[checkbox]
   );
   // for explore Type
   const propertyType = typeCheckedItem || propertyTypeParam || 'all';
@@ -137,7 +131,7 @@ const Properties = () => {
                 type="text"
                 value={searchText}
                 placeholder="Search here"
-                onChange={e => setSearchText(e.target.value)}
+                onChange={(e) => setSearchText(e.target.value)}
               />
               <FiSearch className="absolute text-2xl text-stone-400 left-4 top-4" />
             </div>
@@ -145,7 +139,7 @@ const Properties = () => {
             <select
               className="border-[2px] border-stone-200 px-4 py-3 rounded-md w-full text- font-medium text-stone-400"
               value={selectedOption}
-              onChange={e => setSelectedOption(e.target.value)}
+              onChange={(e) => setSelectedOption(e.target.value)}
             >
               <option value="-price">High to Low</option>
               <option value="price">Low to High</option>
@@ -191,7 +185,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.all}
+                    checked={typeCheckboxes.all}
                     onChange={() => handleTypeCheckboxChange('all')}
                   />
                   <label>All</label>
@@ -200,7 +194,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.apartment}
+                    checked={typeCheckboxes.apartment}
                     onChange={() => handleTypeCheckboxChange('apartment')}
                   />
                   <label>Apartment</label>
@@ -209,7 +203,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.office}
+                    checked={typeCheckboxes.office}
                     onChange={() => handleTypeCheckboxChange('office')}
                   />
                   <label>Office</label>
@@ -218,7 +212,7 @@ const Properties = () => {
                 <div className="flex items-center gap-2">
                   <input
                     type="radio"
-                    checked={typecCheckboxes.villa}
+                    checked={typeCheckboxes.villa}
                     onChange={() => handleTypeCheckboxChange('villa')}
                   />
                   <label>Villa</label>
@@ -262,13 +256,13 @@ const Properties = () => {
               </div>
               {!isGrid ? (
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
-                  {propertiesData?.properties?.map(card => (
+                  {propertiesData?.properties?.map((card) => (
                     <PropertiesCard key={card._id} card={card}></PropertiesCard>
                   ))}
                 </div>
               ) : (
                 <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5  my-6">
-                  {propertiesData?.properties?.map(card => (
+                  {propertiesData?.properties?.map((card) => (
                     <PropertiesCardList
                       key={card._id}
                       card={card}
@@ -289,7 +283,7 @@ const Properties = () => {
                 <FaArrowLeft />
               </button>
 
-              {pages.map(pageNo => (
+              {pages.map((pageNo) => (
                 <button
                   className={`${
                     activePage === pageNo
@@ -322,5 +316,4 @@ const Properties = () => {
     </div>
   );
 };
-
 export default Properties;

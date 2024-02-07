@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import BlogCard from '../../Components/BlogCard/BlogCard';
 import { Link } from 'react-router-dom';
-import useAxios from '../../Hooks/useAxios';
 import useDebounce from '../../Hooks/useDebounce';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa6';
 import { FiSearch } from 'react-icons/fi';
@@ -15,39 +14,10 @@ const Blogs = () => {
   const [activePage, setActivePage] = useState(1);
   const limit = 4;
 
-  // const { data: latestBlogsData = [] } = useQuery({
-  //   queryKey: ['latestBlogs'],
-  //   queryFn: async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         `/blogs?sort=-createdAt&limit=3&select=heading,images`
-  //       );
-  //       return res?.data?.data;
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   },
-  // });
-
   const { data: latestBlogsData } = useGetData({
     key: ['latestBlogs'],
     api: `/blogs?sort=-createdAt&limit=3&select=heading,images`,
   });
-
-  // const { isPending, data = [], error: err } = useQuery({
-  //   queryKey: ['blogs', debouncedSearchValue, activePage],
-  //   queryFn: async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         `/blosgs?title=${searchText}&page=${activePage}&limit=${limit}`
-  //       );
-  //       return res?.data?.data;
-  //     } catch (error) {
-  //       // console.log(error);
-  //       setError(error.message);
-  //     }
-  //   },
-  // });
 
   const { data, isPending, error } = useGetData({
     key: ['blogs', debouncedSearchValue, activePage],
