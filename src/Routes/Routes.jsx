@@ -18,6 +18,8 @@ import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
+import Payment from '../Components/PaymentMethod/Payment';
+import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
 const router = createBrowserRouter([
   {
@@ -65,7 +67,7 @@ const router = createBrowserRouter([
       {
         path: '/payment',
         element: <StripePayment/>
-      }
+      },
     ],
   },
   {

@@ -14,4 +14,7 @@ npm i @tanstack/react-query
 react-simple-chatbot
 npm install react-redux   
 npm install redux
+npm i emoji-mart
 npm i stripe
+npm i @emailjs/browser
+npm i react-sweetalert2

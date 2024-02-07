@@ -4,6 +4,7 @@ import Testimonials from '../../Components/Testimonials/Testimonials';
 import CommentTemplate from '../../Components/Comments/Comments';
 import Banner from '../../Components/Banner2/Banner';
 import Chatbot from '../../Components/Chatbot/Chatbot';
+import ContactUs from '../../Components/Contract/ContactUs/ContactUs';
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Testimonials />
 
       <Chatbot />
+      <ContactUs/>
     </div>
   );
 };
