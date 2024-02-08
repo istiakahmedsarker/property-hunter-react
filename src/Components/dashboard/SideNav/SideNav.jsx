@@ -1,12 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { GrAnnounce } from 'react-icons/gr';
-<<<<<<< HEAD
-import { MdSpaceDashboard } from 'react-icons/md';
-import { FaUser, FaUsersCog, FaHeart } from 'react-icons/fa';
-=======
 import { MdList, MdSpaceDashboard } from 'react-icons/md';
-import { FaUser } from 'react-icons/fa';
->>>>>>> 80981b6e77da907d336af4e9da9f6f6d5e69fcb8
+import { FaUser, FaUsersCog, FaHeart } from 'react-icons/fa';
 import { FaUserGroup } from 'react-icons/fa6';
 import {
   FaFileInvoiceDollar,
@@ -155,11 +150,11 @@ const SideNav = () => {
           }
         >
           <div className="flex items-center gap-2">
-            <MdList/>
-         Listing Summary
+            <MdList />
+            Listing Summary
           </div>
         </NavLink>
-       
+
         <NavLink
           to={'/dashboard/announcement'}
           className={({ isActive }) =>

@@ -7,14 +7,15 @@ import { IoCalendarClearOutline } from 'react-icons/io5';
 import AddProperties from '../../Pages/AddProperties/AddProperties';
 import BuyerInquiryForm from './Buyer Inquiry Form/BuyerInquiryForm';
 import TopButton from '../Shared/TopButton/TopButton';
+import { FcConferenceCall } from 'react-icons/fc';
+import { FaUsersViewfinder } from 'react-icons/fa6';
+import { RiHomeOfficeFill } from 'react-icons/ri';
 import RecommendedProperty from './RecommendedProperty/RecommendedProperty';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
-
   const details = cardDetails?.data?.property || {};
   const [showFullDescription, setShowFullDescription] = useState(false);
-
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const toggleDescription = () => {
@@ -31,7 +32,6 @@ const PropertiesDetails = () => {
     const lon = details.location.longitude;
     ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
   });
-  console.log(details);
   return (
     <div className="w-11/12 mx-auto">
       <div className="lg:w-1/3 w-full my-3">
@@ -92,28 +92,70 @@ const PropertiesDetails = () => {
           <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl font-semibold py-5">Overview</h3>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-6">
-              <div className="flex items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <IoBedOutline />
-                  </h3>
+              {details?.rooms?.bedRooms ? (
+                <div className="flex items-center gap-5">
+                  <div>
+                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
+                      <IoBedOutline />
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Bedroom</h3>
+                    <h3>{details.bedroom}</h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold">Bedroom</h3>
-                  <h3>{details.bedroom}</h3>
+              ) : (
+                ''
+              )}
+
+              {details.rooms?.officeRooms ? (
+                <div className="flex  items-center gap-5">
+                  <div>
+                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
+                      <RiHomeOfficeFill />
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Office room</h3>
+                    <h3></h3>
+                  </div>
                 </div>
-              </div>
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <PiBathtub />
-                  </h3>
+              ) : (
+                ''
+              )}
+
+              {details.rooms?.conferenceRooms ? (
+                <div className="flex  items-center gap-5">
+                  <div>
+                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
+                      <FaUsersViewfinder />
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Conference room</h3>
+                    <h3>{details.bathroom}</h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold">Bathroom</h3>
-                  <h3>{details.bathroom}</h3>
+              ) : (
+                ''
+              )}
+
+              {details.rooms?.bathRooms ? (
+                <div className="flex  items-center gap-5">
+                  <div>
+                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
+                      <PiBathtub />
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Bathroom</h3>
+                    <h3>{details.bathroom}</h3>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                ''
+              )}
+
               <div className="flex  items-center gap-5">
                 <div>
                   <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
@@ -125,17 +167,21 @@ const PropertiesDetails = () => {
                   <h3>{details.yearBuilt}</h3>
                 </div>
               </div>
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <BiSolidCarGarage />
-                  </h3>
+              {details.parking.included ? (
+                <div className="flex  items-center gap-5">
+                  <div>
+                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
+                      <BiSolidCarGarage />
+                    </h3>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Garage</h3>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold">Garage</h3>
-                  <h3>{details.parking.spaces} sq Ft</h3>
-                </div>
-              </div>
+              ) : (
+                ''
+              )}
+
               <div className="flex  items-center gap-5">
                 <div>
                   <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
@@ -188,33 +234,64 @@ const PropertiesDetails = () => {
                   <span>: $ {details.price}</span>
                 </h3>
                 {/* parking need to be conditional */}
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Garage Size</span>
-                  <span>: {details.parking.spaces}</span>
-                </h3>
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Bedroom</span>
-                  <span>: {details.bedroom}</span>
-                </h3>
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Bathroom</span>
-                  <span>: {details.bathroom}</span>
-                </h3>
+                {details.parking.included ? (
+                  <h3 className="grid grid-cols-2 py-1">
+                    <span className="font-semibold">Garage size</span>
+                    <span>: {details.parking.spaces}</span>
+                  </h3>
+                ) : (
+                  ''
+                )}
+
+                {details.rooms?.bedRooms ? (
+                  <h3 className="grid grid-cols-2 py-1">
+                    <span className="font-semibold">Bedroom</span>
+                    <span>: {details.rooms.bedRooms}</span>
+                  </h3>
+                ) : (
+                  ''
+                )}
+
+                {details.rooms?.bathRooms ? (
+                  <h3 className="grid grid-cols-2 py-1">
+                    <span className="font-semibold">Bathroom</span>
+                    <span>: {details.rooms.bathRooms}</span>
+                  </h3>
+                ) : (
+                  ''
+                )}
+                {details.rooms?.conferenceRooms ? (
+                  <h3 className="grid grid-cols-2 py-1">
+                    <span className="font-semibold">Conference room</span>
+                    <span>: {details.rooms.conferenceRooms}</span>
+                  </h3>
+                ) : (
+                  ''
+                )}
+                {details.rooms?.officeRooms ? (
+                  <h3 className="grid grid-cols-2 py-1">
+                    <span className="font-semibold">Office room</span>
+                    <span>: {details.rooms.officeRooms}</span>
+                  </h3>
+                ) : (
+                  ''
+                )}
+
                 {/*  */}
                 <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">property Size</span>
+                  <span className="font-semibold">Property size</span>
                   <span>: {details.squareFootage} sq Ft</span>
                 </h3>
                 <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Year of Build </span>
+                  <span className="font-semibold">Year of build </span>
                   <span>: {details.yearBuilt} </span>
                 </h3>
                 <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">property Type </span>
+                  <span className="font-semibold">Property type </span>
                   <span>: {details.propertyType}</span>
                 </h3>
                 <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">property Status </span>
+                  <span className="font-semibold">Property status </span>
                   <span>: {details.propertyStatus}</span>
                 </h3>
               </div>
@@ -235,7 +312,11 @@ const PropertiesDetails = () => {
             <li className="py-2">{details.utilities[2]}</li>
           </div>
           {/* recommended property */}
-          <RecommendedProperty cardDetails={cardDetails}></RecommendedProperty>
+          <RecommendedProperty
+            cardDetails={cardDetails}
+            type={details?.propertyType}
+            id={details?._id}
+          ></RecommendedProperty>
           {/* properties Address */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Address</h3>
@@ -277,10 +358,14 @@ const PropertiesDetails = () => {
                 <span> Email</span>
                 <span>: {details.ownerInformation.email}</span>
               </h3>
-              <h3 className="flex gap-5 py-2">
-                <span> Phone</span>
-                <span>: {details.ownerInformation.phone}</span>
-              </h3>
+              {details.ownerInformation.phone ? (
+                <h3 className="flex gap-5 py-2">
+                  <span> Phone</span>
+                  <span>: {details.ownerInformation.phone}</span>
+                </h3>
+              ) : (
+                ''
+              )}
             </div>
           </div>
           {/*from open  */}

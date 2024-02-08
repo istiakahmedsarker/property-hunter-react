@@ -120,6 +120,43 @@
     }
   },
   {
+    "propertyTitle": "Urban Oasis",
+    "propertyType": "house",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "101 Cityscape Lane",
+      "city": "Metropolis",
+      "state": "Cityville",
+      "zipCode": "34567",
+      "latitude": 40.7128,
+      "longitude": -74.006
+    },
+    "price": 1200000,
+    "squareFootage": 4000,
+    "rooms": {
+      "bedRooms": 6,
+      "bathRooms": 5
+    },
+    "parking": {
+      "included": true,
+      "spaces": 3
+    },
+    "easement": ["City View", "Rooftop Terrace", "Smart Home System"],
+    "description": "An urban house with a city view, rooftop terrace, and a smart home system. Ideal for those who love the hustle and bustle of the city.",
+    "propertyImages": [
+      "https://i.ibb.co/GvttKL1/pexels-photo-210617.jpg",
+      "https://i.ibb.co/L0fRFqc/pexels-photo-2724748.webp",
+      "https://i.ibb.co/NsSfjsk/pexels-photo-2134224.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2012,
+    "ownerInformation": {
+      "name": "Cityscape Realty Solutions",
+      "email": "info@cityscaperealty.com",
+      "phone": "555-234-5678"
+    }
+  },
+  {
     "propertyTitle": "Downtown Heights Residences",
     "propertyType": "apartment",
     "location": {
@@ -199,6 +236,43 @@
     }
   },
   {
+    "propertyTitle": "Forest Retreat",
+    "propertyType": "house",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "789 Woodland Lane",
+      "city": "Green Valley",
+      "state": "Forestland",
+      "zipCode": "45678",
+      "latitude": 39.7392,
+      "longitude": -104.9903
+    },
+    "price": 550000,
+    "squareFootage": 2000,
+    "rooms": {
+      "bedRooms": 3,
+      "bathRooms": 2
+    },
+    "parking": {
+      "included": false,
+      "spaces": 0
+    },
+    "easement": ["Secluded Location", "Fireplace", "Wooden Floors"],
+    "description": "A cozy house nestled in the forest with a secluded location, fireplace, and beautiful wooden floors. Ideal for nature lovers.",
+    "propertyImages": [
+      "https://i.ibb.co/J7zdVxL/pexels-photo-208736.jpg",
+      "https://i.ibb.co/Xtk7qD3/pexels-photo-276554.jpg",
+      "https://i.ibb.co/YQD4B4P/pexels-photo-279607.webp"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 1990,
+    "ownerInformation": {
+      "name": "Nature Homes Realty",
+      "email": "info@naturehomes.com",
+      "phone": "555-987-6543"
+    }
+  },
+  {
     "propertyTitle": "Greenwood Gardens Apartments",
     "propertyType": "apartment",
     "location": {
@@ -240,6 +314,49 @@
     }
   },
   {
+    "propertyTitle": "City View Business Park",
+    "description": "Experience the perfect blend of work and nature at City View Business Park. Surrounded by greenery, our office spaces offer a tranquil environment with the convenience of city amenities for seamless business operations.",
+    "easement": ["Green Spaces", "Walking Trails", "Outdoor Workstations"],
+    "utilities": [
+      "Green Energy Solutions",
+      "Waste Recycling",
+      "Natural Lighting"
+    ],
+    "propertyType": "office",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "101 Elm Street",
+      "city": "Austin",
+      "state": "Texas",
+      "zipCode": "78701",
+      "latitude": 30.25,
+      "longitude": -97.75
+    },
+    "price": 55000,
+    "squareFootage": 3500,
+    "rooms": {
+      "officeRooms": 25,
+      "conferenceRooms": 3,
+      "bathrooms": 4
+    },
+
+    "propertyImages": [
+      "https://i.ibb.co/kJRLVVG/office-14.webp",
+      "https://i.ibb.co/ypc09xk/office-6.webp",
+      "https://i.ibb.co/kmrrmB3/restroom-2.webp"
+    ],
+    "parking": {
+      "included": true,
+      "spaces": 15
+    },
+    "yearBuilt": 2009,
+    "ownerInformation": {
+      "name": "Lucas Rivera",
+      "email": "lucas@gmail.com"
+    }
+  },
+
+  {
     "propertyTitle": "Skyline Tower Apartments",
     "propertyType": "apartment",
     "location": {
@@ -280,6 +397,7 @@
       "phone": "555-456-7890"
     }
   },
+
   {
     "propertyTitle": "Harbor View Residences",
     "propertyType": "apartment",
@@ -474,154 +592,7 @@
       "phone": "555-123-4567"
     }
   },
-  {
-    "propertyTitle": "Forest Retreat",
-    "propertyType": "house",
-    "propertyStatus": "sale",
-    "location": {
-      "address": "789 Woodland Lane",
-      "city": "Green Valley",
-      "state": "Forestland",
-      "zipCode": "45678",
-      "latitude": 39.7392,
-      "longitude": -104.9903
-    },
-    "price": 550000,
-    "squareFootage": 2000,
-    "rooms": {
-      "bedRooms": 3,
-      "bathRooms": 2
-    },
-    "parking": {
-      "included": false
-    },
-    "easement": ["Secluded Location", "Fireplace", "Wooden Floors"],
-    "description": "A cozy house nestled in the forest with a secluded location, fireplace, and beautiful wooden floors. Ideal for nature lovers.",
-    "propertyImages": [
-      "https://i.ibb.co/J7zdVxL/pexels-photo-208736.jpg",
-      "https://i.ibb.co/Xtk7qD3/pexels-photo-276554.jpg",
-      "https://i.ibb.co/YQD4B4P/pexels-photo-279607.webp"
-    ],
-    "utilities": ["Water", "Electricity", "High-speed Internet"],
-    "yearBuilt": 1990,
-    "ownerInformation": {
-      "name": "Nature Homes Realty",
-      "email": "info@naturehomes.com",
-      "phone": "555-987-6543"
-    }
-  },
-  {
-    "propertyTitle": "Mountain Villa Retreat",
-    "propertyType": "villa",
-    "location": {
-      "address": "404 Birch Lane",
-      "city": "Long Beach",
-      "state": "California",
-      "zipCode": "90802",
-      "neighborhood": "Belmont Shore",
-      "latitude": 33.7701,
-      "longitude": -118.1937
-    },
-    "price": 1200000,
-    "squareFootage": 1800,
-    "easement": ["Swimming Pool", "Garden", "Spa", "Mountain View"],
-    "rooms": {
-      "bedRooms": 4,
-      "bathRooms": 3
-    },
-    "description": "A stunning villa with breathtaking views and luxurious amenities with 4-bed with a loft, 3-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. ",
-    "propertyImages": [
-      "https://i.ibb.co/Ss2gpjP/villa-7-1.jpg",
-      "https://i.ibb.co/L6FtQ5q/villa-7-2.jpg",
-      "https://i.ibb.co/PFTrH77/villa-7-3.jpg"
-    ],
-    "utilities": ["Water", "Electricity", "High-speed Fiber Internet", "park"],
-    "parking": {
-      "included": true,
-      "spaces": 9
-    },
-    "yearBuilt": 2019,
-    "propertyStatus": "rent",
-    "ownerInformation": {
-      "name": "Rich Doe",
-      "email": "rich.doe@.gmail.com",
-      "phone": "555-984-6543"
-    }
-  },
-  {
-    "propertyTitle": "Mountainview Haven",
-    "propertyType": "house",
-    "propertyStatus": "sale",
-    "location": {
-      "address": "456 Summit Street",
-      "city": "High Peaks",
-      "state": "Mountainville",
-      "zipCode": "78901",
-      "latitude": 37.7749,
-      "longitude": -122.4194
-    },
-    "price": 950000,
-    "squareFootage": 3200,
-    "rooms": {
-      "bedRooms": 5,
-      "bathRooms": 4
-    },
-    "parking": {
-      "included": true,
-      "spaces": 0
-    },
-    "easement": ["Panoramic Windows", "Mountain View", "Gourmet Kitchen"],
-    "description": "A spacious house with panoramic windows, mountain views, and a gourmet kitchen. Perfect for those who love the mountainous surroundings.",
-    "propertyImages": [
-      "https://i.ibb.co/SKtbBGL/pexels-photo-209315.jpg",
-      "https://i.ibb.co/X3Vyp7v/pexels-photo-534151.jpg",
-      "https://i.ibb.co/X7K24Z2/pexels-photo-262048.jpg"
-    ],
-    "utilities": ["Water", "Electricity", "High-speed Internet"],
-    "yearBuilt": 2008,
-    "ownerInformation": {
-      "name": "Mountain Realty Group",
-      "email": "info@mountainrealty.com",
-      "phone": "555-789-0123"
-    }
-  },
-  {
-    "propertyTitle": "Urban Oasis",
-    "propertyType": "house",
-    "propertyStatus": "sale",
-    "location": {
-      "address": "101 Cityscape Lane",
-      "city": "Metropolis",
-      "state": "Cityville",
-      "zipCode": "34567",
-      "latitude": 40.7128,
-      "longitude": -74.006
-    },
-    "price": 1200000,
-    "squareFootage": 4000,
-    "rooms": {
-      "bedRooms": 6,
-      "bathRooms": 5
-    },
-    "parking": {
-      "included": true,
-      "spaces": 3
-    },
-    "easement": ["City View", "Rooftop Terrace", "Smart Home System"],
-    "description": "An urban house with a city view, rooftop terrace, and a smart home system. Ideal for those who love the hustle and bustle of the city.",
-    "propertyImages": [
-      "https://i.ibb.co/GvttKL1/pexels-photo-210617.jpg",
-      "https://i.ibb.co/L0fRFqc/pexels-photo-2724748.webp",
-      "https://i.ibb.co/NsSfjsk/pexels-photo-2134224.jpg"
-    ],
-    "utilities": ["Water", "Electricity", "High-speed Internet"],
-    "yearBuilt": 2012,
-    "ownerInformation": {
-      "name": "Cityscape Realty Solutions",
-      "email": "info@cityscaperealty.com",
-      "phone": "555-234-5678"
-    }
-  },
+
   {
     "propertyTitle": "Lakefront Retreat",
     "propertyType": "house",
@@ -657,44 +628,6 @@
       "name": "Lakefront Realty Group",
       "email": "info@lakefrontrealty.com",
       "phone": "555-345-6789"
-    }
-  },
-
-  {
-    "propertyTitle": "City Center Loft",
-    "propertyType": "house",
-    "propertyStatus": "sale",
-    "location": {
-      "address": "333 Downtown Avenue",
-      "city": "Central City",
-      "state": "Downtown",
-      "zipCode": "67890",
-      "latitude": 34.0522,
-      "longitude": -118.2437
-    },
-    "price": 1100000,
-    "squareFootage": 3000,
-    "rooms": {
-      "bedRooms": 2,
-      "bathRooms": 2
-    },
-    "parking": {
-      "included": true,
-      "spaces": 1
-    },
-    "easement": ["Loft Design", "City View", "Modern Interior"],
-    "description": "A stylish loft in the heart of the city with loft design, city views, and modern interior. Ideal for those who love urban living.",
-    "propertyImages": [
-      "https://i.ibb.co/q9Wjz6f/pexels-photo-2155202.jpg",
-      "https://i.ibb.co/0j4wDZ3/pexels-photo-2251247.webp",
-      "https://i.ibb.co/mC1RQCN/pexels-photo-2631746.jpg"
-    ],
-    "utilities": ["Water", "Electricity", "High-speed Internet"],
-    "yearBuilt": 2017,
-    "ownerInformation": {
-      "name": "City Loft Realty",
-      "email": "info@cityloftrealty.com",
-      "phone": "555-567-8901"
     }
   },
 
@@ -815,6 +748,82 @@
     }
   },
   {
+    "propertyTitle": "Mountain Villa Retreat",
+    "propertyType": "villa",
+    "location": {
+      "address": "404 Birch Lane",
+      "city": "Long Beach",
+      "state": "California",
+      "zipCode": "90802",
+      "neighborhood": "Belmont Shore",
+      "latitude": 33.7701,
+      "longitude": -118.1937
+    },
+    "price": 1200000,
+    "squareFootage": 1800,
+    "easement": ["Swimming Pool", "Garden", "Spa", "Mountain View"],
+    "rooms": {
+      "bedRooms": 4,
+      "bathRooms": 3
+    },
+    "description": "A stunning villa with breathtaking views and luxurious amenities with 4-bed with a loft, 3-bath home in the gated community of The Hideout has it all. From the open floor plan to the abundance of light from the windows, this home is perfect for entertaining. ",
+    "propertyImages": [
+      "https://i.ibb.co/Ss2gpjP/villa-7-1.jpg",
+      "https://i.ibb.co/L6FtQ5q/villa-7-2.jpg",
+      "https://i.ibb.co/PFTrH77/villa-7-3.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Fiber Internet", "park"],
+    "parking": {
+      "included": true,
+      "spaces": 9
+    },
+    "yearBuilt": 2019,
+    "propertyStatus": "rent",
+    "ownerInformation": {
+      "name": "Rich Doe",
+      "email": "rich.doe@.gmail.com",
+      "phone": "555-984-6543"
+    }
+  },
+
+  {
+    "propertyTitle": "Mountainview Haven",
+    "propertyType": "house",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "456 Summit Street",
+      "city": "High Peaks",
+      "state": "Mountainville",
+      "zipCode": "78901",
+      "latitude": 37.7749,
+      "longitude": -122.4194
+    },
+    "price": 950000,
+    "squareFootage": 3200,
+    "rooms": {
+      "bedRooms": 5,
+      "bathRooms": 4
+    },
+    "parking": {
+      "included": true,
+      "spaces": 0
+    },
+    "easement": ["Panoramic Windows", "Mountain View", "Gourmet Kitchen"],
+    "description": "A spacious house with panoramic windows, mountain views, and a gourmet kitchen. Perfect for those who love the mountainous surroundings.",
+    "propertyImages": [
+      "https://i.ibb.co/SKtbBGL/pexels-photo-209315.jpg",
+      "https://i.ibb.co/X3Vyp7v/pexels-photo-534151.jpg",
+      "https://i.ibb.co/X7K24Z2/pexels-photo-262048.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2008,
+    "ownerInformation": {
+      "name": "Mountain Realty Group",
+      "email": "info@mountainrealty.com",
+      "phone": "555-789-0123"
+    }
+  },
+  {
     "propertyTitle": "Metro Office Tower",
     "description": "Reach new heights with Metro Office Tower, a landmark for success in the business world. Enjoy panoramic views, cutting-edge technology, and a strategic location that defines your business as a leader.",
     "easement": ["Sky Lounge", "Panoramic Views", "Premium Amenities"],
@@ -850,6 +859,43 @@
     "ownerInformation": {
       "name": "Olivia Taylor",
       "email": "olivia@gmail.com"
+    }
+  },
+  {
+    "propertyTitle": "City Center Loft",
+    "propertyType": "house",
+    "propertyStatus": "sale",
+    "location": {
+      "address": "333 Downtown Avenue",
+      "city": "Central City",
+      "state": "Downtown",
+      "zipCode": "67890",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    "price": 1100000,
+    "squareFootage": 3000,
+    "rooms": {
+      "bedRooms": 2,
+      "bathRooms": 2
+    },
+    "parking": {
+      "included": true,
+      "spaces": 1
+    },
+    "easement": ["Loft Design", "City View", "Modern Interior"],
+    "description": "A stylish loft in the heart of the city with loft design, city views, and modern interior. Ideal for those who love urban living.",
+    "propertyImages": [
+      "https://i.ibb.co/q9Wjz6f/pexels-photo-2155202.jpg",
+      "https://i.ibb.co/0j4wDZ3/pexels-photo-2251247.webp",
+      "https://i.ibb.co/mC1RQCN/pexels-photo-2631746.jpg"
+    ],
+    "utilities": ["Water", "Electricity", "High-speed Internet"],
+    "yearBuilt": 2017,
+    "ownerInformation": {
+      "name": "City Loft Realty",
+      "email": "info@cityloftrealty.com",
+      "phone": "555-567-8901"
     }
   },
   {
@@ -1094,48 +1140,6 @@
     "ownerInformation": {
       "name": "Ava Simmons",
       "email": "ava@gmail.com"
-    }
-  },
-  {
-    "propertyTitle": "City View Business Park",
-    "description": "Experience the perfect blend of work and nature at City View Business Park. Surrounded by greenery, our office spaces offer a tranquil environment with the convenience of city amenities for seamless business operations.",
-    "easement": ["Green Spaces", "Walking Trails", "Outdoor Workstations"],
-    "utilities": [
-      "Green Energy Solutions",
-      "Waste Recycling",
-      "Natural Lighting"
-    ],
-    "propertyType": "office",
-    "propertyStatus": "sale",
-    "location": {
-      "address": "101 Elm Street",
-      "city": "Austin",
-      "state": "Texas",
-      "zipCode": "78701",
-      "latitude": 30.25,
-      "longitude": -97.75
-    },
-    "price": 55000,
-    "squareFootage": 3500,
-    "rooms": {
-      "officeRooms": 25,
-      "conferenceRooms": 3,
-      "bathrooms": 4
-    },
-
-    "propertyImages": [
-      "https://i.ibb.co/kJRLVVG/office-14.webp",
-      "https://i.ibb.co/ypc09xk/office-6.webp",
-      "https://i.ibb.co/kmrrmB3/restroom-2.webp"
-    ],
-    "parking": {
-      "included": true,
-      "spaces": 15
-    },
-    "yearBuilt": 2009,
-    "ownerInformation": {
-      "name": "Lucas Rivera",
-      "email": "lucas@gmail.com"
     }
   },
 
