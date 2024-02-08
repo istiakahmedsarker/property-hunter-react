@@ -12,7 +12,7 @@ const LatestBlogHomeCard = ({ blog }) => {
     })
     .toUpperCase();
   return (
-    <div className="mr-7 w-96  my-5 rounded-xl shadow-lg shadow-drop px-5 py-4 bg-white">
+    <div className=" lg:w-96 w-90 my-5 rounded-xl shadow-lg shadow-drop px-5 py-4 bg-white">
       <div className="relative">
         <img
           className="h-56 object-cover rounded-lg"
