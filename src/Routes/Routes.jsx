@@ -21,6 +21,9 @@ import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayme
 // import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary';
 // import
+import Payment from '../Components/PaymentMethod/Payment';
+import ContactUs from '../Components/Contract/ContactUs/ContactUs';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -67,7 +70,7 @@ const router = createBrowserRouter([
       {
         path: '/payment',
         element: <StripePayment/>
-      }
+      },
     ],
   },
   {
