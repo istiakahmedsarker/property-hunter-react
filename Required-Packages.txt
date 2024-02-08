@@ -17,3 +17,6 @@ npm install redux
 npm install recharts
 npm i stripe
 npm install react-fast-marquee --save
+npm i emoji-mart
+npm i @emailjs/browser
+npm i react-sweetalert2

@@ -27,7 +27,9 @@ import PropertyRequest from '../Pages/Dashboard/Moderator/Pages/PropertyRequest/
 import ManagePropertyRequest from '../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest';
 // import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary';
-// import
+// import Payment from '../Components/PaymentMethod/Payment';
+// import ContactUs from '../Components/Contract/ContactUs/ContactUs';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -73,7 +75,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/payment',
-        element: <StripePayment />,
+        element: <StripePayment/>
       },
     ],
   },
