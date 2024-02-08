@@ -25,10 +25,11 @@ const ExploreTypes = () => {
         </h2>
         <h3 className="text-sm font-semibold">All Types of Properties</h3>
       </div>
-      <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
+      <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 ">
         <Link
           to="/properties?propertyType=house"
           onClick={() => handleTypeClick('house')}
+          className="my-5"
         >
           <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop-xl">
             <div className="flex justify-center items-center">
@@ -45,6 +46,7 @@ const ExploreTypes = () => {
         <Link
           to="/properties?propertyType=apartment"
           onClick={() => handleTypeClick('apartment')}
+          className="my-5"
         >
           <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop">
             <div className="flex justify-center items-center">
@@ -62,6 +64,7 @@ const ExploreTypes = () => {
         <Link
           to="/properties?propertyType=villa"
           onClick={() => handleTypeClick('villa')}
+          className="my-5"
         >
           <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop">
             <div className="flex justify-center items-center">
@@ -79,6 +82,7 @@ const ExploreTypes = () => {
         <Link
           to="/properties?propertyType=office"
           onClick={() => handleTypeClick('office')}
+          className="my-5"
         >
           <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop">
             <div className="flex justify-center items-center">
