@@ -6,6 +6,7 @@ import Banner from '../../Components/Banner2/Banner';
 import Chatbot from '../../Components/Chatbot/Chatbot';
 import ExploreTypes from '../../Components/ExploreTypes/ExploreTypes';
 import LatestBlogHome from '../../Components/LatestBlogHome/LatestBlogHome';
+import ContactUs from '../../Components/Contract/ContactUs/ContactUs';
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Testimonials />
 
       <Chatbot />
+      <ContactUs/>
     </div>
   );
 };
