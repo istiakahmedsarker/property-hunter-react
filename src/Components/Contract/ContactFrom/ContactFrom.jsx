@@ -91,7 +91,7 @@ const ContactForm = () => {
                   </div>
                 </div>
               </div>
-              <div className="form-control">
+              {/* <div className="form-control">
                 <label className="label">
                   <span className="label-text">Property Type</span>
                 </label>
@@ -114,7 +114,7 @@ const ContactForm = () => {
                     <option value="rent">Rent</option>
                   </select>
                 </div>
-              </div>
+              </div> */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Message</span>

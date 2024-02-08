@@ -90,7 +90,6 @@ const Testimonials = () => {
                       className="h-10 w-10 md:h-16 md:w-16 rounded-[100%] object-cover"
                       src={review?.client?.profileImage}
                       alt=""
-                      srcset=""
                     />
                     <div>
                       <h3 className="text-[12px] md:text-lg text-gray-700 font-medium flex-grow">
