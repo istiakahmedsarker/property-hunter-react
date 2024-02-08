@@ -18,8 +18,8 @@ import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
-import Payment from '../Components/PaymentMethod/Payment';
-import ContactUs from '../Components/Contract/ContactUs/ContactUs';
+import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
+
 
 const router = createBrowserRouter([
   {
@@ -65,9 +65,10 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: '/payment',
-        element: <StripePayment/>
-      },
+        path:'/favorite',
+        element: <FavoriteProperty/>
+      }
+      
     ],
   },
   {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       //? Member only routes
+      {
+        path: '/dashboard/payment',
+        element: <StripePayment/>
+      },
       {
         path: '/dashboard/payment-history',
         element: <PaymentHistory />,
