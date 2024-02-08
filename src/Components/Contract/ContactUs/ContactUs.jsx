@@ -9,7 +9,7 @@ import { BiMailSend } from "react-icons/bi";
 
 const ContactUs = () => {
   return (
-    <div>
+    <div className="py-16">
       <Container>
         <div className="flex flex-col lg:flex-row items-start mt-8 mx-auto relative">
           <div className="flex-1 mx-auto px-2 text-wrap z-40">

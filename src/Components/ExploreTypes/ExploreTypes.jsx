@@ -30,7 +30,7 @@ const ExploreTypes = () => {
           to="/properties?propertyType=house"
           onClick={() => handleTypeClick('house')}
         >
-          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop-xl">
+          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg shadow-drop-xl">
             <div className="flex justify-center items-center">
               <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
                 <MdOutlineHome />
@@ -46,7 +46,7 @@ const ExploreTypes = () => {
           to="/properties?propertyType=apartment"
           onClick={() => handleTypeClick('apartment')}
         >
-          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop">
+          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg shadow-drop">
             <div className="flex justify-center items-center">
               <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
                 <MdApartment />
@@ -63,7 +63,7 @@ const ExploreTypes = () => {
           to="/properties?propertyType=villa"
           onClick={() => handleTypeClick('villa')}
         >
-          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop">
+          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg shadow-drop">
             <div className="flex justify-center items-center">
               <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
                 <GiVillage />
@@ -80,7 +80,7 @@ const ExploreTypes = () => {
           to="/properties?propertyType=office"
           onClick={() => handleTypeClick('office')}
         >
-          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 hover:text-white shadow-lg shadow-drop">
+          <div className="px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg shadow-drop">
             <div className="flex justify-center items-center">
               <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
                 <HiOutlineBuildingOffice2 />
