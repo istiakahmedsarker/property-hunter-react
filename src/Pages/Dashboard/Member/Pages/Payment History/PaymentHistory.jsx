@@ -5,8 +5,12 @@ import { GiCash } from "react-icons/gi";
 import { FaFileInvoice } from "react-icons/fa";
 import { IoBarChart } from "react-icons/io5";
 import PaymentHistoryTable from "./PaymentHistoryTable";
+import GetAllPayments from '../../../../../Components/Services/GetAllPayments';
+
 
 const PaymentHistory = () => {
+  const {payments} = GetAllPayments();
+  console.log(payments);
   return (
     <div className="min-h-screen bg-[#f5f5f5] py-10">
       <Container>
@@ -44,7 +48,7 @@ const PaymentHistory = () => {
               </div>
                  
               <div className="flex flex-col items-start gap-1">
-                <div className="stat-title text-sm text-white">
+                <div className="stat-title text-wrap text-sm text-white">
                   Total Properties Bought:
                 </div>
                 <div className="stat-value text-2xl  text-white">0</div>
@@ -60,7 +64,7 @@ const PaymentHistory = () => {
                 <GiCash/>
               </div>
               <div className="flex flex-col items-start gap-1">
-                <div className="stat-title text-sm text-gray-800">
+                <div className="stat-title text-wrap text-sm text-gray-800">
                 Current Portfolio Value:
                 </div>
                 <div className="stat-value text-2xl text-gray-800">0</div>
@@ -76,7 +80,7 @@ const PaymentHistory = () => {
                 <FaFileInvoice/>
               </div>
               <div className="flex flex-col items-start gap-1">
-                <div className="stat-title text-sm text-white">
+                <div className="stat-title text-clip text-sm text-white">
                   Total invoices : 
                 </div>
                 <div className="stat-value text-2xl text-white">0</div>
@@ -92,7 +96,7 @@ const PaymentHistory = () => {
                 <IoBarChart/>
               </div>
               <div className="flex flex-col items-start gap-1">
-                <div className="stat-title text-sm text-gray-800">
+                <div className="stat-title text-wrap text-sm text-gray-800">
                   Average Purchase Price:
                 </div>
                 <div className="stat-value text-xl text-gray-800">0</div>
@@ -103,8 +107,9 @@ const PaymentHistory = () => {
          
         </div>
 
+
         {/*//? Payment history Table */}
-        <PaymentHistoryTable/>
+        <PaymentHistoryTable paymentHistory={payments}/>
 
       </Container>
     </div>

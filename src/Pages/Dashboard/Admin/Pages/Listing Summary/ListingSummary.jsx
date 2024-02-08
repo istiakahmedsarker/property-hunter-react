@@ -8,6 +8,7 @@ import GetAllPayments from '../../../../../Components/Services/GetAllPayments';
 import PropertiesStatistics from './Pie Chart/PropertiesStatistics';
 
 
+
 const ListingSummary = () => {
     const [totalPayments, setTotalPayments] = useState(0);
     const [apartment, setTotalApartment] = useState(0);
@@ -143,6 +144,9 @@ const ListingSummary = () => {
           <div className=' space-y-6'>
             <h1 className='text-2xl text-gray-800 font-medium'>Properties Statistics</h1>
             <PropertiesStatistics apartment={apartment.length} villa={villa.length} home={home.length} office={office.length}/>
+          </div>
+          <div className="flex-1">
+          
           </div>
        </div>
 
