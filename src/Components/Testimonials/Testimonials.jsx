@@ -28,7 +28,7 @@ const Testimonials = () => {
 
   // console.log(reviews);
   return (
-    <div className="bg-gray-50 bg-[url('https://res.cloudinary.com/debqyv4o6/image/upload/v1705426954/Vector_11_skdxn1.png')] bg-cover bg-right-bottom">
+    <div className="bg-[#fff7f5]">
       <div className="px-4 h-[90vh] md:h-full md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto   py-8 md:py-6 pb-2 md:pb-8 lg:py-16 ">
         <div className="relative z-5 flex flex-col gap-2">
           <h3 className="text-[#eb6753] text-[12px] md:text-sm  text-center md:text-left font-medium">
@@ -97,30 +97,45 @@ const Testimonials = () => {
                         {review?.client?.name}
                       </h3>
                       <div className="rating w-[60px] md:w-[100px]">
-                        <input
+                        <input 
+                        style={{
+                          height : "16px"
+                        }}
                           type="radio"
                           name="rating-2"
-                          className="mask mask-star-2 bg-orange-400 h-4"
+                          className="mask mask-star-2 bg-orange-400 h-2 md:h-4"
                         />
                         <input
+                         style={{
+                          height : "16px"
+                        }}
                           type="radio"
                           name="rating-2"
-                          className="mask mask-star-2 bg-orange-400 h-4"
+                          className="mask mask-star-2 bg-orange-400 h-2 md:h-4"
                         />
                         <input
+                         style={{
+                          height : "16px"
+                        }}
                           type="radio"
                           name="rating-2"
-                          className="mask mask-star-2 bg-orange-400 h-4"
+                          className="mask mask-star-2 bg-orange-400 h-2 md:h-4"
+                        />
+                        <input 
+                         style={{
+                          height : "16px"
+                        }}
+                          type="radio"
+                          name="rating-2"
+                          className="mask mask-star-2 bg-orange-400 h-2 md:h-4"
                         />
                         <input
+                         style={{
+                          height : "16px"
+                        }}
                           type="radio"
                           name="rating-2"
-                          className="mask mask-star-2 bg-orange-400 h-4"
-                        />
-                        <input
-                          type="radio"
-                          name="rating-2"
-                          className="mask mask-star-2 bg-orange-400 h-4"
+                          className="mask mask-star-2 bg-orange-400 h-2 md:h-4"
                           checked
                         />
                       </div>
