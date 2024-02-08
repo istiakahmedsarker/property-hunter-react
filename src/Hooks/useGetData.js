@@ -11,7 +11,8 @@ const useGetData = ({ key, api }) => {
     queryFn: async () => {
       try {
         const res = await axios.get(api);
-        return res?.data?.data;
+        console.log(res?.data);
+        return res?.data;
       } catch (error) {
         console.log(error);
         setError(error.message);

@@ -40,6 +40,7 @@ const Properties = () => {
     }
 
     setCheckboxes(updatedCheckboxes);
+    setActivePage(1);
   };
 
   const handleTypeCheckboxChange = (checkboxName) => {
@@ -50,16 +51,17 @@ const Properties = () => {
     }
 
     setTypeCheckboxes(updatedCheckboxes);
+    setActivePage(1);
   };
 
   const checkedItem = Object.keys(checkboxes).find(
     (checkbox) => checkboxes[checkbox]
   );
+
   const typeCheckedItem = Object.keys(typeCheckboxes).find(
     (checkbox) => typeCheckboxes[checkbox]
   );
   // for explore Type
-  const propertyType = typeCheckedItem || propertyTypeParam || 'all';
 
   const { data: propertiesData, isPending } = useGetData({
     key: [
@@ -70,7 +72,6 @@ const Properties = () => {
       limit,
       activePage,
       debouncedSearchValue,
-      propertyType,
     ],
     api: `/properties?propertyStatus=${
       checkedItem === 'all' ? '' : checkedItem
@@ -80,7 +81,9 @@ const Properties = () => {
   });
   // console.log('API Response:', propertiesData);
 
-  const totalPage = Math.ceil(parseInt(propertiesData?.totalProperty) / limit);
+  const totalPage = Math.ceil(
+    parseInt(propertiesData?.data?.totalProperty) / limit
+  );
 
   let pages = [];
   const totalPageCalc = () => {
@@ -222,7 +225,7 @@ const Properties = () => {
           </div>
         </div>
 
-        {!propertiesData?.properties?.length ? (
+        {!propertiesData?.data?.properties?.length ? (
           <div className="md:col-span-8 sm:w-[70%] mx-auto md:w-full">
             <p className=" h-[70vh] flex-col flex items-center justify-center">
               No more items available
@@ -256,13 +259,13 @@ const Properties = () => {
               </div>
               {!isGrid ? (
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
-                  {propertiesData?.properties?.map((card) => (
+                  {propertiesData?.data?.properties?.map((card) => (
                     <PropertiesCard key={card._id} card={card}></PropertiesCard>
                   ))}
                 </div>
               ) : (
                 <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5  my-6">
-                  {propertiesData?.properties?.map((card) => (
+                  {propertiesData?.data?.properties?.map((card) => (
                     <PropertiesCardList
                       key={card._id}
                       card={card}
@@ -271,43 +274,47 @@ const Properties = () => {
                 </div>
               )}
             </div>
-            <div className="flex items-center justify-center gap-5">
-              <button
-                className={`${
-                  activePage === 1
-                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                    : 'bg-white p-3 shadow-md rounded-full'
-                }`}
-                onClick={previousPage}
-              >
-                <FaArrowLeft />
-              </button>
-
-              {pages.map((pageNo) => (
+            {totalPage > 1 ? (
+              <div className="flex items-center justify-center gap-5">
                 <button
                   className={`${
-                    activePage === pageNo
-                      ? 'bg-[#EB6753] font-semibold text-white px-4 py-2 rounded-full'
-                      : 'px-4 py-2 rounded-full font-semibold bg-white shadow-md'
-                  } `}
-                  key={pageNo}
-                  onClick={() => setActivePage(pageNo)}
+                    activePage === 1
+                      ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                      : 'bg-white p-3 shadow-md rounded-full'
+                  }`}
+                  onClick={previousPage}
                 >
-                  {pageNo}
+                  <FaArrowLeft />
                 </button>
-              ))}
 
-              <button
-                className={`${
-                  activePage === totalPage
-                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                    : 'bg-white p-3 shadow-md rounded-full'
-                }`}
-                onClick={nextPage}
-              >
-                <FaArrowRight />
-              </button>
-            </div>
+                {pages.map((pageNo) => (
+                  <button
+                    className={`${
+                      activePage === pageNo
+                        ? 'bg-[#EB6753] font-semibold text-white px-4 py-2 rounded-full'
+                        : 'px-4 py-2 rounded-full font-semibold bg-white shadow-md'
+                    } `}
+                    key={pageNo}
+                    onClick={() => setActivePage(pageNo)}
+                  >
+                    {pageNo}
+                  </button>
+                ))}
+
+                <button
+                  className={`${
+                    activePage === totalPage
+                      ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                      : 'bg-white p-3 shadow-md rounded-full'
+                  }`}
+                  onClick={nextPage}
+                >
+                  <FaArrowRight />
+                </button>
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         )}
       </div>
