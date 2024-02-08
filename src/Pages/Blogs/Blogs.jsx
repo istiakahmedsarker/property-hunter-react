@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import BlogCard from '../../Components/BlogCard/BlogCard';
 import { Link } from 'react-router-dom';
-import useAxios from '../../Hooks/useAxios';
 import useDebounce from '../../Hooks/useDebounce';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa6';
 import { FiSearch } from 'react-icons/fi';
@@ -15,44 +14,17 @@ const Blogs = () => {
   const [activePage, setActivePage] = useState(1);
   const limit = 4;
 
-  // const { data: latestBlogsData = [] } = useQuery({
-  //   queryKey: ['latestBlogs'],
-  //   queryFn: async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         `/blogs?sort=-createdAt&limit=3&select=heading,images`
-  //       );
-  //       return res?.data?.data;
-  //     } catch (error) {
-  //       setError(error.message);
-  //     }
-  //   },
-  // });
-
   const { data: latestBlogsData } = useGetData({
     key: ['latestBlogs'],
     api: `/blogs?sort=-createdAt&limit=3&select=heading,images`,
   });
 
-  // const { isPending, data = [], error: err } = useQuery({
-  //   queryKey: ['blogs', debouncedSearchValue, activePage],
-  //   queryFn: async () => {
-  //     try {
-  //       const res = await axios.get(
-  //         `/blosgs?title=${searchText}&page=${activePage}&limit=${limit}`
-  //       );
-  //       return res?.data?.data;
-  //     } catch (error) {
-  //       // console.log(error);
-  //       setError(error.message);
-  //     }
-  //   },
-  // });
-
   const { data, isPending, error } = useGetData({
     key: ['blogs', debouncedSearchValue, activePage],
     api: `/blogs?title=${searchText}&page=${activePage}&limit=${limit}`,
   });
+
+  console.log(data?.data?.blogs?.length);
 
   const totalPage = Math.ceil(parseInt(data?.totalBlogs) / limit);
 
@@ -87,7 +59,7 @@ const Blogs = () => {
       {error && <p>{error}</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-7xl mx-auto my-10 items-start">
-        {!data?.blogs?.length ? (
+        {!data?.data?.blogs?.length ? (
           <div className="md:col-span-8 sm:w-[70%] mx-auto md:w-full">
             <p className=" h-[70vh] flex-col flex items-center justify-center">
               No more items available
@@ -96,7 +68,7 @@ const Blogs = () => {
         ) : (
           <div className="md:col-span-8  sm:w-[70%] mx-auto md:w-full">
             <div className="grid mb-10 lg:mb-5  md:grid-cols-2 gap-6 lg:gap-10 xl:gap-x-28 gap-y-10  grid-cols-1 ">
-              {data?.blogs?.map((blog) => (
+              {data?.data?.blogs?.map((blog) => (
                 <BlogCard key={blog._id} blog={blog} />
               ))}
             </div>
@@ -154,7 +126,7 @@ const Blogs = () => {
 
           <div className="flex flex-col gap-8 bg-white shadow-sm px-6 py-8 rounded-md">
             <h5 className="font-bold text-lg -mb-2">Latest blogs</h5>
-            {latestBlogsData?.blogs?.map((blog) => (
+            {latestBlogsData?.data?.blogs?.map((blog) => (
               <LatestBlog key={blog._id} blog={blog} />
             ))}
           </div>

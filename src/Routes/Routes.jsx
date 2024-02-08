@@ -18,6 +18,14 @@ import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
+import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
+import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
+import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
+import AdminHome from '../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome';
+import AllUsers from '../Pages/Dashboard/Admin/Pages/AllUsers/AllUsers';
+import PropertyRequest from '../Pages/Dashboard/Moderator/Pages/PropertyRequest/PropertyRequest';
+import ManagePropertyRequest from '../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest';
+// import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
@@ -37,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/blogs/:id',
-        element: <BlogDetails/>
+        element: <BlogDetails />,
       },
 
       {
@@ -101,10 +109,39 @@ const router = createBrowserRouter([
         path: '/dashboard/payment-history',
         element: <PaymentHistory />,
       },
+
+      {
+        path: '/dashboard/favourites',
+        element: <Favourites />,
+      },
+      {
+        path: '/dashboard/property-status',
+        element: <PropertyStatus />,
+      },
+      {
+        path: '/dashboard/make-announcement',
+        element: <MakeAnnouncement />,
+      },
+      {
+        path: '/dashboard/admin',
+        element: <AdminHome />,
+      },
+      {
+        path: '/dashboard/all-users',
+        element: <AllUsers />,
+      },
+      {
+        path: '/dashboard/property-request',
+        element: <PropertyRequest />,
+      },
+      {
+        path: '/dashboard/manage-property-request',
+        element: <ManagePropertyRequest />,
+      },
       //? Admin only routes
       {
         path: '/dashboard/listing-summary',
-        element: <ListingSummary/>
+        element: <ListingSummary />,
       },
     ],
   },
