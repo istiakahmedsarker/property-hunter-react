@@ -16,15 +16,15 @@ const Comment = ({ comment }) => {
 
       if (liked) {
         setLikes(likes - 1);
-        await axios.patch(`/api/v1/like-dislike/decrease-like/${_id}`);
+        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-like/${_id}`);
       } else {
         setLikes(likes + 1);
         if (disliked) {
           setDislikes(dislikes - 1);
           setDisliked(false);
-          await axios.patch(`/api/v1/like-dislike/decrease-dislike/${_id}`);
+          await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-dislike/${_id}`);
         }
-        await axios.patch(`/api/v1/like-dislike/increase-like/${_id}`);
+        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/increase-like/${_id}`);
       }
 
       setLiked(!liked);
@@ -38,15 +38,15 @@ const Comment = ({ comment }) => {
 
       if (disliked) {
         setDislikes(dislikes - 1);
-        await axios.patch(`/api/v1/like-dislike/decrease-dislike/${_id}`);
+        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-dislike/${_id}`);
       } else {
         setDislikes(dislikes + 1);
         if (liked) {
           setLikes(likes - 1);
           setLiked(false);
-          await axios.patch(`/api/v1/like-dislike/decrease-like/${_id}`);
+          await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-like/${_id}`);
         }
-        await axios.patch(`/api/v1/like-dislike/increase-dislike/${_id}`);
+        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/increase-dislike/${_id}`);
       }
 
       setDisliked(!disliked);
