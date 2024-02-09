@@ -2,11 +2,14 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import useAuth from '../../../Hooks/useAuth';
 import { RiLogoutBoxLine } from 'react-icons/ri';
+import { GiSelfLove } from 'react-icons/gi';
+import useFavorite from '../../../Hooks/useFavorite';
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
+  const [favorite] = useFavorite();
 
   const handleLogOut = () => {
     logOut();
@@ -67,6 +70,17 @@ const Navbar = () => {
           to={"/addProperties"}
         >
           Add Property
+        </Link>
+      </li>
+      {/* favorite Property route */}
+      <li className="nav-link relative">
+        <Link
+          className={` ${
+            pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
+          } no-underline font-semibold text-lg`}
+          to={'/favorite'}
+        >
+          <h3 className='flex items-center gap-1'><GiSelfLove/> <span className='bg-[#eb6753] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>

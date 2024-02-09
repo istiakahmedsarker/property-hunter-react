@@ -1,34 +1,25 @@
-import { createBrowserRouter } from "react-router-dom";
-import Main from "../Layout/Main";
-import Login from "../Pages/Login/Login";
-import Home from "../Pages/Home/Home";
-import Blogs from "../Pages/Blogs/Blogs";
-import BlogCard from "../Components/BlogCard/BlogCard";
-import BlogDetails from "../Pages/BlogDetails/BlogDetails";
-import Properties from "../Pages/Properties/Properties";
-import PropertiesDetails from "../Components/PropertiesDetails/PropertiesDetails";
-import Register from "../Pages/Register/Register";
-import Dashboard from "../Layout/Dashboard";
-import HomeDashboard from "../Pages/Dashboard/HomeDashboard/HomeDashboard";
-import AddProperties from "../Pages/AddProperties/AddProperties";
-import AllProperties from "../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties";
-import BlogPost from "../Components/BlogPost/BlogPost";
-import Announcement from "../Pages/Dashboard/Announcement/Announcement";
-import Profile from "../Pages/Dashboard/Profile/Profile";
-import UserManagement from "../Pages/Dashboard/Admin/Pages/UserManagement";
-import PaymentHistory from "../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory";
-import StripePayment from "../Components/PaymentMethod/StripePayment/StripePayment";
-import Favourites from "../Pages/Dashboard/User/Pages/Favourites/Favourites";
-import PropertyStatus from "../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus";
-import MakeAnnouncement from "../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement";
-import AdminHome from "../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome";
-import AllUsers from "../Pages/Dashboard/Admin/Pages/AllUsers/AllUsers";
-import PropertyRequest from "../Pages/Dashboard/Moderator/Pages/PropertyRequest/PropertyRequest";
-import ManagePropertyRequest from "../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest";
-// import BlogDetails from '../Pages/BlogDetails/BlogDetails';
-import ListingSummary from "../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary";
-// import Payment from '../Components/PaymentMethod/Payment';
-// import ContactUs from '../Components/Contract/ContactUs/ContactUs';
+import { createBrowserRouter } from 'react-router-dom';
+import Main from '../Layout/Main';
+import Login from '../Pages/Login/Login';
+import Home from '../Pages/Home/Home';
+import Blogs from '../Pages/Blogs/Blogs';
+import BlogCard from '../Components/BlogCard/BlogCard';
+import BlogDetails from '../Pages/BlogDetails/BlogDetails';
+import Properties from '../Pages/Properties/Properties';
+import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
+import Register from '../Pages/Register/Register';
+import Dashboard from '../Layout/Dashboard';
+import HomeDashboard from '../Pages/Dashboard/HomeDashboard/HomeDashboard';
+import AddProperties from '../Pages/AddProperties/AddProperties';
+import AllProperties from '../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties';
+import BlogPost from '../Components/BlogPost/BlogPost';
+import Announcement from '../Pages/Dashboard/Announcement/Announcement';
+import Profile from '../Pages/Dashboard/Profile/Profile';
+import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
+import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
+import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
+import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
+
 
 const router = createBrowserRouter([
   {
@@ -74,9 +65,10 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/payment",
-        element: <StripePayment />,
-      },
+        path:'/favorite',
+        element: <FavoriteProperty/>
+      }
+      
     ],
   },
   {
@@ -106,7 +98,11 @@ const router = createBrowserRouter([
       },
       //? Member only routes
       {
-        path: "/dashboard/payment-history",
+        path: '/dashboard/payment',
+        element: <StripePayment/>
+      },
+      {
+        path: '/dashboard/payment-history',
         element: <PaymentHistory />,
       },
 
