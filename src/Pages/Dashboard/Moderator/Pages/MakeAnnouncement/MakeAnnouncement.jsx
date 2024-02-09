@@ -7,36 +7,40 @@ import Picker from "@emoji-mart/react";
 import moment from "moment";
 
 const MakeAnnouncement = () => {
-  const [name, setName] = useState('');
-  const [date, setDate] = useState('');
-  const [heading, setHeading] = useState('');
-  const [notice, setNotice] = useState('');
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [heading, setHeading] = useState("");
+  const [notice, setNotice] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [emojiTarget, setEmojiTarget] = useState(null);
-  const headingRef = useRef(null);  
-  const noticeRef = useRef(null);  
+  const headingRef = useRef(null);
+  const noticeRef = useRef(null);
 
   const handlePost = async (e) => {
     e.preventDefault();
 
-    const postDate = moment().utc().toDate();
+    const postDate = moment()
+      .utc()
+      .toDate();
 
     const postNotice = { name, date, heading, notice, postDate };
 
     // console.log(postNotice);
-   
-    const res = await axios.post(`https://property-hunter-server.vercel.app/api/v1/MakeAnnouncement`, postNotice);
+
+    const res = await axios.post(
+      `https://property-hunter-server-roan.vercel.app/api/v1/MakeAnnouncement`,
+      postNotice
+    );
     if (res.data.insertedId) {
       // Reset form fields
-      setName('');
-      setDate('');
-      setHeading('');
-      setNotice('');
+      setName("");
+      setDate("");
+      setHeading("");
+      setNotice("");
 
       // Hide emoji picker and reset emojiTarget
       setShowEmojiPicker(false);
       setEmojiTarget(null);
-
     } else {
       toast.error("Notice Post Failed");
     }
@@ -48,9 +52,9 @@ const MakeAnnouncement = () => {
     sym.forEach((el) => codeArray.push("0x" + el));
     let emoji = String.fromCodePoint(...codeArray);
 
-    if (emojiTarget === 'heading') {
+    if (emojiTarget === "heading") {
       setHeading(insertEmojiHeading(heading, emoji));
-    } else if (emojiTarget === 'notice') {
+    } else if (emojiTarget === "notice") {
       setNotice(insertEmojiNotice(notice, emoji));
     }
 
@@ -84,7 +88,9 @@ const MakeAnnouncement = () => {
     <>
       <div className="card shrink-0 w-full lg:w-[50%] shadow-2xl bg-base-100 mx-auto my-10 mb-40">
         <form onSubmit={handlePost} className="card-body">
-          <h3 className="text-xl font-semibold text-center">Make Announcement</h3>
+          <h3 className="text-xl font-semibold text-center">
+            Make Announcement
+          </h3>
           <div className="flex flex-col lg:flex-row justify-between gap-4">
             <div className="form-control flex-1">
               <label className="label">
@@ -129,7 +135,7 @@ const MakeAnnouncement = () => {
             />
             <span
               onClick={() => {
-                setEmojiTarget('heading');
+                setEmojiTarget("heading");
                 setShowEmojiPicker(!showEmojiPicker);
               }}
               className="cursor-pointer  absolute right-10 bottom-60"
@@ -152,7 +158,7 @@ const MakeAnnouncement = () => {
             />
             <span
               onClick={() => {
-                setEmojiTarget('notice');
+                setEmojiTarget("notice");
                 setShowEmojiPicker(!showEmojiPicker);
               }}
               className="cursor-pointer  absolute right-10 bottom-36"
@@ -172,7 +178,12 @@ const MakeAnnouncement = () => {
             </div>
           )}
           <div className="form-control mt-6">
-            <button type="submit" className="btn text-white uppercase bg-[#eb6753] hover:text-[#eb6753]">Post</button>
+            <button
+              type="submit"
+              className="btn text-white uppercase bg-[#eb6753] hover:text-[#eb6753]"
+            >
+              Post
+            </button>
           </div>
         </form>
       </div>
