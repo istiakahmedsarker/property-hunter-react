@@ -1,19 +1,25 @@
-import useAuth from '../../../Hooks/useAuth'
+import useAuth from "../../../Hooks/useAuth";
 const Profile = () => {
-  const {user} = useAuth()
-  const {displayName,email,phoneNumber,photoURL} = user
+  const { user } = useAuth();
+  const { displayName, email, phoneNumber, photoURL } = user;
   return (
     <div className="mt-20">
       <h2 className="mb-7 font-semibold text-2xl text-[#eb6753]">My Profile</h2>
       <div className="space-y-5">
         <div className=" flex items-center gap-4 border  py-4 px-3">
           <img
-            className="h-24 w-h-24 rounded-full border border-[#eb6753]"
-            src={photoURL ? photoURL : 'https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg'}
+            className="h-24 w-24 rounded-full border border-[#eb6753]"
+            src={
+              photoURL
+                ? photoURL
+                : "https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg"
+            }
             alt="profile image"
           />
           <div>
-            <h3 className="font-semibold text-xl">{displayName ? displayName : "No User Name"}</h3>
+            <h3 className="font-semibold text-xl">
+              {displayName ? displayName : "No User Name"}
+            </h3>
             <p className="text-gray-500">User Role</p>
           </div>
         </div>
