@@ -10,66 +10,49 @@ const Comment = ({ comment }) => {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
-  // console.log(comment)
 
-  const handleLikesCount = (_id) => {
-    const updatedLikes = likes +1;
-    // console.log(_id)
-    // console.log("LIKES:" , updatedLikes )
+  const handleLike = async (_id) => {
+    try {
 
-    axios.put(`http://localhost:5000/service/${_id}`, updatedLikes, {
-    })
-      .then((response) => {
-        console.log(response.data);
-        console.log('Item updated successfully!!!');
-      })
-      .catch((error) => {
-        console.error('Error updating item:', error);
-      });
-  }
-
-  const handleDislikesCount = (_id) => {
-    const updatedDislikes = dislikes;
-
-    axios.put(`http://localhost:5000/service/${_id}`, updatedDislikes, {
-    })
-      .then((response) => {
-        console.log(response.data);
-        console.log('Item updated successfully!!!');
-      })
-      .catch((error) => {
-        console.error('Error updating item:', error);
-      });
-  }
-
-  const handleLike = (_id) => {
-    if (liked) {
-      setLikes(likes - 1);
-      handleLikesCount(_id)
-    } else {
-      setLikes(likes + 1);
-      handleLikesCount(_id)
-      if (disliked) {
-        setDislikes(dislikes - 1);
-        setDisliked(false);
-      }
-    }
-    setLiked(!liked);
-  };
-
-  const handleDislike = (_id) => {
-    if (disliked) {
-      setDislikes(dislikes - 1);
-      handleDislikesCount(_id)
-    } else {
-      setDislikes(dislikes + 1);
-      handleDislikesCount(_id)
       if (liked) {
         setLikes(likes - 1);
-        setLiked(false);
+        await axios.patch(`/api/v1/like-dislike/decrease-like/${_id}`);
+      } else {
+        setLikes(likes + 1);
+        if (disliked) {
+          setDislikes(dislikes - 1);
+          setDisliked(false);
+          await axios.patch(`/api/v1/like-dislike/decrease-dislike/${_id}`);
+        }
+        await axios.patch(`/api/v1/like-dislike/increase-like/${_id}`);
       }
+
+      setLiked(!liked);
+    } catch (error) {
+      console.error(error.response.data);
     }
-    setDisliked(!disliked);
+  };
+
+  const handleDislike = async (_id) => {
+    try {
+
+      if (disliked) {
+        setDislikes(dislikes - 1);
+        await axios.patch(`/api/v1/like-dislike/decrease-dislike/${_id}`);
+      } else {
+        setDislikes(dislikes + 1);
+        if (liked) {
+          setLikes(likes - 1);
+          setLiked(false);
+          await axios.patch(`/api/v1/like-dislike/decrease-like/${_id}`);
+        }
+        await axios.patch(`/api/v1/like-dislike/increase-dislike/${_id}`);
+      }
+
+      setDisliked(!disliked);
+    } catch (error) {
+      console.error(error.response.data);
+    }
   };
 
   const date = new Date(comment.createdDate);
