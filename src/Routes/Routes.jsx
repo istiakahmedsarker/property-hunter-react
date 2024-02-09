@@ -20,6 +20,17 @@ import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/Paym
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
 import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
 
+import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
+import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
+import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
+import AdminHome from '../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome';
+import AllUsers from '../Pages/Dashboard/Admin/Pages/AllUsers/AllUsers';
+import PropertyRequest from '../Pages/Dashboard/Moderator/Pages/PropertyRequest/PropertyRequest';
+import ManagePropertyRequest from '../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest';
+// import BlogDetails from '../Pages/BlogDetails/BlogDetails';
+import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary';
+// import Payment from '../Components/PaymentMethod/Payment';
+// import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
 const router = createBrowserRouter([
   {
