@@ -25,7 +25,7 @@ const LatestBlogHome = () => {
     }
     return 3;
   };
-  console.log(latestBlogsData);
+  console.log(latestBlogsData.data.blogs);
   return (
     <div className="w-11/12 mx-auto my-7 ">
       <div className="my-6">
@@ -72,8 +72,8 @@ const LatestBlogHome = () => {
           }}
           className="mySwiper my-4 relative overflow-visible z-[5]"
         >
-          {latestBlogsData?.blogs &&
-            latestBlogsData?.blogs?.map((blog, idx) => (
+          {latestBlogsData?.data?.blogs &&
+            latestBlogsData?.data?.blogs?.map((blog, idx) => (
               <SwiperSlide
                 key={idx}
                 className="swiper-slide h-full pt-0 md:pt-0 lg:pt-8 pb-8 md:pb-8 overflow-visible relative z-[10]"
