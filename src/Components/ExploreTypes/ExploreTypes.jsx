@@ -3,18 +3,15 @@ import { MdApartment, MdOutlineHome } from 'react-icons/md';
 import { GiVillage } from 'react-icons/gi';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
 // import useGetData from '../../Hooks/useGetData';
 
 const ExploreTypes = () => {
-  // const [villa, setVilla] = useState();
   // const { data: propertiesData, isPending } = useGetData({
   //   key: ['properties'],
   //   api: `/properties?propertyType=apartment`,
   // });
   // console.log(propertiesData?.properties);
   const handleTypeClick = propertyType => {
-    // You can use React Router's useHistory hook here to redirect
     history.push(`/properties?propertyType=${propertyType}`);
   };
   return (
@@ -25,6 +22,7 @@ const ExploreTypes = () => {
         </h2>
         <h3 className="text-sm font-semibold">All Types of Properties</h3>
       </div>
+      {/* for redirect the relevant property */}
       <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 ">
         <Link
           to="/properties?propertyType=house"

@@ -32,7 +32,7 @@ const Properties = () => {
     villa: false,
   });
 
-  const handleCheckboxChange = (checkboxName) => {
+  const handleCheckboxChange = checkboxName => {
     const updatedCheckboxes = {};
 
     for (let key in checkboxes) {
@@ -43,7 +43,7 @@ const Properties = () => {
     setActivePage(1);
   };
 
-  const handleTypeCheckboxChange = (checkboxName) => {
+  const handleTypeCheckboxChange = checkboxName => {
     const updatedCheckboxes = {};
 
     for (let key in typeCheckboxes) {
@@ -55,11 +55,11 @@ const Properties = () => {
   };
 
   const checkedItem = Object.keys(checkboxes).find(
-    (checkbox) => checkboxes[checkbox]
+    checkbox => checkboxes[checkbox]
   );
 
   const typeCheckedItem = Object.keys(typeCheckboxes).find(
-    (checkbox) => typeCheckboxes[checkbox]
+    checkbox => typeCheckboxes[checkbox]
   );
   // for explore Type
 
@@ -79,8 +79,8 @@ const Properties = () => {
       typeCheckedItem === 'all' ? '' : typeCheckedItem
     }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
   });
-  // console.log('API Response:', propertiesData);
 
+  // for implement pagination
   const totalPage = Math.ceil(
     parseInt(propertiesData?.data?.totalProperty) / limit
   );
@@ -102,12 +102,6 @@ const Properties = () => {
     if (activePage === totalPage) return activePage;
     setActivePage(activePage + 1);
   };
-
-  // for scroll to top
-  // const scrollToTop = () => {
-  //   window.scrollTo({ top: 0, behavior: 'smooth' });
-  // };
-  // console.log(filteredCards);
 
   if (isPending) {
     return (
@@ -134,7 +128,7 @@ const Properties = () => {
                 type="text"
                 value={searchText}
                 placeholder="Search here"
-                onChange={(e) => setSearchText(e.target.value)}
+                onChange={e => setSearchText(e.target.value)}
               />
               <FiSearch className="absolute text-2xl text-stone-400 left-4 top-4" />
             </div>
@@ -142,7 +136,7 @@ const Properties = () => {
             <select
               className="border-[2px] border-stone-200 px-4 py-3 rounded-md w-full text- font-medium text-stone-400"
               value={selectedOption}
-              onChange={(e) => setSelectedOption(e.target.value)}
+              onChange={e => setSelectedOption(e.target.value)}
             >
               <option value="-price">High to Low</option>
               <option value="price">Low to High</option>
@@ -241,6 +235,7 @@ const Properties = () => {
                 <h4 className="text-xl font-semibold">
                   {/* Show for All Properties :{propertiesCards.length || 0} */}
                 </h4>
+                {/* toggle button for grid and list  */}
                 {!isGrid ? (
                   <button
                     onClick={() => setIsGrid(true)}
@@ -257,15 +252,16 @@ const Properties = () => {
                   </button>
                 )}
               </div>
+              {/* show card in grid view and list view */}
               {!isGrid ? (
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
-                  {propertiesData?.data?.properties?.map((card) => (
+                  {propertiesData?.data?.properties?.map(card => (
                     <PropertiesCard key={card._id} card={card}></PropertiesCard>
                   ))}
                 </div>
               ) : (
                 <div className="grid lg:grid-cols-1 md:grid-cols-1 sm:grid-cols-1 gap-5  my-6">
-                  {propertiesData?.data?.properties?.map((card) => (
+                  {propertiesData?.data?.properties?.map(card => (
                     <PropertiesCardList
                       key={card._id}
                       card={card}
@@ -274,6 +270,7 @@ const Properties = () => {
                 </div>
               )}
             </div>
+            {/* pagination Implementation */}
             {totalPage > 1 ? (
               <div className="flex items-center justify-center gap-5">
                 <button
@@ -287,7 +284,7 @@ const Properties = () => {
                   <FaArrowLeft />
                 </button>
 
-                {pages.map((pageNo) => (
+                {pages.map(pageNo => (
                   <button
                     className={`${
                       activePage === pageNo
