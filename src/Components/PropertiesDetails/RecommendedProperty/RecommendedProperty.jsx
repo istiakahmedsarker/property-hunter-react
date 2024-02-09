@@ -13,7 +13,7 @@ const RecommendedProperty = ({ type, id }) => {
   const data = propertiesData?.data?.properties || [];
 
   // filter property
-  const filterData = data.filter((item) => item._id !== id);
+  const filterData = data.filter(item => item._id !== id);
   return (
     <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
       <div>
@@ -21,9 +21,9 @@ const RecommendedProperty = ({ type, id }) => {
           See More {type} type of Property
         </h3>
       </div>
-
+      {/* show recommended property card */}
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
-        {filterData.map((recommended) => (
+        {filterData.map(recommended => (
           <RecommendedCard
             key={recommended._id}
             recommended={recommended}

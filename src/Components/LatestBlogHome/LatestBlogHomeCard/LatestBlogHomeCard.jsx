@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LatestBlogHomeCard = ({ blog }) => {
-  // console.log(blog);
   const { _id, images, heading, createdAt } = blog || {};
+  // for arrange the date
   const createdAtDate = new Date(createdAt);
   const formattedDate = createdAtDate
     .toLocaleDateString('en-US', {
