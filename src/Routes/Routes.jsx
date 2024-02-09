@@ -19,7 +19,6 @@ import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
 import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
-
 import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
 import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
 import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
@@ -76,10 +75,10 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path:'/favorite',
-        element: <FavoriteProperty/>
+        path: '/favorite',
+        element: <FavoriteProperty />
       }
-      
+
     ],
   },
   {
@@ -110,7 +109,7 @@ const router = createBrowserRouter([
       //? Member only routes
       {
         path: '/dashboard/payment',
-        element: <StripePayment/>
+        element: <StripePayment />
       },
       {
         path: '/dashboard/payment-history',
