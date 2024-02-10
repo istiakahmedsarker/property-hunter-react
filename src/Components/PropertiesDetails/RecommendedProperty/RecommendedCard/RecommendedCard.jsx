@@ -27,7 +27,7 @@ const RecommendedCard = ({ recommended }) => {
   return (
     <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white my-6">
       <div className=" w-full">
-        {/* for slider */}
+        {/* use slider for property image*/}
         <Swiper
           slidesPerView={1}
           spaceBetween={0}

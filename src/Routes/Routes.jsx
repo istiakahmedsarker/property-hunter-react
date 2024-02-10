@@ -18,6 +18,7 @@ import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
+import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
 import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
 import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
 import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
@@ -32,115 +33,120 @@ import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/Listi
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Main></Main>,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/blogs',
+        path: "/blogs",
         element: <Blogs />,
       },
       {
-        path: '/blogs/:id',
+        path: "/blogs/:id",
         element: <BlogDetails />,
       },
 
       {
-        path: '/properties',
+        path: "/properties",
         element: <Properties></Properties>,
       },
-      { path: '/createBlog', element: <BlogPost /> },
+      { path: "/createBlog", element: <BlogPost /> },
       {
-        path: '/propertiesDetails/:id',
+        path: "/propertiesDetails/:id",
         element: <PropertiesDetails></PropertiesDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://property-hunter-server.vercel.app/api/v1/properties/${params.id}`
+            `https://property-hunter-server-roan.vercel.app/api/v1/properties/${params.id}`
           ),
       },
       {
-        path: '/addProperties',
+        path: "/addProperties",
         element: <AddProperties />,
       },
       {
-        path: '/login',
+        path: "/login",
         element: <Login />,
       },
       {
-        path: '/register',
+        path: "/register",
         element: <Register />,
       },
       {
-        path: '/payment',
-        element: <StripePayment/>
-      },
+        path: '/favorite',
+        element: <FavoriteProperty />
+      }
+
     ],
   },
   {
     // dashboard routes
-    path: '/dashboard',
+    path: "/dashboard",
     element: <Dashboard />,
     children: [
       {
-        path: '/dashboard/home',
+        path: "/dashboard/home",
         element: <HomeDashboard />,
       },
       {
-        path: '/dashboard/announcement',
+        path: "/dashboard/announcement",
         element: <Announcement />,
       },
       {
-        path: '/dashboard/all-properties',
+        path: "/dashboard/all-properties",
         element: <AllProperties />,
       },
       {
-        path: '/dashboard/userManagement',
+        path: "/dashboard/userManagement",
         element: <UserManagement />,
       },
       {
-        path: '/dashboard/profile',
+        path: "/dashboard/profile",
         element: <Profile />,
       },
       //? Member only routes
+      {
+        path: '/dashboard/payment',
+        element: <StripePayment />
+      },
       {
         path: '/dashboard/payment-history',
         element: <PaymentHistory />,
       },
 
       {
-        path: '/dashboard/favourites',
+        path: "/dashboard/favourites",
         element: <Favourites />,
       },
       {
-        path: '/dashboard/property-status',
+        path: "/dashboard/property-status",
         element: <PropertyStatus />,
       },
       {
-        path: '/dashboard/make-announcement',
+        path: "/dashboard/make-announcement",
         element: <MakeAnnouncement />,
       },
       {
-        path: '/dashboard/admin',
+        path: "/dashboard/admin",
         element: <AdminHome />,
       },
       {
-        path: '/dashboard/all-users',
+        path: "/dashboard/all-users",
         element: <AllUsers />,
       },
       {
-        path: '/dashboard/property-request',
+        path: "/dashboard/property-request",
         element: <PropertyRequest />,
       },
       {
-        path: '/dashboard/manage-property-request',
+        path: "/dashboard/manage-property-request",
         element: <ManagePropertyRequest />,
       },
       //? Admin only routes
       {
-        path: '/dashboard/listing-summary',
+        path: "/dashboard/listing-summary",
         element: <ListingSummary />,
       },
     ],

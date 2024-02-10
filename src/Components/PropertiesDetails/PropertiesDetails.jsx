@@ -15,17 +15,19 @@ import RecommendedProperty from './RecommendedProperty/RecommendedProperty';
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
   const details = cardDetails?.data?.property || {};
-  const [showFullDescription, setShowFullDescription] = useState(false);
+  //state for show full description
+  const [isShowFullDescription, setIsShowFullDescription] = useState(false);
+  // state for open the form
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription);
+    setIsShowFullDescription(!isShowFullDescription);
   };
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
   };
-
+  //  show google map
   useEffect(() => {
     const ifameData = document.getElementById('iframeId');
     const lat = details.location.latitude;
@@ -88,7 +90,7 @@ const PropertiesDetails = () => {
       </div>
       <div className="flex lg:flex-row flex-col gap-5 ">
         <div className="lg:w-2/3 w-full">
-          {/* overview */}
+          {/* overview section */}
           <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl font-semibold py-5">Overview</h3>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-6">
@@ -206,14 +208,14 @@ const PropertiesDetails = () => {
               </div>
             </div>
           </div>
-          {/* properties Description */}
+          {/* properties Description section */}
           <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl  font-semibold py-5">
               Properties Description
             </h3>
-            {/* see more implementation */}
+            {/* see more description implementation */}
             <p className="">
-              {showFullDescription
+              {isShowFullDescription
                 ? details.description
                 : `${details.description.slice(0, 200)}${
                     details.description.length > 200 ? '...' : ''
@@ -221,12 +223,12 @@ const PropertiesDetails = () => {
             </p>
             {details.description.length > 200 && (
               <button className="text-blue-800" onClick={toggleDescription}>
-                {showFullDescription ? 'See less' : 'See more'}
+                {isShowFullDescription ? 'See less' : 'See more'}
               </button>
             )}
 
             <div className="">
-              {/* properties details */}
+              {/* properties details section */}
               <h3 className="text-xl font-semibold py-5">Properties Details</h3>
               <div className="grid grid-cols-2  lg:gap-5 gap-2">
                 <h3 className="grid grid-cols-2 py-1">
@@ -277,7 +279,7 @@ const PropertiesDetails = () => {
                   ''
                 )}
 
-                {/*  */}
+                {/* property size */}
                 <h3 className="grid grid-cols-2 py-1">
                   <span className="font-semibold">Property size</span>
                   <span>: {details.squareFootage} sq Ft</span>
@@ -297,27 +299,27 @@ const PropertiesDetails = () => {
               </div>
             </div>
           </div>
-          {/* property feature */}
+          {/* property feature section */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Properties Features</h3>
             <li className="py-2">{details.easement[0]}</li>
             <li className="py-2">{details.easement[1]}</li>
             <li className="py-2">{details.easement[2]}</li>
           </div>
-          {/* properties utilities */}
+          {/* properties utilities section */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Utilities</h3>
             <li className="py-2">{details.utilities[0]}</li>
             <li className="py-2">{details.utilities[1]}</li>
             <li className="py-2">{details.utilities[2]}</li>
           </div>
-          {/* recommended property */}
+          {/* recommended property section */}
           <RecommendedProperty
             cardDetails={cardDetails}
             type={details?.propertyType}
             id={details?._id}
           ></RecommendedProperty>
-          {/* properties Address */}
+          {/* properties Address section */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Address</h3>
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">

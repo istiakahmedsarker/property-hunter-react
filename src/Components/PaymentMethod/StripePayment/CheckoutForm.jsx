@@ -38,7 +38,7 @@ const CheckoutForm = () => {
   useEffect(() => {
     async function cardFromData() {
       if (totalAmount > 0) {
-        await instance.post("/create-payment-intent", { price: totalAmount })
+        await instance.post("http://localhost:3000/create-payment-intent", { price: totalAmount })
           .then((res) => {
             console.log(res.data.clientSecret);
             setClientSecret(res.data.clientSecret);
@@ -48,6 +48,10 @@ const CheckoutForm = () => {
 
     cardFromData();
   }, [instance,totalAmount]);
+
+  
+  
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -101,20 +105,22 @@ const CheckoutForm = () => {
   
         // Save the payment in the database
         const payment = {
-          email: user.email,
+          customer_name: user.displayName,
+          customer_email: user.email,
+          transaction_id: paymentIntent.id,
+          // serviceCharge: serviceCharge,
+          // totalAmount: totalAmount,
+          transaction_date: new Date(), // utc date convert.
           price: amountAfterServiceCharge,
-          serviceCharge: serviceCharge,
-          totalAmount: totalAmount,
-          transactionId: paymentIntent.id,
-          date: new Date(), // utc date convert. use moment js
-          status: 'pending'
+          status: 'pending',
+          country:"Bangladesh"
         }
   
-        const res = await instance.post('/payments', payment)
+        const res = await instance.post('payments', payment)
   
         console.log('payment save in the data base', res);
   
-        if (res?.data?.paymentResult?.insertedId) {
+        if (res?.data?.status === "success") {
           
           console.log('Payment successfully');
           navigate('/dashboard/paymentHistory');
@@ -156,23 +162,12 @@ const CheckoutForm = () => {
           </div>
         </div> */}
         <div className="mt-3">
-          <AddressElement options={{ mode: "shipping",
-        defaultValues: {
-          name: 'Jane Doe',
-          address: {
-            line1: '354 Oyster Point Blvd',
-            line2: '',
-            city: 'South San Francisco',
-            state: 'CA',
-            postal_code: '94080',
-            country: 'US',
-          },
-        }, }}
+          <AddressElement options={{ mode: "shipping"}}
          />
         </div>
         <div className="mt-5">
           <button type="submit" 
-          // disabled={!stripe || !clientSecret}
+          disabled={!stripe || !clientSecret}
           className="btn btn-sm bg-[#eb6753] text-white">
             Pay Now
           </button>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import axios from 'axios';
+
 
 const Comment = ({ avatar, username, content }) => {
   const [likes, setLikes] = useState(0);
@@ -7,30 +9,52 @@ const Comment = ({ avatar, username, content }) => {
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
 
-  const handleLike = () => {
-    if (liked) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
-      if (disliked) {
-        setDislikes(dislikes - 1);
-        setDisliked(false);
-      }
-    }
-    setLiked(!liked);
-  };
+  const handleLike = async () => {
+    try {
+      // Assuming 'commentId' is the unique identifier for the comment
+      const commentId = 'abc123'; // Replace with your actual comment ID
 
-  const handleDislike = () => {
-    if (disliked) {
-      setDislikes(dislikes - 1);
-    } else {
-      setDislikes(dislikes + 1);
       if (liked) {
         setLikes(likes - 1);
-        setLiked(false);
+        await axios.patch(`/api/v1/like-dislike/decrease-like/${commentId}`);
+      } else {
+        setLikes(likes + 1);
+        if (disliked) {
+          setDislikes(dislikes - 1);
+          setDisliked(false);
+          await axios.patch(`/api/v1/like-dislike/decrease-dislike/${commentId}`);
+        }
+        await axios.patch(`/api/v1/like-dislike/increase-like/${commentId}`);
       }
+
+      setLiked(!liked);
+    } catch (error) {
+      console.error(error.response.data);
     }
-    setDisliked(!disliked);
+  };
+
+  const handleDislike = async () => {
+    try {
+      // Assuming 'commentId' is the unique identifier for the comment
+      const commentId = 'abc123'; // Replace with your actual comment ID
+
+      if (disliked) {
+        setDislikes(dislikes - 1);
+        await axios.patch(`/api/v1/like-dislike/decrease-dislike/${commentId}`);
+      } else {
+        setDislikes(dislikes + 1);
+        if (liked) {
+          setLikes(likes - 1);
+          setLiked(false);
+          await axios.patch(`/api/v1/like-dislike/decrease-like/${commentId}`);
+        }
+        await axios.patch(`/api/v1/like-dislike/increase-dislike/${commentId}`);
+      }
+
+      setDisliked(!disliked);
+    } catch (error) {
+      console.error(error.response.data);
+    }
   };
 
   return (

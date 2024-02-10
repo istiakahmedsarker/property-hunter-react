@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { BiCommentDots } from 'react-icons/bi';
 import CommentForm from '../../Components/CommentForm/CommentForm';
 import useAxios from '../../Hooks/useAxios';
+import { FaRegUserCircle } from "react-icons/fa";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -44,7 +45,7 @@ const BlogDetails = () => {
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold ">{heading}</h2>
       <div className="flex items-center gap-5  mt-5 mb-5 font-semibold text-sm max-w-6xl justify-between">
         <div className="flex gap-2 items-center ">
-          <img src="" alt="author" />
+          <FaRegUserCircle className='h-10 w-10' />
           <div>
             <h5>Author</h5>
             <h5>{formattedDate}</h5>

@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoBedOutline } from 'react-icons/io5';
 import { PiBathtub } from 'react-icons/pi';
 import { BiShapeSquare } from 'react-icons/bi';
 import { HiArrowTopRightOnSquare } from 'react-icons/hi2';
 import { GiSelfLove } from 'react-icons/gi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // for slider
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
+// for Add to Favorite
+import useAuth from '../../Hooks/useAuth';
+import useAxios from '../../Hooks/useAxios';
+import toast from 'react-hot-toast';
+import Swal from "sweetalert2";
+import useFavorite from '../../Hooks/useFavorite';
+
 const PropertiesCard = ({ card }) => {
   const {
     _id,
@@ -22,6 +29,49 @@ const PropertiesCard = ({ card }) => {
     propertyStatus,
     price,
   } = card;
+// Favorite property
+  const {user} = useAuth();
+  const instance = useAxios();
+  const navigate = useNavigate();
+  const [, refetch] = useFavorite();
+  const propertyImageUrl = `${propertyImages[0]}`;
+  const handleFavorite = () =>{
+    
+    if(user && user?.email){
+     const favoriteItem = {
+      property_id: _id,
+      property_title: propertyTitle,
+      user_email: user?.email,
+      property_images: propertyImageUrl || '',
+      price:price,
+      property_location: location.city || '',
+
+     }
+     instance.post('/property-favorite/add-favorite', favoriteItem)
+     .then(res =>{
+      if(res?.data?.status === "success"){
+        toast.success(`${propertyTitle} added to your favorite`);
+        refetch();
+      }
+     })
+
+    }
+    else{
+      Swal.fire({
+        title: "You are not Logged In",
+        text: "Please login to add to favorite!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, login!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login', {state: {from: location}})
+        }
+      });
+    }
+  }
   return (
     <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white my-6">
       <div className=" w-full">
@@ -92,7 +142,7 @@ const PropertiesCard = ({ card }) => {
           <h3>For {card.propertyStatus}</h3>
           <h3 className="flex justify-center items-center gap-4">
             <HiArrowTopRightOnSquare />
-            <GiSelfLove />
+            <GiSelfLove onClick={handleFavorite} className='cursor-pointer'/>
           </h3>
         </div>
       </div>
