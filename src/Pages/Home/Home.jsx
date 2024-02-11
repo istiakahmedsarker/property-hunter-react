@@ -10,7 +10,7 @@ import ContactUs from '../../Components/Contract/ContactUs/ContactUs';
 
 const Home = () => {
   return (
-    <div>
+    <div className='max-w-screen-2xl mx-auto px-4'>
       {/* <Banner/> */}
       <Banner />
       <ExploreTypes></ExploreTypes>

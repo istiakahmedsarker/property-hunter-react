@@ -15,13 +15,14 @@ const ExploreTypes = () => {
     history.push(`/properties?propertyType=${propertyType}`);
   };
   return (
-    <div className="w-11/12 mx-auto my-7 ">
-      <div className="my-6">
-        <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center md:text-left font-bold md:mb-3 lg:mb-4">
+    <div className="w-11/12 mx-auto md:my-20 ">
+      <div className="my-6 text-center">
+        <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center font-bold md:mb-3 lg:mb-4">
           Explore Properties Types
         </h2>
         <h3 className="text-sm font-semibold">All Types of Properties</h3>
       </div>
+
       {/* for redirect the relevant property */}
       <div className="w-full grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 ">
         <Link
@@ -37,7 +38,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">House</h3>
-              <h3>{}8 Properties</h3>
+              <h3>{ }8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -54,7 +55,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Apartment</h3>
-              <h3>{}8 Properties</h3>
+              <h3>{ }8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -72,7 +73,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Villa</h3>
-              <h3>{}8 Properties</h3>
+              <h3>{ }8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -90,7 +91,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Office</h3>
-              <h3>{}8 Properties</h3>
+              <h3>{ }8 Properties</h3>
             </div>
           </div>
         </Link>
