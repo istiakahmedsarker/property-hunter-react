@@ -68,7 +68,7 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className="relative">
         <Link
           className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
             } no-underline font-semibold text-lg`}
@@ -82,7 +82,7 @@ const Navbar = () => {
 
   return (
     <div className=" bg-[#ebebeb]">
-      <div className="navbar  max-w-screen-2xl mx-auto px-4  text-gray-700">
+      <div className="navbar  max-w-[1440px] mx-auto px-4  text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -112,11 +112,11 @@ const Navbar = () => {
               {pages}
             </ul>
           </div>
-          <a className=" text-[18px] md:text-xl flex items-center gap-2">
+          <Link to="/" className=" text-[18px] md:text-xl flex items-center gap-2">
             <img className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
 
             <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl text-gray-900">Property-Hunter</h3>
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex items-center gap-6 menu-horizontal px-1">

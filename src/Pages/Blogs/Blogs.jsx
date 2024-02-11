@@ -66,7 +66,7 @@ const Blogs = () => {
             </p>
           </div>
         ) : (
-          <div className="md:col-span-8  sm:w-[70%] mx-auto md:w-[80%] px-4 ">
+          <div className="md:col-span-8  sm:w-[70%] mx-auto md:w-[70%] px-4 ">
             <div className="grid mb-10 lg:mb-5  md:grid-cols-2 gap-6 lg:gap-10  gap-y-10  grid-cols-1 ">
               {data?.data?.blogs?.map((blog) => (
                 <BlogCard key={blog._id} blog={blog} />
