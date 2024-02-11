@@ -20,9 +20,8 @@ const Navbar = () => {
     <>
       <li className="nav-link relative">
         <Link
-          className={` ${
-            pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg`}
           to={"/"}
         >
           Home
@@ -30,9 +29,8 @@ const Navbar = () => {
       </li>
       <li className="nav-link relative dropdown dropdown-hover">
         <Link
-          className={` ${
-            pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg`}
           to={"/properties"}
         >
           Properties
@@ -40,9 +38,8 @@ const Navbar = () => {
       </li>
       <li className="nav-link relative">
         <Link
-          className={` ${
-            pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg`}
           to={"/blogs"}
         >
           Blogs
@@ -51,9 +48,8 @@ const Navbar = () => {
       {user && (
         <li className="nav-link relative">
           <Link
-            className={` ${
-              pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
-            } no-underline font-semibold text-lg`}
+            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
+              } no-underline font-semibold text-lg`}
             to={"/dashboard"}
           >
             Dashboard
@@ -62,11 +58,10 @@ const Navbar = () => {
       )}
       <li>
         <Link
-          className={` ${
-            pathname === "/add-property"
+          className={` ${pathname === "/add-property"
               ? "text-[#eb6753] font-bold"
               : "inline-block md:hidden text-gray-700"
-          } no-underline font-semibold text-lg`}
+            } no-underline font-semibold text-lg`}
           to={"/addProperties"}
         >
           Add Property
@@ -75,12 +70,11 @@ const Navbar = () => {
       {/* favorite Property route */}
       <li className="nav-link relative">
         <Link
-          className={` ${
-            pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
+            } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove/> <span className='bg-[#eb6753] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>
@@ -88,7 +82,7 @@ const Navbar = () => {
 
   return (
     <div className=" bg-[#ebebeb]">
-      <div className="navbar px-4 md:px-4 max-w-7xl mx-auto py-6  text-gray-700">
+      <div className="navbar  max-w-screen-2xl mx-auto px-4  text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -119,8 +113,8 @@ const Navbar = () => {
             </ul>
           </div>
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
-         <img  className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
-      
+            <img className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
+
             <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl text-gray-900">Property-Hunter</h3>
           </a>
         </div>
