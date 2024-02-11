@@ -18,7 +18,7 @@ const Properties = () => {
 
   // for explore type
 
-  const limit = 6;
+  const limit = 9;
   const [checkboxes, setCheckboxes] = useState({
     all: true,
     rent: false,
@@ -111,7 +111,7 @@ const Properties = () => {
     );
   }
   return (
-    <div className="max-w-7xl mx-auto pt-8 pb-20">
+    <div className="max-w-screen-2xl mx-auto pt-8 pb-20">
       <div className="my-6">
         <h3 className="text-3xl font-semibold">Properties For sale</h3>
       </div>
