@@ -1,0 +1,35 @@
+input[type='radio'] {
+  --s: 1em; /* control the size */
+  --c: #041e42; /* the active color */
+
+  height: 20px;
+  aspect-ratio: 1;
+  border: 3px solid #939393;
+  padding: calc(var(--s) / 8);
+
+  border-radius: 50%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+input[type='radio']:checked {
+  border-color: var(--c);
+  background-size: 100% 100%;
+}
+
+input[type='radio']:disabled {
+  background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media print {
+  input[type='radio'] {
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+    background: none;
+  }
+}
