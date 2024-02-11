@@ -14,7 +14,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import useAuth from '../../Hooks/useAuth';
 import useAxios from '../../Hooks/useAxios';
 import toast from 'react-hot-toast';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 import useFavorite from '../../Hooks/useFavorite';
 
 const PropertiesCard = ({ card }) => {
@@ -29,51 +29,48 @@ const PropertiesCard = ({ card }) => {
     propertyStatus,
     price,
   } = card;
-// Favorite property
-  const {user} = useAuth();
+  // Favorite property
+  const { user } = useAuth();
   const instance = useAxios();
   const navigate = useNavigate();
   const [, refetch] = useFavorite();
   const propertyImageUrl = `${propertyImages[0]}`;
-  const handleFavorite = () =>{
-    
-    if(user && user?.email){
-     const favoriteItem = {
-      property_id: _id,
-      property_title: propertyTitle,
-      user_email: user?.email,
-      property_images: propertyImageUrl || '',
-      price:price,
-      property_location: location.city || '',
-
-     }
-     instance.post('/property-favorite/add-favorite', favoriteItem)
-     .then(res =>{
-      if(res?.data?.status === "success"){
-        toast.success(`${propertyTitle} added to your favorite`);
-        refetch();
-      }
-     })
-
-    }
-    else{
+  const handleFavorite = () => {
+    if (user && user?.email) {
+      const favoriteItem = {
+        property_id: _id,
+        property_title: propertyTitle,
+        user_email: user?.email,
+        property_images: propertyImageUrl || '',
+        price: price,
+        property_location: location.city || '',
+      };
+      instance
+        .post('/property-favorite/add-favorite', favoriteItem)
+        .then((res) => {
+          if (res?.data?.status === 'success') {
+            toast.success(`${propertyTitle} added to your favorite`);
+            refetch();
+          }
+        });
+    } else {
       Swal.fire({
-        title: "You are not Logged In",
-        text: "Please login to add to favorite!",
-        icon: "warning",
+        title: 'You are not Logged In',
+        text: 'Please login to add to favorite!',
+        icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, login!"
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, login!',
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/login', {state: {from: location}})
+          navigate('/login', { state: { from: location } });
         }
       });
     }
-  }
+  };
   return (
-    <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white my-6">
+    <div className="px-4 w-[400px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white">
       <div className=" w-full">
         {/* for slider */}
         <Swiper
@@ -142,7 +139,7 @@ const PropertiesCard = ({ card }) => {
           <h3>For {card.propertyStatus}</h3>
           <h3 className="flex justify-center items-center gap-4">
             <HiArrowTopRightOnSquare />
-            <GiSelfLove onClick={handleFavorite} className='cursor-pointer'/>
+            <GiSelfLove onClick={handleFavorite} className="cursor-pointer" />
           </h3>
         </div>
       </div>
