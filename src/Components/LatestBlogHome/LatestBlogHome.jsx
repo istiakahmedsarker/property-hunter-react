@@ -25,11 +25,7 @@ const LatestBlogHome = () => {
     }
     return 3;
   };
-<<<<<<< HEAD
   console.log(latestBlogsData?.data?.blogs);
-=======
-  // console.log(latestBlogsData.data?.blogs);
->>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
   return (
     <div className="w-11/12 mx-auto my-7 ">
       <div className="my-6">
