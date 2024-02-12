@@ -1,13 +1,13 @@
-import { Outlet } from "react-router-dom";
-import SideNav from "../Components/dashboard/SideNav/SideNav";
+import { Outlet } from 'react-router-dom';
+import SideNav from '../Components/dashboard/SideNav/SideNav';
 
 const Dashboard = () => {
   return (
-    <div className="flex gap-6 min-h-screen overflow-y-scroll">
-      <div className=" w-1/4  bg-slate-100">
+    <div className="flex ">
+      <div className="lg:w-[280px] min-h-screen ">
         <SideNav />
       </div>
-      <div className="w-3/4">
+      <div className="flex-1 px-6 md:mx-0">
         <Outlet />
       </div>
     </div>
