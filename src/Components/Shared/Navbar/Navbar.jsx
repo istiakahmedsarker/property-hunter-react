@@ -12,6 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
   const [favorite] = useFavorite();
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   const handleLogOut = () => {
     logOut();
