@@ -9,7 +9,7 @@ import axios from "axios";
 
 const AddProperties = () => {
   const [formStep, setFormStep] = useState(0);
-  const [propertyType, setPropertyType] = useState('');
+  const [propertyType, setPropertyType] = useState("");
   // const [imagePreview, setImagePreview] = useState('');
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -60,8 +60,6 @@ const AddProperties = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
 
- 
-
   const onSubmit = async (data) => {
     // console.log(data)
     //? Property description
@@ -91,8 +89,8 @@ const AddProperties = () => {
     const apartmentNumber = data.apartmentNumber;
     const price = data.price;
     const yearBuilt = data.yearBuilt;
-    const easement = data.easement.split(',');
-    const utilities = data.utilities.split(',');
+    const easement = data.easement.split(",");
+    const utilities = data.utilities.split(",");
 
     //? Additional information
     const parkingIncluded = data.parking;
@@ -160,82 +158,72 @@ const AddProperties = () => {
       !parkingIncluded ||
       !parkingSpace ||
       !propertyStatus ||
-      !description || 
+      !description ||
       !utilities ||
       !easement
     ) {
       return toast.error("Please fill out the form correctly.");
     }
 
-
-
     //  //? Validation if property is apartment
-   //? Validation if property is apartment
-   if (propertyTYPE === 'apartment') {
-    if (
-      !floorNumber ||
-      !bedroom ||
-      !blockName ||
-      !apartmentNumber
-    ) {
-      toast.error("Please fill out the apartment details correctly.");
-      return;
+    //? Validation if property is apartment
+    if (propertyTYPE === "apartment") {
+      if (!floorNumber || !bedroom || !blockName || !apartmentNumber) {
+        toast.error("Please fill out the apartment details correctly.");
+        return;
+      }
     }
-  }
-
-
 
     try {
-      
       const images = await imagesUpload(imageFiles);
       // console.log(images);
-      
-      if(images.length > 0) {
-        
-      //  }
 
-      //? Save to database.
+      if (images.length > 0) {
+        //  }
 
-      const property = {
-        propertyTitle: propertyTitle,
-        propertyType: propertyTYPE || propertyType,
-        location: {
-          address: address,
-          city: city,
-          state: state,
-          zipCode: parseInt(zipCode),
-          neighborhood: neighborhood,
-          latitude: parseInt(latitude),
-          longitude: parseInt(longitude),
-        },
-        price: parseInt(price),
-        squareFootage: parseInt(squareFootage),
-        easement: easement,
-        bedroom: parseInt(bedroom),
-        bathroom: parseInt(bathroom),
-        description: description,
-        propertyImages: [
-          images[0], images[1], images[2]
-        ],
-        utilities: utilities,
-        parking: {
-          included: parkingIncluded,
-          spaces: parseInt(parkingSpace),
-        },
-        yearBuilt: parseInt(yearBuilt),
-        propertyStatus: propertyStatus,
-        ownerInformation: {
-          name: name,
-          email: email,
-          phone: parseInt(phone),
-        },
-      };
-       const { data } = await axios.post('https://property-hunter-server.vercel.app/api/v1/properties/', property);
-       console.log(data);
-       if(data.status === "success") { 
-        toast.success("Successfully added the property.");
-        completeFormStep(event);
-       }
+        //? Save to database.
+
+        const property = {
+          propertyTitle: propertyTitle,
+          propertyType: propertyTYPE || propertyType,
+          location: {
+            address: address,
+            city: city,
+            state: state,
+            zipCode: parseInt(zipCode),
+            neighborhood: neighborhood,
+            latitude: parseInt(latitude),
+            longitude: parseInt(longitude),
+          },
+          price: parseInt(price),
+          squareFootage: parseInt(squareFootage),
+          easement: easement,
+          bedroom: parseInt(bedroom),
+          bathroom: parseInt(bathroom),
+          description: description,
+          propertyImages: [images[0], images[1], images[2]],
+          utilities: utilities,
+          parking: {
+            included: parkingIncluded,
+            spaces: parseInt(parkingSpace),
+          },
+          yearBuilt: parseInt(yearBuilt),
+          propertyStatus: propertyStatus,
+          ownerInformation: {
+            name: name,
+            email: email,
+            phone: parseInt(phone),
+          },
+        };
+        const { data } = await axios.post(
+          "https://property-hunter-server-roan.vercel.app/api/v1/properties/",
+          property
+        );
+        console.log(data);
+        if (data.status === "success") {
+          toast.success("Successfully added the property.");
+          completeFormStep(event);
+        }
         console.log(property, "property Data");
       }
     } catch (error) {
@@ -297,10 +285,10 @@ const AddProperties = () => {
 
   //? Handle the property type
   const handlePropertyType = (e) => {
-      const propertyType = e.target.value;
-     setPropertyType(propertyType);
-     console.log(propertyType);
-  }
+    const propertyType = e.target.value;
+    setPropertyType(propertyType);
+    console.log(propertyType);
+  };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center  bg-[#f6fff5] bg-[url('https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg')] bg-cover">
@@ -370,14 +358,15 @@ const AddProperties = () => {
                         <span>This field is required</span>
                       )}
                     </div>
-             
+
                     <div className="form-control col-span-3">
                       <label className="label">
                         <span className="label-text text-gray-400">
                           Property Type
                         </span>
                       </label>
-                      <select onChange={handlePropertyType}
+                      <select
+                        onChange={handlePropertyType}
                         // {...register("propertyType", { required: true })}
                         required
                         name="propertyType"
@@ -393,7 +382,7 @@ const AddProperties = () => {
                         >
                           Type
                         </option>
-                        <option value="home" >Home</option>
+                        <option value="home">Home</option>
                         <option value="apartment">Apartment</option>
                         <option value="villa">Villa</option>
                       </select>
@@ -443,9 +432,7 @@ const AddProperties = () => {
 
                       {errors.phone && <span>This field is required</span>}
                     </div>
-                    <div>
-     
-    </div>
+                    <div></div>
                   </div>
                 )}
                 {/* step Two */}
@@ -667,71 +654,74 @@ const AddProperties = () => {
                     <h1 className=" text-2xl md:text-4xl text-black col-span-8 font-semibold">
                       Property Details
                     </h1>
-                    {propertyType === "apartment" && <>
-                    <div className="form-control col-span-2">
-                      <label className="label">
-                        <span className="label-text">Floor number</span>
-                      </label>
-                      <input
-                        {...register("floorNumber", { required: true })}
-                        name="floorNumber"
-                        type="text"
-                        placeholder="floor number"
-                        className="input border-gray-600 input-bordered "
-                        required
-                      />
+                    {propertyType === "apartment" && (
+                      <>
+                        <div className="form-control col-span-2">
+                          <label className="label">
+                            <span className="label-text">Floor number</span>
+                          </label>
+                          <input
+                            {...register("floorNumber", { required: true })}
+                            name="floorNumber"
+                            type="text"
+                            placeholder="floor number"
+                            className="input border-gray-600 input-bordered "
+                            required
+                          />
 
-                      {errors.floorNumber && (
-                        <span>This field is required</span>
-                      )}
-                    </div>
-                    <div className="form-control col-span-2">
-                      <label className="label">
-                        <span className="label-text">Rooms</span>
-                      </label>
-                      <input
-                        {...register("rooms", { required: true })}
-                        name="rooms"
-                        type="text"
-                        placeholder="rooms"
-                        className="input border-gray-600 input-bordered "
-                        required
-                      />
+                          {errors.floorNumber && (
+                            <span>This field is required</span>
+                          )}
+                        </div>
+                        <div className="form-control col-span-2">
+                          <label className="label">
+                            <span className="label-text">Rooms</span>
+                          </label>
+                          <input
+                            {...register("rooms", { required: true })}
+                            name="rooms"
+                            type="text"
+                            placeholder="rooms"
+                            className="input border-gray-600 input-bordered "
+                            required
+                          />
 
-                      {errors.rooms && <span>This field is required</span>}
-                    </div>
-                    <div className="form-control col-span-2">
-                      <label className="label">
-                        <span className="label-text">Apartment No</span>
-                      </label>
-                      <input
-                        {...register("apartmentNumber", { required: true })}
-                        name="apartmentNumber"
-                        type="text"
-                        placeholder="apartment number"
-                        className="input border-gray-600 input-bordered "
-                        required
-                      />
-                      {errors.apartmentNumber && (
-                        <span>This field is required</span>
-                      )}
-                    </div>
-                    <div className="form-control col-span-2">
-                      <label className="label">
-                        <span className="label-text">Block Name</span>
-                      </label>
-                      <input
-                        {...register("blockName", { required: true })}
-                        name="blockName"
-                        type="text"
-                        placeholder="block name"
-                        className="input border-gray-600 input-bordered "
-                        required
-                      />
-                      {errors.blockName && <span>This field is required</span>}
-                    </div>
-                    </>
-                    }
+                          {errors.rooms && <span>This field is required</span>}
+                        </div>
+                        <div className="form-control col-span-2">
+                          <label className="label">
+                            <span className="label-text">Apartment No</span>
+                          </label>
+                          <input
+                            {...register("apartmentNumber", { required: true })}
+                            name="apartmentNumber"
+                            type="text"
+                            placeholder="apartment number"
+                            className="input border-gray-600 input-bordered "
+                            required
+                          />
+                          {errors.apartmentNumber && (
+                            <span>This field is required</span>
+                          )}
+                        </div>
+                        <div className="form-control col-span-2">
+                          <label className="label">
+                            <span className="label-text">Block Name</span>
+                          </label>
+                          <input
+                            {...register("blockName", { required: true })}
+                            name="blockName"
+                            type="text"
+                            placeholder="block name"
+                            className="input border-gray-600 input-bordered "
+                            required
+                          />
+                          {errors.blockName && (
+                            <span>This field is required</span>
+                          )}
+                        </div>
+                      </>
+                    )}
                     <div className="form-control col-span-2">
                       <label className="label">
                         <span className="label-text">Bathroom</span>
@@ -747,7 +737,7 @@ const AddProperties = () => {
 
                       {errors.bathroom && <span>This field is required</span>}
                     </div>
-                  
+
                     <div className="form-control col-span-2">
                       <label className="label">
                         <span className="label-text">SquareFootage</span>
@@ -764,7 +754,7 @@ const AddProperties = () => {
                         <span>This field is required</span>
                       )}
                     </div>
-                   
+
                     <div className="form-control col-span-2">
                       <label className="label">
                         <span className="label-text">Price</span>
@@ -797,7 +787,9 @@ const AddProperties = () => {
                     </div>
                     <div className="form-control col-span-4">
                       <label className="label">
-                        <span className="label-text">Easement (separated by commas):</span>
+                        <span className="label-text">
+                          Easement (separated by commas):
+                        </span>
                       </label>
                       <input
                         {...register("easement", { required: true })}
@@ -812,7 +804,9 @@ const AddProperties = () => {
                     </div>
                     <div className="form-control col-span-4">
                       <label className="label">
-                        <span className="label-text">Utilities (separated by commas):</span>
+                        <span className="label-text">
+                          Utilities (separated by commas):
+                        </span>
                       </label>
                       <input
                         {...register("utilities", { required: true })}

@@ -2,12 +2,18 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import useAuth from '../../../Hooks/useAuth';
 import { RiLogoutBoxLine } from 'react-icons/ri';
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
+=======
+import { GiSelfLove } from 'react-icons/gi';
+import useFavorite from '../../../Hooks/useFavorite';
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
+<<<<<<< HEAD
   // state for theme implement
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
@@ -26,6 +32,10 @@ const Navbar = () => {
       setTheme('light');
     }
   };
+=======
+  const [favorite] = useFavorite();
+
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
   const handleLogOut = () => {
     logOut();
     navigate('/login');
@@ -35,32 +45,50 @@ const Navbar = () => {
     <>
       <li className="nav-link relative">
         <Link
+<<<<<<< HEAD
           className={` ${
             pathname === '/' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
           } no-underline font-semibold text-lg`}
           to={'/'}
+=======
+          className={` ${pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg`}
+          to={"/"}
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
         >
           Home
         </Link>
       </li>
       <li className="nav-link relative dropdown dropdown-hover">
         <Link
+<<<<<<< HEAD
           className={` ${
             pathname === '/properties'
               ? 'text-[#eb6753] font-bold'
               : 'text-gray-700'
           } no-underline font-semibold text-lg`}
           to={'/properties'}
+=======
+          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg`}
+          to={"/properties"}
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
         >
           Properties
         </Link>
       </li>
       <li className="nav-link relative">
         <Link
+<<<<<<< HEAD
           className={` ${
             pathname === '/blogs' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
           } no-underline font-semibold text-lg`}
           to={'/blogs'}
+=======
+          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg`}
+          to={"/blogs"}
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
         >
           Blogs
         </Link>
@@ -68,12 +96,18 @@ const Navbar = () => {
       {user && (
         <li className="nav-link relative">
           <Link
+<<<<<<< HEAD
             className={` ${
               pathname === '/dashboard'
                 ? 'text-[#eb6753] font-bold'
                 : 'text-gray-700'
             } no-underline font-semibold text-lg`}
             to={'/dashboard'}
+=======
+            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
+              } no-underline font-semibold text-lg`}
+            to={"/dashboard"}
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
           >
             Dashboard
           </Link>
@@ -81,14 +115,32 @@ const Navbar = () => {
       )}
       <li>
         <Link
+<<<<<<< HEAD
           className={` ${
             pathname === '/add-property'
               ? 'text-[#eb6753] font-bold'
               : 'inline-block md:hidden text-gray-700'
           } no-underline font-semibold text-lg`}
           to={'/addProperties'}
+=======
+          className={` ${pathname === "/add-property"
+              ? "text-[#eb6753] font-bold"
+              : "inline-block md:hidden text-gray-700"
+            } no-underline font-semibold text-lg`}
+          to={"/addProperties"}
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
         >
           Add Property
+        </Link>
+      </li>
+      {/* favorite Property route */}
+      <li className="relative">
+        <Link
+          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
+            } no-underline font-semibold text-lg`}
+          to={'/favorite'}
+        >
+          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>
@@ -96,7 +148,7 @@ const Navbar = () => {
 
   return (
     <div className=" bg-[#ebebeb]">
-      <div className="navbar px-4 md:px-4 max-w-7xl mx-auto py-6  text-gray-700">
+      <div className="navbar  max-w-[1440px] mx-auto px-4  text-gray-700">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -126,6 +178,7 @@ const Navbar = () => {
               {pages}
             </ul>
           </div>
+<<<<<<< HEAD
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
             <img
               className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover"
@@ -137,6 +190,13 @@ const Navbar = () => {
               Property-Hunter
             </h3>
           </a>
+=======
+          <Link to="/" className=" text-[18px] md:text-xl flex items-center gap-2">
+            <img className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover" src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png" alt="" />
+
+            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl text-gray-900">Property-Hunter</h3>
+          </Link>
+>>>>>>> a5777291b9511cec8b3c423fd0f0b3272df4b665
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex items-center gap-6 menu-horizontal px-1">

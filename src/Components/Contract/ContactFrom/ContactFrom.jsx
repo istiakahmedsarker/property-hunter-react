@@ -49,7 +49,7 @@ const ContactForm = () => {
             <form ref={form} onSubmit={handleEmailSubmit} className="space-y-4">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Your Name</span>
+                  <span className="label-text">Your Name<span className="text-red-500">*</span></span>
                 </label>
                 <div className="relative flex items-center ">
                   <FaRegUser className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -58,13 +58,14 @@ const ContactForm = () => {
                     className="input input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8"
                     placeholder="Your Name"
                     name="user_name"
+                    required
                   />
                 </div>
               </div>
               <div className="flex flex-col lg:flex-row justify-between mx-auto gap-4">
                 <div className="form-control flex-1">
                   <label className="label">
-                    <span className="label-text">Email</span>
+                    <span className="label-text">Email<span className="text-red-500">*</span></span>
                   </label>
                   <div className="relative flex items-center ">
                     <MdOutlineMail className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -73,12 +74,13 @@ const ContactForm = () => {
                       className="input input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8"
                       placeholder="Your Email"
                       name="user_email"
+                      required
                     />
                   </div>
                 </div>
                 <div className="form-control flex-1">
                   <label className="label">
-                    <span className="label-text">Phone</span>
+                    <span className="label-text">Phone<span className="text-red-500">*</span></span>
                   </label>
                   <div className="relative flex items-center ">
                     <MdOutlinePhone className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -87,13 +89,14 @@ const ContactForm = () => {
                       className="input input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8"
                       placeholder="Your Phone"
                       name="user_phone"
+                      required
                     />
                   </div>
                 </div>
               </div>
-              {/* <div className="form-control">
+               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Property Type</span>
+                  <span className="label-text">Property Type<span className="text-red-500">*</span></span>
                 </label>
                 <div className="relative flex items-center ">
                   <MdOutlineApartment className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
@@ -101,6 +104,7 @@ const ContactForm = () => {
                     className="select input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8  "
                     defaultValue=""
                     name="user_property"
+                    required
                   >
                     <option default selected>
                       Choose
@@ -114,10 +118,10 @@ const ContactForm = () => {
                     <option value="rent">Rent</option>
                   </select>
                 </div>
-              </div> */}
+              </div> 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Message</span>
+                  <span className="label-text">Message<span className="text-red-500">*</span></span>
                 </label>
                 <div className="flex items-center">
                   <textarea
@@ -125,6 +129,7 @@ const ContactForm = () => {
                     placeholder="Your Message"
                     rows="4"
                     name="message"
+                    required
                   ></textarea>
                 </div>
               </div>

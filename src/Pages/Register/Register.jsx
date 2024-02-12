@@ -40,11 +40,11 @@ const Register = () => {
       )
       .then(async (res) => {
         if (res.status === 200) {
-          const imageURL = res.data.url;
+          const imageURL = res.data?.url;
           try {
             await myAxios.post('/users', { name, email, role: 'user' });
           } catch (error) {
-            if (error.response.data.status === 'Fail') {
+            if (error.response.data?.status === 'Fail') {
               toast.error('This email already exist');
               return;
             }

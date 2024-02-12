@@ -12,7 +12,7 @@ const Blogs = () => {
   const [searchText, setSearchText] = useState('');
   const debouncedSearchValue = useDebounce(searchText, 800);
   const [activePage, setActivePage] = useState(1);
-  const limit = 4;
+  const limit = 6;
 
   const { data: latestBlogsData } = useGetData({
     key: ['latestBlogs'],
@@ -24,7 +24,7 @@ const Blogs = () => {
     api: `/blogs?title=${searchText}&page=${activePage}&limit=${limit}`,
   });
 
-  console.log(data?.data?.blogs?.length);
+  // console.log(data?.data?.blogs?.length);
 
   const totalPage = Math.ceil(parseInt(data?.totalBlogs) / limit);
 
@@ -58,7 +58,7 @@ const Blogs = () => {
       {}
       {error && <p>{error}</p>}
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-7xl mx-auto my-10 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-screen-2xl mx-auto my-10 items-start">
         {!data?.data?.blogs?.length ? (
           <div className="md:col-span-8 sm:w-[70%] mx-auto md:w-full">
             <p className=" h-[70vh] flex-col flex items-center justify-center">
@@ -66,8 +66,8 @@ const Blogs = () => {
             </p>
           </div>
         ) : (
-          <div className="md:col-span-8  sm:w-[70%] mx-auto md:w-full">
-            <div className="grid mb-10 lg:mb-5  md:grid-cols-2 gap-6 lg:gap-10 xl:gap-x-28 gap-y-10  grid-cols-1 ">
+          <div className="md:col-span-8  sm:w-[70%] mx-auto md:w-[70%] px-4 ">
+            <div className="grid mb-10 lg:mb-5  md:grid-cols-2 gap-6 lg:gap-10  gap-y-10  grid-cols-1 ">
               {data?.data?.blogs?.map((blog) => (
                 <BlogCard key={blog._id} blog={blog} />
               ))}
