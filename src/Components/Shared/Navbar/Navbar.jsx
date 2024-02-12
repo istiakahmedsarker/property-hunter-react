@@ -4,6 +4,7 @@ import useAuth from '../../../Hooks/useAuth';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { GiSelfLove } from 'react-icons/gi';
 import useFavorite from '../../../Hooks/useFavorite';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -16,6 +17,24 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  // state for theme implement
+  const [theme, setTheme] = useState(
+    localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
+  );
+  //use local host for theme
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    const localTheme = localStorage.getItem('theme');
+    document.querySelector('html').setAttribute('data-theme', localTheme);
+  }, [theme]);
+  // handle theme toggle
+  const handleToggle = e => {
+    if (e.target.checked) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
   const pages = (
     <>
       <li className="nav-link relative">
@@ -59,8 +78,8 @@ const Navbar = () => {
       <li>
         <Link
           className={` ${pathname === "/add-property"
-              ? "text-[#eb6753] font-bold"
-              : "inline-block md:hidden text-gray-700"
+            ? "text-[#eb6753] font-bold"
+            : "inline-block md:hidden text-gray-700"
             } no-underline font-semibold text-lg`}
           to={"/addProperties"}
         >
