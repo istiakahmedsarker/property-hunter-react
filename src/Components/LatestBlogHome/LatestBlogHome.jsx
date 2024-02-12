@@ -1,6 +1,6 @@
 import React from 'react';
 import useGetData from '../../Hooks/useGetData';
-import BlogCard from '../BlogCard/BlogCard';
+import BlogCard from '../../Features/Blog/Components/BlogCard/BlogCard';
 import Marquee from 'react-fast-marquee';
 import LatestBlogHomeCard from './LatestBlogHomeCard/LatestBlogHomeCard';
 // Import Swiper from React components
@@ -25,7 +25,7 @@ const LatestBlogHome = () => {
     }
     return 3;
   };
-  console.log(latestBlogsData?.data?.blogs);
+  // console.log(latestBlogsData?.data?.blogs);
   return (
     <div className="w-11/12 mx-auto my-7 ">
       <div className="my-6">
