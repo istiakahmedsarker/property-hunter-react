@@ -4,12 +4,15 @@ import useAuth from '../../../Hooks/useAuth';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { GiSelfLove } from 'react-icons/gi';
 import useFavorite from '../../../Hooks/useFavorite';
+import { useState } from 'react';
+import { RxCross1 } from "react-icons/rx";
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
   const [favorite] = useFavorite();
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   const handleLogOut = () => {
     logOut();
@@ -18,66 +21,66 @@ const Navbar = () => {
 
   const pages = (
     <>
-      <li className="nav-link relative">
+      <li className="nav-link relative hover:bg-[#eb6753] lg:hover:bg-none text-gray-800 hover:text-white p-4 lg:p-0 ">
         <Link
           className={` ${
-            pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+            pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700 hover:text-white"
+          } no-underline font-semibold text-gray-800 text-lg hover:text-white `}
           to={"/"}
         >
           Home
         </Link>
       </li>
-      <li className="nav-link relative dropdown dropdown-hover">
+      <li className="nav-link relative hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0">
         <Link
           className={` ${
-            pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+            pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700 hover:text-white"
+          } no-underline font-semibold  text-lg  hover:text-white `}
           to={"/properties"}
         >
           Properties
         </Link>
       </li>
-      <li className="nav-link relative">
+      <li className="nav-link relative hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0">
         <Link
           className={` ${
-            pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+            pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700 hover:text-white"
+          } no-underline font-semibold  text-lg  hover:text-white `}
           to={"/blogs"}
         >
           Blogs
         </Link>
       </li>
       {user && (
-        <li className="nav-link relative">
+        <li className="nav-link relative hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0">
           <Link
             className={` ${
-              pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
-            } no-underline font-semibold text-lg`}
+              pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700 hover:text-white"
+            } no-underline font-semibold  text-lg hover:text-white `}
             to={"/dashboard"}
           >
             Dashboard
           </Link>
         </li>
       )}
-      <li>
+      <li className='nav-link relative hover:bg-[#eb6753] lg:hover:bg-none  p-4 lg:p-0 text-gray-800 hover:text-white'>
         <Link
           className={` ${
             pathname === "/add-property"
               ? "text-[#eb6753] font-bold"
-              : "inline-block md:hidden text-gray-700"
-          } no-underline font-semibold text-lg`}
+              : "inline-block md:hidden text-gray-700 hover:text-white"
+          } no-underline font-semibold text-gray-800 text-lg hover:text-white`}
           to={"/addProperties"}
         >
           Add Property
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className="nav-link  relative">
         <Link
           className={` ${
-            pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
-          } no-underline font-semibold text-lg`}
+            pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700 hover:text-white'
+          } no-underline font-semibold text-lg `}
           to={'/favorite'}
         >
           <h3 className='flex items-center gap-1'><GiSelfLove/> <span className='bg-[#eb6753] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
@@ -88,11 +91,16 @@ const Navbar = () => {
 
   return (
     <div className=" bg-[#ebebeb]">
+      
       <div className="navbar px-4 md:px-4 max-w-7xl mx-auto py-6  text-gray-700">
         <div className="navbar-start">
-          <div className="dropdown">
-            <div
-              tabIndex={0}
+          <div onClick={(e) => {
+            e.stopPropagation();
+            setIsShowMenu(!isShowMenu);
+            console.log(isShowMenu);
+          }} className="dropdown">
+            <div 
+              // tabIndex={0}
               role="button"
               className="btn  hover:text-gray-50 hover:bg-[#eb6753] btn-ghost lg:hidden"
             >
@@ -111,10 +119,13 @@ const Navbar = () => {
                 />
               </svg>
             </div>
+            
             <ul
-              tabIndex={0}
-              className="flex flex-col gap-2 menu menu-sm dropdown-content px-5 py-3 mt-3 z-[9999] p-2 shadow bg-base-100 rounded-box w-52"
+              // tabIndex={0}
+              className={`${isShowMenu === true ? 'flex' : ''} ${isShowMenu === true ? "translate-x-0 translate-y-0" : "translate-x-[-200%] translate-y-[-200%]"} flex-col gap-2  absolute px-5 py-3 mt-3 transition-all duration-1000 z-[9999] ${isShowMenu && "h-[100vh]"} p-2 shadow bg-base-100 rounded-box w-[80vw] md:w-[40vw]`}
             >
+               <p className='fixed top-4 right-4
+                z-10 text-2xl font-bold'><RxCross1/></p>
               {pages}
             </ul>
           </div>
@@ -126,6 +137,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex items-center gap-6 menu-horizontal px-1">
+           
             {pages}
           </ul>
         </div>

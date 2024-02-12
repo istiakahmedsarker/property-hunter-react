@@ -6,6 +6,7 @@ import { MdHomeWork } from 'react-icons/md';
 import GetAllProperties from '../../../Moderator/Services/GetAllProperties';
 import GetAllPayments from '../../../../../Components/Services/GetAllPayments';
 import PropertiesStatistics from './Pie Chart/PropertiesStatistics';
+import PaymentStatistics from './Line Chart/PaymentStatistics';
 
 
 
@@ -146,7 +147,7 @@ const ListingSummary = () => {
             <PropertiesStatistics apartment={apartment.length} villa={villa.length} home={home.length} office={office.length}/>
           </div>
           <div className="flex-1">
-          
+           {/* <PaymentStatistics payments={payments}/> */}
           </div>
        </div>
 
