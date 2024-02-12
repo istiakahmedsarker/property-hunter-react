@@ -10,14 +10,14 @@ const { data: favorite = [], refetch } = useQuery({
     queryKey: ['favorite', user?.email],
     queryFn: async () => {
       try {
-        const response = await instance.get(`/property-favorite?usermail=${user.email}`);
+        const response = await instance.get(`/property-favorite?useremail=${user.email}`);
         return response.data;
       } catch (error) {
         console.error("Error fetching favorite properties:", error);
       }
     },
   });
-console.log(favorite);
+// console.log(favorite);
 
   return [favorite, refetch];
 };

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import GiveRating from '../GiveRating/GiveRating';
-import useAxios from '../../Hooks/useAxios';
-import useAuth from '../../Hooks/useAuth';
+import GiveRating from '../../../../Components/GiveRating/GiveRating';
+import useAxios from '../../../../Hooks/useAxios';
+import useAuth from '../../../../Hooks/useAuth';
 
 function CommentForm({ id, refetch }) {
   const [starRating, setStarRating] = useState(null);

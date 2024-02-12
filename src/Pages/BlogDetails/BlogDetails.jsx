@@ -1,10 +1,9 @@
 // import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import BlogComments from '../../Components/BlogComments/BlogComments';
-import CommentTemplate from '../../Components/Comments/Comments';
+import BlogComments from '../../Features/Blog/Components/BlogComments/BlogComments';
 import { useQuery } from '@tanstack/react-query';
 import { BiCommentDots } from 'react-icons/bi';
-import CommentForm from '../../Components/CommentForm/CommentForm';
+import CommentForm from '../../Features/Blog/Components/CommentForm/CommentForm';
 import useAxios from '../../Hooks/useAxios';
 import { FaRegUserCircle } from "react-icons/fa";
 

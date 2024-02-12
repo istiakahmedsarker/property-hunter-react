@@ -1,5 +1,5 @@
 import Star from '../Star/Star';
-import avatar from '../../assets/avatar.webp';
+import avatar from '../../../../assets/avatar.webp';
 import { useState } from 'react';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import axios from 'axios';
