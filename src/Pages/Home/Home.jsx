@@ -13,7 +13,6 @@ const Home = () => {
       <ExploreTypes></ExploreTypes>
       <LatestBlogHome></LatestBlogHome>
       <Testimonials />
-
       <Chatbot />
       <ContactUs/>
     </div>

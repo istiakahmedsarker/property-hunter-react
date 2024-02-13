@@ -10,7 +10,7 @@ const PropertiesStatistics = ({apartment, villa, office, home}) => {
     { name: "Home", value: home },
   ];
 
-  const COLORS = [ "#65b2ff", "#0a72ad", "#120614", "#ADBC9F"];
+  const COLORS = [ "#eb6753", "#e82a2a", "#4343a0", "#ADBC9F"];
 
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({
