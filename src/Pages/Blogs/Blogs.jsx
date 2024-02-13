@@ -24,8 +24,6 @@ const Blogs = () => {
     api: `/blogs?title=${searchText}&page=${activePage}&limit=${limit}`,
   });
 
-  console.log(data?.data?.blogs?.length);
-
   const totalPage = Math.ceil(parseInt(data?.totalBlogs) / limit);
 
   let pages = [];
@@ -55,7 +53,6 @@ const Blogs = () => {
   }
   return (
     <div>
-      {}
       {error && <p>{error}</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-7xl mx-auto my-10 items-start">
