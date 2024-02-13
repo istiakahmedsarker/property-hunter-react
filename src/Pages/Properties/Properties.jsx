@@ -511,11 +511,9 @@ const Properties = () => {
       activePage,
       debouncedSearchValue,
     ],
-    api: `/properties?propertyStatus=${
-      checkedItem === 'all' ? '' : checkedItem
-    }&propertyType=${
-      typeCheckedItem === 'all' ? '' : typeCheckedItem
-    }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
+    api: `/properties?propertyStatus=${checkedItem === 'all' ? '' : checkedItem
+      }&propertyType=${typeCheckedItem === 'all' ? '' : typeCheckedItem
+      }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
   });
 
   // console.log(propertiesData?.data);
@@ -548,6 +546,7 @@ const Properties = () => {
       <p className="h-[90vh] flex flex-col items-center justify-center text-center">
         Loading...
       </p>
+      // <video src="../../assets/Untitled design.mp4"></video>
     );
   }
 
@@ -662,11 +661,10 @@ const Properties = () => {
             {totalPage > 1 ? (
               <div className="flex items-center justify-center gap-5">
                 <button
-                  className={`${
-                    activePage === 1
+                  className={`${activePage === 1
                       ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
                       : 'bg-white p-3 shadow-md rounded-full'
-                  }`}
+                    }`}
                   onClick={previousPage}
                 >
                   <FaArrowLeft />
@@ -674,11 +672,10 @@ const Properties = () => {
 
                 {pages.map((pageNo) => (
                   <button
-                    className={`${
-                      activePage === pageNo
+                    className={`${activePage === pageNo
                         ? 'bg-[#EB6753] hidden md:inline font-semibold text-white px-4 py-2 rounded-full'
                         : 'px-4 py-2 hidden md:inline rounded-full font-semibold bg-white shadow-md'
-                    } `}
+                      } `}
                     key={pageNo}
                     onClick={() => setActivePage(pageNo)}
                   >
@@ -690,11 +687,10 @@ const Properties = () => {
                 </button>
 
                 <button
-                  className={`${
-                    activePage === totalPage
+                  className={`${activePage === totalPage
                       ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
                       : 'bg-white p-3 shadow-md rounded-full'
-                  }`}
+                    }`}
                   onClick={nextPage}
                 >
                   <FaArrowRight />

@@ -23,6 +23,7 @@ const Navbar = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
   );
+  
   //use local host for theme
   useEffect(() => {
     localStorage.setItem('theme', theme);
