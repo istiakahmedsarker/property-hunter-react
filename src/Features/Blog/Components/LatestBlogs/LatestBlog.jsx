@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const LatestBlog = ({ blog }) => {
   const { _id, heading, images } = blog;
-  console.log(blog);
+  // console.log(blog);
   return (
     <div className="flex gap-4">
       <img
