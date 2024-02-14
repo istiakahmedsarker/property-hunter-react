@@ -1,11 +1,10 @@
-// import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import BlogComments from '../../Features/Blog/Components/BlogComments/BlogComments';
 import { useQuery } from '@tanstack/react-query';
 import { BiCommentDots } from 'react-icons/bi';
 import CommentForm from '../../Features/Blog/Components/CommentForm/CommentForm';
 import useAxios from '../../Hooks/useAxios';
 import { FaRegUserCircle } from 'react-icons/fa';
+import BlogComments from '../../Features/Blog/Components/BlogComments/BlogComments';
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -21,14 +20,7 @@ const BlogDetails = () => {
 
   if (isPending) return <p>Loading</p>;
 
-  const {
-    heading,
-    shortDescription,
-    description,
-    images,
-    createdAt,
-    comments,
-  } = data || {};
+  const { heading, description, images, createdAt, comments } = data || {};
 
   const date = new Date(createdAt);
   const options = { year: 'numeric', month: 'short', day: 'numeric' };
