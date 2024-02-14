@@ -14,12 +14,14 @@ import Container from '../Container/Container';
 import './Banner.css';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import useTheme from '../../Providers/ThemeContext';
 
 const Banner = () => {
 
   const navigate = useNavigate();
   const { user } = useAuth();
   const images = ["https://i.ibb.co/3N2Y5Fd/florian-schmidinger-b-79n-Oqf95-I-unsplash.jpg", "https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg", "https://i.ibb.co/dMt9qmj/digital-marketing-agency-ntwrk-g39p1k-Djv-SY-unsplash.jpg"]
+  
 
 
   return (
@@ -36,11 +38,11 @@ const Banner = () => {
       <Container>
         <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full">
           <div className="flex-1 z-40 flex flex-col gap-6 items-center lg:gap-12 md:items-start text-center md:text-left">
-            <h3 className="text-animation text-sm lg:text-xl xl:text-2xl  text-white ">
+            <h3 className="text-animation text-sm lg:text-xl xl:text-2xl  text-white dark:text-in-dark">
               Explore Buying, Renting, Investing Opportunities!
             </h3>
             <div className='overflow-hidden h-30'>
-              <h1 className="m-0 text-animation text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-bold">
+              <h1 className="m-0 text-animation text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-bold dark:text-in-dark">
                 Hunt Your <br /> Dream Home
               </h1>
             </div>
@@ -50,7 +52,7 @@ const Banner = () => {
               } else {
                 navigate('/properties')
               }
-            }} className='text-animation py-3 px-6 lg:px-8 rounded-sm text-white hover:bg-[#fd8572] hover:drop-shadow-xl bg-[#eb6753]'>Get Started</button>
+            }} className='text-animation py-3 px-6 lg:px-8 rounded-sm dark:bg-secondary-dark transition-bg duration-300 ease-in-out hover:dark:bg-[#9e7d42]  text-white hover:bg-[#fd8572] hover:drop-shadow-xl bg-[#eb6753]'>Get Started</button>
           </div>
           <div className="flex-1 z-40 h-full">
             <div className="rounded-xl slide-right w-[35vw] ml-auto hidden  md:block  md:h-[300px] lg:h-[450px]">
