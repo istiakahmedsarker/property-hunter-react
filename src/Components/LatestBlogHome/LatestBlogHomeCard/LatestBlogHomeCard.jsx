@@ -12,7 +12,7 @@ const LatestBlogHomeCard = ({ blog }) => {
     })
     .toUpperCase();
   return (
-    <div className=" lg:w-96 w-90 my-5 rounded-xl shadow-lg shadow-drop px-5 py-4 bg-white">
+    <div className=" lg:w-96 w-90 my-5 rounded-xl shadow-lg shadow-drop px-5 py-4 bg-white ">
       <div className="relative">
         <img
           className="h-56 object-cover rounded-lg"
@@ -23,9 +23,9 @@ const LatestBlogHomeCard = ({ blog }) => {
           <h3 className="text-center">{formattedDate}</h3>
         </div>
       </div>
-      <h3 className=" font-semibold my-3 h-10">{heading}</h3>
+      <h3 className=" font-semibold my-3 h-10 dark:text-in-dark ">{heading}</h3>
       <Link to={`/blogs/${_id}`} className="my-3 ">
-        <button className="bg-[#EB6753] px-5 py-2 rounded-sm text-red-50 font-semibold ">
+        <button className='text-animation py-3 px-6 lg:px-8 rounded-sm  transition-bg duration-300 ease-in-out  text-white hover:bg-[#fd8572] hover:drop-shadow-xl bg-[#eb6753]'>
           Read more
         </button>
       </Link>

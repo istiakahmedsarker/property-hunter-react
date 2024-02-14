@@ -4,11 +4,11 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
-  background: white;
+  background: black;
   /* box-shadow: inset 3px 3px 3px #eb6753; */
   border-radius: 10px;
   -webkit-border-radius: 10px;

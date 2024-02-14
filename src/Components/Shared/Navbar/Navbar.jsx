@@ -32,10 +32,10 @@ const Navbar = () => {
   };
   const pages = (
     <>
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
 
-          className={` ${pathname === "/" ? "text-[#eb6753] dark:text-in-dark font-bold" : "text-gray-700"
+          className={` ${pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
             } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none text-gray-800 hover:text-white p-4 lg:p-0 inline-block rounded-[10px] w-full`}
           to={"/"}
 
@@ -43,10 +43,10 @@ const Navbar = () => {
           Home
         </Link>
       </li>
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
 
-          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700"
+          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold " : "text-gray-700"
             } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
           to={"/properties"}
 
@@ -54,10 +54,10 @@ const Navbar = () => {
           Properties
         </Link>
       </li>
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
 
-          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700"
+          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold " : "text-gray-700"
             } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
           to={"/blogs"}
 
@@ -66,10 +66,10 @@ const Navbar = () => {
         </Link>
       </li>
       {user && (
-        <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+        <li className="nav-link relative">
           <Link
 
-            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700"
+            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold " : "text-gray-700"
               } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
             to={"/dashboard"}
           >
@@ -77,7 +77,7 @@ const Navbar = () => {
           </Link>
         </li>
       )}
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
           className={` ${pathname === '/add-property'
             ? 'text-[#eb6753] font-bold'
@@ -90,7 +90,7 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
           className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:text-in-dark' : 'text-gray-700'
             } no-underline font-semibold text-lg`}
@@ -104,10 +104,10 @@ const Navbar = () => {
 
   const pages2 = (
     <>
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
 
-          className={` ${pathname === "/" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+          className={` ${pathname === "/" ? "text-[#eb6753] font-bold " : "text-gray-700 dark:text-in-dark"
             } no-underline font-semibold text-lg`}
           to={"/"}
 
@@ -115,10 +115,10 @@ const Navbar = () => {
           Home
         </Link>
       </li>
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
 
-          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold " : "text-gray-700 dark:text-in-dark"
             } no-underline font-semibold text-lg`}
           to={"/properties"}
 
@@ -126,10 +126,10 @@ const Navbar = () => {
           Properties
         </Link>
       </li>
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
 
-          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold " : "text-gray-700 dark:text-in-dark"
             } no-underline font-semibold text-lg`}
           to={"/blogs"}
 
@@ -138,10 +138,10 @@ const Navbar = () => {
         </Link>
       </li>
       {user && (
-        <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+        <li className="nav-link relative">
           <Link
 
-            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold " : "text-gray-700 dark:text-in-dark"
               } no-underline font-semibold text-lg`}
             to={"/dashboard"}
           >
@@ -149,7 +149,7 @@ const Navbar = () => {
           </Link>
         </li>
       )}
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
           className={` ${pathname === '/add-property'
             ? 'text-[#eb6753] font-bold dark:text-in-dark'
@@ -162,7 +162,7 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
+      <li className="nav-link relative">
         <Link
           className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42]' : 'text-gray-700 dark:text-in-dark '
             } no-underline font-semibold text-lg`}
@@ -329,7 +329,7 @@ const Navbar = () => {
                 navigate('/addProperties');
               }
             }}
-            className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-md ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium transition duration-300 ease-in-out transform hover:border-[#eb6753] dark:hover:bg-[#9e7d42] hover:text-gray-100 border-2 border-gray-700 bg-[#eb6753] dark:bg-[#cfa55b] border-none text-white hover:bg-[#e67f6f]"
+            className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-md ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium transition duration-300 ease-in-out transform hover:border-[#eb6753] hover:text-gray-100 border-2 border-gray-700 bg-[#eb6753] border-none text-white hover:bg-[#e67f6f]"
           >
             Add Property
           </button>
