@@ -1,8 +1,8 @@
 import Star from '../Star/Star';
-import avatar from '../../assets/avatar.webp';
+import avatar from '../../../../assets/avatar.webp';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
-import useAxios from '../../Hooks/useAxios';
-import useAuth from '../../Hooks/useAuth';
+import useAxios from '../../../../Hooks/useAxios';
+import useAuth from '../../../../Hooks/useAuth';
 
 const Comment = ({ comment, refetch }) => {
   const axios = useAxios();
