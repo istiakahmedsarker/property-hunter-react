@@ -11,7 +11,7 @@ import { FcConferenceCall } from 'react-icons/fc';
 import { FaUsersViewfinder } from 'react-icons/fa6';
 import { RiHomeOfficeFill } from 'react-icons/ri';
 import RecommendedProperty from './RecommendedProperty/RecommendedProperty';
-// import QRCode from 'react-qr-code';
+import QRcode from '../Shared/QRCode/QRCode';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -337,18 +337,9 @@ const PropertiesDetails = () => {
                 </h3>
               </div>
               {/* QR code implementation */}
-              {/* <div className=" flex " style={{ justifyContent: 'flex-end' }}>
-                <QRCode
-                  size={256}
-                  style={{ height: 'auto', maxWidth: '30%', width: '30%' }}
-                  value={
-                    (details.location.address,
-                    details.location.state,
-                    details.location.city)
-                  }
-                  viewBox={`0 0 256 256`}
-                />
-              </div> */}
+              <div className=" flex " style={{ justifyContent: 'flex-end' }}>
+                <QRcode></QRcode>
+              </div>
             </div>
             {/* map section */}
             <div className="rounded-lg my-4">

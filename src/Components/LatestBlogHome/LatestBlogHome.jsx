@@ -32,7 +32,9 @@ const LatestBlogHome = () => {
         <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center  font-bold md:mb-3 lg:mb-4">
           Our latest Blogs
         </h2>
-        <h3 className="text-sm font-semibold text-center">Take a Moment to Read This</h3>
+        <h3 className="text-sm font-semibold text-center">
+          Take a Moment to Read This
+        </h3>
       </div>
       {/* slider implementation */}
       <div className="w-full mx-auto">
