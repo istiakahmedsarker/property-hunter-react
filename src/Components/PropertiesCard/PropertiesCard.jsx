@@ -70,7 +70,7 @@ const PropertiesCard = ({ card }) => {
     }
   };
   return (
-    <div className="px-4 w-[400px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white">
+    <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white">
       <div className=" w-full">
         {/* for slider */}
         <Swiper

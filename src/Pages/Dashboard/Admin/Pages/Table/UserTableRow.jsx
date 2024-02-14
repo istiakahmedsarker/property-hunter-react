@@ -1,8 +1,8 @@
 import React from 'react';
 
 const UserTableRow = ({ user, index }) => {
-  console.log(user);
-  const { _id, name } = user || {};
+  // console.log(user);
+  const { _id, name,role } = user || {};
   return (
     <tr className={`${index % 2 === 4 ? 'bg-[#fff7f5]' : ''}`}>
       <th className="text-xs md:text-xs lg:text-sm">
@@ -12,7 +12,7 @@ const UserTableRow = ({ user, index }) => {
         <h3 className="text-xs md:text-xs lg:text-sm">{name}</h3>
       </td>
       <td>
-        <h3 className="text-xs md:text-xs lg:text-sm">Role</h3>
+        <h3 className="text-xs md:text-xs lg:text-sm">{role}</h3>
       </td>
 
       <th className="flex text-xs md:text-xs lg:text-sm items-center justify-center gap-2">

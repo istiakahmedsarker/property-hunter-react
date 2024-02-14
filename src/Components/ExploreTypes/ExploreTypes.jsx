@@ -14,6 +14,8 @@ const ExploreTypes = () => {
   const handleTypeClick = propertyType => {
     history.push(`/properties?propertyType=${propertyType}`);
   };
+
+
   return (
     <div className="w-11/12 mx-auto md:my-20 dark:bg-primary-dark">
       <div className="my-6 text-center">

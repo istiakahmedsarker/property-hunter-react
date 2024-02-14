@@ -38,12 +38,12 @@ const PropertiesDetails = () => {
   return (
     <div className="w-11/12 mx-auto">
       <div className="lg:w-1/3 w-full my-3">
-        <h3 className="font-semibold text-xl">{details.propertyTitle}</h3>
-        <h3 className="flex gap-3">
+        <h3 className="font-semibold text-2xl">{details.propertyTitle}</h3>
+        {/* <h3 className="flex gap-3">
           <span> {details.location.city},</span>
           <span>{details.location.state}</span>
-        </h3>
-        <div className=" flex gap-5 ">
+        </h3> */}
+        {/* <div className=" flex gap-5 ">
           <h3 className="flex items-center gap-3">
             <IoBedOutline />
             {details.bedroom} Bed
@@ -56,12 +56,12 @@ const PropertiesDetails = () => {
             <BiShapeSquare />
             {details.squareFootage} sq Ft
           </h3>
-        </div>
+        </div> */}
       </div>
       <div>
         {/* image */}
         {details.propertyImages && details.propertyImages.length > 0 && (
-          <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 space-y-4">
+          <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
             <div className="h-full">
               <img
                 src={details.propertyImages[0]}
@@ -69,12 +69,12 @@ const PropertiesDetails = () => {
                 className="w-11/12 mx-auto h-full rounded-lg "
               ></img>
             </div>
-            <div className="grid grid-cols-1 space-y-4 ">
+            <div className="grid grid-cols-1 ">
               <div className="">
                 <img
                   src={details.propertyImages[1]}
                   alt={details.propertyTitle}
-                  className="w-11/12 mx-auto h-56  rounded-lg "
+                  className="w-8/12 mx-auto h-56  rounded-lg "
                 />
               </div>
 
@@ -82,7 +82,7 @@ const PropertiesDetails = () => {
                 <img
                   src={details.propertyImages[2]}
                   alt={details.propertyTitle}
-                  className="w-11/12 mx-auto h-56 rounded-lg "
+                  className="w-8/12 mx-auto h-56 rounded-lg "
                 />
               </div>
             </div>
