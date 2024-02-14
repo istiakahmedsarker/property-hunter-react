@@ -17,16 +17,28 @@ const Main = () => {
   };
 
   useEffect(() => {
+    // Remove existing classes
     document.querySelector('html').classList.remove('dark', 'light');
+
+    // Add the themeMode class
     document.querySelector('html').classList.add(themeMode);
+
+    // Set scrollbar styles based on themeMode
+    const scrollbarColor = themeMode === 'dark' ? 'black' : 'white';
+    document.styleSheets[0].insertRule(
+      `::-webkit-scrollbar-track { background: ${scrollbarColor}; border-radius: 10px; }`,
+      0
+    );
   }, [themeMode]);
 
   return (
     <div>
       <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
-        <Navbar />
-        <Outlet></Outlet>
-        <Footer />
+        <div className="dark:bg-primary-dark">
+          <Navbar />
+          <Outlet></Outlet>
+          <Footer />
+        </div>
       </ThemeProvider>
     </div>
   );

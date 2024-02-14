@@ -29,10 +29,10 @@ const LatestBlogHome = () => {
   return (
     <div className="w-11/12 mx-auto my-7 ">
       <div className="my-6">
-        <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center  font-bold md:mb-3 lg:mb-4">
+        <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
           Our latest Blogs
         </h2>
-        <h3 className="text-sm font-semibold text-center">
+        <h3 className="text-sm font-semibold text-center dark:text-in-dark ">
           Take a Moment to Read This
         </h3>
       </div>
