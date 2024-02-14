@@ -1,4 +1,4 @@
-import Blog from "../../Features/Blog/Blog";
+import Blog from '../../Features/Blog/Blog';
 
 const Blogs = () => {
   return (

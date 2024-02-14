@@ -14,7 +14,7 @@ const UserManagement = () => {
     fetchUser();
   }, [setUser]);
   const userCards = user?.data?.users || [];
-  console.log(userCards);
+  // console.log(userCards);
 
   return (
     <div>

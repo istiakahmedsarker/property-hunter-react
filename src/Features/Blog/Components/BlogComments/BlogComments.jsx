@@ -1,63 +1,35 @@
 import Star from '../Star/Star';
-import avatar from '../../../../assets/avatar.webp';
-import { useState } from 'react';
+import avatar from '../../assets/avatar.webp';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
-import axios from 'axios';
+import useAxios from '../../Hooks/useAxios';
+import useAuth from '../../Hooks/useAuth';
 
-const Comment = ({ comment }) => {
-  const [likes, setLikes] = useState(comment?.likesCount || 0);
-  const [dislikes, setDislikes] = useState(comment?.dislikesCount || 0);
-  const [liked, setLiked] = useState(false);
-  const [disliked, setDisliked] = useState(false);
+const Comment = ({ comment, refetch }) => {
+  const axios = useAxios();
+  const { user } = useAuth();
 
+  const handleLikeAndDislike = async (reactionType) => {
+    let data = {};
 
-  const handleLike = async (_id) => {
-    try {
+    if (reactionType === 'like') {
+      data = { likeEmail: user?.email };
+    } else if (reactionType === 'dislike') {
+      data = { disLikeEmail: user?.email };
+    }
 
-      if (liked) {
-        setLikes(likes - 1);
-        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-like/${_id}`);
-      } else {
-        setLikes(likes + 1);
-        if (disliked) {
-          setDislikes(dislikes - 1);
-          setDisliked(false);
-          await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-dislike/${_id}`);
-        }
-        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/increase-like/${_id}`);
-      }
+    const res = await axios.patch(`/comments/${comment?._id}`, data);
 
-      setLiked(!liked);
-    } catch (error) {
-      console.error(error.response.data);
+    if (res?.data?.status === 'success') {
+      refetch();
     }
   };
 
-  const handleDislike = async (_id) => {
-    try {
+  const filterIsLiked = comment?.likesCount.includes(user?.email);
+  const filterIsDisliked = comment?.dislikesCount.includes(user?.email);
 
-      if (disliked) {
-        setDislikes(dislikes - 1);
-        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-dislike/${_id}`);
-      } else {
-        setDislikes(dislikes + 1);
-        if (liked) {
-          setLikes(likes - 1);
-          setLiked(false);
-          await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/decrease-like/${_id}`);
-        }
-        await axios.patch(`https://property-hunter-server-roan.vercel.app/api/v1/like-dislike/increase-dislike/${_id}`);
-      }
-
-      setDisliked(!disliked);
-    } catch (error) {
-      console.error(error.response.data);
-    }
-  };
-
-  const date = new Date(comment.createdDate);
-  const options = { year: 'numeric', month: 'short', day: 'numeric' };
-  const formattedDate = date.toLocaleDateString('en-US', options);
+  // const date = new Date(comment.createdDate);
+  // const options = { year: 'numeric', month: 'short', day: 'numeric' };
+  // const formattedDate = date.toLocaleDateString('en-US', options);
 
   return (
     <div className="flex flex-col md:flex-row gap-4 items-start py-4 md:py-8">
@@ -92,32 +64,32 @@ const Comment = ({ comment }) => {
       <div className="comment-actions flex items-center space-x-2">
         <button
           className={`comment-action-button flex items-center`}
-          onClick={()=> handleLike(comment._id)}
+          onClick={() => handleLikeAndDislike('like')}
         >
-          {liked ? (
+          {filterIsLiked ? (
             <FaThumbsUp className="icon text-green-500 mr-1" />
           ) : (
             <FaThumbsUp className="icon mr-1 text-[#e4e5e9]" />
           )}
-          <span>{likes}</span>
+          <span>{comment?.likesCount?.length || 0}</span>
         </button>
         <button
           className={`comment-action-button flex items-center`}
-          onClick={()=>handleDislike(comment._id)}
+          onClick={() => handleLikeAndDislike('dislike')}
         >
-          {disliked ? (
+          {filterIsDisliked ? (
             <FaThumbsDown className="icon text-red-500 mr-1" />
           ) : (
             <FaThumbsDown className="icon mr-1 text-[#e4e5e9]" />
           )}
-          <span>{dislikes}</span>
+          <span>{}</span>
         </button>
       </div>
     </div>
   );
 };
 
-const BlogComments = ({ comments }) => {
+const BlogComments = ({ comments, refetch }) => {
   return (
     <div className="mt-5">
       <h3 className="text-xl md:text-2xl mb-2 md:mb-4 font-bold">
@@ -125,7 +97,7 @@ const BlogComments = ({ comments }) => {
       </h3>
       <div className="flex flex-col divide-y-2 divide-stone-200">
         {comments.map((comment, i) => (
-          <Comment key={i} comment={comment} />
+          <Comment key={i} comment={comment} refetch={refetch} />
         ))}
       </div>
     </div>
