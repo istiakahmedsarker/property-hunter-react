@@ -40,7 +40,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">House</h3>
-              <h3>{ }8 Properties</h3>
+              <h3>{}8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -57,7 +57,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Apartment</h3>
-              <h3>{ }8 Properties</h3>
+              <h3>{}8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -75,7 +75,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Villa</h3>
-              <h3>{ }8 Properties</h3>
+              <h3>{}8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -93,7 +93,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Office</h3>
-              <h3>{ }8 Properties</h3>
+              <h3>{}8 Properties</h3>
             </div>
           </div>
         </Link>
