@@ -8,7 +8,7 @@ const Comment = ({ comment, refetch }) => {
   const axios = useAxios();
   const { user } = useAuth();
 
-  const handleLikeAndDislike = async (reactionType) => {
+  const handleLikeAndDislike = async reactionType => {
     let data = {};
 
     if (reactionType === 'like') {
