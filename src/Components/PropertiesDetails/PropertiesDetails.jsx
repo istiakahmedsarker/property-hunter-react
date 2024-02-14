@@ -314,12 +314,6 @@ const PropertiesDetails = () => {
             <li className="py-2">{details.utilities[1]}</li>
             <li className="py-2">{details.utilities[2]}</li>
           </div>
-          {/* recommended property section */}
-          <RecommendedProperty
-            cardDetails={cardDetails}
-            type={details?.propertyType}
-            id={details?._id}
-          ></RecommendedProperty>
           {/* properties Address section */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Address</h3>
@@ -360,6 +354,13 @@ const PropertiesDetails = () => {
               ></iframe>
             </div>
           </div>
+          {/* recommended property section */}
+          <RecommendedProperty
+            cardDetails={cardDetails}
+            type={details?.propertyType}
+            id={details?._id}
+          ></RecommendedProperty>
+          
         </div>
         <div className="lg:w-1/3 w-full">
           {/* owner information */}
