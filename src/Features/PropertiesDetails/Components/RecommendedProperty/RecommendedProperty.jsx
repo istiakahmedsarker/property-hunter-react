@@ -1,6 +1,5 @@
 import React from 'react';
-import useGetData from '../../../Hooks/useGetData';
-import PropertiesCard from '../../PropertiesCard/PropertiesCard';
+import useGetData from '../../../../Hooks/useGetData';
 import RecommendedCard from './RecommendedCard/RecommendedCard';
 
 const RecommendedProperty = ({ type, id }) => {

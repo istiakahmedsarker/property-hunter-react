@@ -1,20 +1,20 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { GrFormPrevious } from "react-icons/gr";
-import "./Form.css";
-import toast from "react-hot-toast";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { GrFormPrevious } from 'react-icons/gr';
+import './Form.css';
+import toast from 'react-hot-toast';
 
 const BuyerInquiryForm = () => {
   const [formStep, setFormStep] = useState(0);
   const [range, setRange] = useState(10000);
 
-  const completeFormStep = (event) => {
+  const completeFormStep = event => {
     event.preventDefault();
-    setFormStep((curr) => curr + 1);
+    setFormStep(curr => curr + 1);
   };
 
   const goToPreviousStep = () => {
-    setFormStep((curr) => curr - 1);
+    setFormStep(curr => curr - 1);
   };
 
   const renderButton = () => {
@@ -35,7 +35,7 @@ const BuyerInquiryForm = () => {
       return (
         <div className="form-control mt-6">
           <button
-            onClick={(event) => completeFormStep(event)}
+            onClick={event => completeFormStep(event)}
             type="button"
             className="btn bg-[#eb6753] text-white border-none"
           >
@@ -52,40 +52,42 @@ const BuyerInquiryForm = () => {
     watch,
 
     formState: { errors, isValid },
-  } = useForm({ mode: "all" });
+  } = useForm({ mode: 'all' });
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     console.log(data);
 
     //? information.
-  const annualIncome =  data.annualIncome;
-  const email =  data.email;
-  const jobTitle = data.jobTitle;
-  const name = data.name;
-  const phone = data.phone;
-  const propertyType = data.propertyType;
-  const question = data.question;
-  const savings = data.savings;
+    const annualIncome = data.annualIncome;
+    const email = data.email;
+    const jobTitle = data.jobTitle;
+    const name = data.name;
+    const phone = data.phone;
+    const propertyType = data.propertyType;
+    const question = data.question;
+    const savings = data.savings;
 
-  if(!annualIncome ||
-    !email ||
-    !jobTitle ||
-    !name ||
-    !phone ||
-    !propertyType ||
-    !question ||
-    !savings) {
-      return toast.error('Please fill out the form correctly.')
+    if (
+      !annualIncome ||
+      !email ||
+      !jobTitle ||
+      !name ||
+      !phone ||
+      !propertyType ||
+      !question ||
+      !savings
+    ) {
+      return toast.error('Please fill out the form correctly.');
     }
 
     try {
-      toast.success('Thank you! We will reach out to you.')
+      toast.success('Thank you! We will reach out to you.');
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 
-  const handleRange = (e) => {
+  const handleRange = e => {
     setRange(e.target.value);
   };
 
@@ -144,7 +146,7 @@ const BuyerInquiryForm = () => {
                       </span>
                     </label>
                     <input
-                      {...register("name", { required: true })}
+                      {...register('name', { required: true })}
                       name="name"
                       type="text"
                       placeholder="name"
@@ -160,12 +162,12 @@ const BuyerInquiryForm = () => {
                   <div className="form-control col-span-3">
                     <label className="label">
                       <span className="label-text text-gray-400">
-                        {" "}
+                        {' '}
                         Your Email
                       </span>
                     </label>
                     <input
-                      {...register("email", { required: true })}
+                      {...register('email', { required: true })}
                       name="email"
                       type="text"
                       placeholder="email"
@@ -178,13 +180,13 @@ const BuyerInquiryForm = () => {
                       </span>
                     )}
                   </div>
-                 
+
                   <div className="form-control col-span-6">
                     <label className="label">
                       <span className="label-text text-gray-400">Phone</span>
                     </label>
                     <input
-                      {...register("phone", { required: true })}
+                      {...register('phone', { required: true })}
                       name="phone"
                       type="text"
                       placeholder="phone"
@@ -204,7 +206,7 @@ const BuyerInquiryForm = () => {
                       </span>
                     </label>
                     <input
-                      {...register("jobTitle", { required: true })}
+                      {...register('jobTitle', { required: true })}
                       name="jobTitle"
                       type="text"
                       placeholder="job title"
@@ -224,10 +226,10 @@ const BuyerInquiryForm = () => {
                         Annual Income :
                         <span
                           className={`${range < 400000 &&
-                            "text-red-600"} ${range > 400000 &&
+                            'text-red-600'} ${range > 400000 &&
                             range < 800000 &&
-                            "text-yellow-600"} ${range > 800000 &&
-                            "text-green-600"}`}
+                            'text-yellow-600'} ${range > 800000 &&
+                            'text-green-600'}`}
                         >
                           {range}
                         </span>
@@ -235,7 +237,7 @@ const BuyerInquiryForm = () => {
                     </label>
 
                     <input
-                      {...register("annualIncome", { required: true })}
+                      {...register('annualIncome', { required: true })}
                       name="annualIncome"
                       type="range"
                       min="10000"
@@ -263,7 +265,7 @@ const BuyerInquiryForm = () => {
                       <span className="label-text text-gray-400">Savings</span>
                     </label>
                     <input
-                      {...register("savings", { required: true })}
+                      {...register('savings', { required: true })}
                       name="savings"
                       type="text"
                       placeholder="savings"
@@ -284,7 +286,7 @@ const BuyerInquiryForm = () => {
                       </span>
                     </label>
                     <select
-                      {...register("propertyType", { required: true })}
+                      {...register('propertyType', { required: true })}
                       name="propertyType"
                       id="type"
                       className="input input-bordered"
@@ -314,7 +316,7 @@ const BuyerInquiryForm = () => {
                       </span>
                     </label>
                     <textarea
-                      {...register("question", { required: true })}
+                      {...register('question', { required: true })}
                       name="question"
                       placeholder="ask a question"
                       className="px-5 py-3 rounded-lg input-bordered "

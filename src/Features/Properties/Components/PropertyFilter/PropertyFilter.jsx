@@ -33,7 +33,7 @@ const PropertyFilter = ({
           type="text"
           value={searchText}
           placeholder="Search here"
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={e => setSearchText(e.target.value)}
         />
         <FiSearch className="absolute text-2xl text-stone-400 left-4 top-4" />
       </div>
@@ -41,7 +41,7 @@ const PropertyFilter = ({
       <select
         className="border-[2px] border-stone-200 px-4 py-3 rounded-md w-full font-medium text-stone-400"
         value={selectedOption}
-        onChange={(e) => setSelectedOption(e.target.value)}
+        onChange={e => setSelectedOption(e.target.value)}
       >
         <option value="-price">High to Low</option>
         <option value="price">Low to High</option>
@@ -50,7 +50,7 @@ const PropertyFilter = ({
       <div className="flex flex-col gap-3">
         <h3 className="text-[#041e42] font-semibold -mt-2">Listing Status</h3>
         <div className="flex flex-col space-y-2">
-          {Object.keys(checkboxes).map((checkbox) => (
+          {Object.keys(checkboxes).map(checkbox => (
             <div className="flex items-center gap-2" key={checkbox}>
               <input
                 type="radio"
@@ -66,7 +66,7 @@ const PropertyFilter = ({
       <div className="flex flex-col gap-3">
         <h3 className="font-semibold">Property Type</h3>
         <div className="flex flex-col space-y-2">
-          {Object.keys(typeCheckboxes).map((checkbox) => (
+          {Object.keys(typeCheckboxes).map(checkbox => (
             <div className="flex items-center gap-2" key={checkbox}>
               <input
                 type="radio"
