@@ -75,7 +75,7 @@ const Properties = () => {
     }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
   });
 
-  console.log(propertiesData?.data);
+  // console.log(propertiesData?.data);
 
   // for pagination
   const totalPage = Math.ceil(

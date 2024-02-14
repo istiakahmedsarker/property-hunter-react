@@ -6,72 +6,59 @@ import { GiSelfLove } from 'react-icons/gi';
 import useFavorite from '../../../Hooks/useFavorite';
 import { useEffect, useState } from 'react';
 import { RxCross1 } from "react-icons/rx";
+import useTheme from '../../../Providers/ThemeContext';
 
 const Navbar = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { user, logOut } = useAuth();
-
-  // state for theme implement
-  const [theme, setTheme] = useState(
-    localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light'
-  );
-  //use local host for theme
-  useEffect(() => {
-    localStorage.setItem('theme', theme);
-    const localTheme = localStorage.getItem('theme');
-    document.querySelector('html').setAttribute('data-theme', localTheme);
-  }, [theme]);
-  // handle theme toggle
-  const handleToggle = e => {
-    if (e.target.checked) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  };
-
   const [favorite] = useFavorite();
   const [isShowMenu, setIsShowMenu] = useState(false);
+  const { themeMode, darkTheme, lightTheme } = useTheme()
 
   const handleLogOut = () => {
     logOut();
     navigate('/login');
   };
 
-
+  // handle theme toggle
+  const handleToggle = e => {
+    const darkModeStatus = e.currentTarget.checked
+    if (darkModeStatus) {
+      darkTheme()
+    } else {
+      lightTheme()
+    }
+  };
   const pages = (
     <>
-      <li className="nav-link relative  ">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
 
-          className={` ${
-            pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none text-gray-800 hover:text-white p-4 lg:p-0 inline-block rounded-[10px] w-full`}
+          className={` ${pathname === "/" ? "text-[#eb6753] dark:text-in-dark font-bold" : "text-gray-700"
+            } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none text-gray-800 hover:text-white p-4 lg:p-0 inline-block rounded-[10px] w-full`}
           to={"/"}
 
         >
           Home
         </Link>
       </li>
-      <li className="nav-link relative ">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
 
-          className={` ${
-            pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
+          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700"
+            } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
           to={"/properties"}
 
         >
           Properties
         </Link>
       </li>
-      <li className="nav-link relative ">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
 
-          className={` ${
-            pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
+          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700"
+            } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
           to={"/blogs"}
 
         >
@@ -79,25 +66,23 @@ const Navbar = () => {
         </Link>
       </li>
       {user && (
-        <li className="nav-link relative ">
+        <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
           <Link
 
-            className={` ${
-              pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
-            } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
+            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700"
+              } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
             to={"/dashboard"}
           >
             Dashboard
           </Link>
         </li>
       )}
-      <li className='nav-link relative '>
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
-          className={` ${
-            pathname === '/add-property'
-              ? 'text-[#eb6753] font-bold'
-              : 'inline-block md:hidden text-gray-700'
-          } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none  p-4 lg:p-0 text-gray-800 hover:text-white w-full inline-block rounded-[10px]`}
+          className={` ${pathname === '/add-property'
+            ? 'text-[#eb6753] font-bold'
+            : 'inline-block md:hidden text-gray-700'
+            } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none  p-4 lg:p-0 text-gray-800 hover:text-white w-full inline-block rounded-[10px]`}
           to={'/addProperties'}
 
         >
@@ -105,14 +90,13 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
-          className={` ${
-            pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:text-in-dark' : 'text-gray-700'
+            } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>
@@ -120,36 +104,33 @@ const Navbar = () => {
 
   const pages2 = (
     <>
-      <li className="nav-link relative  ">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
 
-          className={` ${
-            pathname === "/" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === "/" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+            } no-underline font-semibold text-lg`}
           to={"/"}
 
         >
           Home
         </Link>
       </li>
-      <li className="nav-link relative">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
 
-          className={` ${
-            pathname === "/properties" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === "/properties" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+            } no-underline font-semibold text-lg`}
           to={"/properties"}
 
         >
           Properties
         </Link>
       </li>
-      <li className="nav-link relative ">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
 
-          className={` ${
-            pathname === "/blogs" ? "text-[#eb6753] font-bold" : "text-gray-700"
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === "/blogs" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+            } no-underline font-semibold text-lg`}
           to={"/blogs"}
 
         >
@@ -157,25 +138,23 @@ const Navbar = () => {
         </Link>
       </li>
       {user && (
-        <li className="nav-link relative ">
+        <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
           <Link
 
-            className={` ${
-              pathname === "/dashboard" ? "text-[#eb6753] font-bold" : "text-gray-700"
-            } no-underline font-semibold text-lg`}
+            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold dark:text-in-dark" : "text-gray-700 dark:text-in-dark"
+              } no-underline font-semibold text-lg`}
             to={"/dashboard"}
           >
             Dashboard
           </Link>
         </li>
       )}
-      <li className='nav-link relative '>
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
-          className={` ${
-            pathname === '/add-property'
-              ? 'text-[#eb6753] font-bold'
-              : 'inline-block md:hidden text-gray-700'
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === '/add-property'
+            ? 'text-[#eb6753] font-bold dark:text-in-dark'
+            : 'inline-block md:hidden text-gray-700 dark:text-in-dark'
+            } no-underline font-semibold text-lg`}
           to={'/addProperties'}
 
         >
@@ -183,29 +162,28 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className={themeMode === 'light' ? 'nav-link relative' : 'nav-link-dark relative'}>
         <Link
-          className={` ${
-            pathname === '/favorite' ? 'text-[#eb6753] font-bold' : 'text-gray-700'
-          } no-underline font-semibold text-lg`}
+          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42]' : 'text-gray-700 dark:text-in-dark '
+            } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-primary-dark text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>
   );
 
   return (
-    <div className=" bg-[#ebebeb]">
-      <div className="navbar px-4 md:px-4 max-w-7xl mx-auto py-6  text-gray-700">
+    <div className=" bg-[#ebebeb] dark:bg-primary-dark">
+      <div className="navbar px-4 md:px-4 max-w-7xl mx-auto  text-gray-700">
         <div className="navbar-start">
           <div onClick={(e) => {
             e.stopPropagation();
             setIsShowMenu(!isShowMenu);
             console.log(isShowMenu);
           }} className="dropdown">
-            <div 
+            <div
               // tabIndex={0}
               role="button"
               className="btn text-2xl font-bold btn-ghost lg:hidden"
@@ -225,13 +203,13 @@ const Navbar = () => {
                 />
               </svg>
             </div>
-            
+
             <ul
               // tabIndex={0}
               className={`${isShowMenu === true ? 'flex' : ''} ${isShowMenu === true ? "translate-x-0 translate-y-0" : "translate-x-[-200%] translate-y-[-200%]"} flex-col gap-2  absolute p-5 mt-3 transition-all duration-1000 z-[9999] ${isShowMenu === true ? "h-[100vh]" : "h-0"}  shadow bg-base-100 rounded-box w-[80vw] md:w-[40vw]`}
             >
-               <div className='fixed -top-4 -right-4
-                z-10 h-10 w-10 bg-white rounded-full flex items-center justify-center'><p className=' text-2xl font-bold'><RxCross1/></p></div>
+              <div className='fixed -top-4 -right-4
+                z-10 h-10 w-10 bg-white rounded-full flex items-center justify-center'><p className=' text-2xl font-bold'><RxCross1 /></p></div>
               {pages}
             </ul>
           </div>
@@ -242,15 +220,15 @@ const Navbar = () => {
               alt=""
             />
 
-            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl text-gray-900">
+            <h3 className=" font-semibold md:font-medium text-[18px] md:text-xl text-gray-900 dark:text-in-dark">
               Property-Hunter
             </h3>
           </a>
-         
+
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex items-center gap-6 menu-horizontal px-1">
-           
+
             {pages2}
           </ul>
         </div>
@@ -260,12 +238,12 @@ const Navbar = () => {
             <input
               type="checkbox"
               onChange={handleToggle}
-              checked={theme === 'light' ? false : true}
+              checked={themeMode === 'dark'}
             />
 
             {/* sun icon */}
             <svg
-              className="swap-on fill-current w-5 h-5"
+              className="swap-on fill-current w-5 h-5 dark:text-in-dark"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -274,7 +252,7 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-off fill-current w-5 h-5"
+              className="swap-off fill-current w-5 h-5 dark:text-in-dark"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -351,7 +329,7 @@ const Navbar = () => {
                 navigate('/addProperties');
               }
             }}
-            className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-md ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium hover:border-[#eb6753] hover:text-gray-100 border-2 border-gray-700 bg-[#eb6753] border-none text-white hover:bg-[#e67f6f]"
+            className="px-7 py-3 lg:px-5 xl:px-7 lg:py-2 xl:py-3 hidden md:hidden lg:block rounded-md ml-2 text-lg md:text-lg lg:text-[16px] xl:text-lg font-medium transition duration-300 ease-in-out transform hover:border-[#eb6753] dark:hover:bg-[#9e7d42] hover:text-gray-100 border-2 border-gray-700 bg-[#eb6753] dark:bg-[#cfa55b] border-none text-white hover:bg-[#e67f6f]"
           >
             Add Property
           </button>
