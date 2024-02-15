@@ -5,6 +5,7 @@ import { BsEmojiSmile } from "react-icons/bs";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import moment from "moment";
+import useAuth from "../../../../../Hooks/useAuth";
 
 const MakeAnnouncement = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ const MakeAnnouncement = () => {
   const [emojiTarget, setEmojiTarget] = useState(null);
   const headingRef = useRef(null);
   const noticeRef = useRef(null);
-
+  const {user} = useAuth();
   const handlePost = async (e) => {
     e.preventDefault();
 
@@ -23,7 +24,12 @@ const MakeAnnouncement = () => {
       .utc()
       .toDate();
 
-    const postNotice = { name, date, heading, notice, postDate };
+    const postNotice = { 
+      admin_name: name, 
+      post_date: date, 
+      heading: heading,
+      notice_details: notice,
+      user_email: user.email,  };
 
     // console.log(postNotice);
 

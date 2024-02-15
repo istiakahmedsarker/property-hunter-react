@@ -1,44 +1,32 @@
 import {
   AddressElement,
-  CardCvcElement,
   CardElement,
-  CardExpiryElement,
-  CardNumberElement,
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-// import Swal from "sweetalert2";
 import useAuth from "../../../Hooks/useAuth";
 import useAxios from "../../../Hooks/useAxios";
 
 
-const CheckoutForm = () => {
+const CheckoutForm = ({totalPrice: totalAmount}) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
   const navigate = useNavigate();
-  const amount = 1000;
   const [error, setError] = useState("");
   const [transactionId, setTransactionId] = useState("");
   const instance = useAxios();
-
-  // Calculate 2% service charge
-        const serviceCharge = Math.ceil(amount * 0.02);
-  
-        // Deduct service charge from the payment
-        const amountAfterServiceCharge = amount - serviceCharge;
-
-        // pay total amount
-        const totalAmount = amount + serviceCharge;
+  const [address, setAddress] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     async function cardFromData() {
       if (totalAmount > 0) {
-        await instance.post("http://localhost:3000/create-payment-intent", { price: totalAmount })
+        await instance.post("/create-payment-intent", { price: totalAmount })
           .then((res) => {
             console.log(res.data.clientSecret);
             setClientSecret(res.data.clientSecret);
@@ -49,7 +37,7 @@ const CheckoutForm = () => {
     cardFromData();
   }, [instance,totalAmount]);
 
-  
+  console.log("Address:", address, "name:", name);
   
 
 
@@ -105,25 +93,23 @@ const CheckoutForm = () => {
   
         // Save the payment in the database
         const payment = {
-          customer_name: user.displayName,
+          customer_name: String(name),
           customer_email: user.email,
           transaction_id: paymentIntent.id,
-          // serviceCharge: serviceCharge,
-          // totalAmount: totalAmount,
-          transaction_date: new Date(), // utc date convert.
-          price: amountAfterServiceCharge,
+          transaction_date: new Date(),
+          price: totalAmount,
           status: 'pending',
-          country:"Bangladesh"
+          country: address?.country,
         }
   
-        const res = await instance.post('payments', payment)
+        const res = await instance.post('/payments', payment)
   
         console.log('payment save in the data base', res);
   
         if (res?.data?.status === "success") {
           
           console.log('Payment successfully');
-          navigate('/dashboard/paymentHistory');
+          // navigate('/dashboard/paymentHistory');
           toast.success(`${user.email} Payment successfully`);
         }
       }
@@ -131,38 +117,25 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-8 p-4 border rounded-md card shadow-2xl bg-base-100 ">
-      
-          <h3 className="text-2xl font-semibold text-center text-[#eb6753]">Stripe Payment Gateway</h3>
+    <div className="max-w-sm mx-auto mt-8 p-4 rounded-md card">
+       <h3 className="text-2xl font-semibold text-center text-[#eb6753]">Stripe Payment Gateway</h3>
       <form id="payment-form" onSubmit={handleSubmit}>
         <div className="form-control">
           <label className="label">
             <span className="label-text font-sans text-stone-600">Card Number</span>
           </label>
           <div className="input input-bordered rounded">
-            <CardElement className=" mt-[16px]" />
+            <CardElement className="mt-[16px]"/>
           </div>
         </div>
-        {/* <div className="flex flex-row gap-2">
-          <div className="form-control flex-1">
-            <label className="label">
-              <span className="label-text font-sans text-stone-600">CVC</span>
-            </label>
-            <div className=" input input-bordered rounded">
-              <CardCvcElement className=" mt-[16px]" />
-            </div>
-          </div>
-          <div className="form-control flex-1">
-            <label className="label">
-              <span className="label-text font-sans text-stone-600">Expiry</span>
-            </label>
-            <div className=" input input-bordered rounded">
-              <CardExpiryElement className=" mt-[16px]" />
-            </div>
-          </div>
-        </div> */}
         <div className="mt-3">
           <AddressElement options={{ mode: "shipping"}}
+          onChange={(event) => {
+            if (event.complete) {
+              setAddress(event.value.address);
+              setName(event.value.name)
+            }
+          }}
          />
         </div>
         <div className="mt-5">

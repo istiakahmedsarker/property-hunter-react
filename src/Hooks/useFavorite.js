@@ -17,7 +17,6 @@ const { data: favorite = [], refetch } = useQuery({
       }
     },
   });
-console.log(favorite);
 
   return [favorite, refetch];
 };
