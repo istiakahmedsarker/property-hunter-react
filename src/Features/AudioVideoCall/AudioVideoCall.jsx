@@ -22,7 +22,7 @@ export function getUrlParams(url = window.location.href) {
 export default function AudioVideoCall() {
   const roomID = getUrlParams().get('roomID') || randomID(5);
   let myMeeting = async element => {
-    // generate call Kit Token from Zegocloud
+    // generate call Kit Token from Zegocloud website
     const appID = 246548448;
     const serverSecret = '957fedf83193d398810ed8d73d268a7d';
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
