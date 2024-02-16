@@ -18,6 +18,7 @@ import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
 import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
+import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
 import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
 import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
 import AdminHome from '../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome';
@@ -113,8 +114,12 @@ const router = createBrowserRouter([
       },
       //? Member only routes
       {
-        path: '/dashboard/payment',
+        path: '/dashboard/payment/:id',
         element: <StripePayment />,
+        loader: ({ params }) =>
+        fetch(
+          `https://property-hunter-server-roan.vercel.app/api/v1/buyer-inquiries/${params.id}`
+        ),
       },
       {
         path: '/dashboard/payment-history',

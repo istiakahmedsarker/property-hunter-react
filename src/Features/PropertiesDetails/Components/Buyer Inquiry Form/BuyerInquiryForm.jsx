@@ -4,10 +4,14 @@ import { GrFormPrevious } from "react-icons/gr";
 import "./Form.css";
 import toast from "react-hot-toast";
 import axios from "axios";
+import useAxios from "../../../Hooks/useAxios";
+import useAuth from "../../../Hooks/useAuth";
 
-const BuyerInquiryForm = () => {
+const BuyerInquiryForm = ({details}) => {
   const [formStep, setFormStep] = useState(0);
   const [range, setRange] = useState(10000);
+  const instance = useAxios();
+  const {user} = useAuth();
 
   const completeFormStep = event => {
     event.preventDefault();
@@ -55,57 +59,45 @@ const BuyerInquiryForm = () => {
     formState: { errors, isValid },
   } = useForm({ mode: 'all' });
 
-  const onSubmit = (data) => {
-    // console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
 
     //? information.
-    const annualIncome = data.annualIncome;
-    const email = data.email;
-    const jobTitle = data.jobTitle;
-    const name = data.name;
-    const phone = data.phone;
-    const propertyType = data.propertyType;
-    const question = data.question;
-    const savings = data.savings;
-
-    if (
-      !annualIncome ||
-      !email ||
-      !jobTitle ||
-      !name ||
-      !phone ||
-      !propertyType ||
-      !question ||
-      !savings
-    ) {
-      return toast.error('Please fill out the form correctly.');
+    const buyerInquiries = {
+      name : data.name,
+      email :  data.email,
+      phone : data.phone,
+      job_title : data.jobTitle,
+      annual_income: data.annualIncome,
+      savings : data.savings,
+      home_preferences: data.propertyType,
+      question : data.question,
+      status: "pending",
+      // Property Info
+      user_email: user.email,
+      buyer_property_images: details.propertyImages[0],
+      buyer_property_title: details.propertyTitle,
+      buyer_property_price: details.price,
+      buyer_property_squareFootage: details.squareFootage,
     }
-
-    try {
-
-      const inquiries = {
-          name: name,
-          email: email,
-          phone: parseInt(phone),
-          job_title: jobTitle,
-          annual_income: parseInt(annualIncome),
-          savings: parseInt(savings),
-          home_preferences: propertyType,
-          question: question,
-          status: "pending"
-      }
   
-      const { data } = await axios.post(
-        "https://property-hunter-server-roan.vercel.app/api/v1/buyer-inquiries",
-        inquiries
-      );
-      console.log(data);
-      if(data) {
-        toast.success('Thank you! We will reach out to you.')
+    try {
+      const res = await instance.post("/buyer-inquiries", buyerInquiries);
+    console.log(res);
+      if (res?.data?.status === "success") {
+         toast.success('Please fill out the form correctly.');
+      } else {
+        
+        if (res?.data?.error) {
+          toast.error(`Error: ${res.data.error}`);
+        } else {
+          toast.error('Please try again.');
+        }
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error('An error occurred. Please try again.');
     }
+    
   };
 
   const handleRange = e => {
