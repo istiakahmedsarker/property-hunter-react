@@ -80,7 +80,7 @@ const BlogPost = () => {
       setValue('');
     }
 
-    console.log(res);
+    // console.log(res);
   };
   return (
     <div className="mt-20 max-w-6xl lg:mx-auto mx-4">

@@ -21,3 +21,4 @@ npm i emoji-mart
 npm i @emailjs/browser
 npm i react-sweetalert2
 npm i react-qr-code
+npm i socket.io-client
