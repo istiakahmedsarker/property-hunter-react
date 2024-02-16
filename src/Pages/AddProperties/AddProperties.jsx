@@ -219,15 +219,15 @@ const AddProperties = () => {
           "https://property-hunter-server-roan.vercel.app/api/v1/properties/",
           property
         );
-        console.log(data);
+        // console.log(data);
         if (data.status === "success") {
           toast.success("Successfully added the property.");
           completeFormStep(event);
         }
-        console.log(property, "property Data");
+        // console.log(property, "property Data");
       }
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       toast.error(error.message);
     }
   };
@@ -287,7 +287,7 @@ const AddProperties = () => {
   const handlePropertyType = (e) => {
     const propertyType = e.target.value;
     setPropertyType(propertyType);
-    console.log(propertyType);
+    // console.log(propertyType);
   };
 
   return (

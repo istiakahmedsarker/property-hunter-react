@@ -40,7 +40,7 @@ const CheckoutForm = () => {
       if (totalAmount > 0) {
         await instance.post("http://localhost:3000/create-payment-intent", { price: totalAmount })
           .then((res) => {
-            console.log(res.data.clientSecret);
+            // console.log(res.data.clientSecret);
             setClientSecret(res.data.clientSecret);
           });
       }
@@ -56,7 +56,7 @@ const CheckoutForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    console.log("event", event.target.value);
+    // console.log("event", event.target.value);
   
     if (!stripe || !elements) {
       return;
@@ -74,10 +74,10 @@ const CheckoutForm = () => {
     });
   
     if (error) {
-      console.log("payment error", error);
+      // console.log("payment error", error);
       setError(error.message);
     } else {
-      console.log("payment method", paymentMethod);
+      // console.log("payment method", paymentMethod);
       setError("");
     }
   
@@ -94,11 +94,11 @@ const CheckoutForm = () => {
       });
   
     if (confirmError) {
-      console.log("confirm error");
+      // console.log("confirm error");
     } else {
-      console.log("payment intent", paymentIntent);
+      // console.log("payment intent", paymentIntent);
       if (paymentIntent.status === 'succeeded') {
-        console.log('transaction id', paymentIntent.id);
+        // console.log('transaction id', paymentIntent.id);
         setTransactionId(paymentIntent.id);
   
 
@@ -118,11 +118,11 @@ const CheckoutForm = () => {
   
         const res = await instance.post('payments', payment)
   
-        console.log('payment save in the data base', res);
+        // console.log('payment save in the data base', res);
   
         if (res?.data?.status === "success") {
           
-          console.log('Payment successfully');
+          // console.log('Payment successfully');
           navigate('/dashboard/paymentHistory');
           toast.success(`${user.email} Payment successfully`);
         }

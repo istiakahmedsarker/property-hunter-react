@@ -23,6 +23,4 @@ npm i react-sweetalert2
 npm i react-qr-code
 npm install --save-dev jest @testing-library/react @testing-library/dom
 npm i @zegocloud/zego-uikit-prebuilt --save
-
-
-
+npm i socket.io-client

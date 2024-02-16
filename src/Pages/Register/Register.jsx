@@ -58,7 +58,7 @@ const Register = () => {
                   toHome('/');
                 })
                 .catch((err) => {
-                  console.log({ err });
+                  // console.log({ err });
                   toast.error('Registration Failed!');
                 });
             })

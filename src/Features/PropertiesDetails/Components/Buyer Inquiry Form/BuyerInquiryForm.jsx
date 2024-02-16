@@ -55,8 +55,8 @@ const BuyerInquiryForm = () => {
     formState: { errors, isValid },
   } = useForm({ mode: 'all' });
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = (data) => {
+    // console.log(data);
 
     //? information.
     const annualIncome = data.annualIncome;

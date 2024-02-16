@@ -12,7 +12,7 @@ export default function useUserRole() {
         const res = await axios.get(`/users/email/${user?.email}`);
         return res?.data?.data?.user.role;
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     },
   });

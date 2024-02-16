@@ -30,6 +30,7 @@ const Navbar = () => {
       lightTheme()
     }
   };
+  
   const pages = (
     <>
       <li className="nav-link relative">
@@ -181,7 +182,7 @@ const Navbar = () => {
           <div onClick={(e) => {
             e.stopPropagation();
             setIsShowMenu(!isShowMenu);
-            console.log(isShowMenu);
+            // console.log(isShowMenu);
           }} className="dropdown">
             <div
               // tabIndex={0}
