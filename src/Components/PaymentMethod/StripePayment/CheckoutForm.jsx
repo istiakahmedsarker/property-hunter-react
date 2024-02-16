@@ -111,6 +111,7 @@ const CheckoutForm = ({totalPrice: totalAmount}) => {
           console.log('Payment successfully');
           // navigate('/dashboard/paymentHistory');
           toast.success(`${user.email} Payment successfully`);
+          
         }
       }
     }
