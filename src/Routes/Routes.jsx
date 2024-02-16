@@ -18,7 +18,6 @@ import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
 import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
 import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
 import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
-import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
 import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
 import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
 import AdminHome from '../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome';
@@ -29,6 +28,8 @@ import ManagePropertyRequest from '../Pages/Dashboard/Admin/Pages/ManageProperty
 import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary';
 import Properties from '../Features/Properties/Properties';
 import PropertiesDetails from '../Features/PropertiesDetails/PropertiesDetails';
+import LiveChat from '../Features/LiveChat/LiveChat/LiveChat';
+import { ThemeProvider } from '../Providers/ThemeContext';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -83,8 +84,8 @@ const router = createBrowserRouter([
   },
   {
     // dashboard routes
-    path: '/dashboard',
-    element: <Dashboard />,
+    path: "/dashboard",
+    element:<Dashboard />,
     children: [
       {
         path: '/dashboard/home',
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
         path: '/dashboard/profile',
         element: <Profile />,
       },
+      {
+        path: "/dashboard/liveChat",
+        element: <LiveChat />,
+      },
       //? Member only routes
       {
         path: '/dashboard/payment',
@@ -114,11 +119,6 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/payment-history',
         element: <PaymentHistory />,
-      },
-
-      {
-        path: '/dashboard/favourites',
-        element: <Favourites />,
       },
       {
         path: '/dashboard/property-status',

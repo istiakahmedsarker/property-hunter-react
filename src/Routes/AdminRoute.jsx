@@ -8,7 +8,7 @@ const AdminRoute = ({ children }) => {
     const isAdmin = useAdmin()
     const location = useLocation()
 
-    console.log(isAdmin)
+    // console.log(isAdmin)
     if (loading) {
         return <progress className="progress w-56"></progress>
     }
