@@ -28,7 +28,7 @@ const Testimonials = () => {
 
   // console.log(reviews);
   return (
-    <div className="bg-[#fff7f5] relative">
+    <div className="bg-[#fff7f5] relative py-10">
       <img src="https://i.ibb.co/xJRtgZC/Qotes.png" alt="" className=
       "absolute bottom-0 right-0"/>
       <img src="https://i.ibb.co/xJRtgZC/Qotes.png" alt="" className=

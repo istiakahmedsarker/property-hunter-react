@@ -11,7 +11,7 @@ const ContactUs = () => {
   return (
     <div className="py-16">
       <Container>
-        <div className="flex flex-col lg:flex-row items-start mt-8 mx-auto relative">
+        <div className="flex flex-col lg:flex-row items-start justify-center mt-8 mx-auto relative">
           <div className="flex-1 mx-auto px-2 text-wrap z-40">
             <div className="mb-6">
               <h1 className="text-3xl font-bold mb-1">

@@ -31,6 +31,7 @@ const Navbar = () => {
     }
   };
 
+  // tablet & mobile routes
   const pages = (
     <>
       <li className="nav-link relative">
@@ -81,16 +82,22 @@ const Navbar = () => {
       {/* favorite Property route */}
       <li className="relative">
         <Link
-          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:text-in-dark' : 'text-gray-700 '
+          className={` ${pathname === '/favorite'
+            ? 'text-[#eb6753] font-bold dark:text-in-dark'
+            : 'text-gray-700 '
             } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'>
+            <GiSelfLove className="text-lg" /> {/* Adjust the size of the icon */}
+            <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out'>+{favorite?.data?.length}</span>
+          </h3>
         </Link>
       </li>
     </>
   );
 
+  // desktop routes
   const pages2 = (
     <>
       <li className="nav-link relative">
@@ -126,18 +133,6 @@ const Navbar = () => {
           Blogs
         </Link>
       </li>
-      {user && (
-        <li className="nav-link relative">
-          <Link
-
-            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold " : "text-gray-700 dark:text-in-dark"
-              } no-underline font-semibold text-lg`}
-            to={"/dashboard"}
-          >
-            Dashboard
-          </Link>
-        </li>
-      )}
       <li className="nav-link relative">
         <Link
           className={` ${pathname === '/add-property'
@@ -295,14 +290,12 @@ const Navbar = () => {
                   to={"/dashboard"}>
                   Dashboard
                 </Link>
-                
+
                 <div className="h-[1px] bg-gray-400 w-full"></div>
                 <li onClick={handleLogOut} className="w-full">
                   <a className=" flex items-center gap-2  w-full text-lg font-medium cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out">
                     Logout
-                    {/* <span className="hover:text-[#eb6753] transition-all duration-300 ease-in-out "> */}
-                      <RiLogoutBoxLine />
-                    {/* </span> */}
+                    <RiLogoutBoxLine />
                   </a>
                 </li>
               </ul>
