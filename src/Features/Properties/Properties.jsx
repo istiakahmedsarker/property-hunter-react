@@ -8,6 +8,7 @@ import useDebounce from '../../Hooks/useDebounce';
 import PropertyFilter from '../Properties/Components/PropertyFilter/PropertyFilter';
 import { IoFilter } from 'react-icons/io5';
 import FilterComponent from './Components/FilterComponent/FilterComponent';
+import { Link } from 'react-router-dom';
 
 const Properties = () => {
   const [checkboxes, setCheckboxes] = useState({
@@ -160,6 +161,7 @@ const Properties = () => {
             setSelectedOption={setSelectedOption}
             handleCheckboxChange={handleCheckboxChange}
             handleTypeCheckboxChange={handleTypeCheckboxChange}
+
           />
         </div>
         <form onSubmit={handleFormSubmit} className="drawer-side">
@@ -206,80 +208,94 @@ const Properties = () => {
         {!propertiesData?.data?.properties?.length ? (
           <div className="col-span-7 lg:col-span-8 sm:w-[70%] mx-auto md:w-full">
             {/* Show skeletons based on the number of data items */}
-            <div className={`grid ${isGrid ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
+            <div className={`grid ${isGrid ? 'grid-cols-1' : 'grid-cols-2 '} gap-4`}>
               {Array.from({ length: propertiesData?.data?.properties?.length || 6 }, (_, index) => (
                 <div key={index}>
                   {
                     isGrid ?
-                      // grid skeleton
-                      <div className="bg-black">
-                        <div className="px-4 w-[300px] mx-auto py-5 rounded-lg drop-shadow-lg ">
-                          {/* Skeleton for slider */}
-                          <div className="skeleton h-56 w-full mb-4"></div>
-
-                          {/* Property Title */}
-                          <h3 className="font-bold my-2 underline ">
-                            <div className="skeleton h-4 w-4/5"></div>
-                          </h3>
-
-                          {/* Property Location */}
-                          <div className="skeleton h-4 w-1/2 mb-3"></div>
-
-                          {/* Property Details */}
-                          <div className="flex justify-between items-center mt-3 gap-5">
-                            <div className="flex items-center gap-2">
-                              <span className="skeleton h-4 w-4"></span>
-                              <span className="skeleton h-4 w-12"></span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <span className="skeleton h-4 w-4"></span>
-                              <span className="skeleton h-4 w-12"></span>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <span className="skeleton h-4 w-4"></span>
-                              <span className="skeleton h-4 w-16"></span>
-                            </div>
+                      // skeleton used in list 
+                      <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white grid lg:grid-cols-2 grid-cols-1 my-6">
+                        <div className="w-full flex items-center justify-center">
+                          {/* Swiper Skeleton */}
+                          <div className="w-11/12 mx-auto h-52 bg-gray-300 rounded-lg">
+                            {/* Placeholder for Swiper Image */}
                           </div>
-
-                          {/* Separator */}
-                          <hr className="my-3" />
-
-                          {/* Property Status */}
-                          <div className="flex items-center justify-between">
-                            <div className="skeleton h-4 w-1/3"></div>
-                            <div className="flex justify-center items-center gap-4">
-                              <div className="skeleton h-4 w-4"></div>
-                              <div className="skeleton h-4 w-4"></div>
+                        </div>
+                        <div className="flex flex-col justify-center">
+                          <Link to="/">
+                            {/* Property Title Skeleton */}
+                            <h3 className="font-bold my-2 underline text-left bg-gray-300 h-8 w-3/4"></h3>
+                          </Link>
+                          <div className="text-left">
+                            {/* Location Skeleton */}
+                            <h3 className="bg-gray-300 h-4 w-1/2 mb-2"></h3>
+                            <div className="flex items-start">
+                              {/* Bedroom Skeleton */}
+                              <h3 className="flex items-center justify-center gap-3 bg-gray-300 h-4 w-1/4"></h3>
+                              {/* Bathroom Skeleton */}
+                              <h3 className="flex items-center justify-center gap-3 pl-2 bg-gray-300 h-4 w-1/4"></h3>
+                              {/* Square Footage Skeleton */}
+                              <h3 className="flex items-center justify-center gap-3 pl-2 bg-gray-300 h-4 w-1/4"></h3>
+                            </div>
+                            {/* Horizontal Rule */}
+                            <hr className="mt-7 mb-3" />
+                            <div className="flex items-center justify-between">
+                              {/* Property Status Skeleton */}
+                              <h3 className="bg-gray-300 h-4 w-1/4"></h3>
+                              {/* Action Buttons Skeleton */}
+                              <div className="flex justify-center items-center gap-4">
+                                {/* Link Skeleton */}
+                                <div className="bg-gray-300 h-6 w-6"></div>
+                                {/* Icon Skeleton */}
+                                <div className="bg-gray-300 h-6 w-6"></div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                       :
-                      // list skeleton
-                      <div className="flex flex-col gap-4 w-52">
-                        {/* Skeleton for image */}
-                        <div className="skeleton h-32 w-full"></div>
+                      // skeleton used in grid 
+                      <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white animate-pulse">
+                        <div className="w-full">
+                          {/* Skeleton loader for slider */}
+                          <div className="h-56 w-full bg-gray-300 rounded-lg relative"></div>
 
-                        {/* Skeleton for property title */}
-                        <div className="skeleton h-4 w-28"></div>
+                        </div>
 
-                        {/* Skeleton for location */}
-                        <div className="skeleton h-4 w-full"></div>
+                        <div className="mt-4">
+                          {/* Skeleton loader for property title */}
+                          <div className="h-4 w-2/3 bg-gray-300 mb-2"></div>
 
-                        {/* Skeleton for property details */}
-                        <div className="skeleton h-4 w-full"></div>
-                        <div className="skeleton h-4 w-full"></div>
-                        <div className="skeleton h-4 w-full"></div>
+                          {/* Skeleton loader for location */}
+                          <div className="h-4 w-1/2 bg-gray-300"></div>
 
-                        {/* Separator */}
-                        <hr className="mt-7 mb-3" />
+                          {/* Skeleton loaders for bedroom, bathroom, square footage */}
+                          <div className="flex justify-between items-center mt-3 gap-5">
+                            <div className="flex items-center gap-2">
+                              <div className="h-4 w-4 bg-gray-300"></div>
+                              <div className="text-sm text-gray-300"> Bed</div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="h-4 w-4 bg-gray-300"></div>
+                              <div className="text-sm text-gray-300"> Bath</div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <div className="h-4 w-4 bg-gray-300"></div>
+                              <div className="text-sm text-gray-300"> sqFt</div>
+                            </div>
+                          </div>
 
-                        {/* Skeleton for property status */}
-                        <div className="flex items-center justify-between">
-                          <div className="skeleton h-4 w-1/3"></div>
-                          <div className="flex justify-center items-center gap-4">
-                            <div className="skeleton h-4 w-4"></div>
-                            <div className="skeleton h-4 w-4"></div>
+                          {/* Skeleton loader for horizontal rule */}
+                          <hr className="my-3" />
+
+                          {/* Skeleton loaders for property status and action buttons */}
+                          <div className="flex items-center justify-between">
+                            <div className="h-4 w-1/3 bg-gray-300"></div>
+
+                            <div className="flex justify-center items-center gap-4">
+                              <div className="h-6 w-6 bg-gray-300"></div>
+                              <div className="h-6 w-6 bg-gray-300"></div>
+                            </div>
                           </div>
                         </div>
                       </div>

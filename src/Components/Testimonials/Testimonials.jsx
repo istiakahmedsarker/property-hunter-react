@@ -30,9 +30,9 @@ const Testimonials = () => {
   return (
     <div className="bg-[#fff7f5] relative py-10">
       <img src="https://i.ibb.co/xJRtgZC/Qotes.png" alt="" className=
-      "absolute bottom-0 right-0"/>
+        "absolute bottom-0 right-0" />
       <img src="https://i.ibb.co/xJRtgZC/Qotes.png" alt="" className=
-      "absolute top-0 left-0 rotate-[180deg]" />
+        "absolute top-0 left-0 rotate-[180deg]" />
       <div className="px-4 h-[90vh] md:h-full md:px-0 max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-7xl mx-auto   py-8 md:py-6 pb-2 md:pb-8 lg:py-16 ">
         <div className="relative z-5 flex flex-col gap-2">
           <h3 className="text-[#eb6753] text-[12px] md:text-sm  text-center md:text-left font-medium">
@@ -100,47 +100,47 @@ const Testimonials = () => {
                         {review?.client?.name}
                       </h3>
                       <div className="rating w-[60px] md:w-[100px]">
-                        <input 
-                        style={{
-                          height : "16px",
-                          border : "none"
-                        }}
+                        <input
+                          style={{
+                            height: "16px",
+                            border: "none"
+                          }}
                           type="radio"
                           name="rating-2"
                           className="mask mask-star-2 bg-orange-400 border-0 h-2 md:h-[18px]"
                         />
                         <input
-                         style={{
-                          height : "16px",
-                          border : "none"
-                        }}
+                          style={{
+                            height: "16px",
+                            border: "none"
+                          }}
                           type="radio"
                           name="rating-2"
                           className="mask mask-star-2 bg-orange-400 border-0 h-2 md:h-[18px]"
                         />
                         <input
-                         style={{
-                          height : "16px",
-                          border : "none"
-                        }}
-                          type="radio"
-                          name="rating-2"
-                          className="mask mask-star-2 bg-orange-400 border-0 h-2 md:h-[18px]"
-                        />
-                        <input 
-                         style={{
-                          height : "16px",
-                          border : "none"
-                        }}
+                          style={{
+                            height: "16px",
+                            border: "none"
+                          }}
                           type="radio"
                           name="rating-2"
                           className="mask mask-star-2 bg-orange-400 border-0 h-2 md:h-[18px]"
                         />
                         <input
-                         style={{
-                          height : "16px",
-                          border : "none"
-                        }}
+                          style={{
+                            height: "16px",
+                            border: "none"
+                          }}
+                          type="radio"
+                          name="rating-2"
+                          className="mask mask-star-2 bg-orange-400 border-0 h-2 md:h-[18px]"
+                        />
+                        <input
+                          style={{
+                            height: "16px",
+                            border: "none"
+                          }}
                           type="radio"
                           name="rating-2"
                           className="mask mask-star-2 bg-orange-400 border-0 h-2 md:h-[18px]"
@@ -150,7 +150,7 @@ const Testimonials = () => {
                     </div>
                   </div>
                   <div className="h-[1px] w-full bg-gray-500"></div>
-                  <p className="text-gray-600 text-left text-[10px] md:text-[16px] lg:text-[16px]">
+                  <p className="text-gray-600 text-left text-[14px] md:text-[16px] lg:text-[16px]">
                     {review?.comment}
                   </p>
                   <div className="flex items-center justify-center w-full "></div>

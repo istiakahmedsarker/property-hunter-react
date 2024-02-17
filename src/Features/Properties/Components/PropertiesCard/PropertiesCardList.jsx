@@ -25,7 +25,7 @@ const PropertiesCardList = ({ card }) => {
   } = card || {};
   return (
     <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white grid lg:grid-cols-2 grid-cols-1 my-6">
-      <div className=" w-full">
+      <div className="w-full flex items-center justify-center">
         <Swiper
           slidesPerView={1}
           spaceBetween={0}
@@ -39,17 +39,17 @@ const PropertiesCardList = ({ card }) => {
             <SwiperSlide
               key={i}
               style={{ width: '100%' }}
-              className=" h-full relative"
+              className="h-full relative"
             >
               <div className="h-full w-11/12 mx-auto absolute z-30 bg-white opacity-10"></div>
               <div className="w-11/12 mx-auto h-full rounded-lg">
                 <img
                   src={img}
                   alt={propertyTitle}
-                  className="w-full mx-auto h-56  rounded-lg object-cover "
+                  className="w-full mx-auto h-56 rounded-lg object-cover"
                 />
                 <div className="absolute inset-0 flex items-end justify-end px-4">
-                  <h3 className="text-white text-sm  bg-[#eb6753] px-3 py-3 rounded-l-2xl">
+                  <h3 className="text-white text-sm bg-[#eb6753] px-3 py-3 rounded-l-2xl">
                     ${price}
                   </h3>
                 </div>
@@ -58,28 +58,30 @@ const PropertiesCardList = ({ card }) => {
           ))}
         </Swiper>
       </div>
-      <div>
+      <div className="flex flex-col justify-center">
         <Link to={`/propertiesDetails/${card._id}`}>
-          <h3 className="font-bold my-2 underline ">{card.propertyTitle}</h3>
-        </Link>
-        <div>
-          <h3>
-            {card.location.city},{card.location.state}
+          <h3 className="font-bold my-2 underline text-left">
+            {card.propertyTitle}
           </h3>
-          <div className="grid grid-cols-3 gap-5">
-            <h3 className="flex items-center gap-3">
+        </Link>
+        <div className="text-left">
+          <h3>
+            {card.location.city}, {card.location.state}
+          </h3>
+          <div className="flex items-start">
+            <h3 className="flex items-center justify-center gap-3">
               <span>
                 <IoBedOutline />
               </span>
-              <span> {card.bedroom} Bed</span>
+              <span>{card.bedroom} Bed</span>
             </h3>
-            <h3 className="flex items-center gap-3">
+            <h3 className="flex items-center justify-center gap-3 pl-2">
               <span>
                 <PiBathtub />
               </span>
               <span>{card.bathroom} Bath</span>
             </h3>
-            <h3 className="flex items-center gap-3">
+            <h3 className="flex items-center justify-center gap-3 pl-2">
               <span>
                 <BiShapeSquare />
               </span>

@@ -11,7 +11,7 @@ const FilterComponent = ({
     handleCheckboxChange,
     handleTypeCheckboxChange,
 }) => (
-    <div className="menu w-[230px] z-50 sm:w-[300px] gap-9 min-h-full bg-white flex flex-col shadow-sm rounded-md text-base-content">
+    <div className="menu w-[230px] z-50 sm:w-[300px] gap-9 min-h-full bg-white  flex-col shadow-sm rounded-md text-base-content hidden lg:block">
         <PropertyFilter
             checkboxes={checkboxes}
             typeCheckboxes={typeCheckboxes}

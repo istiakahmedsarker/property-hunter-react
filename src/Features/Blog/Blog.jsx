@@ -6,6 +6,9 @@ import { FaArrowRight, FaArrowLeft } from 'react-icons/fa6';
 import { FiSearch } from 'react-icons/fi';
 import LatestBlog from './Components/LatestBlogs/LatestBlog';
 import useGetData from '../../Hooks/useGetData';
+// import { BlogCardSkeleton, LatestBlogSkeleton } from './Components/Skeletons/Skeletons';
+
+
 
 const Blog = () => {
   // const [error, setError] = useState(null);
@@ -46,18 +49,18 @@ const Blog = () => {
     setActivePage(activePage + 1);
   };
 
-  if (isPending) {
-    return (
-      <p className="h-[90vh] flex flex-col items-center justify-center text-center">
-        Loading...
-      </p>
-    );
-  }
+  // if (isPending) {
+  //   return (
+  //     <p className="h-[90vh] flex flex-col items-center justify-center text-center">
+  //       Loading...
+  //     </p>
+  //   );
+  // }
   return (
     <div>
       {error && <p>{error}</p>}
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-screen-2xl mx-auto my-10 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 px-4 xl:px-0 max-w-[1340px] mx-auto my-10 items-start">
         {!data?.data?.blogs?.length ? (
           <div className="md:col-span-8 sm:w-[70%] mx-auto md:w-full">
             <p className=" h-[70vh] flex-col flex items-center justify-center">
@@ -65,7 +68,7 @@ const Blog = () => {
             </p>
           </div>
         ) : (
-          <div className="md:col-span-8  sm:w-[70%] mx-auto md:w-[70%] px-4 ">
+          <div className="md:col-span-10  sm:w-[70%] mx-auto md:w-[70%] items-start ">
             <div className="grid mb-10 lg:mb-5  md:grid-cols-2 gap-6 lg:gap-10  gap-y-10  grid-cols-1 ">
               {data?.data?.blogs?.map((blog) => (
                 <BlogCard key={blog._id} blog={blog} />
@@ -73,11 +76,10 @@ const Blog = () => {
             </div>
             <div className="flex items-center justify-center gap-5">
               <button
-                className={`${
-                  activePage === 1
+                className={`${activePage === 1
                     ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
                     : 'bg-white p-3 shadow-md rounded-full'
-                }`}
+                  }`}
                 onClick={previousPage}
               >
                 <FaArrowLeft />
@@ -85,11 +87,10 @@ const Blog = () => {
 
               {pages.map((pageNo) => (
                 <button
-                  className={`${
-                    activePage === pageNo
+                  className={`${activePage === pageNo
                       ? 'bg-[#EB6753] font-semibold text-white px-4 py-2 rounded-full'
                       : 'px-4 py-2 rounded-full font-semibold bg-white shadow-md'
-                  } `}
+                    } `}
                   key={pageNo}
                   onClick={() => setActivePage(pageNo)}
                 >
@@ -98,11 +99,10 @@ const Blog = () => {
               ))}
 
               <button
-                className={`${
-                  activePage === totalPage
+                className={`${activePage === totalPage
                     ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
                     : 'bg-white p-3 shadow-md rounded-full'
-                }`}
+                  }`}
                 onClick={nextPage}
               >
                 <FaArrowRight />
@@ -125,9 +125,11 @@ const Blog = () => {
 
           <div className="flex flex-col gap-8 bg-white shadow-sm px-6 py-8 rounded-md">
             <h5 className="font-bold text-lg -mb-2">Latest blogs</h5>
-            {latestBlogsData?.data?.blogs?.map((blog) => (
-              <LatestBlog key={blog._id} blog={blog} />
-            ))}
+            {
+              latestBlogsData?.data?.blogs?.map((blog) => (
+                <LatestBlog key={blog._id} blog={blog} />
+              ))
+            }
           </div>
 
           {/* <Link
