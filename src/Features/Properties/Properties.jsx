@@ -16,6 +16,7 @@ const Properties = () => {
     sale: false,
   });
 
+
   const [typeCheckboxes, setTypeCheckboxes] = useState({
     all: true,
     apartment: false,
@@ -208,51 +209,82 @@ const Properties = () => {
             <div className={`grid ${isGrid ? 'grid-cols-1' : 'grid-cols-2'} gap-4`}>
               {Array.from({ length: propertiesData?.data?.properties?.length || 6 }, (_, index) => (
                 <div key={index}>
-                  {/* Skeleton for grid or list view based on isGrid state */}
-                  <div className={`px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white ${isGrid ? 'w-full' : 'grid lg:grid-cols-2 grid-cols-1 my-6'}`}>
-                    <div className="w-[380px]">
-                      {/* Skeleton for Swiper */}
-                      <div className="skeleton h-56 w-11/12 mx-auto mb-4"></div>
+                  {
+                    isGrid ?
+                      // grid skeleton
+                      <div className="bg-black">
+                        <div className="px-4 w-[300px] mx-auto py-5 rounded-lg drop-shadow-lg ">
+                          {/* Skeleton for slider */}
+                          <div className="skeleton h-56 w-full mb-4"></div>
 
-                      {/* Property Title */}
-                      <h3 className="font-bold my-2 underline">
-                        <div className="skeleton h-4 w-4/5"></div>
-                      </h3>
+                          {/* Property Title */}
+                          <h3 className="font-bold my-2 underline ">
+                            <div className="skeleton h-4 w-4/5"></div>
+                          </h3>
 
-                      <div>
-                        {/* Property Location */}
-                        <div className="skeleton h-4 w-1/2 mb-3"></div>
+                          {/* Property Location */}
+                          <div className="skeleton h-4 w-1/2 mb-3"></div>
 
-                        {/* Property Details */}
-                        <div className="grid grid-cols-3 gap-5">
-                          <div className="flex items-center gap-2">
-                            <span className="skeleton h-4 w-4"></span>
-                            <span className="skeleton h-4 w-12"></span>
+                          {/* Property Details */}
+                          <div className="flex justify-between items-center mt-3 gap-5">
+                            <div className="flex items-center gap-2">
+                              <span className="skeleton h-4 w-4"></span>
+                              <span className="skeleton h-4 w-12"></span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="skeleton h-4 w-4"></span>
+                              <span className="skeleton h-4 w-12"></span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <span className="skeleton h-4 w-4"></span>
+                              <span className="skeleton h-4 w-16"></span>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <span className="skeleton h-4 w-4"></span>
-                            <span className="skeleton h-4 w-12"></span>
+
+                          {/* Separator */}
+                          <hr className="my-3" />
+
+                          {/* Property Status */}
+                          <div className="flex items-center justify-between">
+                            <div className="skeleton h-4 w-1/3"></div>
+                            <div className="flex justify-center items-center gap-4">
+                              <div className="skeleton h-4 w-4"></div>
+                              <div className="skeleton h-4 w-4"></div>
+                            </div>
                           </div>
-                          <div className="flex items-center gap-1">
-                            <span className="skeleton h-4 w-4"></span>
-                            <span className="skeleton h-4 w-16"></span>
+                        </div>
+                      </div>
+                      :
+                      // list skeleton
+                      <div className="flex flex-col gap-4 w-52">
+                        {/* Skeleton for image */}
+                        <div className="skeleton h-32 w-full"></div>
+
+                        {/* Skeleton for property title */}
+                        <div className="skeleton h-4 w-28"></div>
+
+                        {/* Skeleton for location */}
+                        <div className="skeleton h-4 w-full"></div>
+
+                        {/* Skeleton for property details */}
+                        <div className="skeleton h-4 w-full"></div>
+                        <div className="skeleton h-4 w-full"></div>
+                        <div className="skeleton h-4 w-full"></div>
+
+                        {/* Separator */}
+                        <hr className="mt-7 mb-3" />
+
+                        {/* Skeleton for property status */}
+                        <div className="flex items-center justify-between">
+                          <div className="skeleton h-4 w-1/3"></div>
+                          <div className="flex justify-center items-center gap-4">
+                            <div className="skeleton h-4 w-4"></div>
+                            <div className="skeleton h-4 w-4"></div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Separator */}
-                      <hr className="mt-7 mb-3" />
-
-                      {/* Property Status */}
-                      <div className="flex items-center justify-between">
-                        <div className="skeleton h-4 w-1/3"></div>
-                        <div className="flex justify-center items-center gap-4">
-                          <div className="skeleton h-4 w-4"></div>
-                          <div className="skeleton h-4 w-4"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  }
                 </div>
               ))}
             </div>
