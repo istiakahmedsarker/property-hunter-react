@@ -30,7 +30,8 @@ const Navbar = () => {
       lightTheme()
     }
   };
-  
+
+  // tablet & mobile routes
   const pages = (
     <>
       <li className="nav-link relative">
@@ -66,18 +67,6 @@ const Navbar = () => {
           Blogs
         </Link>
       </li>
-      {user && (
-        <li className="nav-link relative">
-          <Link
-
-            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold " : "text-gray-700"
-              } no-underline font-semibold text-lg hover:bg-[#eb6753] lg:hover:bg-none hover:text-white  p-4 lg:p-0 w-full inline-block rounded-[10px]`}
-            to={"/dashboard"}
-          >
-            Dashboard
-          </Link>
-        </li>
-      )}
       <li className="nav-link relative">
         <Link
           className={` ${pathname === '/add-property'
@@ -91,18 +80,24 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className="relative">
         <Link
-          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:text-in-dark' : 'text-gray-700'
+          className={` ${pathname === '/favorite'
+            ? 'text-[#eb6753] font-bold dark:text-in-dark'
+            : 'text-gray-700 '
             } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'>
+            <GiSelfLove className="text-lg" /> {/* Adjust the size of the icon */}
+            <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out'>+{favorite?.data?.length}</span>
+          </h3>
         </Link>
       </li>
     </>
   );
 
+  // desktop routes
   const pages2 = (
     <>
       <li className="nav-link relative">
@@ -138,18 +133,6 @@ const Navbar = () => {
           Blogs
         </Link>
       </li>
-      {user && (
-        <li className="nav-link relative">
-          <Link
-
-            className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold " : "text-gray-700 dark:text-in-dark"
-              } no-underline font-semibold text-lg`}
-            to={"/dashboard"}
-          >
-            Dashboard
-          </Link>
-        </li>
-      )}
       <li className="nav-link relative">
         <Link
           className={` ${pathname === '/add-property'
@@ -163,13 +146,13 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className="relative">
         <Link
           className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42]' : 'text-gray-700 dark:text-in-dark '
             } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-primary-dark text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-primary-dark text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>
@@ -177,7 +160,7 @@ const Navbar = () => {
 
   return (
     <div className=" bg-[#ebebeb] dark:bg-primary-dark">
-      <div className="navbar px-4 md:px-4 max-w-7xl mx-auto  text-gray-700">
+      <div className="navbar px-4 md:px-4 max-w-[1340px] mx-auto  text-gray-700">
         <div className="navbar-start">
           <div onClick={(e) => {
             e.stopPropagation();
@@ -296,18 +279,23 @@ const Navbar = () => {
                     />
                   </div>
                 </li>
+
                 <li className="w-full">
-                  <a className="  mt-4 flex items-center justify- text-lg font-medium">
+                  <a className="flex items-center text-lg font-medium">
                     {user?.email}
                   </a>
                 </li>
+                <Link className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold " : "text-gray-700 hover:text-[#eb6753] transition-all duration-300 ease-in-out"
+                  } no-underline font-semibold text-lg lg:hover:bg-none  lg:p-0 w-full inline-block rounded-[10px]`}
+                  to={"/dashboard"}>
+                  Dashboard
+                </Link>
+
                 <div className="h-[1px] bg-gray-400 w-full"></div>
                 <li onClick={handleLogOut} className="w-full">
-                  <a className=" flex items-center gap-2  w-full text-lg font-medium cursor-pointer">
+                  <a className=" flex items-center gap-2  w-full text-lg font-medium cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out">
                     Logout
-                    <span className="text-[#eb6753]">
-                      <RiLogoutBoxLine />
-                    </span>
+                    <RiLogoutBoxLine />
                   </a>
                 </li>
               </ul>

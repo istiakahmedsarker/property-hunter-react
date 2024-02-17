@@ -4,7 +4,7 @@ const LatestBlog = ({ blog }) => {
   const { _id, heading, images } = blog;
   // console.log(blog);
   return (
-    <div className="flex gap-4">
+    <div className="flex items-center gap-4">
       <img
         className="w-24 h-24 rounded-md object-cover"
         src={images[0]}
