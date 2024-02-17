@@ -204,20 +204,60 @@ const Properties = () => {
 
         {!propertiesData?.data?.properties?.length ? (
           <div className="col-span-7 lg:col-span-8 sm:w-[70%] mx-auto md:w-full">
-            <p className=" h-[70vh] flex-col flex items-center justify-center">
-              No more items available
-            </p>
+            {/* Show skeletons based on the number of data items */}
+            <div className="grid grid-cols-2 gap-4 ">
+              {Array.from({ length: propertiesData?.data?.properties?.length || 6 }, (_, index) => (
+                <div key={index}>
+                  <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white">
+                    {/* Skeleton for slider */}
+                    <div className="skeleton h-56 w-full mb-4"></div>
+
+                    {/* Property Title */}
+                    <h3 className="font-bold my-2 underline ">
+                      <div className="skeleton h-4 w-4/5"></div>
+                    </h3>
+
+                    {/* Property Location */}
+                    <div className="skeleton h-4 w-1/2 mb-3"></div>
+
+                    {/* Property Details */}
+                    <div className="flex justify-between items-center mt-3 gap-5">
+                      <div className="flex items-center gap-2">
+                        <span className="skeleton h-4 w-4"></span>
+                        <span className="skeleton h-4 w-12"></span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="skeleton h-4 w-4"></span>
+                        <span className="skeleton h-4 w-12"></span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <span className="skeleton h-4 w-4"></span>
+                        <span className="skeleton h-4 w-16"></span>
+                      </div>
+                    </div>
+
+                    {/* Separator */}
+                    <hr className="my-3" />
+
+                    {/* Property Status */}
+                    <div className="flex items-center justify-between">
+                      <div className="skeleton h-4 w-1/3"></div>
+                      <div className="flex justify-center items-center gap-4">
+                        <div className="skeleton h-4 w-4"></div>
+                        <div className="skeleton h-4 w-4"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
-          <div
-            className="md:col-span-7 lg:col-span-8 flex flex-col gap-16"
-          >
+          <div className="md:col-span-7 lg:col-span-8 flex flex-col gap-16">
             <div>
               <div className="flex justify-between">
-                <h4 className="text-xl font-semibold">
-                  {/* Show for All Properties :{propertiesCards.length || 0} */}
-                </h4>
-                {/* toggle button for grid and list  */}
+                <h4 className="text-xl font-semibold"></h4>
                 {!isGrid ? (
                   <button
                     onClick={() => setIsGrid(true)}
@@ -234,7 +274,7 @@ const Properties = () => {
                   </button>
                 )}
               </div>
-              {/* show card in grid view and list view */}
+
               {!isGrid ? (
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-8 gap-y-10 -z-30">
                   {propertiesData?.data?.properties?.map(card => (
@@ -242,7 +282,7 @@ const Properties = () => {
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-col  gap-5  my-6 -z-30">
+                <div className="flex flex-col gap-5 my-6 -z-30">
                   {propertiesData?.data?.properties?.map(card => (
                     <PropertiesCardList
                       key={card._id}
@@ -252,7 +292,7 @@ const Properties = () => {
                 </div>
               )}
             </div>
-            {/* pagination Implementation */}
+
             {totalPage > 1 ? (
               <div className="flex items-center justify-center gap-5">
                 <button
@@ -297,6 +337,7 @@ const Properties = () => {
           </div>
         )}
       </div>
+
 
       <TopButton />
     </div>

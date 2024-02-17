@@ -22,7 +22,7 @@ const PropertiesCardList = ({ card }) => {
     bathroom,
     propertyStatus,
     price,
-  } = card;
+  } = card || {};
   return (
     <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white grid lg:grid-cols-2 grid-cols-1 my-6">
       <div className=" w-full">
