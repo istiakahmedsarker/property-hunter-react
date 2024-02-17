@@ -36,7 +36,7 @@ const Banner = () => {
 
       <div className="h-full w-full bg-white absolute z-10 opacity-30"></div>
       <Container>
-        <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full md:px-5">
           <div className="flex-1 z-40 flex flex-col gap-6 items-center lg:gap-12 md:items-start text-center md:text-left">
             <h3 className="text-animation text-sm lg:text-xl xl:text-2xl  text-white dark:text-in-dark">
               Explore Buying, Renting, Investing Opportunities!

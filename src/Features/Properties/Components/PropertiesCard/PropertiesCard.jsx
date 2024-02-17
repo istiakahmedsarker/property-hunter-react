@@ -31,7 +31,7 @@ const PropertiesCard = ({ card }) => {
     bathroom,
     propertyStatus,
     price,
-  } = card;
+  } = card || {};
   // Favorite property
   const { user } = useAuth();
   const instance = useAxios();
@@ -141,8 +141,10 @@ const PropertiesCard = ({ card }) => {
         <div className="flex items-center justify-between">
           <h3>For {card.propertyStatus}</h3>
           <h3 className="flex justify-center items-center gap-4">
-            <HiArrowTopRightOnSquare />
-            <GiSelfLove onClick={handleFavorite} className="cursor-pointer" />
+            <Link to={`/propertiesDetails/${card._id}`}  target="_blank">
+              <HiArrowTopRightOnSquare className='hover:text-[#eb6753] transition-all duration-300 ease-in-out'/>
+            </Link>
+            <GiSelfLove onClick={handleFavorite} className="cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out" />
           </h3>
         </div>
       </div>
