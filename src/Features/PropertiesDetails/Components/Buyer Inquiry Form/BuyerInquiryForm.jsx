@@ -4,8 +4,8 @@ import { GrFormPrevious } from "react-icons/gr";
 import "./Form.css";
 import toast from "react-hot-toast";
 import axios from "axios";
-import useAxios from "../../../Hooks/useAxios";
-import useAuth from "../../../Hooks/useAuth";
+import useAxios from "../../../../Hooks/useAxios";
+import useAuth from "../../../../Hooks/useAuth";
 
 const BuyerInquiryForm = ({details}) => {
   const [formStep, setFormStep] = useState(0);
