@@ -79,13 +79,13 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className="relative">
         <Link
-          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:text-in-dark' : 'text-gray-700'
+          className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:text-in-dark' : 'text-gray-700 '
             } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>
@@ -151,13 +151,13 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className="relative">
         <Link
           className={` ${pathname === '/favorite' ? 'text-[#eb6753] font-bold dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42]' : 'text-gray-700 dark:text-in-dark '
             } no-underline font-semibold text-lg`}
           to={'/favorite'}
         >
-          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-primary-dark text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#eb6753] dark:bg-primary-dark text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out'>+{favorite?.data?.length}</span></h3>
         </Link>
       </li>
     </>
