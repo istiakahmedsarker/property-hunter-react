@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropertiesCard from '../Properties/Components/PropertiesCard/PropertiesCard';
 import PropertiesCardList from '../Properties/Components/PropertiesCard/PropertiesCardList';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
@@ -7,6 +7,7 @@ import useGetData from '../../Hooks/useGetData';
 import useDebounce from '../../Hooks/useDebounce';
 import PropertyFilter from '../Properties/Components/PropertyFilter/PropertyFilter';
 import { IoFilter } from 'react-icons/io5';
+import FilterComponent from './Components/FilterComponent/FilterComponent';
 
 const Properties = () => {
   const [checkboxes, setCheckboxes] = useState({
@@ -36,27 +37,54 @@ const Properties = () => {
     checkbox => typeCheckboxes[checkbox]
   );
 
-  const handleCheckboxChange = checkboxName => {
-    const updatedCheckboxes = {};
+  const handleCheckboxChange = useCallback(
+    checkboxName => {
+      const updatedCheckboxes = {};
 
-    for (let key in checkboxes) {
-      updatedCheckboxes[key] = key === checkboxName;
-    }
+      for (let key in checkboxes) {
+        updatedCheckboxes[key] = key === checkboxName;
+      }
 
-    setCheckboxes(updatedCheckboxes);
-    setActivePage(1);
-  };
+      setCheckboxes(updatedCheckboxes);
+      setActivePage(1);
+    },
+    [checkboxes]
+  );
 
-  const handleTypeCheckboxChange = checkboxName => {
-    const updatedCheckboxes = {};
+  const handleTypeCheckboxChange = useCallback(
+    checkboxName => {
+      const updatedCheckboxes = {};
 
-    for (let key in typeCheckboxes) {
-      updatedCheckboxes[key] = key === checkboxName;
-    }
+      for (let key in typeCheckboxes) {
+        updatedCheckboxes[key] = key === checkboxName;
+      }
 
-    setTypeCheckboxes(updatedCheckboxes);
-    setActivePage(1);
-  };
+      setTypeCheckboxes(updatedCheckboxes);
+      setActivePage(1);
+    },
+    [typeCheckboxes]
+  );
+
+  const handleFormSubmit = useCallback(
+    event => {
+      event.preventDefault();
+      // Additional filter logic
+      // You can place any additional logic here to fetch or update data
+    },
+    [] // Add dependencies if needed
+  );
+
+  useEffect(() => {
+    // Fetch data here using the updated filter parameters
+    // e.g., useGetData({...})
+  }, [
+    checkedItem,
+    typeCheckedItem,
+    selectedOption,
+    limit,
+    activePage,
+    debouncedSearchValue,
+  ]);
 
   const { data: propertiesData, isPending } = useGetData({
     key: [
@@ -68,14 +96,10 @@ const Properties = () => {
       activePage,
       debouncedSearchValue,
     ],
-    api: `/properties?propertyStatus=${
-      checkedItem === 'all' ? '' : checkedItem
-    }&propertyType=${
-      typeCheckedItem === 'all' ? '' : typeCheckedItem
-    }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
+    api: `/properties?propertyStatus=${checkedItem === 'all' ? '' : checkedItem
+      }&propertyType=${typeCheckedItem === 'all' ? '' : typeCheckedItem
+      }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
   });
-
-  // console.log(propertiesData?.data);
 
   // for pagination
   const totalPage = Math.ceil(
@@ -100,14 +124,14 @@ const Properties = () => {
     setActivePage(activePage + 1);
   };
 
-  if (isPending) {
-    return (
-      <p className="h-[90vh] flex flex-col items-center justify-center text-center">
-        Loading...
-      </p>
-      // <video src="../../assets/Untitled design.mp4"></video>
-    );
-  }
+  // if (isPending) {
+  //   return (
+  //     <p className="h-[90vh] flex flex-col items-center justify-center text-center">
+  //       Loading...
+  //     </p>
+  //     // <video src="../../assets/Untitled design.mp4"></video>
+  //   );
+  // }
 
   return (
     <div className="max-w-7xl xl:mx-auto mx-4 pt-8 pb-20">
@@ -125,8 +149,19 @@ const Properties = () => {
       </div>
       <div className="drawer z-30 md:hidden overflow-hidden">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">{/* Page content here */}</div>
-        <div className="drawer-side">
+        <div className="drawer-content">
+          <FilterComponent
+            checkboxes={checkboxes}
+            typeCheckboxes={typeCheckboxes}
+            searchText={searchText}
+            setSearchText={setSearchText}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            handleCheckboxChange={handleCheckboxChange}
+            handleTypeCheckboxChange={handleTypeCheckboxChange}
+          />
+        </div>
+        <form onSubmit={handleFormSubmit} className="drawer-side">
           <label
             htmlFor="my-drawer-4"
             aria-label="close sidebar"
@@ -147,7 +182,9 @@ const Properties = () => {
               handleTypeCheckboxChange={handleTypeCheckboxChange}
             />
           </div>
-        </div>
+
+          <button type="submit">Apply Filters</button>
+        </form>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative items-start">
@@ -173,8 +210,7 @@ const Properties = () => {
           </div>
         ) : (
           <div
-            className="md:col-span-7 lg:col-span-8 flex flex-col gap-16
-        "
+            className="md:col-span-7 lg:col-span-8 flex flex-col gap-16"
           >
             <div>
               <div className="flex justify-between">
@@ -220,11 +256,10 @@ const Properties = () => {
             {totalPage > 1 ? (
               <div className="flex items-center justify-center gap-5">
                 <button
-                  className={`${
-                    activePage === 1
-                      ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                      : 'bg-white p-3 shadow-md rounded-full'
-                  }`}
+                  className={`${activePage === 1
+                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                    : 'bg-white p-3 shadow-md rounded-full'
+                    }`}
                   onClick={previousPage}
                 >
                   <FaArrowLeft />
@@ -232,11 +267,10 @@ const Properties = () => {
 
                 {pages.map(pageNo => (
                   <button
-                    className={`${
-                      activePage === pageNo
-                        ? 'bg-[#EB6753] hidden md:inline font-semibold text-white px-4 py-2 rounded-full'
-                        : 'px-4 py-2 hidden md:inline rounded-full font-semibold bg-white shadow-md'
-                    } `}
+                    className={`${activePage === pageNo
+                      ? 'bg-[#EB6753] hidden md:inline font-semibold text-white px-4 py-2 rounded-full'
+                      : 'px-4 py-2 hidden md:inline rounded-full font-semibold bg-white shadow-md'
+                      } `}
                     key={pageNo}
                     onClick={() => setActivePage(pageNo)}
                   >
@@ -248,11 +282,10 @@ const Properties = () => {
                 </button>
 
                 <button
-                  className={`${
-                    activePage === totalPage
-                      ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                      : 'bg-white p-3 shadow-md rounded-full'
-                  }`}
+                  className={`${activePage === totalPage
+                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                    : 'bg-white p-3 shadow-md rounded-full'
+                    }`}
                   onClick={nextPage}
                 >
                   <FaArrowRight />

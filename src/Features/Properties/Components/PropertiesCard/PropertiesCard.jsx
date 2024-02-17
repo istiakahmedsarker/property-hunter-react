@@ -31,7 +31,7 @@ const PropertiesCard = ({ card }) => {
     bathroom,
     propertyStatus,
     price,
-  } = card;
+  } = card || {};
   // Favorite property
   const { user } = useAuth();
   const instance = useAxios();
