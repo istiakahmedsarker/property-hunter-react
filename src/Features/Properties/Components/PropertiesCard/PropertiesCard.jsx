@@ -142,9 +142,9 @@ const PropertiesCard = ({ card }) => {
           <h3>For {card.propertyStatus}</h3>
           <h3 className="flex justify-center items-center gap-4">
             <Link to={`/propertiesDetails/${card._id}`}  target="_blank">
-              <HiArrowTopRightOnSquare className='hover:text-[#eb6753]'/>
+              <HiArrowTopRightOnSquare className='hover:text-[#eb6753] transition-all duration-300 ease-in-out'/>
             </Link>
-            <GiSelfLove onClick={handleFavorite} className="cursor-pointer hover:text-[#eb6753]" />
+            <GiSelfLove onClick={handleFavorite} className="cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out" />
           </h3>
         </div>
       </div>
