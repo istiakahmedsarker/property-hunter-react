@@ -92,7 +92,7 @@ const Navbar = () => {
         </Link>
       </li>
       {/* favorite Property route */}
-      <li className="nav-link relative">
+      <li className="relative">
         <Link
         className={` ${pathname === '/add-property'
         ? 'text-[#076aa5] font-bold'
@@ -106,6 +106,7 @@ const Navbar = () => {
     </>
   );
 
+  // desktop routes
   const pages2 = (
     <>
       <li className="nav-link relative">
@@ -185,7 +186,7 @@ const Navbar = () => {
           <div onClick={(e) => {
             e.stopPropagation();
             setIsShowMenu(!isShowMenu);
-            console.log(isShowMenu);
+            // console.log(isShowMenu);
           }} className="dropdown">
             <div
               // tabIndex={0}
@@ -286,14 +287,21 @@ const Navbar = () => {
                     />
                   </div>
                 </li>
+
                 <li className="w-full">
-                  <a className="  mt-4 flex items-center justify- text-lg font-medium">
+                  <a className="flex items-center text-lg font-medium">
                     {user?.email}
                   </a>
                 </li>
+                <Link className={` ${pathname === "/dashboard" ? "text-[#eb6753] font-bold " : "text-gray-700 hover:text-[#eb6753] transition-all duration-300 ease-in-out"
+                  } no-underline font-semibold text-lg lg:hover:bg-none  lg:p-0 w-full inline-block rounded-[10px]`}
+                  to={"/dashboard"}>
+                  Dashboard
+                </Link>
+
                 <div className="h-[1px] bg-gray-400 w-full"></div>
                 <li onClick={handleLogOut} className="w-full">
-                  <a className=" flex items-center gap-2  w-full text-lg font-medium cursor-pointer">
+                  <a className=" flex items-center gap-2  w-full text-lg font-medium cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out">
                     Logout
                     <span className="text-[#076aa5]">
                       <RiLogoutBoxLine />

@@ -5,6 +5,7 @@ import { BsEmojiSmile } from "react-icons/bs";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 import moment from "moment";
+import useAuth from "../../../../../Hooks/useAuth";
 
 const MakeAnnouncement = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ const MakeAnnouncement = () => {
   const [emojiTarget, setEmojiTarget] = useState(null);
   const headingRef = useRef(null);
   const noticeRef = useRef(null);
-
+  const {user} = useAuth();
   const handlePost = async (e) => {
     e.preventDefault();
 
@@ -23,7 +24,12 @@ const MakeAnnouncement = () => {
       .utc()
       .toDate();
 
-    const postNotice = { name, date, heading, notice, postDate };
+    const postNotice = { 
+      admin_name: name, 
+      post_date: date, 
+      heading: heading,
+      notice_details: notice,
+      user_email: user.email,  };
 
     // console.log(postNotice);
 
@@ -85,8 +91,8 @@ const MakeAnnouncement = () => {
   };
 
   return (
-    <>
-      <div className="card shrink-0 w-full lg:w-[50%] shadow-2xl bg-base-100 mx-auto my-10 mb-40">
+    <div className="dark:bg-primary-dark h-screen">
+      <div className="card shrink-0 w-full lg:w-[50%] shadow-2xl bg-base-100 mx-auto  mb-40 dark:bg-[#3a3b3c] dark:text-[#e4e6cd]">
         <form onSubmit={handlePost} className="card-body">
           <h3 className="text-xl font-semibold text-center">
             Make Announcement
@@ -94,7 +100,7 @@ const MakeAnnouncement = () => {
           <div className="flex flex-col lg:flex-row justify-between gap-4">
             <div className="form-control flex-1">
               <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text dark:text-[#e4e6cd]">Name</span>
               </label>
               <input
                 type="text"
@@ -107,7 +113,7 @@ const MakeAnnouncement = () => {
             </div>
             <div className="form-control flex-1">
               <label className="label">
-                <span className="label-text">Date</span>
+                <span className="label-text dark:text-[#e4e6cd]">Date</span>
               </label>
               <input
                 type="date"
@@ -121,7 +127,7 @@ const MakeAnnouncement = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Heading</span>
+              <span className="label-text dark:text-[#e4e6cd]">Heading</span>
             </label>
             <input
               type="text"
@@ -145,7 +151,7 @@ const MakeAnnouncement = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Notice</span>
+              <span className="label-text dark:text-[#e4e6cd]">Notice</span>
             </label>
             <textarea
               className="textarea textarea-error relative"
@@ -187,7 +193,7 @@ const MakeAnnouncement = () => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

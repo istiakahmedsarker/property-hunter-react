@@ -5,13 +5,13 @@ import { PiBathtub } from 'react-icons/pi';
 import { useLoaderData } from 'react-router-dom';
 import { IoCalendarClearOutline } from 'react-icons/io5';
 import AddProperties from '../../Pages/AddProperties/AddProperties';
-import BuyerInquiryForm from './Buyer Inquiry Form/BuyerInquiryForm';
-import TopButton from '../Shared/TopButton/TopButton';
+import BuyerInquiryForm from './Components/Buyer Inquiry Form/BuyerInquiryForm';
+import TopButton from '../Properties/Components/TopButton/TopButton';
 import { FcConferenceCall } from 'react-icons/fc';
 import { FaUsersViewfinder } from 'react-icons/fa6';
 import { RiHomeOfficeFill } from 'react-icons/ri';
-import RecommendedProperty from './RecommendedProperty/RecommendedProperty';
-import QRcode from '../Shared/QRCode/QRCode';
+import RecommendedProperty from './Components/RecommendedProperty/RecommendedProperty';
+import QRcode from './Components/QRCode/QRcode';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -351,7 +351,6 @@ const PropertiesDetails = () => {
             type={details?.propertyType}
             id={details?._id}
           ></RecommendedProperty>
-          
         </div>
         <div className="lg:w-1/3 w-full">
           {/* owner information */}
@@ -388,8 +387,8 @@ const PropertiesDetails = () => {
               >
                 {isFormOpen ? 'Close Form' : 'Open Form'}
               </button>
-
-              {isFormOpen && <BuyerInquiryForm />}
+                
+              {isFormOpen && <BuyerInquiryForm details={details} />}
             </div>
           </div>
         </div>

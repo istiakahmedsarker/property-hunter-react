@@ -23,7 +23,7 @@ const ContactForm = () => {
       })
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
           if (result.text === "OK") {
             form.current.reset();
             toast.success("Email send Successfully");
@@ -31,7 +31,7 @@ const ContactForm = () => {
           }
         },
         (error) => {
-          console.log(error.text);
+          // console.log(error.text);
         }
       );
   };

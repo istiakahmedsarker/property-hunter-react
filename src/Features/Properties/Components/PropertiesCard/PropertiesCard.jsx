@@ -11,11 +11,14 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Pagination, Autoplay } from 'swiper/modules';
 // for Add to Favorite
-import useAuth from '../../Hooks/useAuth';
-import useAxios from '../../Hooks/useAxios';
+// import useAuth from '../../Hooks/useAuth';
+import useAuth from '../../../../Hooks/useAuth';
+// import useAxios from '../../Hooks/useAxios';
+import useAxios from '../../../../Hooks/useAxios';
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
-import useFavorite from '../../Hooks/useFavorite';
+// import useFavorite from '../../Hooks/useFavorite';
+import useFavorite from '../../../../Hooks/useFavorite';
 
 const PropertiesCard = ({ card }) => {
   const {
@@ -28,7 +31,7 @@ const PropertiesCard = ({ card }) => {
     bathroom,
     propertyStatus,
     price,
-  } = card;
+  } = card || {};
   // Favorite property
   const { user } = useAuth();
   const instance = useAxios();
@@ -47,7 +50,7 @@ const PropertiesCard = ({ card }) => {
       };
       instance
         .post('/property-favorite/add-favorite', favoriteItem)
-        .then((res) => {
+        .then(res => {
           if (res?.data?.status === 'success') {
             toast.success(`${propertyTitle} added to your favorite`);
             refetch();
@@ -62,7 +65,7 @@ const PropertiesCard = ({ card }) => {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, login!',
-      }).then((result) => {
+      }).then(result => {
         if (result.isConfirmed) {
           navigate('/login', { state: { from: location } });
         }
@@ -138,8 +141,10 @@ const PropertiesCard = ({ card }) => {
         <div className="flex items-center justify-between">
           <h3>For {card.propertyStatus}</h3>
           <h3 className="flex justify-center items-center gap-4">
-            <HiArrowTopRightOnSquare />
-            <GiSelfLove onClick={handleFavorite} className="cursor-pointer" />
+            <Link to={`/propertiesDetails/${card._id}`}  target="_blank">
+              <HiArrowTopRightOnSquare className='hover:text-[#eb6753] transition-all duration-300 ease-in-out'/>
+            </Link>
+            <GiSelfLove onClick={handleFavorite} className="cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out" />
           </h3>
         </div>
       </div>

@@ -16,7 +16,7 @@ const imagesUpload = async (imageFiles) => {
       const response = await axios.post(cloudinaryUrl, formData);
 
       if (response.data && response.data.secure_url) {
-        console.log(`Image ${index + 1} uploaded successfully:`, response.data.secure_url);
+        // console.log(`Image ${index + 1} uploaded successfully:`, response.data.secure_url);
         return response.data.secure_url;
       } else {
         throw new Error(`Image ${index + 1} upload failed.`);
@@ -25,7 +25,7 @@ const imagesUpload = async (imageFiles) => {
 
     const uploadedImageUrls = await Promise.all(uploadPromises);
 
-    console.log('All images uploaded successfully:', uploadedImageUrls);
+    // console.log('All images uploaded successfully:', uploadedImageUrls);
     return uploadedImageUrls;
   } catch (error) {
     console.error('Error uploading images:', error.message);

@@ -3,7 +3,7 @@ const Profile = () => {
   const { user } = useAuth();
   const { displayName, email, phoneNumber, photoURL } = user;
   return (
-    <div className="mt-20">
+    <div className="h-screen dark:bg-primary-dark">
       <h2 className="mb-7 font-semibold text-2xl text-[#eb6753]">My Profile</h2>
       <div className="space-y-5">
         <div className=" flex items-center gap-4 border  py-4 px-3">
