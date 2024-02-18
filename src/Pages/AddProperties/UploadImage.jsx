@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 const imagesUpload = async (imageFiles) => {
   const cloudName = 'debqyv4o6';

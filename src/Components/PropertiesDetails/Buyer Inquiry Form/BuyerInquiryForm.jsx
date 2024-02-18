@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { GrFormPrevious } from "react-icons/gr";
 import "./Form.css";
 import toast from "react-hot-toast";
-import axios from "axios";
 
 const BuyerInquiryForm = () => {
   const [formStep, setFormStep] = useState(0);
@@ -55,7 +54,7 @@ const BuyerInquiryForm = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "all" });
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     console.log(data);
 
     //? information.
@@ -80,27 +79,7 @@ const BuyerInquiryForm = () => {
     }
 
     try {
-
-      const inquiries = {
-          name: name,
-          email: email,
-          phone: parseInt(phone),
-          job_title: jobTitle,
-          annual_income: parseInt(annualIncome),
-          savings: parseInt(savings),
-          home_preferences: propertyType,
-          question: question,
-          status: "pending"
-      }
-  
-      const { data } = await axios.post(
-        "https://property-hunter-server-roan.vercel.app/api/v1/buyer-inquiries",
-        inquiries
-      );
-      console.log(data);
-      if(data) {
-        toast.success('Thank you! We will reach out to you.')
-      }
+      toast.success('Thank you! We will reach out to you.')
     } catch (error) {
       toast.error(error.message)
     }

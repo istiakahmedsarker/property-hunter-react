@@ -5,7 +5,7 @@
     right: 0;
     height: 2px;
     width: 0;
-    background: #d23434;
+    background: #076aa5;
     transition: width .3s ease-in-out;
     transform-origin: left;
 }
@@ -13,10 +13,10 @@
 
 .nav-link:hover::before {
     width: 100%;
-    background: #d23434;
+    background: #076aa5;
 }
 
-.nav-link-dark::before {
+/* .nav-link-dark::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -30,4 +30,4 @@
 .nav-link-dark:hover::before {
     width: 100%;
     background: #9e7d42;
-}
+} */

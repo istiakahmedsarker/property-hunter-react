@@ -8,7 +8,7 @@ import ContactUs from '../../Components/Contract/ContactUs/ContactUs';
 const Home = () => {
 
   return (
-      <div className='max-w-[1440px] mx-auto px-4 dark:bg-primary-dark ' >
+      <div className='dark:bg-primary-dark ' >
         <Banner/>
         <ExploreTypes></ExploreTypes>
         <LatestBlogHome></LatestBlogHome>
