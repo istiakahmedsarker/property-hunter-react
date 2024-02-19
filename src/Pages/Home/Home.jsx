@@ -16,6 +16,7 @@ const Home = () => {
       <ExploreTypes></ExploreTypes>
       <FeaturedProperties></FeaturedProperties>
       <LatestBlogHome></LatestBlogHome>
+      
       <Testimonials />
       <Chatbot />
       <SellBanner />
@@ -25,3 +26,4 @@ const Home = () => {
 };
 
 export default Home;
+

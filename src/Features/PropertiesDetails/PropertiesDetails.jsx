@@ -387,7 +387,7 @@ const PropertiesDetails = () => {
               >
                 {isFormOpen ? 'Close Form' : 'Open Form'}
               </button>
-                
+
               {isFormOpen && <BuyerInquiryForm details={details} />}
             </div>
           </div>
