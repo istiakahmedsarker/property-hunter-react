@@ -30,6 +30,7 @@ const PropertiesDetails = () => {
   // state for open the form
   const [isFormOpen, setIsFormOpen] = useState(false);
 
+  console.log(details.propertyStatus)
   const toggleDescription = () => {
     setIsShowFullDescription(!isShowFullDescription);
   };
@@ -539,6 +540,7 @@ const PropertiesDetails = () => {
               <button
                 className="bg-[#eb6753] text-white px-4 py-2 rounded"
                 onClick={toggleForm}
+                disabled={details.propertyStatus === "sold" ? true : false}
               >
                 {isFormOpen ? 'Close Form' : 'Open Form'}
               </button>
