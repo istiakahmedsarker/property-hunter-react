@@ -5,19 +5,20 @@ import ExploreTypes from '../../Components/ExploreTypes/ExploreTypes';
 import LatestBlogHome from '../../Components/LatestBlogHome/LatestBlogHome';
 import ContactUs from '../../Components/Contract/ContactUs/ContactUs';
 import FeaturedProperties from '../../Components/FeaturedProperties/FeaturedProperties';
+import BuySellListCard from '../../Components/BuySellListCard/BuySellListCard';
 
 const Home = () => {
-
   return (
-      <div className='max-w-[1340px] mx-auto px-4 dark:bg-primary-dark ' >
-        <Banner/>
-        <ExploreTypes></ExploreTypes>
-        <FeaturedProperties></FeaturedProperties>
-        <LatestBlogHome></LatestBlogHome>
-        <Testimonials />
-        <Chatbot />
-        <ContactUs />
-      </div >
+    <div className="max-w-[1340px] mx-auto px-4 dark:bg-primary-dark ">
+      <Banner />
+      <ExploreTypes></ExploreTypes>
+      <FeaturedProperties></FeaturedProperties>
+      <LatestBlogHome></LatestBlogHome>
+      <BuySellListCard></BuySellListCard>
+      <Testimonials />
+      <Chatbot />
+      <ContactUs />
+    </div>
   );
 };
 
