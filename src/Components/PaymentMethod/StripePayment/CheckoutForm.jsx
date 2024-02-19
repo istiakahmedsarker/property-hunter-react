@@ -98,7 +98,7 @@ const CheckoutForm = ({ totalPrice: totalAmount }) => {
           transaction_id: paymentIntent.id,
           transaction_date: new Date(),
           price: totalAmount,
-          status: 'pending',
+          status: 'successful',
           country: address?.country,
         }
 
