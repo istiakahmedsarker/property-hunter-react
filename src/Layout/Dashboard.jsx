@@ -22,16 +22,16 @@ const Dashboard = () => {
     document.querySelector('html').classList.add(themeMode);
 
     // Set scrollbar styles based on themeMode
-    const scrollbarColor = themeMode === 'dark' ? 'black' : 'white';
-    document.styleSheets[0].insertRule(
-      `::-webkit-scrollbar-track { background: ${scrollbarColor}; border-radius: 10px; }`,
-      0
-    );
+    // const scrollbarColor = themeMode === 'dark' ? 'black' : 'white';
+    // document.styleSheets[0].insertRule(
+    //   `::-webkit-scrollbar-track { background: ${scrollbarColor}; border-radius: 10px; }`,
+    //   0
+    // );
   }, [themeMode]);
 
   return (
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
-      <div className="flex dark:bg-primary-dark  relative items-start align-top">
+      <div className="flex dark:bg-primary-dark relative items-start align-top">
         <div className="lg:w-[280px] z-50 min-h-screen sticky top-0 dark:bg-primary-dark bg-[#e5ebee]">
           <SideNav />
         </div>
