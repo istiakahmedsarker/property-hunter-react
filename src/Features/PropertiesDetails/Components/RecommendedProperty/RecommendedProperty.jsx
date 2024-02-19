@@ -16,7 +16,7 @@ const RecommendedProperty = ({ type, id }) => {
   // slice first four data
   const slicedData = filterData.slice(0, 4);
   return (
-    <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
+    <div className=" w-full  rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
       <div>
         <h3 className="text-xl font-semibold py-5">
           See More {type} type of Property

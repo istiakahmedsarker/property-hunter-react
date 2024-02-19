@@ -25,7 +25,7 @@ const RecommendedCard = ({ recommended }) => {
   } = recommended;
   console.log(recommended);
   return (
-    <div className="px-4 py-5 rounded-lg gap-4 shadow-lg drop-shadow-lg bg-white my-6">
+    <div className="px-4 py-5 rounded-lg gap-4 shadow-lg drop-shadow-lg bg-white ">
       <div className=" w-full">
         {/* use slider for property image*/}
         <Swiper

@@ -101,7 +101,7 @@ const PropertiesDetails = () => {
       <div className="flex lg:flex-row flex-col gap-5 ">
         <div className="lg:w-2/3 w-full">
           {/* overview section */}
-          <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
+          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl font-semibold py-5">Overview</h3>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-6">
               {details?.rooms?.bedRooms ? (
@@ -219,7 +219,7 @@ const PropertiesDetails = () => {
             </div>
           </div>
           {/* properties Description section */}
-          <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
+          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl  font-semibold py-5">
               Properties Description
             </h3>
@@ -310,40 +310,49 @@ const PropertiesDetails = () => {
             </div>
           </div>
           {/* property feature section */}
-          <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
-            <h3 className="text-xl font-semibold py-5">Properties Features</h3>
-            {details.easement.map((easement, index) => (
-              <div key={index} className="py-2 flex items-center gap-4">
-                {easement === 'Swimming Pool' && (
-                  <TbSwimming className="mr-2" />
-                )}
-                {easement === 'Garden' && <IoFlowerOutline className="mr-2" />}
-                {easement === 'Spa' && <MdFace3 className="mr-2" />}
-                <span>
-                  {easement.charAt(0).toUpperCase() + easement.slice(1)}
-                </span>
-              </div>
-            ))}
+          <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 grid grid-cols-2">
+            <div>
+              <h3 className="text-xl font-semibold py-5">
+                Properties Features
+              </h3>
+              {details.easement.map((easement, index) => (
+                <div key={index} className="py-2 flex items-center gap-4">
+                  {easement === 'Swimming Pool' && (
+                    <TbSwimming className="mr-2" />
+                  )}
+                  {easement === 'Garden' && (
+                    <IoFlowerOutline className="mr-2" />
+                  )}
+                  {easement === 'Spa' && <MdFace3 className="mr-2" />}
+                  <span>
+                    {easement.charAt(0).toUpperCase() + easement.slice(1)}
+                  </span>
+                </div>
+              ))}
+            </div>
+            {/* properties utilities section */}
+            <div>
+              <h3 className="text-xl font-semibold py-5">Utilities</h3>
+              {details.utilities.map((utility, index) => (
+                <div key={index} className="py-2 flex items-center gap-4 ">
+                  {utility === 'Water' && (
+                    <FaHouseFloodWater className="mr-2" />
+                  )}
+                  {utility === 'Electricity' && (
+                    <TbSunElectricity className="mr-2" />
+                  )}
+                  {utility === 'Wifi' && <IoWifi className="mr-2" />}
+                  {utility === 'cafeteria' && <GrCafeteria className="mr-2" />}
+                  <span>
+                    {utility.charAt(0).toUpperCase() + utility.slice(1)}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-          {/* properties utilities section */}
-          <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
-            <h3 className="text-xl font-semibold py-5">Utilities</h3>
-            {details.utilities.map((utility, index) => (
-              <div key={index} className="py-2 flex items-center gap-4">
-                {utility === 'Water' && <FaHouseFloodWater className="mr-2" />}
-                {utility === 'Electricity' && (
-                  <TbSunElectricity className="mr-2" />
-                )}
-                {utility === 'Wifi' && <IoWifi className="mr-2" />}
-                {utility === 'cafeteria' && <GrCafeteria className="mr-2" />}
-                <span>
-                  {utility.charAt(0).toUpperCase() + utility.slice(1)}
-                </span>
-              </div>
-            ))}
-          </div>
+
           {/* properties Address section */}
-          <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
+          <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Address</h3>
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
               <div>
@@ -384,7 +393,7 @@ const PropertiesDetails = () => {
         </div>
         <div className="lg:w-1/3 w-full">
           {/* owner information */}
-          <div className="w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
+          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl font-semibold py-5">Owner address</h3>
             <div>
               <h3 className="flex gap-5 py-2">
@@ -407,7 +416,7 @@ const PropertiesDetails = () => {
           </div>
           {/*from open  */}
           <div>
-            <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
+            <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
               <h3 className="text-xl font-semibold py-5">
                 Essential information Submit
               </h3>
