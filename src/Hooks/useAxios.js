@@ -4,7 +4,7 @@ const instance = axios.create({
   // baseURL: 'http://localhost:7000/api/v1',
   // baseURL: 'http://localhost:3000/api/v1',
   // baseURL: 'https://property-hunter-server-roan.vercel.app/api/v1',
-  baseURL: "https://property-hunter-server-roan.vercel.app/api/v1/",
+  baseURL: 'https://property-hunter-server-roan.vercel.app/api/v1/',
 });
 
 const useAxios = () => {
