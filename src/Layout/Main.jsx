@@ -24,17 +24,17 @@ const Main = () => {
     document.querySelector('html').classList.add(themeMode);
 
     // Set scrollbar styles based on themeMode
-    const scrollbarColor = themeMode === 'dark' ? 'black' : 'white';
-    document.styleSheets[0].insertRule(
-      `::-webkit-scrollbar-track { background: ${scrollbarColor}; border-radius: 10px; }`,
-      0
-    );
+    // const scrollbarColor = themeMode === 'dark' ? 'black' : 'white';
+    // document.styleSheets[0].insertRule(
+    //   `::-webkit-scrollbar-track { background: ${scrollbarColor}; border-radius: 10px; }`,
+    //   0
+    // );
   }, [themeMode]);
 
   return (
     <div>
       <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
-        <div className="dark:bg-primary-dark">
+        <div className="dark:bg-primary-dark bg-[#f7f7f7]">
           <Navbar />
           <Outlet></Outlet>
           <Footer />
