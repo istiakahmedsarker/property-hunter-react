@@ -6,12 +6,12 @@ export default {
     
     extend: {
       colors:{
-        'primary-light': "#1476ff",
+        'primary-light': "#076aa5",
         'secondary-light':"#f3f5ff",
         'in-light': "#f9faff",
-        'primary-dark': "#19181e",
-        'secondary-dark':"#cfa55b",
-        'in-dark': "#a8a8a9"
+        'primary-dark': "#011724",
+        'card-dark':"#0d0d0d",
+        'in-dark': "white"
       },
     },
   },

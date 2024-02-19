@@ -41,21 +41,21 @@ const ContactForm = () => {
       <div className="flex items-center justify-center">
         {/* Contract From */}
         <div className="w-full">
-          <div className="bg-white p-8 rounded shadow-md">
+          <div className="bg-white dark:bg-card-dark p-8 rounded shadow-md">
             <div className="mb-6">
-              <h3 className="text-3xl font-bold mb-1">Contact Us</h3>
+              <h3 className="text-3xl font-bold mb-1 dark:text-in-dark">Contact Us</h3>
               <p className="text-gray-400">We will respond as soon as we receive your message.</p>
             </div>
             <form ref={form} onSubmit={handleEmailSubmit} className="space-y-4">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Your Name<span className="text-red-500">*</span></span>
+                  <span className="label-text">Your Name<span className="text-primary-light">*</span></span>
                 </label>
                 <div className="relative flex items-center ">
-                  <FaRegUser className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
+                  <FaRegUser className="text-primary-light absolute left-3 top-1/2 transform -translate-y-1/2" />
                   <input
                     type="text"
-                    className="input input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8"
+                    className="input input-bordered focus:outline-none focus:border-primary-light w-full py-2 pl-8"
                     placeholder="Your Name"
                     name="user_name"
                     required
@@ -65,13 +65,13 @@ const ContactForm = () => {
               <div className="flex flex-col lg:flex-row justify-between mx-auto gap-4">
                 <div className="form-control flex-1">
                   <label className="label">
-                    <span className="label-text">Email<span className="text-red-500">*</span></span>
+                    <span className="label-text">Email<span className="text-primary-light">*</span></span>
                   </label>
                   <div className="relative flex items-center ">
-                    <MdOutlineMail className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
+                    <MdOutlineMail className="text-primary-light absolute left-3 top-1/2 transform -translate-y-1/2" />
                     <input
                       type="email"
-                      className="input input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8"
+                      className="input input-bordered focus:outline-none focus:border-primary-light w-full py-2 pl-8"
                       placeholder="Your Email"
                       name="user_email"
                       required
@@ -80,13 +80,13 @@ const ContactForm = () => {
                 </div>
                 <div className="form-control flex-1">
                   <label className="label">
-                    <span className="label-text">Phone<span className="text-red-500">*</span></span>
+                    <span className="label-text">Phone<span className="text-primary-light">*</span></span>
                   </label>
                   <div className="relative flex items-center ">
-                    <MdOutlinePhone className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
+                    <MdOutlinePhone className="text-primary-light absolute left-3 top-1/2 transform -translate-y-1/2" />
                     <input
                       type="tel"
-                      className="input input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8"
+                      className="input input-bordered focus:outline-none focus:border-primary-light w-full py-2 pl-8"
                       placeholder="Your Phone"
                       name="user_phone"
                       required
@@ -96,12 +96,12 @@ const ContactForm = () => {
               </div>
                <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Property Type<span className="text-red-500">*</span></span>
+                  <span className="label-text">Property Type<span className="text-primary-light">*</span></span>
                 </label>
                 <div className="relative flex items-center ">
-                  <MdOutlineApartment className="text-[#eb6753] absolute left-3 top-1/2 transform -translate-y-1/2" />
+                  <MdOutlineApartment className="text-primary-light absolute left-3 top-1/2 transform -translate-y-1/2" />
                   <select
-                    className="select input-bordered focus:outline-none focus:border-red-500 w-full py-2 pl-8  "
+                    className="select input-bordered focus:outline-none focus:border-primary-light w-full py-2 pl-8  "
                     defaultValue=""
                     name="user_property"
                     required
@@ -109,7 +109,7 @@ const ContactForm = () => {
                     <option default selected>
                       Choose
                     </option>
-                    <option value="apartment" className="hover:bg-[#eb6753]">
+                    <option value="apartment" className="hover:bg-primary-light">
                       Apartment
                     </option>
                     <option value="house" className="">
@@ -121,11 +121,11 @@ const ContactForm = () => {
               </div> 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Message<span className="text-red-500">*</span></span>
+                  <span className="label-text">Message<span className="text-primary-light">*</span></span>
                 </label>
                 <div className="flex items-center">
                   <textarea
-                    className="textarea textarea-bordered focus:outline-none focus:border-red-500 w-full py-2"
+                    className="textarea textarea-bordered focus:outline-none focus:border-primary-light w-full py-2"
                     placeholder="Your Message"
                     rows="4"
                     name="message"
@@ -136,7 +136,7 @@ const ContactForm = () => {
               <div>
                 <button
                   type="submit"
-                  className="bg-[#eb6753] text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-slate-300"
+                  className="bg-primary-light text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-slate-300"
                 >
                   <span className="flex items-center gap-1">
                     <div className="hover:animate-bounce">
