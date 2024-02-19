@@ -14,13 +14,13 @@ const Notifications = () => {
   };
 
   useEffect(() => {
-    // Set latest announcements
+    // set latest announcements
     refetch();
     setLatestAnnouncementCount(newAnnouncement.length);
   }, [newAnnouncement, refetch]);
 
   const handleModalOpen = () => {
-    // Length Reset count 
+    // length Reset count 
     setLatestAnnouncementCount(0);
     setModalOpen(true);
   };
