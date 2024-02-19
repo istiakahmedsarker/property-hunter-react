@@ -3,12 +3,9 @@ import { useForm } from "react-hook-form";
 import { GrFormPrevious } from "react-icons/gr";
 import "./Form.css";
 import toast from "react-hot-toast";
-<<<<<<< HEAD:src/Components/PropertiesDetails/Buyer Inquiry Form/BuyerInquiryForm.jsx
-=======
 import axios from "axios";
 import useAxios from "../../../../Hooks/useAxios";
 import useAuth from "../../../../Hooks/useAuth";
->>>>>>> 5794f367140418ec7a288d98f26241e06a03cb74:src/Features/PropertiesDetails/Components/Buyer Inquiry Form/BuyerInquiryForm.jsx
 
 const BuyerInquiryForm = ({details}) => {
   const [formStep, setFormStep] = useState(0);
@@ -62,7 +59,7 @@ const BuyerInquiryForm = ({details}) => {
     formState: { errors, isValid },
   } = useForm({ mode: 'all' });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
 
     //? information.
@@ -83,11 +80,6 @@ const BuyerInquiryForm = ({details}) => {
       buyer_property_price: details.price,
       buyer_property_squareFootage: details.squareFootage,
     }
-<<<<<<< HEAD:src/Components/PropertiesDetails/Buyer Inquiry Form/BuyerInquiryForm.jsx
-
-    try {
-      toast.success('Thank you! We will reach out to you.')
-=======
   
     try {
       const res = await instance.post("/buyer-inquiries", buyerInquiries);
@@ -102,7 +94,6 @@ const BuyerInquiryForm = ({details}) => {
           toast.error('Please try again.');
         }
       }
->>>>>>> 5794f367140418ec7a288d98f26241e06a03cb74:src/Features/PropertiesDetails/Components/Buyer Inquiry Form/BuyerInquiryForm.jsx
     } catch (error) {
       toast.error('An error occurred. Please try again.');
     }

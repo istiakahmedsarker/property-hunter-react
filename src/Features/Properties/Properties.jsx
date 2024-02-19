@@ -138,12 +138,12 @@ const Properties = () => {
   return (
     <div className="max-w-7xl xl:mx-auto mx-4 pt-8 pb-20">
       <div className="flex items-center justify-between mb-10 mt-5">
-        <h3 className="text-3xl font-semibold">Properties For sale</h3>
-        <button className="flex items-center gap-2 bg-stone-200 rounded-lg px-6  py-2 md:hidden ">
+        <h3 className="text-3xl dark:text-in-dark font-semibold">Properties For sale</h3>
+        <button className="flex items-center gap-2 dark:bg-primary-light bg-stone-200 dark:text-in-dark rounded-lg px-6  py-2 md:hidden ">
           <IoFilter />
           <label
             htmlFor="my-drawer-4"
-            className="drawer-button cursor-pointer font-semibold"
+            className="drawer-button cursor-pointer font-semibold dark:text-in-dark"
           >
             Filter
           </label>
@@ -173,7 +173,7 @@ const Properties = () => {
 
           {/* Sidebar content here */}
 
-          <div className="menu w-[230px] z-50  sm:w-[300px]   gap-9 min-h-full bg-white flex flex-col shadow-sm rounded-md  text-base-content">
+          <div className="menu w-[230px] z-50  sm:w-[300px]   gap-9 min-h-full bg-white  flex flex-col shadow-sm rounded-md  text-base-content">
             <PropertyFilter
               checkboxes={checkboxes}
               typeCheckboxes={typeCheckboxes}
@@ -313,14 +313,14 @@ const Properties = () => {
                 {!isGrid ? (
                   <button
                     onClick={() => setIsGrid(true)}
-                    className="text-[#eb6753] font-semibold mb-5"
+                    className="text-primary-light font-semibold mb-5"
                   >
                     List view
                   </button>
                 ) : (
                   <button
                     onClick={() => setIsGrid(false)}
-                    className="text-[#eb6753] font-semibold"
+                    className="text-primary-light font-semibold"
                   >
                     Grid View
                   </button>
@@ -334,7 +334,7 @@ const Properties = () => {
                   ))}
                 </div>
               ) : (
-                <div className="flex flex-col gap-5 my-6 -z-30">
+                <div className="flex flex-col gap-2 my-6 -z-30">
                   {propertiesData?.data?.properties?.map(card => (
                     <PropertiesCardList
                       key={card._id}
@@ -360,7 +360,7 @@ const Properties = () => {
                 {pages.map(pageNo => (
                   <button
                     className={`${activePage === pageNo
-                      ? 'bg-[#EB6753] hidden md:inline font-semibold text-white px-4 py-2 rounded-full'
+                      ? 'bg-primary-light hidden md:inline font-semibold text-white px-4 py-2 rounded-full'
                       : 'px-4 py-2 hidden md:inline rounded-full font-semibold bg-white shadow-md'
                       } `}
                     key={pageNo}
@@ -369,14 +369,14 @@ const Properties = () => {
                     {pageNo}
                   </button>
                 ))}
-                <button className="inline md:hidden">
-                  <span className="font-bold">{activePage}</span> of {totalPage}
+                <button className="inline md:hidden dark:text-in-dark">
+                  <span className="font-bold dark:text-in-dark">{activePage}</span> of {totalPage}
                 </button>
 
                 <button
                   className={`${activePage === totalPage
                     ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                    : 'bg-white p-3 shadow-md rounded-full'
+                    : 'bg-white  p-3 shadow-md rounded-full'
                     }`}
                   onClick={nextPage}
                 >
