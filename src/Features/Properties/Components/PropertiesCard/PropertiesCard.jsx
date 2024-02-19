@@ -19,6 +19,8 @@ import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 // import useFavorite from '../../Hooks/useFavorite';
 import useFavorite from '../../../../Hooks/useFavorite';
+import "./PropertiesCard.css";
+import { FaArrowRight } from 'react-icons/fa6';
 
 const PropertiesCard = ({ card }) => {
   const {
@@ -73,7 +75,7 @@ const PropertiesCard = ({ card }) => {
     }
   };
   return (
-    <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white">
+    <div className="w-full lg:w-full mx-auto rounded-lg drop-shadow-lg bg-white dark:bg-card-dark dark:text-in-dark">
       <div className=" w-full">
         {/* for slider */}
         <Swiper
@@ -92,15 +94,24 @@ const PropertiesCard = ({ card }) => {
               style={{ width: '100%' }}
               className=" h-full relative"
             >
-              <div className="h-full w-full absolute z-30 bg-[#0b48ff] opacity-10 "></div>
-              <div className="w-full h-full rounded-lg ">
+             <div className="overlay absolute top-0 left-0 right-0 bottom-0 z-20 bg-transparent h-full w-full">
+              <div id='card-overlay' className="h-[0%] overflow-hidden w-full absolute z-30 bg-[#0000008a] rounded-tr-lg rounded-tl-lg transition-all duration-400 ">
+
+              <button onClick={() => {
+                 navigate(`/propertiesDetails/${card._id}`)
+              }} id='overlay-btn' className='flex items-center gap-4 absolute z-40 opacity-100 top-1/2 left-1/3 border-2 border-primary-light text-white rounded-[100px] p-1 text-lg font-semibold pl-8'>
+                
+                Details <div className='w-10 h-10 rounded-full flex items-center justify-center bg-primary-light text-white'><FaArrowRight id='arrow' className='text-white '/></div></  button>
+              </div>
+             </div>
+              <div className="w-full h-full ">
                 <img
                   src={img}
                   alt={propertyTitle}
-                  className="w-full mx-auto h-56  rounded-lg object-cover relative "
+                  className="w-full mx-auto h-[255px] object-cover relative rounded-tl-lg rounded-tr-lg"
                 />
                 <div className="absolute inset-0 flex items-end justify-end">
-                  <h3 className="text-white bottom-0 text-sm  bg-[#eb6753] px-3 py-3 rounded-l-2xl">
+                  <h3 className="text-white bottom-0 text-sm  bg-primary-light px-3 py-3 z-40 rounded-l-2xl">
                     ${price}
                   </h3>
                 </div>
@@ -109,45 +120,50 @@ const PropertiesCard = ({ card }) => {
           ))}
         </Swiper>
       </div>
+            <div className='py-4 px-4'>
 
-      <Link to={`/propertiesDetails/${card._id}`}>
-        <h3 className="font-bold my-2 underline ">{card.propertyTitle}</h3>
-      </Link>
-      <div>
-        <h3>
+     
+        <h3 className="font-bold my-2 text-[22px]">{card.propertyTitle}</h3>
+     
+      <div className='space-y-2'>
+        <h3 className='text-[16px] font-normal dark:text-gray-400'>
           {card.location.city}, {card.location.state}
         </h3>
         <div className="flex justify-between items-center mt-3  gap-5">
-          <h3 className="flex items-center gap-2">
+          <h3 className="flex items-center px-4 py-2 dark:bg-gray-900 dark:text-gray-300 bg-gray-50 rounded-lg gap-2">
             <span>
               <IoBedOutline />
             </span>
-            <span className="text-sm"> {card.bedroom} Bed</span>
+            <span className="text-sm lg:text-sm xl:text-sm font-medium"> {card.bedroom} Bed</span>
           </h3>
-          <h3 className="flex items-center gap-2">
+          <h3 className="flex items-center px-4 py-2 dark:bg-gray-900 dark:text-gray-300 bg-gray-50 rounded-lg gap-2">
             <span>
               <PiBathtub />
             </span>
-            <span className="text-sm"> {card.bathroom} Bath</span>
+            <span className="text-sm lg:text-sm xl:text-sm  font-medium"> {card.bathroom} Bath</span>
           </h3>
-          <h3 className="flex items-center gap-1">
+          <h3 className="flex items-center px-4 py-2 dark:bg-gray-900 dark:text-gray-300 bg-gray-50 rounded-lg gap-1">
             <span>
               <BiShapeSquare />
             </span>
-            <span className="text-sm">{card.squareFootage} sqFt</span>
+            <span className="text-sm lg:text-sm xl:text-sm  font-medium">{card.squareFootage} sqFt</span>
           </h3>
         </div>
-        <hr className="my-3" />
+       
+        <div className="my-3"> <hr className="" /></div>
         <div className="flex items-center justify-between">
-          <h3>For {card.propertyStatus}</h3>
+          <h3 className='font-medium text-[16px] text-gray-600 dark:text-gray-400'>For {card.propertyStatus}</h3>
           <h3 className="flex justify-center items-center gap-4">
+           
             <Link to={`/propertiesDetails/${card._id}`}  target="_blank">
-              <HiArrowTopRightOnSquare className='hover:text-[#eb6753] transition-all duration-300 ease-in-out'/>
-            </Link>
-            <GiSelfLove onClick={handleFavorite} className="cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out" />
+              <button id='overlay-btn' className='flex items-center gap-4  z-40 opacity-100 border-gray-500 dark:border-gray-300 border-2 hover:border-primary-light text-white rounded-[100px] p-[1px]'><div className='w-6 h-6 rounded-full flex items-center justify-center hover:bg-primary-light text-gray-700 hover:text-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-primary-light'><FaArrowRight id='arrow' className=''/></div></  button>
+              </Link>
+            <GiSelfLove onClick={handleFavorite} className="cursor-pointer hover:text-primary-light transition-all dark:text-gray-400 dark:hover:text-primary-light text-gray-600 h-6 w-6 duration-300 ease-in-out" />
           </h3>
+
         </div>
       </div>
+            </div>
     </div>
   );
 };
