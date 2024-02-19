@@ -7,6 +7,7 @@ import ContactUs from "../../Components/Contract/ContactUs/ContactUs";
 import FeaturedProperties from "../../Components/FeaturedProperties/FeaturedProperties";
 import SellBanner from "../../Components/SellBanner/SellBanner";
 import Agents from "../../Components/Agents/Agents";
+import BuySellListCard from '../../Components/BuySellListCard/BuySellListCard'
 
 const Home = () => {
   return (
@@ -16,7 +17,7 @@ const Home = () => {
       <ExploreTypes></ExploreTypes>
       <FeaturedProperties></FeaturedProperties>
       <LatestBlogHome></LatestBlogHome>
-      
+      <BuySellListCard></BuySellListCard>
       <Testimonials />
       <Chatbot />
       <SellBanner />
