@@ -180,7 +180,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-white dark:bg-primary-dark py-0">
+    <div className=" bg-white dark:bg-primary-dark py-0 lg:py-4">
       <div className="navbar px-4 md:px-0 w-full max-w-xl md:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto text-gray-700 ">
         <div className="navbar-start">
           <div onClick={(e) => {
@@ -315,7 +315,7 @@ const Navbar = () => {
           {!user && (
             <Link
               to="/login"
-              className="px-7 py-3 lg:px-5 xl:px-7 border-2 border-[#076aa5] md:border-2 md:border-[#076aa5] lg:hover:border-[#1d1d1d] lg:hover:text-white lg:hover:border-none lg:border-none rounded-md text-sm md:text-lg lg:text-[16px] xl:text-lg hover:bg-[#076aa5]  md:hover:bg-[#1d1d1d] font-medium  md:bg-none lg:py-2 xl:py-3 text-gray-700 dark:hover:bg-white dark:hover:text-gray-800 dark:text-white"
+              className="px-7 py-3 lg:px-5 xl:px-7 border-2 border-[#076aa5] md:border-2 md:border-[#076aa5] lg:hover:border-[#1d1d1d] lg:hover:text-white lg:hover:border-none lg:border-none rounded-md text-sm md:text-lg lg:text-[16px] xl:text-lg hover:bg-[#076aa5]  md:hover:bg-[#1d1d1d] font-medium  md:bg-none lg:py-2 xl:py-3 text-gray-700 dark:hover:bg-white dark:hover:text-gray-800 hover:text-white dark:text-white"
             >
               Login/Register
             </Link>

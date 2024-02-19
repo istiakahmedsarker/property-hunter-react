@@ -59,11 +59,7 @@ const BuyerInquiryForm = ({ details }) => {
     formState: { errors, isValid },
   } = useForm({ mode: 'all' });
 
-<<<<<<< HEAD
   const onSubmit = async (data) => {
-=======
-  const onSubmit = async(data) => {
->>>>>>> 7c1baac969baa8b15c7d53b8ff33f79aae691b40
     console.log(data);
 
     //? information.
@@ -84,11 +80,7 @@ const BuyerInquiryForm = ({ details }) => {
       buyer_property_price: details.price,
       buyer_property_squareFootage: details.squareFootage,
     }
-<<<<<<< HEAD
   
-=======
-
->>>>>>> 7c1baac969baa8b15c7d53b8ff33f79aae691b40
     try {
       const res = await instance.post("/buyer-inquiries", buyerInquiries);
       console.log(res);
