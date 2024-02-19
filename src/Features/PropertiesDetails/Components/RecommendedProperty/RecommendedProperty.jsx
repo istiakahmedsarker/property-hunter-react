@@ -13,6 +13,8 @@ const RecommendedProperty = ({ type, id }) => {
 
   // filter property
   const filterData = data.filter(item => item._id !== id);
+  // slice first four data
+  const slicedData = filterData.slice(0, 4);
   return (
     <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
       <div>
@@ -21,8 +23,8 @@ const RecommendedProperty = ({ type, id }) => {
         </h3>
       </div>
       {/* show recommended property card */}
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
-        {filterData.map(recommended => (
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+        {slicedData.map(recommended => (
           <RecommendedCard
             key={recommended._id}
             recommended={recommended}

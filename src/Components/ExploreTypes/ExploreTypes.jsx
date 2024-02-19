@@ -15,14 +15,15 @@ const ExploreTypes = () => {
     history.push(`/properties?propertyType=${propertyType}`);
   };
 
-
   return (
     <div className="w-11/12 mx-auto md:my-20 dark:bg-primary-dark">
       <div className="my-6 text-center">
         <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center font-bold md:mb-3 lg:mb-4 dark:text-in-dark">
           Explore Properties Types
         </h2>
-        <h3 className="text-sm font-semibold dark:text-in-dark">All Types of Properties</h3>
+        <h3 className="text-sm font-semibold dark:text-in-dark">
+          All Types of Properties
+        </h3>
       </div>
 
       {/* for redirect the relevant property */}

@@ -7,17 +7,16 @@ import ContactUs from '../../Components/Contract/ContactUs/ContactUs';
 import FeaturedProperties from '../../Components/FeaturedProperties/FeaturedProperties';
 
 const Home = () => {
-
   return (
-      <div className='max-w-[1340px] mx-auto px-4 dark:bg-primary-dark ' >
-        <Banner/>
-        <ExploreTypes></ExploreTypes>
-        <FeaturedProperties></FeaturedProperties>
-        <LatestBlogHome></LatestBlogHome>
-        <Testimonials />
-        <Chatbot />
-        <ContactUs />
-      </div >
+    <div className="max-w-[1340px] mx-auto px-4 dark:bg-primary-dark ">
+      <Banner />
+      <ExploreTypes></ExploreTypes>
+      <FeaturedProperties></FeaturedProperties>
+      <LatestBlogHome></LatestBlogHome>
+      <Testimonials />
+      <Chatbot />
+      <ContactUs />
+    </div>
   );
 };
 

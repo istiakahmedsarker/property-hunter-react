@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
-import { IoArrowUpOutline, IoBedOutline, IoHomeOutline } from 'react-icons/io5';
+import {
+  IoArrowUpOutline,
+  IoBedOutline,
+  IoFlowerOutline,
+  IoHomeOutline,
+  IoWifi,
+} from 'react-icons/io5';
 import { PiBathtub } from 'react-icons/pi';
 import { useLoaderData } from 'react-router-dom';
 import { IoCalendarClearOutline } from 'react-icons/io5';
@@ -8,10 +14,13 @@ import AddProperties from '../../Pages/AddProperties/AddProperties';
 import BuyerInquiryForm from './Components/Buyer Inquiry Form/BuyerInquiryForm';
 import TopButton from '../Properties/Components/TopButton/TopButton';
 import { FcConferenceCall } from 'react-icons/fc';
-import { FaUsersViewfinder } from 'react-icons/fa6';
+import { FaHouseFloodWater, FaUsersViewfinder } from 'react-icons/fa6';
 import { RiHomeOfficeFill } from 'react-icons/ri';
 import RecommendedProperty from './Components/RecommendedProperty/RecommendedProperty';
 import QRcode from './Components/QRCode/QRcode';
+import { TbSunElectricity, TbSwimming } from 'react-icons/tb';
+import { GrCafeteria } from 'react-icons/gr';
+import { MdFace3 } from 'react-icons/md';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -36,9 +45,9 @@ const PropertiesDetails = () => {
     ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
   });
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="max-w-7xl mx-auto">
       <div className="lg:w-1/3 w-full my-3">
-        <h3 className="font-semibold text-2xl">{details.propertyTitle}</h3>
+        <h3 className="font-semibold text-2xl py-5">{details.propertyTitle}</h3>
         {/* <h3 className="flex gap-3">
           <span> {details.location.city},</span>
           <span>{details.location.state}</span>
@@ -58,37 +67,37 @@ const PropertiesDetails = () => {
           </h3>
         </div> */}
       </div>
-      <div>
-        {/* image */}
-        {details.propertyImages && details.propertyImages.length > 0 && (
-          <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1">
-            <div className="h-full">
-              <img
-                src={details.propertyImages[0]}
-                alt={details.propertyTitle}
-                className="w-11/12 mx-auto h-full rounded-lg "
-              ></img>
-            </div>
-            <div className="grid grid-cols-1 ">
-              <div className="">
-                <img
-                  src={details.propertyImages[1]}
-                  alt={details.propertyTitle}
-                  className="w-8/12 mx-auto h-56  rounded-lg "
-                />
-              </div>
 
-              <div>
-                <img
-                  src={details.propertyImages[2]}
-                  alt={details.propertyTitle}
-                  className="w-8/12 mx-auto h-56 rounded-lg "
-                />
-              </div>
+      {/* image */}
+      {details.propertyImages && details.propertyImages.length > 0 && (
+        <div className="grid  mx-auto lg:grid-cols-2 gap-4 md:grid-cols-1 grid-cols-1">
+          <div className="h-full">
+            <img
+              src={details.propertyImages[0]}
+              alt={details.propertyTitle}
+              className=" mx-auto w-full  h-56 rounded-lg "
+            ></img>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-4 grid-cols-1 ">
+            <div className="">
+              <img
+                src={details.propertyImages[1]}
+                alt={details.propertyTitle}
+                className="w-full mx-auto h-56  rounded-lg "
+              />
+            </div>
+
+            <div>
+              <img
+                src={details.propertyImages[2]}
+                alt={details.propertyTitle}
+                className="w-full mx-auto h-56 rounded-lg "
+              />
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
       <div className="flex lg:flex-row flex-col gap-5 ">
         <div className="lg:w-2/3 w-full">
           {/* overview section */}
@@ -218,8 +227,8 @@ const PropertiesDetails = () => {
             <p className="">
               {isShowFullDescription
                 ? details.description
-                : `${details.description.slice(0, 200)}${
-                    details.description.length > 200 ? '...' : ''
+                : `${details.description.slice(0, 210)}${
+                    details.description.length > 210 ? '...' : ''
                   }`}
             </p>
             {details.description.length > 200 && (
@@ -303,16 +312,35 @@ const PropertiesDetails = () => {
           {/* property feature section */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Properties Features</h3>
-            <li className="py-2">{details.easement[0]}</li>
-            <li className="py-2">{details.easement[1]}</li>
-            <li className="py-2">{details.easement[2]}</li>
+            {details.easement.map((easement, index) => (
+              <div key={index} className="py-2 flex items-center gap-4">
+                {easement === 'Swimming Pool' && (
+                  <TbSwimming className="mr-2" />
+                )}
+                {easement === 'Garden' && <IoFlowerOutline className="mr-2" />}
+                {easement === 'Spa' && <MdFace3 className="mr-2" />}
+                <span>
+                  {easement.charAt(0).toUpperCase() + easement.slice(1)}
+                </span>
+              </div>
+            ))}
           </div>
           {/* properties utilities section */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Utilities</h3>
-            <li className="py-2">{details.utilities[0]}</li>
-            <li className="py-2">{details.utilities[1]}</li>
-            <li className="py-2">{details.utilities[2]}</li>
+            {details.utilities.map((utility, index) => (
+              <div key={index} className="py-2 flex items-center gap-4">
+                {utility === 'Water' && <FaHouseFloodWater className="mr-2" />}
+                {utility === 'Electricity' && (
+                  <TbSunElectricity className="mr-2" />
+                )}
+                {utility === 'Wifi' && <IoWifi className="mr-2" />}
+                {utility === 'cafeteria' && <GrCafeteria className="mr-2" />}
+                <span>
+                  {utility.charAt(0).toUpperCase() + utility.slice(1)}
+                </span>
+              </div>
+            ))}
           </div>
           {/* properties Address section */}
           <div className=" w-full my-6 rounded-lg shadow-lg drop-shadow-lg bg-white px-7 py-6">
@@ -320,14 +348,16 @@ const PropertiesDetails = () => {
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
               <div>
                 <h3 className="grid grid-cols-2 py-2">
-                  <span> Address</span>
+                  <span className="font-semibold"> Address</span>
                   <span>: {details.location.address}</span>
                 </h3>
                 <h3 className="grid grid-cols-2 py-2">
-                  <span> City</span> <span>: {details.location.city}</span>
+                  <span className="font-semibold"> City</span>{' '}
+                  <span>: {details.location.city}</span>
                 </h3>
                 <h3 className="grid grid-cols-2 py-2">
-                  <span> State</span> <span>: {details.location.state}</span>
+                  <span className="font-semibold"> State</span>{' '}
+                  <span>: {details.location.state}</span>
                 </h3>
               </div>
               {/* QR code implementation */}
@@ -358,16 +388,16 @@ const PropertiesDetails = () => {
             <h3 className="text-xl font-semibold py-5">Owner address</h3>
             <div>
               <h3 className="flex gap-5 py-2">
-                <span> Name</span>
+                <span className="font-semibold"> Name</span>
                 <span>: {details.ownerInformation.name}</span>
               </h3>
               <h3 className="flex gap-5 py-2">
-                <span> Email</span>
+                <span className="font-semibold"> Email</span>
                 <span>: {details.ownerInformation.email}</span>
               </h3>
               {details.ownerInformation.phone ? (
                 <h3 className="flex gap-5 py-2">
-                  <span> Phone</span>
+                  <span className="font-semibold"> Phone</span>
                   <span>: {details.ownerInformation.phone}</span>
                 </h3>
               ) : (
@@ -387,7 +417,6 @@ const PropertiesDetails = () => {
               >
                 {isFormOpen ? 'Close Form' : 'Open Form'}
               </button>
-                
               {isFormOpen && <BuyerInquiryForm details={details} />}
             </div>
           </div>

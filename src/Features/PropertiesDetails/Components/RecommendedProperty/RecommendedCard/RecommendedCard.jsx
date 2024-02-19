@@ -25,7 +25,7 @@ const RecommendedCard = ({ recommended }) => {
   } = recommended;
   console.log(recommended);
   return (
-    <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white my-6">
+    <div className="px-4 py-5 rounded-lg gap-4 shadow-lg drop-shadow-lg bg-white my-6">
       <div className=" w-full">
         {/* use slider for property image*/}
         <Swiper
@@ -62,42 +62,44 @@ const RecommendedCard = ({ recommended }) => {
         </Swiper>
       </div>
 
-      <Link to={`/propertiesDetails/${recommended._id}`}>
-        <h3 className="font-bold my-2 underline ">
-          {recommended.propertyTitle}
-        </h3>
-      </Link>
       <div>
-        <h3>
-          {recommended.location.city}, {recommended.location.state}
-        </h3>
-        <div className="flex justify-between items-center mt-3  gap-5">
-          <h3 className="flex items-center gap-2">
-            <span>
-              <IoBedOutline />
-            </span>
-            <span className="text-sm"> {recommended.bedroom} Bed</span>
+        <Link to={`/propertiesDetails/${recommended._id}`}>
+          <h3 className="font-bold my-2 underline ">
+            {recommended.propertyTitle}
           </h3>
-          <h3 className="flex items-center gap-2">
-            <span>
-              <PiBathtub />
-            </span>
-            <span className="text-sm"> {recommended.bathroom} Bath</span>
+        </Link>
+        <div>
+          <h3>
+            {recommended.location.city}, {recommended.location.state}
           </h3>
-          <h3 className="flex items-center gap-1">
-            <span>
-              <BiShapeSquare />
-            </span>
-            <span className="text-sm">{recommended.squareFootage} sqFt</span>
-          </h3>
-        </div>
-        <hr className="my-3" />
-        <div className="flex items-center justify-between">
-          <h3>For {recommended.propertyStatus}</h3>
-          <h3 className="flex justify-center items-center gap-4">
-            <HiArrowTopRightOnSquare />
-            <GiSelfLove />
-          </h3>
+          <div className="flex justify-between items-center mt-3  gap-5">
+            <h3 className="flex items-center gap-2">
+              <span>
+                <IoBedOutline />
+              </span>
+              <span className="text-sm"> {recommended.bedroom} Bed</span>
+            </h3>
+            <h3 className="flex items-center gap-2">
+              <span>
+                <PiBathtub />
+              </span>
+              <span className="text-sm"> {recommended.bathroom} Bath</span>
+            </h3>
+            <h3 className="flex items-center gap-1">
+              <span>
+                <BiShapeSquare />
+              </span>
+              <span className="text-sm">{recommended.squareFootage} sqFt</span>
+            </h3>
+          </div>
+          <hr className="my-3" />
+          <div className="flex items-center justify-between">
+            <h3>For {recommended.propertyStatus}</h3>
+            <h3 className="flex justify-center items-center gap-4">
+              <HiArrowTopRightOnSquare />
+              <GiSelfLove />
+            </h3>
+          </div>
         </div>
       </div>
     </div>
