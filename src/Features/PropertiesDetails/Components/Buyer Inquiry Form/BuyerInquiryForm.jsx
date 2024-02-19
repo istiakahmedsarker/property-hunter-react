@@ -3,18 +3,15 @@ import { useForm } from "react-hook-form";
 import { GrFormPrevious } from "react-icons/gr";
 import "./Form.css";
 import toast from "react-hot-toast";
-<<<<<<< HEAD:src/Components/PropertiesDetails/Buyer Inquiry Form/BuyerInquiryForm.jsx
-=======
 import axios from "axios";
 import useAxios from "../../../../Hooks/useAxios";
 import useAuth from "../../../../Hooks/useAuth";
->>>>>>> 5794f367140418ec7a288d98f26241e06a03cb74:src/Features/PropertiesDetails/Components/Buyer Inquiry Form/BuyerInquiryForm.jsx
 
-const BuyerInquiryForm = ({details}) => {
+const BuyerInquiryForm = ({ details }) => {
   const [formStep, setFormStep] = useState(0);
   const [range, setRange] = useState(10000);
   const instance = useAxios();
-  const {user} = useAuth();
+  const { user } = useAuth();
 
   const completeFormStep = event => {
     event.preventDefault();
@@ -62,19 +59,19 @@ const BuyerInquiryForm = ({details}) => {
     formState: { errors, isValid },
   } = useForm({ mode: 'all' });
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log(data);
 
     //? information.
     const buyerInquiries = {
-      name : data.name,
-      email :  data.email,
-      phone : data.phone,
-      job_title : data.jobTitle,
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      job_title: data.jobTitle,
       annual_income: data.annualIncome,
-      savings : data.savings,
+      savings: data.savings,
       home_preferences: data.propertyType,
-      question : data.question,
+      question: data.question,
       status: "pending",
       // Property Info
       user_email: user.email,
@@ -83,30 +80,24 @@ const BuyerInquiryForm = ({details}) => {
       buyer_property_price: details.price,
       buyer_property_squareFootage: details.squareFootage,
     }
-<<<<<<< HEAD:src/Components/PropertiesDetails/Buyer Inquiry Form/BuyerInquiryForm.jsx
 
     try {
-      toast.success('Thank you! We will reach out to you.')
-=======
-  
-    try {
       const res = await instance.post("/buyer-inquiries", buyerInquiries);
-    console.log(res);
+      console.log(res);
       if (res?.data?.status === "success") {
-         toast.success('Please fill out the form correctly.');
+        toast.success('Please fill out the form correctly.');
       } else {
-        
+
         if (res?.data?.error) {
           toast.error(`Error: ${res.data.error}`);
         } else {
           toast.error('Please try again.');
         }
       }
->>>>>>> 5794f367140418ec7a288d98f26241e06a03cb74:src/Features/PropertiesDetails/Components/Buyer Inquiry Form/BuyerInquiryForm.jsx
     } catch (error) {
       toast.error('An error occurred. Please try again.');
     }
-    
+
   };
 
   const handleRange = e => {
