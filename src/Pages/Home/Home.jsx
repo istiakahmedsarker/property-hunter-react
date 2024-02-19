@@ -7,7 +7,8 @@ import ContactUs from "../../Components/Contract/ContactUs/ContactUs";
 import FeaturedProperties from "../../Components/FeaturedProperties/FeaturedProperties";
 import SellBanner from "../../Components/SellBanner/SellBanner";
 import Agents from "../../Components/Agents/Agents";
-import BuySellListCard from '../../Components/BuySellListCard/BuySellListCard'
+import BuySellListCard from "../../Components/BuySellListCard/BuySellListCard";
+import NewsLetter from "../../Components/NewsLetter/NewsLetter";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
       <Chatbot />
       <SellBanner />
       <ContactUs />
+      <NewsLetter />
     </div>
   );
 };
