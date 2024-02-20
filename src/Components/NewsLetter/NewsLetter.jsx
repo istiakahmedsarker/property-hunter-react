@@ -7,8 +7,19 @@ const NewsLetter = () => {
   const use_axios = useAxios();
   const handleNewsLetter = (e) => {
     e.preventDefault();
-    const subscribed_time = "03:56";
-    const subscribed_date = "20-02-2024";
+    // get time & date
+    function pad(n) {
+      return n < 10 ? "0" + n : n;
+    }
+    const time_stamp = new Date();
+    const currentTime = time_stamp.toLocaleTimeString();
+    const day = time_stamp.getDate();
+    const month = time_stamp.getMonth();
+    const year = time_stamp.getFullYear();
+    const currentDate = `${pad(day)}/${pad(month + 1)}/${year}`;
+
+    const subscribed_time = currentTime;
+    const subscribed_date = currentDate;
     const subscribed_email = e.target.email.value;
     if (subscribed_email == "") {
       return setErrMessage("Email is required");
@@ -19,7 +30,9 @@ const NewsLetter = () => {
       subscribed_email,
       subscribed_date,
       subscribed_time,
+      time_stamp: time_stamp.getTime(),
     };
+    console.log(subscriberInfo);
     use_axios
       .post("/subscriber/add-subscriber", subscriberInfo)
       .then((res) => {
