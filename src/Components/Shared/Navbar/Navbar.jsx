@@ -180,7 +180,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-white dark:bg-primary-dark py-0 lg:py-4">
+    <div className=" bg-white dark:bg-primary-dark ">
       <div className="navbar px-4 md:px-0 w-full max-w-xl md:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto text-gray-700 ">
         <div className="navbar-start">
           <div onClick={(e) => {

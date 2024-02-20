@@ -22,7 +22,6 @@ import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
 import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
 import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
 import AdminHome from '../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome';
-import AllUsers from '../Pages/Dashboard/Admin/Pages/AllUsers/AllUsers';
 import PropertyRequest from '../Pages/Dashboard/Moderator/Pages/PropertyRequest/PropertyRequest';
 import ManagePropertyRequest from '../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest';
 // import BlogDetails from '../Pages/BlogDetails/BlogDetails';
@@ -102,10 +101,6 @@ const router = createBrowserRouter([
         element: <AllProperties />,
       },
       {
-        path: '/dashboard/userManagement',
-        element: <UserManagement />,
-      },
-      {
         path: '/dashboard/profile',
         element: <Profile />,
       },
@@ -144,7 +139,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/all-users',
-        element: <AllUsers />,
+        element: <UserManagement />,
       },
       {
         path: '/dashboard/property-request',
