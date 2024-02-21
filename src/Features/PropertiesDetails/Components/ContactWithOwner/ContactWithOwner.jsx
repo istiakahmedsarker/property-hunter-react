@@ -69,7 +69,7 @@ const ContactWithOwner = ({ details }) => {
           placeholder="I am interested to..."
         />
         <input
-          className="w-full px-4 py-3 text-white bg-[#eb6753] my-4 rounded-sm"
+          className="w-full px-4 py-3 text-white bg-[#076aa5] my-4 rounded-sm"
           type="submit"
           value="Send Message"
         />

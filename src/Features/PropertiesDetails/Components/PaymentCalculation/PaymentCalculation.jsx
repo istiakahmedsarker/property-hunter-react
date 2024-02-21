@@ -45,35 +45,47 @@ const PaymentCalculation = ({ details }) => {
       </h3>
 
       {/* Render buttons for installment durations */}
-      <div className="flex items-center gap-5">
+      <div className="flex items-center  gap-5">
         <h3 className="font-semibold">Select your Installment Package :</h3>
         <button
-          className="bg-[#eb6753] rounded-r-none focus:border-red-500 text-black px-4 py-3 rounded-sm"
+          className={`${
+            installmentDuration === 6
+              ? 'bg-white text-black border-blue-500 border-2'
+              : 'bg-blue-500 text-white'
+          } rounded-r-none px-4 focus:border-blue-500  py-3 rounded-sm`}
           onClick={() => handleInstallmentDuration(6)}
         >
           06 Month
         </button>
         <button
-          className="bg-[#eb6753] rounded-l-none focus:border-red-500 text-black px-4 py-3 rounded-sm"
+          className={`${
+            installmentDuration === 12
+              ? 'bg-white text-black border-blue-500 border-2'
+              : 'bg-blue-500 text-white'
+          } rounded-r-none focus:border-blue-500   px-4 py-3 rounded-sm`}
           onClick={() => handleInstallmentDuration(12)}
         >
           12 Month
         </button>
         <button
-          className="bg-[#eb6753] rounded-l-none focus:border-red-500 text-black px-4 py-3 rounded-sm"
+          className={`${
+            installmentDuration === 24
+              ? 'bg-white text-black border-blue-500 border-2'
+              : 'bg-blue-500 text-white'
+          } rounded-r-none focus:border-blue-500 px-4 py-3 rounded-sm`}
           onClick={() => handleInstallmentDuration(24)}
         >
           24 Month
         </button>
       </div>
       {/* Render down payment and installment details */}
-      <div>
+      <div className="space-y-4 text-center bg-[#076aa5] text-white px-5 py-7 w-11/12 mx-auto lg:w-2/3 rounded-sm">
         <h3>
-          <span className="font-semibold">Installment Duration:</span>{' '}
+          <span className="">Installment Duration : </span>{' '}
           {installmentDuration} Months
         </h3>
         <h3>
-          <span className="font-semibold">
+          <span className="">
             Interest Amount(5% increase of Remaining amount) :
           </span>{' '}
           $
@@ -81,7 +93,7 @@ const PaymentCalculation = ({ details }) => {
             calculateRemainingAmount()}
         </h3>
         <h3>
-          <span className="font-semibold">Installment Amount:</span> $
+          <span className="">Installment Amount : </span> $
           {calculateInstallmentAmount()} Per Month
         </h3>
       </div>

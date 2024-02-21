@@ -34,6 +34,7 @@ import GoogleMap from './Components/GoogleMap/GoogleMap';
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
   const details = cardDetails?.data?.property || {};
+  console.log(details);
   //state for show full description
   const [isShowFullDescription, setIsShowFullDescription] = useState(false);
   // state for open the form
@@ -185,6 +186,7 @@ const PropertiesDetails = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Garage</h3>
+                    <h3>{details.parking.spaces}</h3>
                   </div>
                 </div>
               ) : (
@@ -388,7 +390,10 @@ const PropertiesDetails = () => {
                 </h3>
               </div>
               {/* QR code implementation */}
-              <div className=" flex " style={{ justifyContent: 'flex-end' }}>
+              <div
+                className=" flex lg:justify-end md:flex-end flex-col"
+                // style={{ justifyContent: 'flex-end' }}
+              >
                 <QRcode></QRcode>
               </div>
             </div>
@@ -429,21 +434,27 @@ const PropertiesDetails = () => {
           <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <div className="flex justify-center">
               <button
-                className="bg-[#eb6753] focus:border-red-500 text-black px-4 py-3 rounded-sm rounded-r-none "
+                className="bg-[#076aa5] focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm rounded-r-none "
                 onClick={handleFormToggle}
                 style={{
                   backgroundColor:
-                    activeButton === 'form' ? 'white' : '#eb6753',
+                    activeButton === 'form' ? 'white' : '#076aa5',
+                  color: activeButton === 'form' ? 'black ' : 'white ',
+                  border:
+                    activeButton === 'form' ? '2px solid #076aa5' : 'none',
                 }}
               >
                 {showForm ? 'Request Form' : 'Request Form'}
               </button>
               <button
-                className="bg-[#eb6753] rounded-l-none focus:border-red-500 text-black px-4 py-3 rounded-sm"
+                className="bg-[#076aa5] rounded-l-none   focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm"
                 onClick={handleScheduleToggle}
                 style={{
                   backgroundColor:
-                    activeButton === 'schedule' ? 'white ' : '#eb6753',
+                    activeButton === 'schedule' ? 'white ' : '#076aa5',
+                  color: activeButton === 'schedule' ? 'black ' : 'white ',
+                  border:
+                    activeButton === 'schedule' ? '2px solid #076aa5' : 'none',
                 }}
               >
                 {showSchedule ? 'Schedule a Tour' : 'Schedule a Tour'}
@@ -462,7 +473,7 @@ const PropertiesDetails = () => {
                 Essential information Submit
               </h3>
               <button
-                className="w-full px-4 py-3 text-white bg-[#eb6753] my-4 rounded-sm"
+                className="w-full px-4 py-3 text-white bg-[#076aa5] my-4 rounded-sm"
                 onClick={toggleForm}
               >
                 {isFormOpen ? 'Close Form' : 'Open Form'}
