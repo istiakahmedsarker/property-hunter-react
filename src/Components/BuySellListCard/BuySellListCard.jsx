@@ -5,7 +5,7 @@ import { MdOutlineApartment } from 'react-icons/md';
 
 const BuySellListCard = () => {
   return (
-    <div className="lg:max-w-7xl w-11/12 mx-auto my-10">
+    <div className="lg:max-w-7xl md:w-11/12 w-11/12 mx-auto my-10">
       <div className="lg:mb-40">
         <h3 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
           Real Estate service
@@ -15,9 +15,9 @@ const BuySellListCard = () => {
         </h3>
       </div>
       <div className="lg:relative mt-10">
-        <div className="bg-[#076aa5] lg:h-[40vh]  "></div>
+        <div className="bg-[#076aa5] lg:h-[40vh]   rounded-sm rounded-t-3xl "></div>
         {/* 3 card in this div */}
-        <div className="   grid lg:grid-cols-3 grid-cols-1 gap-5 w-11/12  mx-auto lg:absolute  lg:-top-20 right-10  left-10   ">
+        <div className="   grid lg:grid-cols-3 md:grid-cols-3  grid-cols-1 gap-5 w-11/12  mx-auto lg:absolute  lg:-top-20 right-10  left-10   ">
           <div className="bg-white px-7 py-8 rounded-sm flex justify-center items-center flex-col ">
             <h2>
               <GiHutsVillage className="text-5xl text-[#076aa5] " />
@@ -25,8 +25,9 @@ const BuySellListCard = () => {
             <h3 className="text-center py-4 text-xl font-semibold">
               Buy a Property
             </h3>
-            <h3 className="text-sm  text-center dark:text-in-dark ">
-              Premium Real Estate service to help you buy your dream property
+            <h3 className="text-sm  text-center ">
+              Discover your perfect match in a home sweet home, where dreams
+              become addresses.
             </h3>
           </div>
           <div className="bg-white px-7 py-8 rounded-sm flex justify-center items-center flex-col">
@@ -36,8 +37,9 @@ const BuySellListCard = () => {
             <h3 className="text-center py-4 text-xl font-semibold">
               Sell a Property
             </h3>
-            <h3 className="text-sm  text-center dark:text-in-dark ">
-              Premium Real Estate service to help you buy your dream property
+            <h3 className="text-sm  text-center  ">
+              Turn your property into profit, with a seamless selling process
+              that maximizes value and minimizes stress.
             </h3>
           </div>
           <div className="bg-white px-7 py-8 rounded-sm flex justify-center items-center flex-col">
@@ -47,8 +49,9 @@ const BuySellListCard = () => {
             <h3 className="text-center py-4 text-xl font-semibold">
               Rent a Property
             </h3>
-            <h3 className="text-sm  text-center dark:text-in-dark ">
-              Premium Real Estate service to help you buy your dream property
+            <h3 className="text-sm  text-center  ">
+              Experience the freedom to live without boundaries, renting your
+              ideal space today.
             </h3>
           </div>
         </div>
