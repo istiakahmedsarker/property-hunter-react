@@ -9,6 +9,7 @@ import SellBanner from "../../Components/SellBanner/SellBanner";
 import Agents from "../../Components/Agents/Agents";
 import BuySellListCard from "../../Components/BuySellListCard/BuySellListCard";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
+import WhyChooseUs from "../../Components/WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <LatestBlogHome></LatestBlogHome>
       <BuySellListCard></BuySellListCard>
       <Testimonials />
+      <WhyChooseUs />
       <Chatbot />
       <SellBanner />
       <ContactUs />
