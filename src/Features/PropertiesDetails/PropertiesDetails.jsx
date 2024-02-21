@@ -28,12 +28,12 @@ import { TbSunElectricity, TbSwimming } from 'react-icons/tb';
 import { GrCafeteria } from 'react-icons/gr';
 import { MdFace3, MdTheaters } from 'react-icons/md';
 import ContactWithOwner from './Components/ContactWithOwner/ContactWithOwner';
+import PaymentCalculation from './Components/PaymentCalculation/PaymentCalculation';
+import GoogleMap from './Components/GoogleMap/GoogleMap';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
   const details = cardDetails?.data?.property || {};
-  console.log(details);
-  console.log(details.rooms);
   //state for show full description
   const [isShowFullDescription, setIsShowFullDescription] = useState(false);
   // state for open the form
@@ -53,30 +53,7 @@ const PropertiesDetails = () => {
     setShowForm(false); // Hide form when showing schedule
     setActiveButton('schedule');
   };
-  // for down payment implement
-  // const [downPaymentPercentage, setDownPaymentPercentage] = useState(25);
-  // const [installmentDuration, setInstallmentDuration] = useState(6);
-  // const [showDownPaymentDetails, setShowDownPaymentDetails] = useState(false);
-  // down payment calculation
-  // const details = {};
-  // const calculateDownPayment = () => {
-  //   return (downPaymentPercentage / 100) * details.price;
-  // };
-  // console.log(details.price);
-  // console.log(calculateDownPayment);
-  // console.log(downPaymentPercentage);
-  // const calculateInstallmentAmount = () => {
-  //   let totalAmount = details.price * (1 - downPaymentPercentage / 100);
-  //   if (installmentDuration === 12) {
-  //     totalAmount *= 1.05; // Increase amount by 5% for 12-month installment
-  //   }
-  //   return totalAmount / installmentDuration;
-  // };
 
-  // const handleInstallmentDuration = duration => {
-  //   setInstallmentDuration(duration);
-  // };
-  //
   const toggleDescription = () => {
     setIsShowFullDescription(!isShowFullDescription);
   };
@@ -85,22 +62,18 @@ const PropertiesDetails = () => {
     setIsFormOpen(!isFormOpen);
   };
   //  show google map
-  useEffect(() => {
-    const ifameData = document.getElementById('iframeId');
-    const lat = details.location.latitude;
-    const lon = details.location.longitude;
-    ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
-  });
 
   return (
     <div className="max-w-7xl mx-auto">
       <div className="lg:w-1/3 w-full my-3">
-        <h3 className="font-semibold text-2xl py-5">{details.propertyTitle}</h3>
+        <h3 className="font-semibold text-2xl py-5 px-4">
+          {details.propertyTitle}
+        </h3>
       </div>
 
       {/* image */}
       {details.propertyImages && details.propertyImages.length > 0 && (
-        <div className="relative">
+        <div className="lg:relative w-11/12 mx-auto">
           <div className="grid  mx-auto lg:grid-cols-3 gap-1 md:grid-cols-1 grid-cols-1">
             <div className="h-full">
               <img
@@ -126,7 +99,7 @@ const PropertiesDetails = () => {
             </div>
           </div>
           {/* overview section */}
-          <div className="rounded-sm shadow-lg drop-shadow-lg  absolute bg-white -bottom-10  left-20 right-20 ">
+          <div className="rounded-sm shadow-lg drop-shadow-lg  lg:absolute bg-white -bottom-10  left-20 right-20 ">
             <div className="grid px-6 py-5 lg:grid-cols-6 md:grid-cols-2 grid-cols-2 gap-6">
               {details?.rooms?.bedRooms ? (
                 <div className="flex items-center gap-5">
@@ -394,42 +367,7 @@ const PropertiesDetails = () => {
             </div>
           </div>
           {/* payment calculation */}
-          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
-            <h3>Property Price: {details.price}</h3>
-
-            {/* Render buttons for installment durations */}
-            {/* <div>
-              <button onClick={() => handleInstallmentDuration(6)}>
-                6 Months
-              </button>
-              <button onClick={() => handleInstallmentDuration(12)}>
-                12 Months
-              </button>
-              <button onClick={() => handleInstallmentDuration(24)}>
-                24 Months
-              </button>
-            </div> */}
-
-            {/* Render down payment and installment details */}
-            {/* <div>
-              <button
-                onClick={() =>
-                  setShowDownPaymentDetails(!showDownPaymentDetails)
-                }
-              >
-                {showDownPaymentDetails
-                  ? 'Hide Down Payment Details'
-                  : 'Show Down Payment Details'}
-              </button>
-              {showDownPaymentDetails && (
-                <div>
-                  <h3>Down Payment: {calculateDownPayment()}</h3>
-                  <h3>Installment Amount: {calculateInstallmentAmount()}</h3>
-                  <h3>Installment Duration: {installmentDuration} Months</h3>
-                </div>
-              )}
-            </div> */}
-          </div>
+          <PaymentCalculation details={details}></PaymentCalculation>
 
           {/* properties Address section */}
           <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
@@ -455,14 +393,7 @@ const PropertiesDetails = () => {
               </div>
             </div>
             {/* map section */}
-            <div className="rounded-lg my-4">
-              <iframe
-                className="rounded-lg "
-                id="iframeId"
-                height="400px"
-                width="100%"
-              ></iframe>
-            </div>
+            <GoogleMap details={details}></GoogleMap>
           </div>
           {/* recommended property section */}
           <RecommendedProperty
