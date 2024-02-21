@@ -11,7 +11,7 @@ import Dashboard from '../Layout/Dashboard';
 import HomeDashboard from '../Pages/Dashboard/HomeDashboard/HomeDashboard';
 import AddProperties from '../Pages/AddProperties/AddProperties';
 import AllProperties from '../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties';
-import BlogPost from '../Components/BlogPost/BlogPost';
+import BlogPost from '../Features/BlogPost/BlogPost';
 import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
@@ -31,6 +31,7 @@ import Properties from '../Features/Properties/Properties';
 import PropertiesDetails from '../Features/PropertiesDetails/PropertiesDetails';
 import LiveChat from '../Features/LiveChat/LiveChat/LiveChat';
 import { ThemeProvider } from '../Providers/ThemeContext';
+import AudioVideoCall from '../Features/AudioVideoCall/AudioVideoCall';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -85,8 +86,8 @@ const router = createBrowserRouter([
   },
   {
     // dashboard routes
-    path: "/dashboard",
-    element:<Dashboard />,
+    path: '/dashboard',
+    element: <Dashboard />,
     children: [
       {
         path: '/dashboard/home',
@@ -109,17 +110,21 @@ const router = createBrowserRouter([
         element: <Profile />,
       },
       {
-        path: "/dashboard/liveChat",
+        path: '/dashboard/liveChat',
         element: <LiveChat />,
+      },
+      {
+        path: '/dashboard/audioVideoCall',
+        element: <AudioVideoCall />,
       },
       //? Member only routes
       {
         path: '/dashboard/payment/:id',
         element: <StripePayment />,
         loader: ({ params }) =>
-        fetch(
-          `https://property-hunter-server-roan.vercel.app/api/v1/buyer-inquiries/${params.id}`
-        ),
+          fetch(
+            `https://property-hunter-server-roan.vercel.app/api/v1/buyer-inquiries/${params.id}`
+          ),
       },
       {
         path: '/dashboard/payment-history',

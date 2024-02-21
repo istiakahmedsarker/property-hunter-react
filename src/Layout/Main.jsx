@@ -34,7 +34,7 @@ const Main = () => {
   return (
     <div>
       <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
-        <div className="dark:bg-primary-dark">
+        <div className="dark:bg-primary-dark bg-[#f7f7f7]">
           <Navbar />
           <Outlet></Outlet>
           <Footer />
