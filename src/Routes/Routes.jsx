@@ -11,7 +11,7 @@ import Dashboard from '../Layout/Dashboard';
 import HomeDashboard from '../Pages/Dashboard/HomeDashboard/HomeDashboard';
 import AddProperties from '../Pages/AddProperties/AddProperties';
 import AllProperties from '../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties';
-import BlogPost from '../Components/BlogPost/BlogPost';
+import BlogPost from '../Features/BlogPost/BlogPost';
 import Announcement from '../Pages/Dashboard/Announcement/Announcement';
 import Profile from '../Pages/Dashboard/Profile/Profile';
 import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
