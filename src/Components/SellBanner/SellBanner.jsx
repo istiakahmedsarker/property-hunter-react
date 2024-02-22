@@ -10,9 +10,9 @@ const SellBanner = () => {
         // backgroundSize: "cover",
         backgroundPosition: "center",
         borderRadius: "15px",
-        margin: "80px 0",
         color: "white",
       }}
+      className="max-w-7xl mx-auto my-20"
     >
       <div className="max-w-96 md:max-w-2xl">
         <h2 className="text-4xl leading-10 font-semibold">

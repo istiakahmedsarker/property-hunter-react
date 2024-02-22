@@ -22,7 +22,6 @@ import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
 import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
 import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
 import AdminHome from '../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome';
-import AllUsers from '../Pages/Dashboard/Admin/Pages/AllUsers/AllUsers';
 import PropertyRequest from '../Pages/Dashboard/Moderator/Pages/PropertyRequest/PropertyRequest';
 import ManagePropertyRequest from '../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest';
 // import BlogDetails from '../Pages/BlogDetails/BlogDetails';
@@ -32,6 +31,7 @@ import PropertiesDetails from '../Features/PropertiesDetails/PropertiesDetails';
 import LiveChat from '../Features/LiveChat/LiveChat/LiveChat';
 import { ThemeProvider } from '../Providers/ThemeContext';
 import AudioVideoCall from '../Features/AudioVideoCall/AudioVideoCall';
+import NotificationDetails from '../Components/Notifications/NotificationDetails/NotificationDetails';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -82,6 +82,14 @@ const router = createBrowserRouter([
         path: '/favorite',
         element: <FavoriteProperty />,
       },
+      {
+        path: '/notificationDetails/:id',
+        element: <NotificationDetails/>,
+        loader: ({ params }) =>
+          fetch(
+            `https://property-hunter-server-roan.vercel.app/api/v1/announcement/${params.id}`
+          ),
+      }
     ],
   },
   {
@@ -100,10 +108,6 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/all-properties',
         element: <AllProperties />,
-      },
-      {
-        path: '/dashboard/userManagement',
-        element: <UserManagement />,
       },
       {
         path: '/dashboard/profile',
@@ -144,7 +148,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/all-users',
-        element: <AllUsers />,
+        element: <UserManagement />,
       },
       {
         path: '/dashboard/property-request',

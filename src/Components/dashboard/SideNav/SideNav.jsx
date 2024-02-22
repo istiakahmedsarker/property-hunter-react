@@ -146,19 +146,6 @@ const SideNav = () => {
                   </div>
                 </NavLink>{' '}
                 <NavLink
-                  to={'/dashboard/userManagement'}
-                  className={({ isActive }) =>
-                    isActive
-                      ? 'py-[14px]  bg-[#076aa5]  text-white px-6'
-                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
-                  }
-                >
-                  <div className="flex items-center gap-2">
-                    <FaUsersCog />
-                    User Management
-                  </div>
-                </NavLink>
-                <NavLink
                   to={'/dashboard/all-users'}
                   className={({ isActive }) =>
                     isActive
@@ -168,7 +155,7 @@ const SideNav = () => {
                 >
                   <div className="flex items-center gap-2">
                     <FaUsers />
-                    All users
+                    User Management
                   </div>
                 </NavLink>
               </>

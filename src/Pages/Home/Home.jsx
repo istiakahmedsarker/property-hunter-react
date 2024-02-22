@@ -8,6 +8,7 @@ import SellBanner from '../../Components/SellBanner/SellBanner';
 import Agents from '../../Components/Agents/Agents';
 import BuySellListCard from '../../Components/BuySellListCard/BuySellListCard';
 import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
+import NewsLetter from '../../Components/NewsLetter/NewsLetter';
 import Chatbot from '../../Features/Chatbot/Chatbot';
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
       <Chatbot />
       <SellBanner />
       <ContactUs />
+      <NewsLetter />
     </div>
   );
 };

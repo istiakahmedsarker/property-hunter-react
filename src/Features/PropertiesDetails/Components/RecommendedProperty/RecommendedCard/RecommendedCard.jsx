@@ -52,7 +52,7 @@ const RecommendedCard = ({ recommended }) => {
                   className="w-full mx-auto h-56  rounded-lg object-cover relative "
                 />
                 <div className="absolute inset-0 flex items-end justify-end">
-                  <h3 className="text-white bottom-0 text-sm  bg-[#eb6753] px-3 py-3 rounded-l-2xl">
+                  <h3 className="text-white bottom-0 text-sm  bg-[#076aa5] px-3 py-3 rounded-l-2xl">
                     ${price}
                   </h3>
                 </div>

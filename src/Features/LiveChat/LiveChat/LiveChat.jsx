@@ -314,7 +314,6 @@ const LiveChat = () => {
             className="cursor-pointer p-2 py-2 bg-[#eb6753] text-white px-2 rounded-md mx-auto flex justify-center gap-2 items-center"
           >
             <CiVideoOn className="font-bold " />
-            {/* <span> Video Call</span> */}
           </button>
         </div>
       </div>

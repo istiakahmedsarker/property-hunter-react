@@ -2,13 +2,13 @@ import useFavorite from "../../Hooks/useFavorite";
 import Swal from "sweetalert2";
 import useAxios from "../../Hooks/useAxios";
 import { MdOutlineDeleteForever } from "react-icons/md";
-
+import useAuth from "../../Hooks/useAuth";
 
 const FavoriteProperty = () => {
   const [favorite, refetch] = useFavorite();
   const instance = useAxios();
-
-  const handleDelete = (id) => {
+  const { user } = useAuth();
+  const handleDelete = (id, propertyId) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -22,11 +22,20 @@ const FavoriteProperty = () => {
         instance.delete(`/property-favorite/delete/${id}`).then((res) => {
           refetch();
           if (res?.data?.status === "success") {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
+            instance
+              .post("/property-favorite/favorite-user-remove", {
+                property_id: propertyId,
+                user_email: user?.email,
+              })
+              .then((res) => {
+                if (res?.data?.status === "success") {
+                  Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success",
+                  });
+                }
+              });
           }
         });
       }
@@ -56,9 +65,7 @@ const FavoriteProperty = () => {
                   </svg>
                 </label>
               </th>
-              <th className="px-6 py-3 text-left text-sm font-semibold text-white">
-                
-              </th>
+              <th className="px-6 py-3 text-left text-sm font-semibold text-white"></th>
               <th className="px-0 py-3 text-left text-sm font-semibold text-white">
                 Property Name
               </th>
@@ -97,8 +104,7 @@ const FavoriteProperty = () => {
                       </svg>
                     </label>
                   </td>
-                  <td className="px-6 py-4 text-sm">
-                  </td>
+                  <td className="px-6 py-4 text-sm"></td>
                   <td className="px-0 py-4 text-sm">
                     <div className="flex items-center cursor-pointer">
                       <img
@@ -118,9 +124,10 @@ const FavoriteProperty = () => {
                   </td>
                   <td className="px-6 py-4 text-sm">$ {item?.price || ""}</td>
                   <td className="px-6 py-4 text-2xl">
-                      <MdOutlineDeleteForever className="text-red-500 cursor-pointer" 
-                      onClick={() => handleDelete(item._id)}/>
-                  
+                    <MdOutlineDeleteForever
+                      className="text-red-500 cursor-pointer"
+                      onClick={() => handleDelete(item._id, item.property_id)}
+                    />
                   </td>
                 </tr>
               ))
