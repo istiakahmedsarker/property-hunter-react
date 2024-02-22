@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoBedOutline } from "react-icons/io5";
 import { PiBathtub } from "react-icons/pi";
 import { BiShapeSquare } from "react-icons/bi";
@@ -38,10 +38,14 @@ const PropertiesCard = ({ card }) => {
 
   // Favorite property
   const { user } = useAuth();
+  // state for user count and set favorite value
+  const [favoriteLength, setFavoriteLength] = useState(favorites?.length);
+  const [isUserExistTrue, setIsUserExistTrue] = useState(false);
 
   // find the user is favorite list or not
   const userEmail = user?.email;
   const isUserExist = favorites?.find((user) => user?.user_email === userEmail);
+
   const instance = useAxios();
   const navigate = useNavigate();
   const [, refetch] = useFavorite();
@@ -68,6 +72,10 @@ const PropertiesCard = ({ card }) => {
               .then((res) => {
                 if (res?.data?.status === "success") {
                   toast.success(`${propertyTitle} added to your favorite`);
+                  setFavoriteLength((current) => {
+                    return current + 1;
+                  });
+                  setIsUserExistTrue(true);
                   refetch();
                 }
               });
@@ -206,7 +214,7 @@ const PropertiesCard = ({ card }) => {
                   </div>
                 </button>
               </Link>
-              {isUserExist ? (
+              {isUserExistTrue || isUserExist ? (
                 <GiSelfLove
                   onClick={handleFavorite}
                   className="cursor-pointer hover:text-primary-light transition-all dark:text-gray-400 dark:hover:text-primary-light text-red-600 h-6 w-6 duration-300 ease-in-out"
@@ -218,7 +226,7 @@ const PropertiesCard = ({ card }) => {
                 />
               )}
 
-              {favorites?.length}
+              {favoriteLength}
             </h3>
           </div>
         </div>
