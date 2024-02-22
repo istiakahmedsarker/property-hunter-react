@@ -38,7 +38,7 @@ const MakeAnnouncement = () => {
     const res = await instance .post("/announcement/create-announcement",
       postNotice
     );
-    if (res.data.insertedId) {
+    if (res?.data?.status === "success") {
       // Reset form fields
       setName("");
       setDate("");
@@ -48,6 +48,7 @@ const MakeAnnouncement = () => {
       // Hide emoji picker and reset emojiTarget
       setShowEmojiPicker(false);
       setEmojiTarget(null);
+      toast.success("Notice Post Successfully");
     } else {
       toast.error("Notice Post Failed");
     }
@@ -107,8 +108,9 @@ const MakeAnnouncement = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name"
-                className="input input-bordered focus:outline-none focus:border-red-500 dark:bg-[#3a3b3c]"
+                className="input input-bordered focus:outline-none focus:border-primary-light dark:bg-[#3a3b3c]"
                 required
+                value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
@@ -120,8 +122,9 @@ const MakeAnnouncement = () => {
                 type="date"
                 name="date"
                 placeholder="date"
-                className="input input-bordered focus:outline-none focus:border-red-500 dark:bg-[#3a3b3c] dark:text-white"
+                className="input input-bordered focus:outline-none focus:border-primary-light dark:bg-[#3a3b3c] dark:text-white"
                 required
+                value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
             </div>
@@ -134,7 +137,7 @@ const MakeAnnouncement = () => {
               type="text"
               name="heading"
               placeholder="Heading"
-              className="input input-bordered focus:outline-none focus:border-red-500 relative dark:bg-[#3a3b3c]"
+              className="input input-bordered focus:outline-none focus:border-primary-light relative dark:bg-[#3a3b3c]"
               required
               value={heading}
               onChange={(e) => setHeading(e.target.value)}
@@ -145,9 +148,9 @@ const MakeAnnouncement = () => {
                 setEmojiTarget("heading");
                 setShowEmojiPicker(!showEmojiPicker);
               }}
-              className="cursor-pointer  absolute right-10 bottom-60"
+              className="cursor-pointer  absolute right-10 bottom-[250px]"
             >
-              <BsEmojiSmile className="text-xl text-[#eb6753] dark:text-white hover:text-slate-300" />
+              <BsEmojiSmile className="text-xl text-primary-light dark:text-white hover:text-slate-300" />
             </span>
           </div>
           <div className="form-control">
@@ -155,7 +158,7 @@ const MakeAnnouncement = () => {
               <span className="label-text dark:text-[#e4e6cd]">Notice</span>
             </label>
             <textarea
-              className="textarea focus:outline-none focus:border-red-500 relative dark:bg-[#3a3b3c] dark:text-white"
+              className="textarea focus:outline-none focus:border-primary-light relative dark:bg-[#3a3b3c] dark:text-white"
               name="notice"
               placeholder="Notice"
               required
@@ -170,7 +173,7 @@ const MakeAnnouncement = () => {
               }}
               className="cursor-pointer  absolute right-10 bottom-36"
             >
-              <BsEmojiSmile className="text-xl text-[#eb6753] hover:text-slate-300 dark:text-white" />
+              <BsEmojiSmile className="text-xl text-primary-light hover:text-slate-300 dark:text-white" />
             </span>
           </div>
           {showEmojiPicker && (
@@ -187,7 +190,7 @@ const MakeAnnouncement = () => {
           <div className="form-control mt-6">
             <button
               type="submit"
-              className="btn text-white uppercase bg-[#eb6753] hover:text-[#eb6753]"
+              className="btn text-white uppercase bg-primary-light hover:text-primary-light"
             >
               Post
             </button>
