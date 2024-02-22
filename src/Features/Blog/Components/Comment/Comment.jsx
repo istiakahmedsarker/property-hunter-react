@@ -26,7 +26,7 @@ const Comment = ({ comment, refetch }) => {
       <div className="flex-1">
         <div className="flex justify-between items-start mb-3">
           <div>
-            <h5 className="text-lg font-bold text-stone-800 mb-1">
+            <h5 className="text-lg font-bold text-primary-dark dark:text-stone-300  mb-1">
               {comment.name}
             </h5>
             <Star rating={comment.rating} />
@@ -38,7 +38,6 @@ const Comment = ({ comment, refetch }) => {
         <p className="">{comment.commentMsg}</p>
       </div>
 
-      {/*  */}
       <LikeAndDislike comment={comment} refetch={refetch} />
     </div>
   );

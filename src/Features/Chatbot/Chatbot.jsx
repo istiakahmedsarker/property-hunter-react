@@ -1,8 +1,21 @@
-import ChatBot from 'react-simple-chatbot';
 import { Link } from 'react-router-dom';
+import ChatBot from 'react-simple-chatbot';
+// import { ThemeProvider } from 'styled-components';
 
+// const theme = {
+//   background: '#f5f8fb',
+//   fontFamily: 'Helvetica Neue',
+//   headerBgColor: '#EF6C00',
+//   headerFontColor: '#fff',
+//   headerFontSize: '15px',
+//   botBubbleColor: '#EF6C00',
+//   botFontColor: '#fff',
+//   userBubbleColor: '#fff',
+//   userFontColor: '#4a4a4a',
+// };
 const Chatbot = () => {
   return (
+    // <ThemeProvider theme={theme}>
     <ChatBot
       steps={[
         {
@@ -39,14 +52,29 @@ const Chatbot = () => {
         },
         {
           id: '13',
-          message: 'Sell your property with us is simple.  ',
+          message: 'Sell your property with us is simple.',
           trigger: '14',
         },
         {
           id: '14',
           message:
             'You can provide details about your property, upload photos, and set your desired price.',
-          trigger: '',
+          trigger: 'contact',
+        },
+        {
+          id: 'contact',
+          message: 'You can contact our team',
+          trigger: 'or',
+        },
+        {
+          id: 'or',
+          message: 'Or you can provide your details to us through by a form',
+          trigger: 'got it',
+        },
+        {
+          id: 'got it',
+          message: "We're thrilled to have you as part of our seller community",
+          end: true,
         },
 
         {
@@ -101,12 +129,31 @@ const Chatbot = () => {
         },
         {
           id: '12',
-          message: 'Thanks for coming',
-          ends: true,
+          message: 'Thanks for coming.',
+          // trigger: 'need',
+          end: true,
         },
+        // {
+        //   id: 'need',
+        //   message: 'You need other info. Feel free to ask',
+        //   end: true,
+        // },
+        // {
+        //   id: 'yesno',
+        //   options: [
+        //     { value: 'yes', label: 'Yes', trigger: '11' },
+        //     { value: 'no', label: 'No', trigger: 'end' },
+        //   ],
+        // },
+        // {
+        //   id: 'end',
+        //   message: 'sadsa',
+        //   end: true,
+        // },
       ]}
       floating={true}
     />
+    // </ThemeProvider>
   );
 };
 

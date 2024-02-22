@@ -5,9 +5,9 @@ const Star = ({ rating }) => {
     return (
       <span key={index}>
         {rating >= index + 1 ? (
-          <AiFillStar className="text-[#EB6753] text-sm" />
+          <AiFillStar className="text-primary-light text-sm" />
         ) : (
-          <AiOutlineStar className="text-[#EB6753] text-sm" />
+          <AiOutlineStar className="text-primary-light text-sm" />
         )}
       </span>
     );

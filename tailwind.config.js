@@ -36,6 +36,10 @@ export default {
         gloria: ['Gloria Hallelujah', 'cursive'],
         josep: ['Josefin Sans', 'sans-serif'],
       },
+      screens: {
+        xs: '500px',
+        '900': '900px',
+      },
     },
   },
   plugins: [require('daisyui')],

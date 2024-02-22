@@ -12,7 +12,7 @@ const LatestBlog = ({ blog }) => {
       />
       <Link
         to={`/blogs/${_id}`}
-        className="cursor-pointer hover:text-[#EB6753] duration-200 font-bold leading-6"
+        className="cursor-pointer hover:text-primary-light duration-200 font-bold leading-6"
       >
         {heading}
       </Link>
