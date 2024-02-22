@@ -24,7 +24,7 @@ const GiveRating = ({ setHover, setStarRating, hover, starRating }) => {
                   size={35}
                   color={
                     currentRating <= (hover || starRating)
-                      ? '#EB6753'
+                      ? '#076aa5'
                       : '#e4e5e9'
                   }
                   onMouseEnter={() => setHover(currentRating)}

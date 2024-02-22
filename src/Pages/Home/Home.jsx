@@ -1,15 +1,15 @@
-import Testimonials from "../../Components/Testimonials/Testimonials";
-import Banner from "../../Components/Banner2/Banner";
-import Chatbot from "../../Components/Chatbot/Chatbot";
-import ExploreTypes from "../../Components/ExploreTypes/ExploreTypes";
-import LatestBlogHome from "../../Components/LatestBlogHome/LatestBlogHome";
-import ContactUs from "../../Components/Contract/ContactUs/ContactUs";
-import FeaturedProperties from "../../Components/FeaturedProperties/FeaturedProperties";
-import SellBanner from "../../Components/SellBanner/SellBanner";
-import Agents from "../../Components/Agents/Agents";
-import BuySellListCard from "../../Components/BuySellListCard/BuySellListCard";
-import NewsLetter from "../../Components/NewsLetter/NewsLetter";
-import WhyChooseUs from "../../Components/WhyChooseUs/WhyChooseUs";
+import Testimonials from '../../Components/Testimonials/Testimonials';
+import Banner from '../../Components/Banner2/Banner';
+import ExploreTypes from '../../Components/ExploreTypes/ExploreTypes';
+import LatestBlogHome from '../../Components/LatestBlogHome/LatestBlogHome';
+import ContactUs from '../../Components/Contract/ContactUs/ContactUs';
+import FeaturedProperties from '../../Components/FeaturedProperties/FeaturedProperties';
+import SellBanner from '../../Components/SellBanner/SellBanner';
+import Agents from '../../Components/Agents/Agents';
+import BuySellListCard from '../../Components/BuySellListCard/BuySellListCard';
+import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
+import NewsLetter from '../../Components/NewsLetter/NewsLetter';
+import Chatbot from '../../Features/Chatbot/Chatbot';
 
 const Home = () => {
   return (
