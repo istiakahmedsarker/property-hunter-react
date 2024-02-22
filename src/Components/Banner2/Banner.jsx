@@ -53,7 +53,7 @@ const Banner = () => {
                   navigate('/properties');
                 }
               }}
-              className="text-animation py-3 px-6 lg:px-8 rounded-sm  transition-bg duration-300 ease-in-out  text-white hover:bg-[#fd8572] hover:drop-shadow-xl bg-[#eb6753]"
+              className="text-animation py-3 px-6 lg:px-8 rounded-sm  transition-bg duration-300 ease-in-out  text-white hover:bg-[#0e87cd] hover:drop-shadow-xl bg-primary-light"
             >
               Get Started
             </button>
