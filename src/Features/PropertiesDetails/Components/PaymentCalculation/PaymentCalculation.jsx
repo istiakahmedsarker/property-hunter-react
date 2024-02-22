@@ -91,16 +91,16 @@ const PaymentCalculation = ({ details }) => {
         </div>
       </div>
       {/* Render down payment and installment details */}
-      <div className="  text-black px-5 py-7 w-11/12 mx-auto  rounded-sm grid grid-cols-3 ">
-        <div className="border-blue-500 border-r-2 border-l-2 px-5">
-          <h3>
-            <span className="font-semibold">Installment Duration : </span>{' '}
+      <div className="  text-black px-5 py-7 lg:w-11/12 w-full mx-auto  rounded-sm grid grid-cols-3 ">
+        <div className="border-blue-500 border-r-2 border-l-2 lg:px-5 px-2">
+          <h3 className="text-sm lg:text-sm">
+            <span className="font-semibold ">Installment Duration : </span>{' '}
             {installmentDuration} Months
           </h3>
         </div>
 
-        <div className="border-blue-500 border-r-2 px-5">
-          <h3>
+        <div className="border-blue-500 border-r-2 lg:px-5 px-2">
+          <h3 className="text-sm lg:text-sm">
             <span className="font-semibold">
               Interest Amount (5% increase of Remaining amount) :
             </span>{' '}
@@ -109,9 +109,9 @@ const PaymentCalculation = ({ details }) => {
               calculateRemainingAmount()}
           </h3>
         </div>
-        <div className="border-blue-500 border-r-2 px-5">
+        <div className="border-blue-500 border-r-2 lg:px-5 px-2">
           {' '}
-          <h3>
+          <h3 className="text-sm lg:text-sm">
             <span className=" font-semibold">Installment Amount : </span> $
             {calculateInstallmentAmount()} Per Month
           </h3>

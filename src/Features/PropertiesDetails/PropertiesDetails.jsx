@@ -1,35 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
-import {
-  IoArrowUpOutline,
-  IoBedOutline,
-  IoBusinessSharp,
-  IoFlowerOutline,
-  IoHomeOutline,
-  IoWifi,
-} from 'react-icons/io5';
-import { PiBathtub } from 'react-icons/pi';
 import { useLoaderData } from 'react-router-dom';
-import { IoCalendarClearOutline } from 'react-icons/io5';
-import AddProperties from '../../Pages/AddProperties/AddProperties';
 import BuyerInquiryForm from './Components/Buyer Inquiry Form/BuyerInquiryForm';
 import TopButton from '../Properties/Components/TopButton/TopButton';
-import { FcConferenceCall } from 'react-icons/fc';
-import {
-  FaHouseFloodWater,
-  FaMountain,
-  FaSkyatlas,
-  FaUsersViewfinder,
-} from 'react-icons/fa6';
-import { RiHomeOfficeFill } from 'react-icons/ri';
 import RecommendedProperty from './Components/RecommendedProperty/RecommendedProperty';
 import QRcode from './Components/QRCode/QRcode';
-import { TbSunElectricity, TbSwimming } from 'react-icons/tb';
-import { GrCafeteria } from 'react-icons/gr';
-import { MdFace3, MdTheaters } from 'react-icons/md';
 import ContactWithOwner from './Components/ContactWithOwner/ContactWithOwner';
 import PaymentCalculation from './Components/PaymentCalculation/PaymentCalculation';
 import GoogleMap from './Components/GoogleMap/GoogleMap';
+import PropertyFeature from './Components/PropertyFeature/PropertyFeature';
+import PropertyUtilities from './Components/PropertyUtilities/PropertyUtilities';
+import PropertyOverview from './Components/PropertyOverview/PropertyOverview';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -100,123 +80,7 @@ const PropertiesDetails = () => {
             </div>
           </div>
           {/* overview section */}
-          <div className="rounded-sm shadow-lg drop-shadow-lg  lg:absolute bg-white -bottom-10  left-20 right-20 ">
-            <div className="grid px-6 py-5 lg:grid-cols-6 md:grid-cols-2 grid-cols-2 gap-6">
-              {details?.rooms?.bedRooms ? (
-                <div className="flex items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <IoBedOutline />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Bedroom</h3>
-                    <h3>{details?.rooms?.bedRooms}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              {details.rooms?.officeRooms ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <RiHomeOfficeFill />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Office room</h3>
-                    <h3>{details.rooms?.officeRooms}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              {details.rooms?.conferenceRooms ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <FaUsersViewfinder />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Conference room</h3>
-                    <h3>{details.rooms?.conferenceRooms}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              {details.rooms?.bathRooms ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <PiBathtub />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Bathroom</h3>
-                    <h3>{details.rooms.bathRooms}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <IoCalendarClearOutline />
-                  </h3>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Year of Build</h3>
-                  <h3>{details.yearBuilt}</h3>
-                </div>
-              </div>
-              {details.parking.included ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <BiSolidCarGarage />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Garage</h3>
-                    <h3>{details.parking.spaces}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <BiShapeSquare />
-                  </h3>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Square Ft</h3>
-                  <h3>{details.squareFootage}</h3>
-                </div>
-              </div>
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <IoHomeOutline />
-                  </h3>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Type</h3>
-                  <h3>{details.propertyType}</h3>
-                </div>
-              </div>
-            </div>
-          </div>
+          <PropertyOverview details={details}></PropertyOverview>
         </div>
       )}
 
@@ -315,58 +179,10 @@ const PropertiesDetails = () => {
           </div>
           {/* property feature section */}
           <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 grid grid-cols-2">
-            <div>
-              <h3 className="text-xl font-semibold py-5">
-                Properties Features
-              </h3>
-              {details.easement.map((easement, index) => (
-                <div key={index} className="py-2 flex items-center gap-4">
-                  {easement === 'Swimming Pool' && (
-                    <TbSwimming className="mr-2" />
-                  )}
-                  {easement === 'Garden' && (
-                    <IoFlowerOutline className="mr-2" />
-                  )}
-                  {easement === 'Spa' && <MdFace3 className="mr-2" />}
-                  {easement === 'Mountain View' && (
-                    <FaMountain className="mr-2" />
-                  )}
-                  {easement === 'Sky Deck' && <FaSkyatlas className="mr-2" />}
-                  {easement === 'Theater Room' && (
-                    <MdTheaters className="mr-2" />
-                  )}
-                  {easement === 'Business Center' && (
-                    <IoBusinessSharp className="mr-2" />
-                  )}
+            <PropertyFeature details={details}></PropertyFeature>
 
-                  <span>
-                    {easement.charAt(0).toUpperCase() + easement.slice(1)}
-                  </span>
-                </div>
-              ))}
-            </div>
             {/* properties utilities section */}
-            <div>
-              <h3 className="text-xl font-semibold py-5">Utilities</h3>
-              {details.utilities.map((utility, index) => (
-                <div key={index} className="py-2 flex items-center gap-4 ">
-                  {utility === 'Water' && (
-                    <FaHouseFloodWater className="mr-2" />
-                  )}
-                  {utility === 'Electricity' && (
-                    <TbSunElectricity className="mr-2" />
-                  )}
-                  {utility === 'Wifi' && <IoWifi className="mr-2" />}
-                  {utility === 'High-speed Fiber Internet' && (
-                    <IoWifi className="mr-2" />
-                  )}
-                  {utility === 'cafeteria' && <GrCafeteria className="mr-2" />}
-                  <span>
-                    {utility.charAt(0).toUpperCase() + utility.slice(1)}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <PropertyUtilities details={details}></PropertyUtilities>
           </div>
           {/* payment calculation */}
           <PaymentCalculation details={details}></PaymentCalculation>
@@ -374,26 +190,23 @@ const PropertiesDetails = () => {
           {/* properties Address section */}
           <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
             <h3 className="text-xl font-semibold py-5">Address</h3>
-            <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
+            <div className="grid lg:grid-cols-2 grid-cols-2 lg:gap-5 gap-3">
               <div>
-                <h3 className="grid grid-cols-2 py-2">
+                <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
                   <span className="font-semibold"> Address</span>
                   <span>: {details.location.address}</span>
                 </h3>
-                <h3 className="grid grid-cols-2 py-2">
+                <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
                   <span className="font-semibold"> City</span>{' '}
                   <span>: {details.location.city}</span>
                 </h3>
-                <h3 className="grid grid-cols-2 py-2">
+                <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
                   <span className="font-semibold"> State</span>{' '}
                   <span>: {details.location.state}</span>
                 </h3>
               </div>
               {/* QR code implementation */}
-              <div
-                className=" flex lg:justify-end md:flex-end flex-col"
-                // style={{ justifyContent: 'flex-end' }}
-              >
+              <div className=" flex lg:justify-end md:flex-end flex-col">
                 <QRcode></QRcode>
               </div>
             </div>
@@ -464,7 +277,7 @@ const PropertiesDetails = () => {
             {showForm && (
               <ContactWithOwner details={details}></ContactWithOwner>
             )}
-            {showSchedule && <div>schedule</div>}
+            {showSchedule && <div className="py-5">Select Your Schedule</div>}
           </div>
           {/*from open  */}
           <div>
