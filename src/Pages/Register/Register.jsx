@@ -71,7 +71,7 @@ const Register = () => {
   return (
     <>
       {termShow && <TermCondition onClose={setTermShow} />}
-      <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white">
+      <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white dark:bg-card-dark dark:text-in-dark">
         <div className="hidden lg:block  bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center w-1/3 rounded-l-lg"></div>
         <div className="w-full lg:w-2/3 py-8 px-10">
           <h2 className="font-bold mb-10 text-3xl">Please! Register Here</h2>
@@ -96,7 +96,7 @@ const Register = () => {
                   <input
                     name="image"
                     type="file"
-                    className="file-input file-input-bordered file:bg-[#eb6753] file:text-white w-full bg-white"
+                    className="file-input file-input-bordered file:bg-primary-light file:text-white w-full bg-white"
                   />
                 </div>
               </div>
@@ -126,7 +126,7 @@ const Register = () => {
                   />
                   <div
                     onClick={() => setPassShow(!passShow)}
-                    className="text-xl text-[#eb6753] absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
+                    className="text-xl text-primary-light absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
                   >
                     {passShow ? <FaEyeSlash /> : <FaRegEye />}
                   </div>
@@ -138,11 +138,11 @@ const Register = () => {
                 <input
                   onClick={() => setChecked(!checked)}
                   type="checkbox"
-                  className="h-5 w-5 rounded-md accent-[#eb6753]"
+                  className="h-5 w-5 rounded-md accent-primary-light"
                 />
                 <p
                   onClick={() => setTermShow(true)}
-                  className="text-blue-700 cursor-pointer font-semibold"
+                  className="text-primary-light cursor-pointer font-semibold"
                 >
                   Terms and conditions
                 </p>
@@ -150,14 +150,14 @@ const Register = () => {
               {checked ? (
                 <button
                   type="submit"
-                  className="btn btn-success text-white bg-[#eb6753] hover:bg-[#eb6753] border-none w-full mt-8 hover:opacity-90"
+                  className="btn btn-success text-white bg-primary-light hover:bg-primary-light border-none w-full mt-8 hover:opacity-90"
                 >
                   Register
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="btn btn-success text-white bg-[#eb6753] hover:bg-[#eb6753] border-none w-full mt-8 hover:opacity-90"
+                  className="btn btn-success text-white bg-primary-light hover:bg-primary-light border-none w-full mt-8 hover:opacity-90"
                   disabled
                 >
                   Register
@@ -169,7 +169,7 @@ const Register = () => {
             <div className="space-y-6">
               <p>
                 Have an account?{' '}
-                <Link to={'/login'} className="text-[#eb6753]">
+                <Link to={'/login'} className="text-primary-light">
                   Login
                 </Link>
               </p>
@@ -177,7 +177,7 @@ const Register = () => {
             </div>
             <div className="mt-10 flex gap-3">
               <GoogleLogin />
-              <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
+              <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-primary-light hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
                 <FaFacebookF lassName="text-2xl" />
                 Facebook
               </div>
