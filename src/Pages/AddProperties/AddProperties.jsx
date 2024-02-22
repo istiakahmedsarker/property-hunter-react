@@ -6,6 +6,7 @@ import Container from "../../Components/Container/Container";
 import toast from "react-hot-toast";
 import imagesUpload from "./UploadImage";
 import axios from "axios";
+import { RxCrossCircled } from "react-icons/rx";
 
 const AddProperties = () => {
   const [formStep, setFormStep] = useState(0);
@@ -13,7 +14,34 @@ const AddProperties = () => {
   // const [imagePreview, setImagePreview] = useState('');
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
+  //? Property Addition method
+  const [autoInput, setAutoInput] = useState(false);
 
+  const handleAutoCheckboxChange = () => {
+    setAutoInput(true);
+  };
+
+  const handleManualCheckboxChange = () => {
+    setAutoInput(false);
+  };
+
+  //? Job preference
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const handleSelectChange = (e) => {
+    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
+    setSelectedOptions((prevSelected) => {
+      // Merge newly selected options with the existing ones
+      const mergedOptions = [...prevSelected, ...selectedValues.filter(option => !prevSelected.includes(option))];
+      return mergedOptions;
+    });
+  };
+
+  const handleRemoveOption = (option) => {
+    setSelectedOptions((prevSelected) => prevSelected.filter((selectedOption) => selectedOption !== option));
+  };
+
+  //? Form steps
   const completeFormStep = (event) => {
     event.preventDefault();
     setFormStep((curr) => curr + 1);
@@ -23,15 +51,16 @@ const AddProperties = () => {
     setFormStep((curr) => curr - 1);
   };
 
+  //? Form Buttons
   const renderButton = () => {
-    if (formStep > 4) {
+    if (formStep > 5) {
       return undefined;
-    } else if (formStep === 4) {
+    } else if (formStep === 5) {
       return (
         <div className="form-control mt-6">
           <button
             type={`${formStep === 4 && "submit"}`}
-            className="btn bg-[#eb6753] text-white border-none"
+            className="btn bg-primary-light text-white border-none"
           >
             Add Property
           </button>
@@ -43,7 +72,7 @@ const AddProperties = () => {
           <button
             onClick={(event) => completeFormStep(event)}
             type="button"
-            className="btn bg-[#eb6753] text-white border-none"
+            className="btn bg-primary-light text-white border-none"
           >
             Next
           </button>
@@ -98,37 +127,10 @@ const AddProperties = () => {
     const propertyStatus = data.propertyStatus;
     const description = data.description;
 
-    // console.log(
-    //   propertyTitle,
-    //   propertyType,
-    //   neighborhood,
-    //   name,
-    //   squareFootage,
-    //   email,
-    //   phone,
-    //   propertyImg,
-    //   propertyImg1,
-    //   propertyImg2,
-    //   address,
-    //   state,
-    //   city,
-    //   zipCode,
-    //   latitude,
-    //   longitude,
-    //   floorNumber,
-    //   bedroom,
-    //   bathroom,
-    //   blockName,
-    //   apartmentNumber,
-    //   price,
-    //   yearBuilt,
-    //   parkingIncluded,
-    //   parkingSpace,
-    //   propertyStatus,
-    //   description,
-    //   easement,
-    //   utilities
-    // );
+    //? Property Addition Method(auto)
+    const annualIncome = data.annualIncome;
+    const savings = data.savings;
+    const jobPreference = selectedOptions;
 
     //? Validation
     if (
@@ -176,10 +178,8 @@ const AddProperties = () => {
 
     try {
       const images = await imagesUpload(imageFiles);
-      // console.log(images);
 
       if (images.length > 0) {
-        //  }
 
         //? Save to database.
 
@@ -214,6 +214,9 @@ const AddProperties = () => {
             email: email,
             phone: parseInt(phone),
           },
+          annualIncome : parseInt(annualIncome),
+          savings: parseInt(savings),
+          jobPreference : jobPreference,
         };
         const { data } = await axios.post(
           "https://property-hunter-server-roan.vercel.app/api/v1/properties/",
@@ -224,7 +227,6 @@ const AddProperties = () => {
           toast.success("Successfully added the property.");
           completeFormStep(event);
         }
-        // console.log(property, "property Data");
       }
     } catch (error) {
       // console.log(error.message);
@@ -287,47 +289,46 @@ const AddProperties = () => {
   const handlePropertyType = (e) => {
     const propertyType = e.target.value;
     setPropertyType(propertyType);
-    // console.log(propertyType);
   };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center  bg-[#f6fff5] bg-[url('https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg')] bg-cover">
-      <div className="h-full w-full absolute z-0 opacity-60 bg-[#05133d]"></div>
+      <div className="h-full w-full absolute z-0 opacity-60 bg-[#05133d] dark:opacity-80 dark:bg-[#101345]"></div>
 
       <Container>
-        <div className="px-8 relative z-20 min-h-[80vh] ml-6 mr-6 mb-6 mt-[32px] mx-auto flex flex-col items-center justify-center bg-[#ffffff] rounded-xl py-12">
+        <div className="px-8 relative z-20 min-h-[80vh] ml-6 mr-6 mb-6 mt-[32px] mx-auto flex flex-col items-center justify-center bg-[#ffffff] dark:bg-card-dark rounded-xl py-12">
           <div className="absolute z-10 top-4 right-4">
-            <h1 className="text-xl text-black font-medium">
-              {formStep + 1} / 6
+            <h1 className="text-xl text-black dark:text-in-dark font-medium">
+              {formStep + 1} / 7
             </h1>
           </div>
           <div className="absolute z-10 top-4 left-4">
-            {formStep > 0 && formStep < 5 && (
+            {formStep > 0 && formStep < 6 && (
               <button
                 onClick={goToPreviousStep}
                 type="button"
-                className="px-5 py-2 flex items-center justify-center hover:text-[#eb6753] text-xl text-gray-800 border-none"
+                className="px-5 py-2 flex items-center justify-center dark:text-in-dark hover:text-primary-light text-xl text-gray-800 border-none"
               >
                 <GrFormPrevious />
               </button>
             )}
           </div>
           <div className="mb-6 w-full flex flex-col items-center justify-center gap-3">
-            <h1 className="text-3xl md:text-4xl text-black font-bold text-left">
+            <h1 className="text-3xl md:text-4xl dark:text-in-dark text-black font-bold text-left">
               Add New Property
             </h1>
-            <p className="text-gray-600 text-2xl font-thin">
+            <p className="text-gray-600 dark:text-gray-400 text-2xl font-thin">
               We are glad to see you again!
             </p>
           </div>
 
           <div className="w-full">
             <div
-              className={`h-2 rounded-xl bg-[#eb6753] ${formStep === 0 &&
-                "w-2/4"}  ${formStep === 4 && "[80%]"}  ${formStep === 0 &&
+              className={`h-2 rounded-xl bg-primary-light ${formStep === 6 &&
+                "w-full"}  ${formStep === 4 && "[75%]"}  ${formStep === 0 &&
                 "w-[15%]"} ${formStep === 1 && "w-[30%]"} ${formStep === 2 &&
                 "w-[45%]"} ${formStep === 3 && "w-[60%]"} ${formStep === 5 &&
-                "w-full"}`}
+                "w-[90%]"}`}
             ></div>
 
             <div className=" w-full h-full   relative rounded-xl z-10 ">
@@ -339,12 +340,14 @@ const AddProperties = () => {
                 {/* step one */}
                 {formStep === 0 && (
                   <div className="grid grid-cols-6 py-8 gap-2 md:gap-4">
-                    <h1 className="text-2xl md:text-4xl text-black col-span-6 font-semibold text-center md:text-left">
+                    <h1 className="text-2xl md:text-4xl text-black dark:text-in-dark col-span-6 font-semibold text-center md:text-left">
                       Property Description
                     </h1>
-                    <div className="form-control col-span-3">
+                    <div className="form-control col-span-6 md:col-span-3 ">
                       <label className="label">
-                        <span className="label-text">Property Title</span>
+                        <span className="label-text dark:text-in-dark">
+                          Property Title
+                        </span>
                       </label>
                       <input
                         {...register("propertyTitle", { required: true })}
@@ -355,13 +358,15 @@ const AddProperties = () => {
                       />
 
                       {errors.propertyTitles && (
-                        <span>This field is required</span>
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
                       )}
                     </div>
 
-                    <div className="form-control col-span-3">
+                    <div className="form-control col-span-6 md:col-span-3">
                       <label className="label">
-                        <span className="label-text text-gray-400">
+                        <span className="label-text text-gray-400 dark:text-in-dark">
                           Property Type
                         </span>
                       </label>
@@ -387,14 +392,16 @@ const AddProperties = () => {
                         <option value="villa">Villa</option>
                       </select>
                       {errors.propertyType && (
-                        <span className="text-red-500">
+                        <span className="text-red-500 dark:text-in-dark">
                           This field is required
                         </span>
                       )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-6 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Name</span>
+                        <span className="label-text dark:text-in-dark">
+                          Name
+                        </span>
                       </label>
                       <input
                         {...register("name", { required: true })}
@@ -403,11 +410,17 @@ const AddProperties = () => {
                         placeholder="name"
                         className="input border-gray-600 input-bordered "
                       />
-                      {errors.name && <span>This field is required</span>}
+                      {errors.name && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-6 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Email</span>
+                        <span className="label-text dark:text-in-dark">
+                          Email
+                        </span>
                       </label>
                       <input
                         {...register("email", { required: true })}
@@ -416,11 +429,17 @@ const AddProperties = () => {
                         placeholder="email "
                         className="input border-gray-600 input-bordered "
                       />
-                      {errors.email && <span>This field is required</span>}
+                      {errors.email && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-6 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Phone</span>
+                        <span className="label-text dark:text-in-dark">
+                          Phone
+                        </span>
                       </label>
                       <input
                         {...register("phone", { required: true })}
@@ -430,7 +449,11 @@ const AddProperties = () => {
                         className="input border-gray-600 input-bordered"
                       />
 
-                      {errors.phone && <span>This field is required</span>}
+                      {errors.phone && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                     <div></div>
                   </div>
@@ -438,12 +461,12 @@ const AddProperties = () => {
                 {/* step Two */}
                 {formStep === 1 && (
                   <div className="grid grid-cols-6 gap-1 md:gap-4 py-8 min-h-[40vh] ">
-                    <h1 className="text-2xl md:text-4xl text-black col-span-6 mb-0 font-semibold text-center md:text-left">
+                    <h1 className="text-2xl md:text-4xl text-black col-span-6 mb-0 font-semibold text-center md:text-left dark:text-in-dark">
                       Upload photos of your property
                     </h1>
-                    <div className=" col-span-6 w-full h-[40vh] border-dashed border-2 rounded-xl border-gray-500 flex items-center justify-center ">
+                    <div className=" col-span-6 w-full h-auto md:h-[40vh] border-dashed border-2 rounded-xl border-gray-500 flex items-center justify-center ">
                       <div className="form-control bg-[] h-1/3 col-span-3 rounded-xl flex gap-4 items-center justify-center">
-                        <h1 className="text-2xl text-gray-800 font-thin text-center">
+                        <h1 className="text-2xl text-gray-800 font-thin text-center dark:text-in-dark">
                           Main Property Image
                         </h1>
                         <div className="flex items-center justify-between">
@@ -471,20 +494,25 @@ const AddProperties = () => {
                         />
                         <label
                           htmlFor="file"
-                          className="py-5 px-4 md:px-8 text-white bg-[#eb6753] rounded-lg text-center flex items-center text-[14px] md:text-xl justify-center gap-3"
+                          className="py-5 px-4 md:px-8 text-white bg-primary-light rounded-lg text-center flex items-center text-[14px] md:text-xl justify-center gap-3"
                         >
                           <FaUpload />
                           Upload Photo
                         </label>
 
                         {errors.propertyImg && (
-                          <span>This field is required</span>
+                          <span className="dark:text-in-dark">
+                            {" "}
+                            This field is required
+                          </span>
                         )}
                       </div>
                     </div>
                     <div className="form-control col-span-3">
                       <label className="label">
-                        <span className="label-text">Property Image 1</span>
+                        <span className="label-text dark:text-in-dark">
+                          Property Image 1
+                        </span>
                       </label>
                       <input
                         {...register("propertyImg1", { required: true })}
@@ -498,19 +526,23 @@ const AddProperties = () => {
                       />
                       <label
                         htmlFor="file2"
-                        className="py-5 px-4 md:px-8 text-white bg-[#eb6753] rounded-lg text-center flex items-center text-[14px] md:text-xl justify-center gap-3"
+                        className="py-5 px-4 md:px-8 text-white bg-primary-light rounded-lg text-center flex items-center text-[14px] md:text-xl justify-center gap-3"
                       >
                         <FaUpload />
                         Upload Photo
                       </label>
 
                       {errors.propertyImg1 && (
-                        <span>This field is required</span>
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
                       )}
                     </div>
                     <div className="form-control col-span-3">
                       <label className="label">
-                        <span className="label-text">Property Image 2</span>
+                        <span className="label-text dark:text-in-dark">
+                          Property Image 2
+                        </span>
                       </label>
                       <input
                         {...register("propertyImg2", { required: true })}
@@ -524,14 +556,16 @@ const AddProperties = () => {
                       />
                       <label
                         htmlFor="file3"
-                        className="py-5 px-4 md:px-8  text-white bg-[#eb6753] rounded-lg text-center flex items-center text-[14px] md:text-xl justify-center gap-3"
+                        className="py-5 px-4 md:px-8  text-white bg-primary-light rounded-lg text-center flex items-center text-[14px] md:text-xl justify-center gap-3"
                       >
                         <FaUpload />
                         Upload Photo
                       </label>
 
                       {errors.propertyImg2 && (
-                        <span>This field is required</span>
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
                       )}
                     </div>
                   </div>
@@ -539,12 +573,14 @@ const AddProperties = () => {
                 {/* step Three */}
                 {formStep === 2 && (
                   <div className="grid grid-cols-6 py-8 gap-1 md:gap-4">
-                    <h1 className=" text-2xl md:text-4xl text-black col-span-6 font-semibold text-center md:text-left">
+                    <h1 className=" text-2xl md:text-4xl text-black dark:text-in-dark col-span-6 font-semibold text-center md:text-left">
                       Listing Location
                     </h1>
                     <div className="form-control col-span-6">
                       <label className="label">
-                        <span className="label-text">Address</span>
+                        <span className="label-text dark:text-in-dark">
+                          Address
+                        </span>
                       </label>
                       <input
                         {...register("address", { required: true })}
@@ -555,11 +591,17 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.address && <span>This field is required</span>}
+                      {errors.address && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-3 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">State</span>
+                        <span className="label-text dark:text-in-dark">
+                          State
+                        </span>
                       </label>
                       <input
                         {...register("state", { required: true })}
@@ -570,11 +612,17 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.state && <span>This field is required</span>}
+                      {errors.state && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-3 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">City</span>
+                        <span className="label-text dark:text-in-dark">
+                          City
+                        </span>
                       </label>
                       <input
                         {...register("city", { required: true })}
@@ -584,11 +632,17 @@ const AddProperties = () => {
                         className="input border-gray-600 input-bordered "
                         required
                       />
-                      {errors.city && <span>This field is required</span>}
+                      {errors.city && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-3 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Zip Code</span>
+                        <span className="label-text dark:text-in-dark">
+                          Zip Code
+                        </span>
                       </label>
                       <input
                         {...register("zipCode", { required: true })}
@@ -598,11 +652,17 @@ const AddProperties = () => {
                         className="input border-gray-600 input-bordered "
                         required
                       />
-                      {errors.zipCode && <span>This field is required</span>}
+                      {errors.zipCode && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-3 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Neighborhood</span>
+                        <span className="label-text dark:text-in-dark">
+                          Neighborhood
+                        </span>
                       </label>
                       <input
                         {...register("neighborhood", { required: true })}
@@ -613,12 +673,16 @@ const AddProperties = () => {
                         required
                       />
                       {errors.neighborhood && (
-                        <span>This field is required</span>
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
                       )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-3 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Latitude</span>
+                        <span className="label-text dark:text-in-dark">
+                          Latitude
+                        </span>
                       </label>
                       <input
                         {...register("latitude", { required: true })}
@@ -629,11 +693,17 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.latitude && <span>This field is required</span>}
+                      {errors.latitude && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-3 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Longitude</span>
+                        <span className="label-text dark:text-in-dark">
+                          Longitude
+                        </span>
                       </label>
                       <input
                         {...register("longitude", { required: true })}
@@ -644,21 +714,27 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.longitude && <span>This field is required</span>}
+                      {errors.longitude && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                   </div>
                 )}
                 {/* step Four */}
                 {formStep === 3 && (
                   <div className="grid grid-cols-8 py-8 gap-1 md:gap-4">
-                    <h1 className=" text-2xl md:text-4xl text-black col-span-8 font-semibold">
+                    <h1 className=" dark:text-in-dark text-2xl md:text-4xl text-black col-span-8 font-semibold">
                       Property Details
                     </h1>
                     {propertyType === "apartment" && (
                       <>
-                        <div className="form-control col-span-2">
+                        <div className="form-control col-span-4 md:col-span-2">
                           <label className="label">
-                            <span className="label-text">Floor number</span>
+                            <span className="label-text dark:text-in-dark">
+                              Floor number
+                            </span>
                           </label>
                           <input
                             {...register("floorNumber", { required: true })}
@@ -670,12 +746,16 @@ const AddProperties = () => {
                           />
 
                           {errors.floorNumber && (
-                            <span>This field is required</span>
+                            <span className="dark:text-in-dark">
+                              This field is required
+                            </span>
                           )}
                         </div>
-                        <div className="form-control col-span-2">
+                        <div className="form-control col-span-4 md:col-span-2">
                           <label className="label">
-                            <span className="label-text">Rooms</span>
+                            <span className="label-text dark:text-in-dark">
+                              Rooms
+                            </span>
                           </label>
                           <input
                             {...register("rooms", { required: true })}
@@ -686,11 +766,17 @@ const AddProperties = () => {
                             required
                           />
 
-                          {errors.rooms && <span>This field is required</span>}
+                          {errors.rooms && (
+                            <span className="dark:text-in-dark">
+                              This field is required
+                            </span>
+                          )}
                         </div>
-                        <div className="form-control col-span-2">
+                        <div className="form-control col-span-4 md:col-span-2">
                           <label className="label">
-                            <span className="label-text">Apartment No</span>
+                            <span className="label-text dark:text-in-dark">
+                              Apartment No
+                            </span>
                           </label>
                           <input
                             {...register("apartmentNumber", { required: true })}
@@ -701,12 +787,16 @@ const AddProperties = () => {
                             required
                           />
                           {errors.apartmentNumber && (
-                            <span>This field is required</span>
+                            <span className="dark:text-in-dark">
+                              This field is required
+                            </span>
                           )}
                         </div>
-                        <div className="form-control col-span-2">
+                        <div className="form-control col-span-4 md:col-span-2">
                           <label className="label">
-                            <span className="label-text">Block Name</span>
+                            <span className="label-text dark:text-in-dark">
+                              Block Name
+                            </span>
                           </label>
                           <input
                             {...register("blockName", { required: true })}
@@ -717,14 +807,18 @@ const AddProperties = () => {
                             required
                           />
                           {errors.blockName && (
-                            <span>This field is required</span>
+                            <span className="dark:text-in-dark">
+                              This field is required
+                            </span>
                           )}
                         </div>
                       </>
                     )}
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-4 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Bathroom</span>
+                        <span className="label-text dark:text-in-dark">
+                          Bathroom
+                        </span>
                       </label>
                       <input
                         {...register("bathroom", { required: true })}
@@ -735,12 +829,18 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.bathroom && <span>This field is required</span>}
+                      {errors.bathroom && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
 
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-4 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">SquareFootage</span>
+                        <span className="label-text dark:text-in-dark">
+                          SquareFootage
+                        </span>
                       </label>
                       <input
                         {...register("squareFootage", { required: true })}
@@ -751,13 +851,17 @@ const AddProperties = () => {
                         required
                       />
                       {errors.squareFootage && (
-                        <span>This field is required</span>
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
                       )}
                     </div>
 
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-4 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Price</span>
+                        <span className="label-text dark:text-in-dark">
+                          Price
+                        </span>
                       </label>
                       <input
                         {...register("price", { required: true })}
@@ -768,11 +872,17 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.price && <span>This field is required</span>}
+                      {errors.price && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-4 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Year Built</span>
+                        <span className="label-text dark:text-in-dark">
+                          Year Built
+                        </span>
                       </label>
                       <input
                         {...register("yearBuilt", { required: true })}
@@ -783,11 +893,15 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.yearBuilt && <span>This field is required</span>}
+                      {errors.yearBuilt && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-4">
+                    <div className="form-control col-span-8 md:col-span-4">
                       <label className="label">
-                        <span className="label-text">
+                        <span className="label-text dark:text-in-dark">
                           Easement (separated by commas):
                         </span>
                       </label>
@@ -800,11 +914,15 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.easement && <span>This field is required</span>}
+                      {errors.easement && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
-                    <div className="form-control col-span-4">
+                    <div className="form-control col-span-8 md:col-span-4">
                       <label className="label">
-                        <span className="label-text">
+                        <span className="label-text dark:text-in-dark">
                           Utilities (separated by commas):
                         </span>
                       </label>
@@ -817,19 +935,23 @@ const AddProperties = () => {
                         required
                       />
 
-                      {errors.utilities && <span>This field is required</span>}
+                      {errors.utilities && (
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
+                      )}
                     </div>
                   </div>
                 )}
                 {/* step Four */}
                 {formStep === 4 && (
                   <div className="grid grid-cols-6 py-8 gap-1 md:gap-4">
-                    <h1 className=" text-2xl md:text-4xl text-black col-span-6 font-semibold">
+                    <h1 className=" text-2xl md:text-4xl text-black col-span-6 dark:text-in-dark font-semibold">
                       Additional information
                     </h1>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-6 md:col-span-2">
                       <label className="label">
-                        <span className="label-text text-gray-400">
+                        <span className="label-text text-gray-400 dark:text-in-dark">
                           Parking
                         </span>
                       </label>
@@ -851,14 +973,16 @@ const AddProperties = () => {
                         <option value="false">False</option>
                       </select>
                       {errors.parking && (
-                        <span className="text-red-500">
+                        <span className="text-red-500 dark:text-in-dark">
                           This field is required
                         </span>
                       )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-6 md:col-span-2">
                       <label className="label">
-                        <span className="label-text">Parking Space</span>
+                        <span className="label-text dark:text-in-dark">
+                          Parking Space
+                        </span>
                       </label>
                       <input
                         {...register("parkingSpace", { required: true })}
@@ -870,12 +994,14 @@ const AddProperties = () => {
                       />
 
                       {errors.parkingSpace && (
-                        <span>This field is required</span>
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
                       )}
                     </div>
-                    <div className="form-control col-span-2">
+                    <div className="form-control col-span-6 md:col-span-2">
                       <label className="label">
-                        <span className="label-text text-gray-400">
+                        <span className="label-text text-gray-400 dark:text-in-dark">
                           Property Status
                         </span>
                       </label>
@@ -883,7 +1009,7 @@ const AddProperties = () => {
                         {...register("propertyStatus", { required: true })}
                         name="propertyStatus"
                         id="propertyStatus"
-                        className="input border-gray-600 input-bordered"
+                        className="input  border-gray-600 input-bordered"
                       >
                         <option
                           value=""
@@ -897,7 +1023,7 @@ const AddProperties = () => {
                         <option value="sale">Sale</option>
                       </select>
                       {errors.propertyStatus && (
-                        <span className="text-red-500">
+                        <span className="text-red-500 dark:text-in-dark">
                           This field is required
                         </span>
                       )}
@@ -905,7 +1031,9 @@ const AddProperties = () => {
 
                     <div className="form-control col-span-6">
                       <label className="label">
-                        <span className="label-text">Description</span>
+                        <span className="label-text dark:text-in-dark">
+                          Description
+                        </span>
                       </label>
 
                       <textarea
@@ -920,15 +1048,162 @@ const AddProperties = () => {
                       ></textarea>
 
                       {errors.description && (
-                        <span>This field is required</span>
+                        <span className="dark:text-in-dark">
+                          This field is required
+                        </span>
                       )}
                     </div>
                   </div>
                 )}
-                {/* submit */}
+                {/* step Five */}
                 {formStep === 5 && (
+                  <div className="py-8">
+                    <h1 className=" text-2xl md:text-4xl text-black col-span-6 dark:text-in-dark font-semibold">
+                      Choose Property Addition Method
+                    </h1>
+
+                    <div className="flex gap-8 py-6">
+                      <div className="flex">
+                        <label className="label">
+                          <span className="label-text dark:text-in-dark">
+                            Auto
+                          </span>
+                        </label>
+                        <input
+                          type="checkbox"
+                          checked={autoInput}
+                          onChange={handleAutoCheckboxChange}
+                          className=" border-gray-600 "
+                        />
+
+                      </div>
+                      <div className="flex">
+                        <label className="label">
+                          <span className="label-text  dark:text-in-dark">
+                            Manual
+                          </span>
+                        </label>
+                        <input
+                          type="checkbox"
+                          checked={!autoInput}
+                          onChange={handleManualCheckboxChange}
+                          className=" border-gray-600"
+                        />
+
+                      
+                      </div>
+                    </div>
+                    {autoInput && (
+                      <div className="grid grid-cols-6 gap-1 md:gap-4">
+                        {" "}
+                        <div className="form-control col-span-6 md:col-span-2">
+                          <label className="label">
+                            <span className="label-text dark:text-in-dark">
+                              Minimum Annual Income:
+                            </span>
+                          </label>
+                          <input
+                            {...register("annualIncome", { required: true })}
+                            name="annualIncome"
+                            type="text"
+                            placeholder="annual income"
+                            className="input border-gray-600 input-bordered "
+                          />
+                        </div>
+                        <div className="form-control col-span-6 md:col-span-2">
+                          <label className="label">
+                            <span className="label-text dark:text-in-dark">
+                              Savings:
+                            </span>
+                          </label>
+                          <input
+                            {...register("savings", { required: true })}
+                            name="savings"
+                            type="text"
+                            placeholder="savings"
+                            className="input border-gray-600 input-bordered "
+                          />
+                        </div>
+                        <div className="form-control col-span-6 md:col-span-2">
+                          <label className="label">
+                            <span className="label-text dark:text-in-dark">
+                             Job Preferences
+                            </span>
+                          </label>
+                          <select
+                            multiple
+                            {...register("jobPreference", { required: true })}
+                            name="jobPreference"
+                            id="jobPreference"
+                            value={selectedOptions} onChange={handleSelectChange}
+                            className="input  border-gray-600 input-bordered"
+                          >
+                            <option
+                              value=""
+                              selected
+                              disabled
+                              defaultValue="jobPreference"
+                            >
+                              Select Multiple
+                            </option>
+                            <option value="softwareEngineer">
+                              Software Engineer
+                            </option>
+                            <option value="marketingManager">
+                              Marketing Manager
+                            </option>
+                            <option value="financialAnalyst">
+                              Financial Analyst
+                            </option>
+                            <option value="dataScientist">
+                              Data Scientist
+                            </option>
+                            <option value="humanResourcesCoordinator">
+                              Human Resources Coordinator
+                            </option>
+                            <option value="graphicDesigner">
+                              Graphic Designer
+                            </option>
+                            <option value="salesRepresentative">
+                              Sales Representative
+                            </option>
+                            <option value="projectManager">
+                              Project Manager
+                            </option>
+                            <option value="customerServiceRepresentative">
+                              Customer Service Representative
+                            </option>
+                            <option value="operationsManager">
+                              Operations Manager
+                            </option>
+                          </select>
+                          
+                        </div>
+                        <div className="col-span-6">
+                        {/* Selected Options */}
+                        <p className="text-xl font-semibold dark:text-in-dark mb-4">Selected options:</p>
+                          <ul className="flex gap-6 flex-wrap">
+                            {selectedOptions.map((option) => (
+                              <li key={option} className=" py-2 md:py-3 px-3 md:px-5 rounded-lg text-white bg-[#1a6a35c1] inline-block  text-sm md:text-xl">
+                                {option}
+                                <button
+                                  onClick={() => handleRemoveOption(option)}
+                                  className="bg-red-400 text-white rounded-full ml-4 "
+                                >
+                                  <RxCrossCircled className=""/>
+                                </button>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+                {/* submit */}
+                {formStep === 6 && (
                   <div className="h-[80vh] w-full flex items-center justify-center ">
-                    <h1 className="col-span-1 text-2xl md:text-4xl text-black text-center bold font-bold">
+                    <h1 className="col-span-1 text-2xl md:text-4xl text-black dark:text-in-dark text-center bold font-bold">
                       Congratulations! <br />
                       Added a new property.
                     </h1>
