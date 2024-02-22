@@ -1,7 +1,5 @@
 import { useRef, useState } from 'react';
 import './BlogPost.css';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import 'froala-editor/css/froala_style.min.css';
@@ -121,9 +119,9 @@ const BlogPost = () => {
   return (
     <div className="mt-16 max-w-7xl xl:mx-auto mx-4">
       <Toaster />
-      <h2 className="hidden md:flex text-center text-2xl font-semibold uppercase mb-10">
+      <h3 className="text-4xl dark:text-cyan-50 font-bold mb-5 md:mb-12 font-josep ">
         Write a blog
-      </h2>
+      </h3>
 
       <form onSubmit={handleSubmit(onSubmit)} className="w-full   mb-10 ">
         <div className="flex md:flex-row flex-col gap-7 lg:gap-10">
@@ -139,7 +137,7 @@ const BlogPost = () => {
                   alt=""
                 />
               ) : (
-                <div className="border-4 border-dashed border-stone-700 h-full flex flex-col items-center justify-center">
+                <div className="border-4 border-dashed border-stone-700  h-full flex flex-col items-center justify-center">
                   <svg
                     className="text-stone-700 w-24 mx-auto "
                     xmlns="http://www.w3.org/2000/svg"
@@ -172,12 +170,12 @@ const BlogPost = () => {
           <div className="flex-1 flex flex-col gap-5 -mt-2">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col">
-                <label className="font-semibold text-base text-stone-700">
+                <label className="font-semibold text-base text-stone-700 dark:text-cyan-50">
                   Title
                 </label>
                 <input
                   {...register('title', { required: true })}
-                  className="py-2 px-4 text-base outline-none rounded-lg   border border-gray-300"
+                  className="py-2 px-4 text-base outline-none rounded-lg text-primary-dark  border border-gray-300"
                   type="text"
                 />
                 {errors.title && (
@@ -188,7 +186,7 @@ const BlogPost = () => {
               </div>
             </div>
             <div className="flex flex-col">
-              <label className="font-semibold text-base text-stone-700">
+              <label className="font-semibold text-base text-stone-700 dark:text-cyan-50">
                 Blog post
               </label>
               <Controller
@@ -196,6 +194,7 @@ const BlogPost = () => {
                 rules={{ required: true }}
                 control={control}
                 defaultValue=""
+                className=""
                 render={({ field }) => (
                   <FroalaEditor
                     tag="textarea"
