@@ -27,8 +27,10 @@ const BlogDetails = () => {
   const formattedDate = date.toLocaleDateString('en-US', options);
 
   return (
-    <div className="max-w-4xl text-stone-800 bg-[#F7F7F7] mx-auto mt-10 px-5 xl:px-0">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold ">{heading}</h2>
+    <div className="max-w-4xl text-stone-800 dark:text-stone-300  mx-auto mt-10 px-5 xl:px-0">
+      <h2 className="text-2xl  sm:text-3xl md:text-4xl font-bold ">
+        {heading}
+      </h2>
       <div className="flex items-center gap-5  mt-5 mb-5 font-semibold text-sm max-w-6xl justify-between">
         <div className="flex gap-2 items-center ">
           <FaRegUserCircle className="h-10 w-10" />

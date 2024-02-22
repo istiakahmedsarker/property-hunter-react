@@ -1,11 +1,11 @@
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useState, useRef } from "react";
 import { BsEmojiSmile } from "react-icons/bs";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import moment from "moment";
+// import moment from "moment";
 import useAuth from "../../../../../Hooks/useAuth";
+import useAxios from "../../../../../Hooks/useAxios";
 
 const MakeAnnouncement = () => {
   const [name, setName] = useState("");
@@ -17,12 +17,14 @@ const MakeAnnouncement = () => {
   const headingRef = useRef(null);
   const noticeRef = useRef(null);
   const {user} = useAuth();
+  const instance = useAxios();
+
   const handlePost = async (e) => {
     e.preventDefault();
 
-    const postDate = moment()
-      .utc()
-      .toDate();
+    // const postDate = moment()
+    //   .utc()
+    //   .toDate();
 
     const postNotice = { 
       admin_name: name, 
@@ -33,8 +35,7 @@ const MakeAnnouncement = () => {
 
     // console.log(postNotice);
 
-    const res = await axios.post(
-      `https://property-hunter-server-roan.vercel.app/api/v1/MakeAnnouncement`,
+    const res = await instance .post("/announcement/create-announcement",
       postNotice
     );
     if (res.data.insertedId) {
@@ -91,8 +92,8 @@ const MakeAnnouncement = () => {
   };
 
   return (
-    <div className="dark:bg-primary-dark h-screen">
-      <div className="card shrink-0 w-full lg:w-[50%] shadow-2xl bg-base-100 mx-auto  mb-40 dark:bg-[#3a3b3c] dark:text-[#e4e6cd]">
+    <div className="dark:bg-primary-dark h-screen flex justify-center items-center">
+      <div className="card shrink-0 w-full lg:w-[50%] mx-auto  mb-40 dark:text-[#e4e6cd]">
         <form onSubmit={handlePost} className="card-body">
           <h3 className="text-xl font-semibold text-center">
             Make Announcement
@@ -106,7 +107,7 @@ const MakeAnnouncement = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name"
-                className="input input-bordered input-error"
+                className="input input-bordered focus:outline-none focus:border-red-500 dark:bg-[#3a3b3c]"
                 required
                 onChange={(e) => setName(e.target.value)}
               />
@@ -119,7 +120,7 @@ const MakeAnnouncement = () => {
                 type="date"
                 name="date"
                 placeholder="date"
-                className="input input-bordered input-error"
+                className="input input-bordered focus:outline-none focus:border-red-500 dark:bg-[#3a3b3c] dark:text-white"
                 required
                 onChange={(e) => setDate(e.target.value)}
               />
@@ -133,7 +134,7 @@ const MakeAnnouncement = () => {
               type="text"
               name="heading"
               placeholder="Heading"
-              className="input input-bordered input-error relative"
+              className="input input-bordered focus:outline-none focus:border-red-500 relative dark:bg-[#3a3b3c]"
               required
               value={heading}
               onChange={(e) => setHeading(e.target.value)}
@@ -146,7 +147,7 @@ const MakeAnnouncement = () => {
               }}
               className="cursor-pointer  absolute right-10 bottom-60"
             >
-              <BsEmojiSmile className="text-xl text-[#eb6753] hover:text-slate-300" />
+              <BsEmojiSmile className="text-xl text-[#eb6753] dark:text-white hover:text-slate-300" />
             </span>
           </div>
           <div className="form-control">
@@ -154,7 +155,7 @@ const MakeAnnouncement = () => {
               <span className="label-text dark:text-[#e4e6cd]">Notice</span>
             </label>
             <textarea
-              className="textarea textarea-error relative"
+              className="textarea focus:outline-none focus:border-red-500 relative dark:bg-[#3a3b3c] dark:text-white"
               name="notice"
               placeholder="Notice"
               required
@@ -169,7 +170,7 @@ const MakeAnnouncement = () => {
               }}
               className="cursor-pointer  absolute right-10 bottom-36"
             >
-              <BsEmojiSmile className="text-xl text-[#eb6753] hover:text-slate-300" />
+              <BsEmojiSmile className="text-xl text-[#eb6753] hover:text-slate-300 dark:text-white" />
             </span>
           </div>
           {showEmojiPicker && (

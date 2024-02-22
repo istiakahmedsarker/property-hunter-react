@@ -4,10 +4,11 @@ import useAuth from '../../../Hooks/useAuth';
 import { RiLogoutBoxLine } from 'react-icons/ri';
 import { GiSelfLove } from 'react-icons/gi';
 import useFavorite from '../../../Hooks/useFavorite';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RxCross1 } from "react-icons/rx";
 import useTheme from '../../../Providers/ThemeContext';
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import Notifications from '../../Notifications/Notifications/Notifications';
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -101,6 +102,10 @@ const Navbar = () => {
       to={'/favorite'}
         >
           <h3 className='flex items-center gap-1'><GiSelfLove /> <span className='bg-[#076aa5] text-white px-2 text-sm rounded-full'>+{favorite?.data?.length}</span></h3>
+          <h3 className='flex items-center gap-1'>
+            <GiSelfLove className="text-lg" />
+            <span className='bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out'>+{favorite?.data?.length}</span>
+          </h3>
         </Link>
       </li>
     </>
@@ -180,7 +185,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-white dark:bg-primary-dark py-0 lg:py-4">
+    <div className=" bg-white dark:bg-primary-dark ">
       <div className="navbar px-4 md:px-0 w-full max-w-xl md:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto text-gray-700 ">
         <div className="navbar-start">
           <div onClick={(e) => {
@@ -251,6 +256,10 @@ const Navbar = () => {
               <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
             </svg>
           </label>
+          {/* notification Icon */}
+          <div className='mr-2 ml-2'>
+            <Notifications/>
+          </div>
           {user && (
             <div className="dropdown dropdown-end">
               <div

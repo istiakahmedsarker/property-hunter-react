@@ -3,6 +3,7 @@ import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
 import {
   IoArrowUpOutline,
   IoBedOutline,
+  IoBusinessSharp,
   IoFlowerOutline,
   IoHomeOutline,
   IoWifi,
@@ -14,23 +15,46 @@ import AddProperties from '../../Pages/AddProperties/AddProperties';
 import BuyerInquiryForm from './Components/Buyer Inquiry Form/BuyerInquiryForm';
 import TopButton from '../Properties/Components/TopButton/TopButton';
 import { FcConferenceCall } from 'react-icons/fc';
-import { FaHouseFloodWater, FaUsersViewfinder } from 'react-icons/fa6';
+import {
+  FaHouseFloodWater,
+  FaMountain,
+  FaSkyatlas,
+  FaUsersViewfinder,
+} from 'react-icons/fa6';
 import { RiHomeOfficeFill } from 'react-icons/ri';
 import RecommendedProperty from './Components/RecommendedProperty/RecommendedProperty';
 import QRcode from './Components/QRCode/QRcode';
 import { TbSunElectricity, TbSwimming } from 'react-icons/tb';
 import { GrCafeteria } from 'react-icons/gr';
-import { MdFace3 } from 'react-icons/md';
+import { MdFace3, MdTheaters } from 'react-icons/md';
+import ContactWithOwner from './Components/ContactWithOwner/ContactWithOwner';
+import PaymentCalculation from './Components/PaymentCalculation/PaymentCalculation';
+import GoogleMap from './Components/GoogleMap/GoogleMap';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
   const details = cardDetails?.data?.property || {};
+  console.log(details);
   //state for show full description
   const [isShowFullDescription, setIsShowFullDescription] = useState(false);
   // state for open the form
   const [isFormOpen, setIsFormOpen] = useState(false);
+  // for contact with owner
+  const [showForm, setShowForm] = useState(false);
+  const [showSchedule, setShowSchedule] = useState(false);
+  const [activeButton, setActiveButton] = useState(null);
+  const handleFormToggle = () => {
+    setShowForm(!showForm);
+    setShowSchedule(false); // Hide schedule when showing form
+    setActiveButton('form');
+  };
 
-  console.log(details.propertyStatus)
+  const handleScheduleToggle = () => {
+    setShowSchedule(!showSchedule);
+    setShowForm(false); // Hide form when showing schedule
+    setActiveButton('schedule');
+  };
+
   const toggleDescription = () => {
     setIsShowFullDescription(!isShowFullDescription);
   };
@@ -39,39 +63,18 @@ const PropertiesDetails = () => {
     setIsFormOpen(!isFormOpen);
   };
   //  show google map
-  useEffect(() => {
-    const ifameData = document.getElementById('iframeId');
-    const lat = details.location.latitude;
-    const lon = details.location.longitude;
-    ifameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es;&output=embed`;
-  });
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="lg:w-1/3 w-full my-3">
-        <h3 className="font-semibold text-2xl py-5">{details.propertyTitle}</h3>
-        {/* <h3 className="flex gap-3">
-          <span> {details.location.city},</span>
-          <span>{details.location.state}</span>
-        </h3> */}
-        {/* <div className=" flex gap-5 ">
-          <h3 className="flex items-center gap-3">
-            <IoBedOutline />
-            {details.bedroom} Bed
-          </h3>
-          <h3 className="flex items-center  gap-3">
-            <PiBathtub />
-            {details.bathroom} Bath
-          </h3>
-          <h3 className="flex items-center  gap-3">
-            <BiShapeSquare />
-            {details.squareFootage} sq Ft
-          </h3>
-        </div> */}
+        <h3 className="font-semibold text-2xl py-5 px-4">
+          {details.propertyTitle}
+        </h3>
       </div>
 
       {/* image */}
       {details.propertyImages && details.propertyImages.length > 0 && (
-        <div className="relative">
+        <div className="lg:relative w-11/12 mx-auto">
           <div className="grid  mx-auto lg:grid-cols-3 gap-1 md:grid-cols-1 grid-cols-1">
             <div className="h-full">
               <img
@@ -96,7 +99,8 @@ const PropertiesDetails = () => {
               />
             </div>
           </div>
-          <div className="rounded-sm shadow-lg drop-shadow-lg  absolute bg-white -bottom-10  left-20 right-20 ">
+          {/* overview section */}
+          <div className="rounded-sm shadow-lg drop-shadow-lg  lg:absolute bg-white -bottom-10  left-20 right-20 ">
             <div className="grid px-6 py-5 lg:grid-cols-6 md:grid-cols-2 grid-cols-2 gap-6">
               {details?.rooms?.bedRooms ? (
                 <div className="flex items-center gap-5">
@@ -107,7 +111,7 @@ const PropertiesDetails = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Bedroom</h3>
-                    <h3>{details.bedroom}</h3>
+                    <h3>{details?.rooms?.bedRooms}</h3>
                   </div>
                 </div>
               ) : (
@@ -123,7 +127,7 @@ const PropertiesDetails = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Office room</h3>
-                    <h3></h3>
+                    <h3>{details.rooms?.officeRooms}</h3>
                   </div>
                 </div>
               ) : (
@@ -139,7 +143,7 @@ const PropertiesDetails = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Conference room</h3>
-                    <h3>{details.bathroom}</h3>
+                    <h3>{details.rooms?.conferenceRooms}</h3>
                   </div>
                 </div>
               ) : (
@@ -155,7 +159,7 @@ const PropertiesDetails = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Bathroom</h3>
-                    <h3>{details.bathroom}</h3>
+                    <h3>{details.rooms.bathRooms}</h3>
                   </div>
                 </div>
               ) : (
@@ -182,6 +186,7 @@ const PropertiesDetails = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold">Garage</h3>
+                    <h3>{details.parking.spaces}</h3>
                   </div>
                 </div>
               ) : (
@@ -217,124 +222,6 @@ const PropertiesDetails = () => {
 
       <div className="flex lg:flex-row flex-col gap-5 mt-10 ">
         <div className="lg:w-2/3 w-full">
-          {/* overview section */}
-          {/* <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
-            <h3 className="text-xl font-semibold py-5">Overview</h3>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-2 gap-6">
-              {details?.rooms?.bedRooms ? (
-                <div className="flex items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <IoBedOutline />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Bedroom</h3>
-                    <h3>{details.bedroom}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              {details.rooms?.officeRooms ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <RiHomeOfficeFill />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Office room</h3>
-                    <h3></h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              {details.rooms?.conferenceRooms ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <FaUsersViewfinder />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Conference room</h3>
-                    <h3>{details.bathroom}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              {details.rooms?.bathRooms ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <PiBathtub />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Bathroom</h3>
-                    <h3>{details.bathroom}</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <IoCalendarClearOutline />
-                  </h3>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Year of Build</h3>
-                  <h3>{details.yearBuilt}</h3>
-                </div>
-              </div>
-              {details.parking.included ? (
-                <div className="flex  items-center gap-5">
-                  <div>
-                    <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                      <BiSolidCarGarage />
-                    </h3>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">Garage</h3>
-                  </div>
-                </div>
-              ) : (
-                ''
-              )}
-
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <BiShapeSquare />
-                  </h3>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Square Ft</h3>
-                  <h3>{details.squareFootage}</h3>
-                </div>
-              </div>
-              <div className="flex  items-center gap-5">
-                <div>
-                  <h3 className="border-2 border-gray-300 rounded-lg px-3 py-3">
-                    <IoHomeOutline />
-                  </h3>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Property Type</h3>
-                  <h3>{details.propertyType}</h3>
-                </div>
-              </div>
-            </div>
-          </div> */}
           {/* properties Description section */}
           <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
             <h3 className="text-xl  font-semibold py-5">
@@ -441,6 +328,17 @@ const PropertiesDetails = () => {
                     <IoFlowerOutline className="mr-2" />
                   )}
                   {easement === 'Spa' && <MdFace3 className="mr-2" />}
+                  {easement === 'Mountain View' && (
+                    <FaMountain className="mr-2" />
+                  )}
+                  {easement === 'Sky Deck' && <FaSkyatlas className="mr-2" />}
+                  {easement === 'Theater Room' && (
+                    <MdTheaters className="mr-2" />
+                  )}
+                  {easement === 'Business Center' && (
+                    <IoBusinessSharp className="mr-2" />
+                  )}
+
                   <span>
                     {easement.charAt(0).toUpperCase() + easement.slice(1)}
                   </span>
@@ -459,6 +357,9 @@ const PropertiesDetails = () => {
                     <TbSunElectricity className="mr-2" />
                   )}
                   {utility === 'Wifi' && <IoWifi className="mr-2" />}
+                  {utility === 'High-speed Fiber Internet' && (
+                    <IoWifi className="mr-2" />
+                  )}
                   {utility === 'cafeteria' && <GrCafeteria className="mr-2" />}
                   <span>
                     {utility.charAt(0).toUpperCase() + utility.slice(1)}
@@ -467,6 +368,8 @@ const PropertiesDetails = () => {
               ))}
             </div>
           </div>
+          {/* payment calculation */}
+          <PaymentCalculation details={details}></PaymentCalculation>
 
           {/* properties Address section */}
           <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
@@ -487,19 +390,15 @@ const PropertiesDetails = () => {
                 </h3>
               </div>
               {/* QR code implementation */}
-              <div className=" flex " style={{ justifyContent: 'flex-end' }}>
+              <div
+                className=" flex lg:justify-end md:flex-end flex-col"
+                // style={{ justifyContent: 'flex-end' }}
+              >
                 <QRcode></QRcode>
               </div>
             </div>
             {/* map section */}
-            <div className="rounded-lg my-4">
-              <iframe
-                className="rounded-lg "
-                id="iframeId"
-                height="400px"
-                width="100%"
-              ></iframe>
-            </div>
+            <GoogleMap details={details}></GoogleMap>
           </div>
           {/* recommended property section */}
           <RecommendedProperty
@@ -531,6 +430,42 @@ const PropertiesDetails = () => {
               )}
             </div>
           </div>
+          {/* contact and schedule button */}
+          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
+            <div className="flex justify-center">
+              <button
+                className="bg-[#076aa5] focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm rounded-r-none "
+                onClick={handleFormToggle}
+                style={{
+                  backgroundColor:
+                    activeButton === 'form' ? 'white' : '#076aa5',
+                  color: activeButton === 'form' ? 'black ' : 'white ',
+                  border:
+                    activeButton === 'form' ? '2px solid #076aa5' : 'none',
+                }}
+              >
+                {showForm ? 'Request Form' : 'Request Form'}
+              </button>
+              <button
+                className="bg-[#076aa5] rounded-l-none   focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm"
+                onClick={handleScheduleToggle}
+                style={{
+                  backgroundColor:
+                    activeButton === 'schedule' ? 'white ' : '#076aa5',
+                  color: activeButton === 'schedule' ? 'black ' : 'white ',
+                  border:
+                    activeButton === 'schedule' ? '2px solid #076aa5' : 'none',
+                }}
+              >
+                {showSchedule ? 'Schedule a Tour' : 'Schedule a Tour'}
+              </button>
+            </div>
+
+            {showForm && (
+              <ContactWithOwner details={details}></ContactWithOwner>
+            )}
+            {showSchedule && <div>schedule</div>}
+          </div>
           {/*from open  */}
           <div>
             <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
@@ -538,7 +473,7 @@ const PropertiesDetails = () => {
                 Essential information Submit
               </h3>
               <button
-                className="bg-[#eb6753] text-white px-4 py-2 rounded"
+                className="w-full px-4 py-3 text-white bg-[#076aa5] my-4 rounded-sm"
                 onClick={toggleForm}
                 disabled={details.propertyStatus === "sold" ? true : false}
               >
