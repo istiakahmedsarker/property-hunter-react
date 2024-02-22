@@ -26,7 +26,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white">
+    <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white dark:bg-card-dark dark:text-in-dark">
       <div className="hidden lg:block bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center w-1/3 rounded-l-lg"></div>
       <div className="w-full lg:w-2/3 py-8 px-10">
         <h2 className="font-bold mb-10 text-3xl">Please! Login Here</h2>
@@ -58,7 +58,7 @@ const Login = () => {
                 />
                 <div
                   onClick={() => setPassShow(!passShow)}
-                  className="text-xl text-[#eb6753] absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
+                  className="text-xl text-primary-light absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer"
                 >
                   {passShow ? <FaEyeSlash /> : <FaRegEye />}
                 </div>
@@ -71,7 +71,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="btn btn-success text-white bg-[#eb6753] hover:bg-[#eb6753] border-none w-full mt-8 hover:opacity-90"
+              className="btn btn-success text-white bg-primary-light hover:bg-[#0c95e5] border-none w-full mt-8 hover:opacity-90"
             >
               Login
             </button>
@@ -81,7 +81,7 @@ const Login = () => {
           <div className="space-y-6">
             <p>
               Dont have an account?{" "}
-              <Link to={"/register"} className="text-[#eb6753]">
+              <Link to={"/register"} className="text-primary-light">
                 Register
               </Link>
             </p>
@@ -89,7 +89,7 @@ const Login = () => {
           </div>
           <div className="mt-10 flex gap-3">
             <GoogleLogin />
-            <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#eb6753] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
+            <div className="w-1/2 border py-3 rounded-md cursor-pointer hover:bg-[#076aa5] hover:text-white transition-all duration-300 flex justify-center items-center gap-2">
               <FaFacebookF lassName="text-2xl" />
               Facebook
             </div>
