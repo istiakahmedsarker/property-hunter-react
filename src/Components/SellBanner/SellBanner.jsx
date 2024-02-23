@@ -18,7 +18,7 @@ const SellBanner = () => {
         <h2 className="text-4xl leading-10 font-semibold">
           Sell Your Home With Confidence
         </h2>
-        <p className="text-lg mt-5">
+        <p className="md:text-lg text-base mt-5">
           Are you curious about the precise value of your home or its potential
           selling price? Benefit from our extensive expertise in the luxury home
           market.

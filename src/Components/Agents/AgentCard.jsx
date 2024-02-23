@@ -1,13 +1,13 @@
 
-const AgentCard = ({ agent }) => {
-    const { name, role, image, description} = agent
+const AgentCard = ({ agents }) => {
+    const { name, role, image, description} = agents || {}
 
     return (
         <div className="border rounded-md overflow-hidden max-md:max-w-[300px]">
             <img src={image} alt={`Profile of ${name}`} className="w-full h-60 object-contain object-top bg-gray-300" />
             <div className="p-4">
-                <h4 className="text-base font-extrabold">{name}</h4>
-                <p className="text-xs mt-1">{role}</p>
+                <h4 className="text-base font-extrabold dark:text-white">{name}</h4>
+                <p className="text-xs mt-1 dark:text-white">{role}</p>
                 <div className="mt-4">
                     <p className="text-sm leading-relaxed">{description}</p>
                 </div>
