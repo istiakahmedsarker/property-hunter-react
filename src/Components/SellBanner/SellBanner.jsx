@@ -5,17 +5,17 @@ const SellBanner = () => {
     <div
       style={{
         backgroundImage: `url('https://res.cloudinary.com/dwopkbaby/image/upload/v1708330338/property_hunter/znmb8ob0nse2gnkhbnz4.webp')`,
-        padding: "100px 55px",
+
         backgroundRepeat: "no-repeat",
-        // backgroundSize: "cover",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         borderRadius: "15px",
         color: "white",
       }}
       className="max-w-7xl mx-auto my-20"
     >
-      <div className="max-w-96 md:max-w-2xl">
-        <h2 className="text-3xl md:text-4xl  leading-10 font-semibold">
+      <div className="max-w-96 md:max-w-2xl bg-black sm:bg-none bg-opacity-60 sm:bg-opacity-0 py-20  px-3 sm:px-10 rounded-md">
+        <h2 className="text-4xl leading-10 font-semibold">
           Sell Your Home With Confidence
         </h2>
         <p className="md:text-lg text-base mt-5">
