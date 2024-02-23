@@ -25,8 +25,8 @@ const PropertyFilter = ({
   //   });
 
   return (
-    <div className="bg-white flex flex-col gap-9 shadow-sm rounded-md p-3 pt-6 sm:p-5 w-full">
-      <h3 className="text-[#041e42] font-semibold">Find your home</h3>
+    <div className="bg-white dark:text-in-dark dark:bg-card-dark flex flex-col gap-9 shadow-sm rounded-md p-3 pt-6 sm:p-5 w-full">
+      <h3 className="text-[#041e42] dark:text-in-dark font-semibold">Find your home</h3>
       <div className="relative -mt-5">
         <input
           className="border-2 w-full pl-12 pr-5 py-3 md:text-lg text-stone-700 rounded-md"
@@ -48,7 +48,7 @@ const PropertyFilter = ({
       </select>
 
       <div className="flex flex-col gap-3">
-        <h3 className="text-[#041e42] font-semibold -mt-2">Listing Status</h3>
+        <h3 className="text-[#041e42] dark:text-in-dark font-semibold -mt-2">Listing Status</h3>
         <div className="flex flex-col space-y-2">
           {Object.keys(checkboxes).map(checkbox => (
             <div className="flex items-center gap-2" key={checkbox}>
@@ -56,6 +56,7 @@ const PropertyFilter = ({
                 type="radio"
                 checked={checkboxes[checkbox]}
                 onChange={() => handleCheckboxChange(checkbox)}
+                className=''
               />
               <label>{checkbox.toUpperCase()}</label>
             </div>

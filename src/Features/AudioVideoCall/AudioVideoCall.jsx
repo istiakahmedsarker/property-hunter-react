@@ -59,9 +59,14 @@ export default function AudioVideoCall() {
 
   return (
     <div
-      className="myCallContainer"
+      className="myCallContainer "
       ref={myMeeting}
-      style={{ width: '100vw', height: '100vh' }}
+      style={{
+        width: '70vw',
+        height: '100vh',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+      }}
     ></div>
   );
 }
