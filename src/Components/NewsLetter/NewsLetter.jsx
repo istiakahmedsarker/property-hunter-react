@@ -59,16 +59,19 @@ const NewsLetter = () => {
       }}
       className="py-10 px-6 md:py-20 md:px-10 max-w-7xl mx-auto"
     >
-      <h3 className="text-3xl font-semibold max-w-96 leading-10">
+      <h3 className="text-2xl sm:text-3xl font-semibold max-w-96 sm:leading-10">
         Subscribe our news letter for get our exiting offer!
       </h3>
-      <form onSubmit={handleNewsLetter} className="flex items-center mt-5 ">
+      <form
+        onSubmit={handleNewsLetter}
+        className="sm:flex sm:item-center mt-5 "
+      >
         <div className="relative">
           <input
             name="email"
             type="email"
             placeholder="Enter your email address"
-            className="py-3 px-5  rounded-l-md border-r border-r-primary-light text-primary-light max-w-56 outline-none font-semibold"
+            className="py-3 px-5  rounded-l-md border-r border-r-primary-light text-primary-light max-w-56 outline-none font-semibold rounded-r-md sm:rounded-r-none"
           />
           {errMessage && (
             <p className="absolute -bottom-10 text-white bg-red-600 py-1 rounded-md px-3">
@@ -78,7 +81,7 @@ const NewsLetter = () => {
         </div>
         <button
           type="submit"
-          className="border border-none py-3 px-5 rounded-r-md bg-primary-light hover:bg-white hover:border-white transition-all font-semibold hover:text-primary-light"
+          className="border border-none py-3 px-5 rounded-r-md rounded-l-md sm:rounded-l-none bg-primary-light hover:bg-white hover:border-white transition-all font-semibold hover:text-primary-light mt-3 sm:mt-0"
         >
           Subscribe
         </button>
