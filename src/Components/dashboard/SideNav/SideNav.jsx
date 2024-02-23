@@ -1,19 +1,17 @@
-import { NavLink } from 'react-router-dom';
-import { GrAnnounce } from 'react-icons/gr';
-import { MdList, MdSpaceDashboard } from 'react-icons/md';
-import { FaUser, FaUsersCog, FaHeart } from 'react-icons/fa';
-import { GiHamburgerMenu } from 'react-icons/gi';
+import { NavLink } from "react-router-dom";
+import { GrAnnounce } from "react-icons/gr";
+import { MdList, MdSpaceDashboard } from "react-icons/md";
+import { GiHamburgerMenu } from "react-icons/gi";
 import {
   FaFileInvoiceDollar,
   FaBuildingCircleCheck,
   FaUsers,
-} from 'react-icons/fa6';
-import { TfiAnnouncement } from 'react-icons/tfi';
-import { BsBuildingsFill, BsChatRightFill } from 'react-icons/bs';
-import { IoHomeSharp, IoStatsChart } from 'react-icons/io5';
-import useUserRole from '../../../Hooks/useUserRole';
-import { BsChatRight } from 'react-icons/bs';
-import useTheme from '../../../Providers/ThemeContext';
+} from "react-icons/fa6";
+import { TfiAnnouncement } from "react-icons/tfi";
+import { BsBuildingsFill, BsChatRightFill } from "react-icons/bs";
+import { IoHomeSharp, IoStatsChart } from "react-icons/io5";
+import useUserRole from "../../../Hooks/useUserRole";
+import useTheme from "../../../Providers/ThemeContext";
 
 const SideNav = () => {
   const userRole = useUserRole();
@@ -54,13 +52,13 @@ const SideNav = () => {
             Dashboard
           </h3>
           <div className="flex flex-col  divide-stone-300 font-semibold">
-            {userRole === 'member' ? (
+            {userRole === "member" ? (
               <NavLink
-                to={'/dashboard/payment-history'}
+                to={"/dashboard/payment-history"}
                 className={({ isActive }) =>
                   isActive
-                    ? 'py-[14px]  px-6 bg-[#076aa5] border-r-4  text-white  '
-                    : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                    ? "py-[14px]  px-6 bg-[#076aa5] border-r-4  text-white  "
+                    : "py-[14px]  px-6   dark:text-[#e4e6cd]"
                 }
               >
                 <div className="flex items-center gap-2">
@@ -69,16 +67,16 @@ const SideNav = () => {
                 </div>
               </NavLink>
             ) : (
-              ''
+              ""
             )}
-            {userRole === 'moderator' ? (
+            {userRole === "moderator" ? (
               <>
                 <NavLink
-                  to={'/dashboard/property-request'}
+                  to={"/dashboard/property-request"}
                   className={({ isActive }) =>
                     isActive
-                      ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                      ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                      : "py-[14px]  px-6   dark:text-[#e4e6cd]"
                   }
                 >
                   <div className="flex items-center gap-2">
@@ -88,11 +86,11 @@ const SideNav = () => {
                 </NavLink>
 
                 <NavLink
-                  to={'/dashboard/make-announcement'}
+                  to={"/dashboard/make-announcement"}
                   className={({ isActive }) =>
                     isActive
-                      ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                      ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                      : "py-[14px]  px-6   dark:text-[#e4e6cd]"
                   }
                 >
                   <div className="flex items-center gap-2">
@@ -102,16 +100,16 @@ const SideNav = () => {
                 </NavLink>
               </>
             ) : (
-              ''
+              ""
             )}
-            {userRole === 'admin' ? (
+            {userRole === "admin" ? (
               <>
                 <NavLink
-                  to={'/dashboard/all-properties'}
+                  to={"/dashboard/all-properties"}
                   className={({ isActive }) =>
                     isActive
-                      ? 'py-[14px]  bg-[#076aa5]  text-white px-6'
-                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                      ? "py-[14px]  bg-[#076aa5]  text-white px-6"
+                      : "py-[14px]  px-6   dark:text-[#e4e6cd]"
                   }
                 >
                   <div className="flex items-center gap-2">
@@ -120,11 +118,11 @@ const SideNav = () => {
                   </div>
                 </NavLink>
                 <NavLink
-                  to={'/dashboard/admin'}
+                  to={"/dashboard/admin"}
                   className={({ isActive }) =>
                     isActive
-                      ? 'py-[14px]  bg-[#076aa5]  text-white px-6'
-                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                      ? "py-[14px]  bg-[#076aa5]  text-white px-6"
+                      : "py-[14px]  px-6   dark:text-[#e4e6cd]"
                   }
                 >
                   <div className="flex items-center gap-2">
@@ -133,24 +131,24 @@ const SideNav = () => {
                   </div>
                 </NavLink>
                 <NavLink
-                  to={'/dashboard/manage-property-request'}
+                  to={"/dashboard/manage-property-request"}
                   className={({ isActive }) =>
                     isActive
-                      ? 'py-[14px]  bg-[#076aa5]  text-white px-6 '
-                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                      ? "py-[14px]  bg-[#076aa5]  text-white px-6 "
+                      : "py-[14px]  px-6   dark:text-[#e4e6cd]"
                   }
                 >
                   <div className="flex items-center gap-2">
                     <FaBuildingCircleCheck />
                     Manage Property request
                   </div>
-                </NavLink>{' '}
+                </NavLink>{" "}
                 <NavLink
-                  to={'/dashboard/all-users'}
+                  to={"/dashboard/all-users"}
                   className={({ isActive }) =>
                     isActive
-                      ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                      ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                      : "py-[14px]  px-6   dark:text-[#e4e6cd]"
                   }
                 >
                   <div className="flex items-center gap-2">
@@ -160,15 +158,15 @@ const SideNav = () => {
                 </NavLink>
               </>
             ) : (
-              ''
+              ""
             )}
 
             <NavLink
-              to={'/dashboard/listing-summary'}
+              to={"/dashboard/listing-summary"}
               className={({ isActive }) =>
                 isActive
-                  ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                  : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                  ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                  : "py-[14px]  px-6   dark:text-[#e4e6cd]"
               }
             >
               <div className="flex items-center gap-2">
@@ -178,11 +176,11 @@ const SideNav = () => {
             </NavLink>
 
             <NavLink
-              to={'/dashboard/announcement'}
+              to={"/dashboard/announcement"}
               className={({ isActive }) =>
                 isActive
-                  ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                  : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                  ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                  : "py-[14px]  px-6   dark:text-[#e4e6cd]"
               }
             >
               <div className="flex items-center gap-2">
@@ -191,11 +189,11 @@ const SideNav = () => {
               </div>
             </NavLink>
             <NavLink
-              to={'/dashboard/property-status'}
+              to={"/dashboard/property-status"}
               className={({ isActive }) =>
                 isActive
-                  ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                  : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                  ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                  : "py-[14px]  px-6   dark:text-[#e4e6cd]"
               }
             >
               <div className="flex items-center gap-2">
@@ -205,30 +203,17 @@ const SideNav = () => {
             </NavLink>
 
             <NavLink
-              to={'/dashboard/liveChat'}
+              to={"/dashboard/liveChat"}
               className={({ isActive }) =>
                 isActive
-                  ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                  : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                  ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                  : "py-[14px]  px-6   dark:text-[#e4e6cd]"
               }
             >
               <div className="flex items-center gap-2">
                 {/* <BsChatRight /> this is for dark mode */}
                 <BsChatRightFill />
                 Live Chat
-              </div>
-            </NavLink>
-            <NavLink
-              to={'/dashboard/profile'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                  : 'py-[14px]  px-6    dark:text-[#e4e6cd]'
-              }
-            >
-              <div className="flex items-center gap-2">
-                <FaUser />
-                Profile
               </div>
             </NavLink>
           </div>
@@ -238,7 +223,7 @@ const SideNav = () => {
               <input
                 type="checkbox"
                 onChange={handleToggle}
-                checked={themeMode === 'dark'}
+                checked={themeMode === "dark"}
               />
 
               {/* sun icon */}
