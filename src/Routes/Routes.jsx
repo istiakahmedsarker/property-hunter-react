@@ -84,12 +84,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/notificationDetails/:id',
-        element: <NotificationDetails/>,
+        element: <NotificationDetails />,
         loader: ({ params }) =>
           fetch(
             `https://property-hunter-server-roan.vercel.app/api/v1/announcement/${params.id}`
           ),
-      }
+      },
     ],
   },
   {
