@@ -1,7 +1,7 @@
 
-const AgentCard = ({ agent }) => {
-    const { name, role, image, description} = agent
-
+const AgentCard = ({ agents }) => {
+    const { name, role, image, description} = agents || {}
+    
     return (
         <div className="border rounded-md overflow-hidden max-md:max-w-[300px]">
             <img src={image} alt={`Profile of ${name}`} className="w-full h-60 object-contain object-top bg-gray-300" />
