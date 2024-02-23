@@ -41,6 +41,7 @@ const PropertiesDetails = () => {
 
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen);
+    // setActiveButton('Close Form');
   };
   //  show google map
   // const handleVideoCall = () => {
@@ -89,200 +90,208 @@ const PropertiesDetails = () => {
 
       <div className="flex lg:flex-row flex-col gap-5 mt-10 ">
         <div className="lg:w-2/3 w-full">
-          {/* properties Description section */}
           <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
-            <h3 className="text-xl  font-semibold py-5">
-              Properties Description
-            </h3>
-            {/* see more description implementation */}
-            <p className="">
-              {isShowFullDescription
-                ? details.description
-                : `${details.description.slice(0, 210)}${
-                    details.description.length > 210 ? '...' : ''
-                  }`}
-            </p>
-            {details.description.length > 200 && (
-              <button className="text-blue-800" onClick={toggleDescription}>
-                {isShowFullDescription ? 'See less' : 'See more'}
-              </button>
-            )}
+            {/* properties Description section */}
+            <div className="w-full px-5 ">
+              <h3 className="text-xl  font-semibold py-5">
+                Properties Description
+              </h3>
+              {/* see more description implementation */}
+              <p className="">
+                {isShowFullDescription
+                  ? details.description
+                  : `${details.description.slice(0, 210)}${
+                      details.description.length > 210 ? '...' : ''
+                    }`}
+              </p>
+              {details.description.length > 200 && (
+                <button className="text-blue-800" onClick={toggleDescription}>
+                  {isShowFullDescription ? 'See less' : 'See more'}
+                </button>
+              )}
 
-            <div className="">
-              {/* properties details section */}
-              <h3 className="text-xl font-semibold py-5">Properties Details</h3>
-              <div className="grid grid-cols-2  lg:gap-5 gap-2">
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Price</span>
-                  <span>: $ {details.price}</span>
+              <div className="">
+                {/* properties details section */}
+                <h3 className="text-xl font-semibold py-5">
+                  Properties Details
                 </h3>
-                {/* parking need to be conditional */}
-                {details.parking.included ? (
-                  <h3 className="grid grid-cols-2 py-1">
-                    <span className="font-semibold">Garage size</span>
-                    <span>: {details.parking.spaces}</span>
+                <div className="grid grid-cols-2  lg:gap-5 gap-2">
+                  <h3 className="grid grid-cols-2 ">
+                    <span className="font-semibold">Price</span>
+                    <span>: $ {details.price}</span>
                   </h3>
-                ) : (
-                  ''
-                )}
+                  {/* parking need to be conditional */}
+                  {details.parking.included ? (
+                    <h3 className="grid grid-cols-2 ">
+                      <span className="font-semibold">Garage size</span>
+                      <span>: {details.parking.spaces}</span>
+                    </h3>
+                  ) : (
+                    ''
+                  )}
 
-                {details.rooms?.bedRooms ? (
-                  <h3 className="grid grid-cols-2 py-1">
-                    <span className="font-semibold">Bedroom</span>
-                    <span>: {details.rooms.bedRooms}</span>
-                  </h3>
-                ) : (
-                  ''
-                )}
+                  {details.rooms?.bedRooms ? (
+                    <h3 className="grid grid-cols-2 ">
+                      <span className="font-semibold">Bedroom</span>
+                      <span>: {details.rooms.bedRooms}</span>
+                    </h3>
+                  ) : (
+                    ''
+                  )}
 
-                {details.rooms?.bathRooms ? (
-                  <h3 className="grid grid-cols-2 py-1">
-                    <span className="font-semibold">Bathroom</span>
-                    <span>: {details.rooms.bathRooms}</span>
-                  </h3>
-                ) : (
-                  ''
-                )}
-                {details.rooms?.conferenceRooms ? (
-                  <h3 className="grid grid-cols-2 py-1">
-                    <span className="font-semibold">Conference room</span>
-                    <span>: {details.rooms.conferenceRooms}</span>
-                  </h3>
-                ) : (
-                  ''
-                )}
-                {details.rooms?.officeRooms ? (
-                  <h3 className="grid grid-cols-2 py-1">
-                    <span className="font-semibold">Office room</span>
-                    <span>: {details.rooms.officeRooms}</span>
-                  </h3>
-                ) : (
-                  ''
-                )}
+                  {details.rooms?.bathRooms ? (
+                    <h3 className="grid grid-cols-2 ">
+                      <span className="font-semibold">Bathroom</span>
+                      <span>: {details.rooms.bathRooms}</span>
+                    </h3>
+                  ) : (
+                    ''
+                  )}
+                  {details.rooms?.conferenceRooms ? (
+                    <h3 className="grid grid-cols-2">
+                      <span className="font-semibold">Conference room</span>
+                      <span>: {details.rooms.conferenceRooms}</span>
+                    </h3>
+                  ) : (
+                    ''
+                  )}
+                  {details.rooms?.officeRooms ? (
+                    <h3 className="grid grid-cols-2">
+                      <span className="font-semibold">Office room</span>
+                      <span>: {details.rooms.officeRooms}</span>
+                    </h3>
+                  ) : (
+                    ''
+                  )}
 
-                {/* property size */}
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Property size</span>
-                  <span>: {details.squareFootage} sq Ft</span>
-                </h3>
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Year of build </span>
-                  <span>: {details.yearBuilt} </span>
-                </h3>
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Property type </span>
-                  <span>: {details.propertyType}</span>
-                </h3>
-                <h3 className="grid grid-cols-2 py-1">
-                  <span className="font-semibold">Property status </span>
-                  <span>: {details.propertyStatus}</span>
-                </h3>
+                  {/* property size */}
+                  <h3 className="grid grid-cols-2 ">
+                    <span className="font-semibold">Property size</span>
+                    <span>: {details.squareFootage} sq Ft</span>
+                  </h3>
+                  <h3 className="grid grid-cols-2 ">
+                    <span className="font-semibold">Year of build </span>
+                    <span>: {details.yearBuilt} </span>
+                  </h3>
+                  <h3 className="grid grid-cols-2">
+                    <span className="font-semibold">Property type </span>
+                    <span>: {details.propertyType}</span>
+                  </h3>
+                  <h3 className="grid grid-cols-2 ">
+                    <span className="font-semibold">Property status </span>
+                    <span>: {details.propertyStatus}</span>
+                  </h3>
+                </div>
               </div>
             </div>
-          </div>
-          {/* property feature section */}
-          <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 grid grid-cols-2">
-            <PropertyFeature details={details}></PropertyFeature>
+            {/* property feature section */}
+            <div className=" w-full  px-5 py-5  grid grid-cols-1">
+              <PropertyFeature details={details}></PropertyFeature>
 
-            {/* properties utilities section */}
-            <PropertyUtilities details={details}></PropertyUtilities>
-          </div>
-          {/* payment calculation */}
-          <PaymentCalculation details={details}></PaymentCalculation>
-
-          {/* properties Address section */}
-          <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
-            <h3 className="text-xl font-semibold py-5">Address</h3>
-            <div className="grid lg:grid-cols-2 grid-cols-2 lg:gap-5 gap-3">
-              <div>
-                <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
-                  <span className="font-semibold"> Address</span>
-                  <span>: {details.location.address}</span>
-                </h3>
-                <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
-                  <span className="font-semibold"> City</span>{' '}
-                  <span>: {details.location.city}</span>
-                </h3>
-                <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
-                  <span className="font-semibold"> State</span>{' '}
-                  <span>: {details.location.state}</span>
-                </h3>
-              </div>
-              {/* QR code implementation */}
-              <div className=" flex lg:justify-end md:flex-end flex-col">
-                <QRcode></QRcode>
-              </div>
+              {/* properties utilities section */}
+              <PropertyUtilities details={details}></PropertyUtilities>
             </div>
-            {/* map section */}
-            <GoogleMap details={details}></GoogleMap>
+            {/* payment calculation */}
+            <PaymentCalculation details={details}></PaymentCalculation>
+            {/* properties Address section */}
+            <div className=" w-full px-5 pb-5">
+              <h3 className="text-xl font-semibold py-5">Address</h3>
+              <div className="grid lg:grid-cols-2 grid-cols-2 lg:gap-5 gap-3">
+                <div>
+                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
+                    <span className="font-semibold"> Address</span>
+                    <span>: {details.location.address}</span>
+                  </h3>
+                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
+                    <span className="font-semibold"> City</span>{' '}
+                    <span>: {details.location.city}</span>
+                  </h3>
+                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
+                    <span className="font-semibold"> State</span>{' '}
+                    <span>: {details.location.state}</span>
+                  </h3>
+                </div>
+                {/* QR code implementation */}
+                <div className=" flex lg:justify-end md:flex-end flex-col">
+                  <QRcode></QRcode>
+                </div>
+              </div>
+              {/* map section */}
+              <GoogleMap details={details}></GoogleMap>
+            </div>
+            {/* recommended property section */}
+            <RecommendedProperty
+              cardDetails={cardDetails}
+              type={details?.propertyType}
+              id={details?._id}
+            ></RecommendedProperty>
           </div>
-          {/* recommended property section */}
-          <RecommendedProperty
-            cardDetails={cardDetails}
-            type={details?.propertyType}
-            id={details?._id}
-          ></RecommendedProperty>
         </div>
         <div className="lg:w-1/3 w-full">
-          {/* owner information */}
           <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
-            <h3 className="text-xl font-semibold py-5">Owner address</h3>
-            <div>
-              <h3 className="flex gap-5 py-2">
-                <span className="font-semibold"> Name</span>
-                <span>: {details.ownerInformation.name}</span>
-              </h3>
-              <h3 className="flex gap-5 py-2">
-                <span className="font-semibold"> Email</span>
-                <span>: {details.ownerInformation.email}</span>
-              </h3>
-              {details.ownerInformation.phone ? (
+            {/* owner information */}
+            <div className="w-full  px-5">
+              <h3 className="text-xl font-semibold py-5">Owner address</h3>
+              <div>
                 <h3 className="flex gap-5 py-2">
-                  <span className="font-semibold"> Phone</span>
-                  <span>: {details.ownerInformation.phone}</span>
+                  <span className="font-semibold"> Name</span>
+                  <span>: {details.ownerInformation.name}</span>
                 </h3>
-              ) : (
-                ''
-              )}
+                <h3 className="flex gap-5 py-2">
+                  <span className="font-semibold"> Email</span>
+                  <span>: {details.ownerInformation.email}</span>
+                </h3>
+                {details.ownerInformation.phone ? (
+                  <h3 className="flex gap-5 py-2">
+                    <span className="font-semibold"> Phone</span>
+                    <span>: {details.ownerInformation.phone}</span>
+                  </h3>
+                ) : (
+                  ''
+                )}
+              </div>
             </div>
-          </div>
-          {/* contact and schedule button */}
-          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
-            <div className="flex justify-center">
-              <button
-                className="bg-[#076aa5] focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm rounded-r-none "
-                onClick={handleFormToggle}
-                style={{
-                  backgroundColor:
-                    activeButton === 'form' ? 'white' : '#076aa5',
-                  color: activeButton === 'form' ? 'black ' : 'white ',
-                  border:
-                    activeButton === 'form' ? '2px solid #076aa5' : 'none',
-                }}
-              >
-                {showForm ? 'Request Form' : 'Request Form'}
-              </button>
-              <button
-                className="bg-[#076aa5] rounded-l-none   focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm"
-                onClick={handleScheduleToggle}
-                // onClick={handleVideoCall}
-                style={{
-                  backgroundColor:
-                    activeButton === 'schedule' ? 'white ' : '#076aa5',
-                  color: activeButton === 'schedule' ? 'black ' : 'white ',
-                  border:
-                    activeButton === 'schedule' ? '2px solid #076aa5' : 'none',
-                }}
-              >
-                {showSchedule ? 'Schedule a Tour' : 'Schedule a Tour'}
-              </button>
-            </div>
+            {/* contact and schedule button */}
+            <div className="w-full px-5 py-5 ">
+              <div className="flex justify-center">
+                <button
+                  className="bg-[#076aa5] focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm rounded-r-none "
+                  onClick={handleFormToggle}
+                  style={{
+                    backgroundColor:
+                      activeButton === 'form' ? 'white' : '#076aa5',
+                    color: activeButton === 'form' ? 'black ' : 'white ',
+                    border:
+                      activeButton === 'form' ? '2px solid #076aa5' : 'none',
+                  }}
+                >
+                  {showForm ? 'Request Form' : 'Request Form'}
+                </button>
+                <button
+                  className="bg-[#076aa5] rounded-l-none   focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm"
+                  onClick={handleScheduleToggle}
+                  // onClick={handleVideoCall}
+                  style={{
+                    backgroundColor:
+                      activeButton === 'schedule' ? 'white ' : '#076aa5',
+                    color: activeButton === 'schedule' ? 'black ' : 'white ',
+                    border:
+                      activeButton === 'schedule'
+                        ? '2px solid #076aa5'
+                        : 'none',
+                  }}
+                >
+                  {showSchedule ? 'Schedule a Tour' : 'Schedule a Tour'}
+                </button>
+              </div>
 
-            {showForm && (
-              <ContactWithOwner details={details}></ContactWithOwner>
-            )}
-            {showSchedule && <div className="py-5">Select Your Schedule</div>}
+              {showForm && (
+                <ContactWithOwner details={details}></ContactWithOwner>
+              )}
+              {showSchedule && <div className="py-5">Select Your Schedule</div>}
+            </div>
           </div>
+
           {/*from open  */}
           <div>
             <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
@@ -293,6 +302,11 @@ const PropertiesDetails = () => {
                 className="w-full px-4 py-3 text-white bg-[#076aa5] my-4 rounded-sm"
                 onClick={toggleForm}
                 disabled={details.propertyStatus === 'sold' ? true : false}
+                // className={`${
+                //   activeButton === 'Close Form'
+                //     ? 'bg-white text-black border-blue-500 border-2'
+                //     : 'bg-blue-500 text-white'
+                // } rounded-r-none focus:border-blue-500 px-4 py-3 rounded-sm`}
               >
                 {isFormOpen ? 'Close Form' : 'Open Form'}
               </button>

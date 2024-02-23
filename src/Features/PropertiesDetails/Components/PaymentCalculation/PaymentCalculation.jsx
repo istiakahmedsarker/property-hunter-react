@@ -26,7 +26,7 @@ const PaymentCalculation = ({ details }) => {
     setInstallmentDuration(duration);
   };
   return (
-    <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6  space-y-4">
+    <div className="w-full  px-5 pb-5">
       <h3 className="text-xl  font-semibold py-5">Payment System</h3>
 
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-5">
