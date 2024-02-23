@@ -9,6 +9,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '../Testimonials/Style/Style.css';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 const LatestBlogHome = () => {
   const { data: latestBlogsData } = useGetData({
@@ -29,14 +30,20 @@ const LatestBlogHome = () => {
   return (
     <div className="w-11/12 mx-auto my-7 ">
       <div className="my-6">
-        <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
+        {/* <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
           Our latest Blogs
         </h2>
         <h3 className="text-sm font-semibold text-center dark:text-in-dark ">
           Take a Moment to Read This
-        </h3>
+        </h3> */}
+        <SectionTitle
+          title="Our latest Blogs"
+          subTitle=" Take a Moment to Read our latest Blogs"
+        />
       </div>
+
       {/* slider implementation */}
+
       <div className="w-full mx-auto">
         <Swiper
           slidesPerView={4}

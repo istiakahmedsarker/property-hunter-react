@@ -2,17 +2,22 @@ import React from 'react';
 import { GiHutsVillage } from 'react-icons/gi';
 import { ImOffice } from 'react-icons/im';
 import { MdOutlineApartment } from 'react-icons/md';
+import SectionTitle from '../SectionTitle/SectionTitle';
 
 const BuySellListCard = () => {
   return (
     <div className="lg:max-w-7xl md:w-11/12 w-11/12 mx-auto my-10">
       <div className="lg:mb-40">
-        <h3 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
+        {/* <h3 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
           Real Estate service
         </h3>
         <h3 className="text-sm font-semibold text-center dark:text-in-dark mb-10">
           Premium Real Estate service to help you buy your dream property
-        </h3>
+        </h3> */}
+        <SectionTitle
+          title=" Real Estate service"
+          subTitle="Premium Real Estate service "
+        />
       </div>
       <div className="lg:relative mt-10">
         <div className="bg-[#076aa5] lg:h-[40vh]   rounded-sm rounded-t-3xl "></div>

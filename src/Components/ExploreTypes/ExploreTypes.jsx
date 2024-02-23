@@ -3,6 +3,7 @@ import { MdApartment, MdOutlineHome } from 'react-icons/md';
 import { GiVillage } from 'react-icons/gi';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
+import SectionTitle from '../SectionTitle/SectionTitle';
 // import useGetData from '../../Hooks/useGetData';
 
 const ExploreTypes = () => {
@@ -18,12 +19,16 @@ const ExploreTypes = () => {
   return (
     <div className="w-11/12 mx-auto md:my-20 dark:bg-primary-dark ">
       <div className="my-6 text-center">
-        <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center font-bold md:mb-3 lg:mb-4 dark:text-in-dark">
+        {/* <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center font-bold md:mb-3 lg:mb-4 dark:text-in-dark">
           Explore Properties Types
         </h2>
         <h3 className="text-sm font-semibold dark:text-in-dark">
           All Types of Properties
-        </h3>
+        </h3> */}
+        <SectionTitle
+          title=" Explore Properties Types"
+          subTitle="Exploring All Types of Properties"
+        />
       </div>
 
       {/* for redirect the relevant property */}
