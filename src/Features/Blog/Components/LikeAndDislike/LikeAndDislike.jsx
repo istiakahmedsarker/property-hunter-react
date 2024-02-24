@@ -1,9 +1,9 @@
-import useAxios from '../../../../Hooks/useAxios';
 import useAuth from '../../../../Hooks/useAuth';
 import { FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 export default function LikeAndDislike({ comment, refetch }) {
-  const axios = useAxios();
+  const axios = useAxiosSecure();
   const { user } = useAuth();
 
   const handleLikeAndDislike = async (reactionType) => {

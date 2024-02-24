@@ -20,7 +20,7 @@ const Blog = () => {
   });
 
   const { data, isPending, error } = useGetData({
-    key: ['blogs', debouncedSearchValue, activePage],
+    key: ['blogs', debouncedSearchValue, activePage, limit],
     api: `/blogs?title=${searchText}&page=${activePage}&limit=${limit}`,
   });
 

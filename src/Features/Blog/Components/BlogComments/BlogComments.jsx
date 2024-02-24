@@ -1,6 +1,7 @@
 import Comment from '../Comment/Comment';
 
 const BlogComments = ({ comments, refetch }) => {
+  console.log(comments);
   return (
     <div className="mt-5">
       <h3 className="text-xl md:text-2xl mb-2 md:mb-4 font-bold">

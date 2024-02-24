@@ -2,13 +2,13 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { BiCommentDots } from 'react-icons/bi';
 import CommentForm from '../../Features/Blog/Components/CommentForm/CommentForm';
-import useAxios from '../../Hooks/useAxios';
 import { FaRegUserCircle } from 'react-icons/fa';
 import BlogComments from '../../Features/Blog/Components/BlogComments/BlogComments';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const axios = useAxios();
+  const axios = useAxiosSecure();
 
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ['blogsDetails', id],

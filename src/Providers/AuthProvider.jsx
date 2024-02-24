@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -8,8 +8,9 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-} from "firebase/auth";
-import app from "../Firebase/firebase.config";
+} from 'firebase/auth';
+import app from '../Firebase/firebase.config';
+import useAxios from '../Hooks/useAxios';
 
 const auth = getAuth(app);
 export const AuthContext = createContext(null);
@@ -18,6 +19,8 @@ const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState(null);
+  const axios = useAxios();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -45,9 +48,28 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unSubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setUser(currentUser);
       setLoading(false);
+
+      const userEmail = currentUser?.email || user?.email;
+
+      const loggedUser = { email: userEmail };
+
+      //access jwt token
+      if (currentUser) {
+        const res = await axios.post('/jwt/access_token', loggedUser, {
+          withCredentials: true,
+        });
+
+        console.log(res.data.user.role);
+        setUserRole(res.data.user.role);
+      } else {
+        // remove jwt token
+        await axios.post('/jwt/remove_token', loggedUser, {
+          withCredentials: true,
+        });
+      }
     });
 
     return () => {
@@ -63,6 +85,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
     googleLogin,
+    userRole,
   };
 
   return (
