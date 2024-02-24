@@ -19,6 +19,7 @@ const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const [userRole, setUserRole] = useState(null);
   const axios = useAxios();
 
   const createUser = (email, password) => {
@@ -61,7 +62,8 @@ const AuthProvider = ({ children }) => {
           withCredentials: true,
         });
 
-        console.log(res.data);
+        console.log(res.data.user.role);
+        setUserRole(res.data.user.role);
       } else {
         // remove jwt token
         await axios.post('/jwt/remove_token', loggedUser, {
@@ -83,6 +85,7 @@ const AuthProvider = ({ children }) => {
     logOut,
     updateUserProfile,
     googleLogin,
+    userRole,
   };
 
   return (
