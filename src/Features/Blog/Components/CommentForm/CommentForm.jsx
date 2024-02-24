@@ -30,6 +30,7 @@ function CommentForm({ id, refetch }) {
       rating: starRating,
       blogId: id,
       authorImg: user?.user.photoURL,
+      authorEmail: user?.user.email,
     });
 
     if (res?.data.status === 'success') {
