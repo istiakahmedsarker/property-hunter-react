@@ -27,10 +27,10 @@ import ManagePropertyRequest from "../Pages/Dashboard/Admin/Pages/ManageProperty
 import Properties from "../Features/Properties/Properties";
 import PropertiesDetails from "../Features/PropertiesDetails/PropertiesDetails";
 import LiveChat from "../Features/LiveChat/LiveChat/LiveChat";
-import { ThemeProvider } from "../Providers/ThemeContext";
 import AudioVideoCall from "../Features/AudioVideoCall/AudioVideoCall";
 import NotificationDetails from "../Components/Notifications/NotificationDetails/NotificationDetails";
 import ModeratorHome from "../Pages/Dashboard/Moderator/Pages/ModeratorHome/ModeratorHome";
+import AboutUs from "../Features/AboutUs/AboutUs";
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
