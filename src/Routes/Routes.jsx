@@ -32,6 +32,7 @@ import LiveChat from '../Features/LiveChat/LiveChat/LiveChat';
 import { ThemeProvider } from '../Providers/ThemeContext';
 import AudioVideoCall from '../Features/AudioVideoCall/AudioVideoCall';
 import NotificationDetails from '../Components/Notifications/NotificationDetails/NotificationDetails';
+import AboutUs from '../Features/AboutUs/AboutUs';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: '/blogs',
         element: <Blogs />,
+      },
+      {
+        path: '/aboutUs',
+        element: <AboutUs />,
       },
       {
         path: '/blogs/:id',
@@ -89,7 +94,6 @@ const router = createBrowserRouter([
             `https://property-hunter-server-roan.vercel.app/api/v1/announcement/${params.id}`
           ),
       },
-
       {
         path: '/profile',
         element: <Profile />,

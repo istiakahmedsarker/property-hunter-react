@@ -1,13 +1,16 @@
+
 import SectionTitle from '../../SectionTitle/SectionTitle';
 import ContactForm from '../ContactFrom/ContactFrom';
 
 const ContactUs = () => {
   return (
+
     <div>
       <SectionTitle
         title="Contact Us"
         subTitle="Reach Out for Any Inquiries or Assistance"
       />
+    <div id="contact-us">
       <div className="max-w-screen-xl mx-auto p-5">
         <div className="grid grid-cols-1 md:grid-cols-12 border rounded-[15px]">
           <div className="bg-gray-900 md:col-span-4 p-10 text-white rounded-l-[15px]">
