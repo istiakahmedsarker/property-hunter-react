@@ -26,3 +26,4 @@ npm i @zegocloud/zego-uikit-prebuilt --save
 npm i socket.io-client
 npm i react-froala-wysiwyg --save
 npm i froala-editor
+npm i lottie-react
