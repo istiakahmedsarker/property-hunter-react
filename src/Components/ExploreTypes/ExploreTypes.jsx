@@ -12,7 +12,7 @@ const ExploreTypes = () => {
   //   api: `/properties?propertyType=apartment`,
   // });
   // console.log(propertiesData?.properties);
-  const handleTypeClick = propertyType => {
+  const handleTypeClick = (propertyType) => {
     history.push(`/properties?propertyType=${propertyType}`);
   };
 
@@ -26,7 +26,7 @@ const ExploreTypes = () => {
           All Types of Properties
         </h3> */}
         <SectionTitle
-          title=" Explore Properties Types"
+          title="Properties"
           subTitle="Exploring All Types of Properties"
         />
       </div>

@@ -35,7 +35,7 @@ const EditCommentField = ({ comment, refetch, setIsEditable }) => {
         defaultValue={comment.commentMsg}
         onChange={handleChange}
       />
-      <div className="mb-5 flex justify-between">
+      <div className="mb-5 flex justify-between md:w-[calc(100%-45px)]">
         <button
           onClick={() => setIsEditable(false)}
           className=" text-sm text-primary-light font-medium"

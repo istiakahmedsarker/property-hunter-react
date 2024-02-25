@@ -7,10 +7,12 @@ import 'froala-editor/css/froala_editor.pkgd.min.css';
 import FroalaEditor from 'react-froala-wysiwyg';
 import { useForm, Controller } from 'react-hook-form';
 import 'froala-editor/js/plugins.pkgd.min.js';
+import useAuth from '../../Hooks/useAuth';
 
 const BlogPost = () => {
   const inputRef = useRef(null);
   const [image, setImage] = useState(null);
+  const { userId } = useAuth();
 
   const handleOnChangeImage = (e) => {
     const imgFile = e.target.files[0];
@@ -97,6 +99,7 @@ const BlogPost = () => {
       heading: data.title,
       description: data.message,
       images: imageUrl || [''],
+      author: userId,
     };
 
     console.log(postData);
