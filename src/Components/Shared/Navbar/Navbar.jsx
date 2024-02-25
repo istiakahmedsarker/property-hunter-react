@@ -70,7 +70,7 @@ const Navbar = () => {
           Blogs
         </Link>
       </li>
-      {user && (
+      {/* {user && (
         <li className="nav-link relative">
           <Link
             className={` ${
@@ -83,7 +83,7 @@ const Navbar = () => {
             Dashboard
           </Link>
         </li>
-      )}
+      )} */}
       <li className="nav-link relative">
         <Link
           className={` ${
@@ -174,7 +174,7 @@ const Navbar = () => {
           Blogs
         </Link>
       </li>
-      {user && (
+      {/* {user && (
         <li className="nav-link relative">
           <Link
             className={` ${
@@ -187,7 +187,7 @@ const Navbar = () => {
             Dashboard
           </Link>
         </li>
-      )}
+      )} */}
       <li className="nav-link relative">
         <Link
           className={` ${

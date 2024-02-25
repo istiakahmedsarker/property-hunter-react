@@ -387,7 +387,7 @@ const AddProperties = () => {
                         >
                           Type
                         </option>
-                        <option value="home">Home</option>
+                        <option value="office">Office</option>
                         <option value="apartment">Apartment</option>
                         <option value="villa">Villa</option>
                       </select>
