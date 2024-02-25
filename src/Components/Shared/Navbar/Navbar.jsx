@@ -153,7 +153,7 @@ const Navbar = () => {
       <li className="nav-link relative">
         <Link
           className={` ${
-            pathname === '/properties'
+            pathname === '/aboutUs'
               ? 'text-[#076aa5] font-bold '
               : 'text-gray-700 dark:text-in-dark'
           } no-underline font-semibold text-lg`}
