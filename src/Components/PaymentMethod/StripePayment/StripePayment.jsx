@@ -11,6 +11,11 @@ const StripePayment = () => {
   const checkOutProperty = useLoaderData();
   console.log(checkOutProperty?.data?.data);
 
+
+  const propertyId = checkOutProperty?.data?.data?.properties?._id;
+  const ownerEmail = checkOutProperty?.data?.data?.properties?.ownerInformation?.email;
+  console.log(checkOutProperty?.data);
+
   const price = checkOutProperty?.data?.data?.buyer_property_price;
   const propertyPrice = price.toLocaleString("en-US", {
     style: "currency",
@@ -33,7 +38,7 @@ const StripePayment = () => {
     <div>
       <div className=" flex flex-col lg:flex-row-reverse justify-center mt-4 relative mx-auto ">
         <div className="bg-gray-100 p-6 rounded-md flex-1 z-0">
-          <h2 className="text-4xl font-extrabold text-[#eb6753]">
+          <h2 className="text-4xl font-extrabold text-primary-light">
             {totalPropertyPrice}
           </h2>
           <ul className="text-[#333] mt-10 space-y-6">
@@ -45,20 +50,23 @@ const StripePayment = () => {
               Service Charge{" "}
               <span className="ml-auto font-bold">{serviceCharge}</span>
             </li>
-            <li className="flex flex-wrap gap-4 text-base font-bold border-t-2 text-[#eb6753] pt-4">
+            <li className="flex flex-wrap gap-4 text-base font-bold border-t-2 text-primary-light pt-4">
               Total <span className="ml-auto">{totalPropertyPrice}</span>
             </li>
           </ul>
         </div>
         <div className="flex-1 z-40">
           <Elements stripe={stripePromise}>
-            <CheckoutForm totalPrice={totalPrice} />
+            <CheckoutForm 
+            totalPrice={totalPrice} 
+            propertyId={propertyId} 
+            ownerEmail={ownerEmail}/>
           </Elements>
         </div>
       </div>
       <div className="hidden lg:inline-block">
         <img
-          src="https://i.ibb.co/QFcVwmm/Payment-Information-rafiki.png"
+          src="https://i.ibb.co/g6qqty7/Payment-Information-rafiki-1.png"
           alt=""
           className=" max-w-[40%] opacity-25 absolute bottom-0 top-40 right-80  z-10"
         />
