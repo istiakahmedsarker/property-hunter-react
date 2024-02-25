@@ -60,7 +60,6 @@ const router = createBrowserRouter([
         path: '/properties',
         element: <Properties></Properties>,
       },
-      { path: '/createBlog', element: <BlogPost /> },
       {
         path: '/propertiesDetails/:id',
         element: <PropertiesDetails></PropertiesDetails>,
@@ -93,7 +92,6 @@ const router = createBrowserRouter([
             `https://property-hunter-server-roan.vercel.app/api/v1/announcement/${params.id}`
           ),
       },
-
       {
         path: '/profile',
         element: <Profile />,
@@ -153,6 +151,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/all-users',
         element: <UserManagement />,
+      },
+      {
+        path: '/dashboard/createBlog',
+        element: <BlogPost />,
       },
       {
         path: '/dashboard/property-request',
