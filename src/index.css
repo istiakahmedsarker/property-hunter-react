@@ -28,7 +28,7 @@ textarea {
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #eb6753;
+  background: #076aa5;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -38,5 +38,5 @@ textarea {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #e35944;
+  background: #1299e7;
 }

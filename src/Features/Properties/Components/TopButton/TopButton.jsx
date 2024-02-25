@@ -27,7 +27,7 @@ const TopButton = () => {
         <div className="fixed bottom-10 right-5">
           <button
             onClick={scrollToTop}
-            className="bg-[#eb6753] text-white px-4 py-4 rounded-t-2xl"
+            className="bg-[#076aa5] text-white px-4 py-4 rounded-t-2xl"
           >
             <IoArrowUpOutline />
           </button>
