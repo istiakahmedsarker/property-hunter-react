@@ -1,0 +1,16 @@
+@keyframes swing {
+    40% {
+        transform: rotate(20deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.animate-swing {
+    animation: swing 5s linear infinite;
+}
+

@@ -72,6 +72,19 @@ const SideNav = () => {
             {userRole === "moderator" ? (
               <>
                 <NavLink
+                  to={"/dashboard/moderator"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "py-[14px]  bg-[#076aa5] text-white px-6 "
+                      : "py-[14px]  px-6   dark:text-[#e4e6cd]"
+                  }
+                >
+                  <div className="flex items-center gap-2">
+                    <IoHomeSharp />
+                    Moderator Home
+                  </div>
+                </NavLink>
+                <NavLink
                   to={"/dashboard/property-request"}
                   className={({ isActive }) =>
                     isActive

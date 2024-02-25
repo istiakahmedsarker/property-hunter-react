@@ -6,33 +6,31 @@ import Blogs from '../Pages/Blogs/Blogs';
 import BlogDetails from '../Pages/BlogDetails/BlogDetails';
 // import Properties from '../Pages/Properties/Properties';
 // import PropertiesDetails from '../Components/PropertiesDetails/PropertiesDetails';
-import Register from '../Pages/Register/Register';
-import Dashboard from '../Layout/Dashboard';
-import HomeDashboard from '../Pages/Dashboard/HomeDashboard/HomeDashboard';
-import AddProperties from '../Pages/AddProperties/AddProperties';
-import AllProperties from '../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties';
-import BlogPost from '../Features/BlogPost/BlogPost';
-import Announcement from '../Pages/Dashboard/Announcement/Announcement';
-import Profile from '../Pages/Profile/Profile';
-import UserManagement from '../Pages/Dashboard/Admin/Pages/UserManagement';
-import PaymentHistory from '../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory';
-import StripePayment from '../Components/PaymentMethod/StripePayment/StripePayment';
-import FavoriteProperty from '../Components/FavoriteProperty/FavoriteProperty';
-import Favourites from '../Pages/Dashboard/User/Pages/Favourites/Favourites';
-import PropertyStatus from '../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus';
-import MakeAnnouncement from '../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement';
-import AdminHome from '../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome';
-import PropertyRequest from '../Pages/Dashboard/Moderator/Pages/PropertyRequest/PropertyRequest';
-import ManagePropertyRequest from '../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest';
+import Register from "../Pages/Register/Register";
+import Dashboard from "../Layout/Dashboard";
+import HomeDashboard from "../Pages/Dashboard/HomeDashboard/HomeDashboard";
+import AddProperties from "../Pages/AddProperties/AddProperties";
+import AllProperties from "../Pages/Dashboard/Moderator/Pages/All Properties/AllProperties";
+import BlogPost from "../Features/BlogPost/BlogPost";
+import Announcement from "../Pages/Dashboard/Announcement/Announcement";
+import Profile from "../Pages/Profile/Profile";
+import UserManagement from "../Pages/Dashboard/Admin/Pages/UserManagement";
+import PaymentHistory from "../Pages/Dashboard/Member/Pages/Payment History/PaymentHistory";
+import StripePayment from "../Components/PaymentMethod/StripePayment/StripePayment";
+import FavoriteProperty from "../Components/FavoriteProperty/FavoriteProperty";
+import PropertyStatus from "../Pages/Dashboard/User/Pages/PropertyStatus/PropertyStatus";
+import MakeAnnouncement from "../Pages/Dashboard/Moderator/Pages/MakeAnnouncement/MakeAnnouncement";
+import AdminHome from "../Pages/Dashboard/Admin/Pages/AdminHome/AdminHome";
+import PropertyRequest from "../Pages/Dashboard/Moderator/Pages/PropertyRequest/PropertyRequest";
+import ManagePropertyRequest from "../Pages/Dashboard/Admin/Pages/ManagePropertyRequest/ManagePropertyRequest";
 // import BlogDetails from '../Pages/BlogDetails/BlogDetails';
-import ListingSummary from '../Pages/Dashboard/Admin/Pages/Listing Summary/ListingSummary';
-import Properties from '../Features/Properties/Properties';
-import PropertiesDetails from '../Features/PropertiesDetails/PropertiesDetails';
-import LiveChat from '../Features/LiveChat/LiveChat/LiveChat';
-import { ThemeProvider } from '../Providers/ThemeContext';
-import AudioVideoCall from '../Features/AudioVideoCall/AudioVideoCall';
-import NotificationDetails from '../Components/Notifications/NotificationDetails/NotificationDetails';
-import AboutUs from '../Features/AboutUs/AboutUs';
+import Properties from "../Features/Properties/Properties";
+import PropertiesDetails from "../Features/PropertiesDetails/PropertiesDetails";
+import LiveChat from "../Features/LiveChat/LiveChat/LiveChat";
+import { ThemeProvider } from "../Providers/ThemeContext";
+import AudioVideoCall from "../Features/AudioVideoCall/AudioVideoCall";
+import NotificationDetails from "../Components/Notifications/NotificationDetails/NotificationDetails";
+import ModeratorHome from "../Pages/Dashboard/Moderator/Pages/ModeratorHome/ModeratorHome";
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -166,8 +164,8 @@ const router = createBrowserRouter([
       },
       //? Admin only routes
       {
-        path: '/dashboard/listing-summary',
-        element: <ListingSummary />,
+        path: "/dashboard/moderator",
+        element: <ModeratorHome />,
       },
     ],
   },

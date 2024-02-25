@@ -43,10 +43,10 @@ const PropertiesStatistics = ({apartment, villa, office, home}) => {
   const cellPadding = 360 / data.length * 0.05;
   return (
     
-      <div className="h-[350px] w-[500px]">
+      <div className="w-full mx-auto h-[350px] md:w-[500px]">
         <ResponsiveContainer >
           <PieChart
-            className="rounded-xl p-6 bg-white"
+            className="rounded-xl lg:p-6 bg-white"
             
           >
             <Pie
