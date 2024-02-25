@@ -13,9 +13,6 @@
   width: 7px;
 }
 
-textarea {
-  overflow: hidden; /* Hide the scrollbar */
-}
 /* Track */
 /* box-shadow: inset 3px 3px 3px #eb6753; */
 ::-webkit-scrollbar-track {

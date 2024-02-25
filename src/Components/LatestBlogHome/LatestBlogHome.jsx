@@ -37,8 +37,8 @@ const LatestBlogHome = () => {
           Take a Moment to Read This
         </h3> */}
         <SectionTitle
-          title="Our latest Blogs"
-          subTitle=" Take a Moment to Read our latest Blogs"
+          title="Latest Blogs"
+          subTitle="Take a Moment to Read our latest Blogs"
         />
       </div>
 
@@ -71,11 +71,11 @@ const LatestBlogHome = () => {
               slidesPerView: 3,
             },
           }}
-          onInit={swiper => {
+          onInit={(swiper) => {
             swiper.params.slidesPerView = getSlidesPerView();
             swiper.update();
           }}
-          onResize={swiper => {
+          onResize={(swiper) => {
             swiper.params.slidesPerView = getSlidesPerView();
             swiper.update();
           }}
