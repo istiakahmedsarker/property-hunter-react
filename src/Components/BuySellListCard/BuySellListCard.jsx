@@ -15,8 +15,8 @@ const BuySellListCard = () => {
           Premium Real Estate service to help you buy your dream property
         </h3> */}
         <SectionTitle
-          title=" Real Estate service"
-          subTitle="Premium Real Estate service "
+          title="Services"
+          subTitle="Premium Real Estate Service "
         />
       </div>
       <div className="lg:relative mt-10">
