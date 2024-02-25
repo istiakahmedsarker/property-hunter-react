@@ -120,7 +120,7 @@ const BlogPost = () => {
   };
 
   return (
-    <div className="mt-16 max-w-7xl xl:mx-auto mx-4">
+    <div className="mt-16 max-w-7xl xl:mx-auto px-6">
       <Toaster />
       <h3 className="text-4xl dark:text-cyan-50 font-bold mb-5 md:mb-12 font-josep ">
         Write a blog
@@ -128,7 +128,7 @@ const BlogPost = () => {
 
       <form onSubmit={handleSubmit(onSubmit)} className="w-full   mb-10 ">
         <div className="flex md:flex-row flex-col gap-7 lg:gap-10">
-          <div className="extraOutline bg-white  md:w-[40%] lg:w-[35%] xl:w-[30%] h-[50vh] lg:h-[60vh] sm:h-[60vh] rounded-md">
+          <div className="extraOutline bg-white  md:w-[40%] lg:w-[45%] xl:w-[40%] h-[50vh] lg:h-[60vh] sm:h-[60vh] rounded-md">
             <div
               onClick={handleImage}
               className="file_upload relative h-full rounded-lg"
