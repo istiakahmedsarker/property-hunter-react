@@ -39,7 +39,7 @@ const AboutContact = () => {
               </h3>
             </div>
             <Link to="/#contact-us">
-              <button className="text-animation py-3 px-6 lg:px-8 rounded-sm  transition-bg duration-300 ease-in-out  text-white hover:bg-[#0e87cd] hover:drop-shadow-xl bg-primary-light">
+              <button className="text-animation rounded-full py-3 px-6 lg:px-8 transition-bg duration-300 ease-in-out  text-white hover:bg-[#0e87cd] hover:drop-shadow-xl bg-primary-light">
                 Send Email
               </button>
             </Link>

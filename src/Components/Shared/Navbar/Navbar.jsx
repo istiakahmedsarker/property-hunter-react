@@ -333,7 +333,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex={0}
-                className="mt-3 z-[9999] shadow dropdown-content px-8 py-8 text-xl bg-[#fafdf9] rounded-box w-[250px] max-w-[300px] flex flex-col items-center justify-center gap-2"
+                className="mt-3 z-[9999] shadow dropdown-content px-8 py-8 text-xl bg-[#fafdf9] dark:bg-primary-dark rounded-box w-[250px] max-w-[300px] flex flex-col items-center justify-center gap-2"
               >
                 <li className="flex items-center justify-center">
                   <div className="w-20 flex items-center justify-center h-20 border-2 border-[#076aa5] hover:border-gray-800 rounded-full">
@@ -352,8 +352,8 @@ const Navbar = () => {
                 <Link
                   className={` ${
                     pathname === '/dashboard'
-                      ? 'text-[#eb6753] font-bold '
-                      : 'text-gray-700 hover:text-[#eb6753] transition-all duration-300 ease-in-out'
+                      ? 'text-[#076aa5] font-bold '
+                      : 'text-in-dark hover:text-[#076aa5] transition-all duration-300 ease-in-out'
                   } no-underline font-semibold text-lg lg:hover:bg-none  lg:p-0 w-full inline-block rounded-[10px]`}
                   to={'/dashboard'}
                 >
@@ -362,8 +362,8 @@ const Navbar = () => {
                 <Link
                   className={` ${
                     pathname === '/profile'
-                      ? 'text-[#eb6753] font-bold '
-                      : 'text-gray-700 hover:text-[#eb6753] transition-all duration-300 ease-in-out'
+                      ? 'text-[#076aa5] font-bold '
+                      : 'text-in-dark hover:text-[#076aa5] transition-all duration-300 ease-in-out'
                   } no-underline font-semibold text-lg lg:hover:bg-none  lg:p-0 w-full inline-block rounded-[10px]`}
                   to={'/profile'}
                 >
@@ -372,7 +372,7 @@ const Navbar = () => {
 
                 <div className="h-[1px] bg-gray-400 w-full"></div>
                 <li onClick={handleLogOut} className="w-full">
-                  <a className=" flex items-center gap-2  w-full text-lg font-medium cursor-pointer hover:text-[#eb6753] transition-all duration-300 ease-in-out">
+                  <a className=" flex items-center gap-2 text-in-dark w-full text-lg font-medium cursor-pointer hover:text-[#076aa5] transition-all duration-300 ease-in-out">
                     Logout
                     <span className="text-[#076aa5]">
                       <RiLogoutBoxLine />
