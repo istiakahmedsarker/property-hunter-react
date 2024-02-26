@@ -85,12 +85,12 @@ const Register = () => {
               <div className="flex flex-col gap-3">
                 <label className="font-bold">Name</label>
                 <div className="relative">
-                  <CiUser className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                  <CiUser className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                   <input
                     name="name"
                     type="text"
                     placeholder="Name"
-                    className="input input-bordered w-full pl-8 bg-white"
+                    className="input input-bordered w-full pl-8 bg-white dark:text-black"
                     required
                   />
                 </div>
@@ -101,19 +101,19 @@ const Register = () => {
                   <input
                     name="image"
                     type="file"
-                    className="file-input file-input-bordered file:bg-primary-light file:text-white w-full bg-white"
+                    className="file-input file-input-bordered file:bg-primary-light file:text-white w-full bg-white dark:text-black"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-3">
                 <label className="font-bold">Email</label>
                 <div className="relative">
-                  <AiOutlineMail className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                  <AiOutlineMail className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                   <input
                     name="email"
                     type="text"
                     placeholder="Email"
-                    className="input input-bordered w-full pl-8 bg-white"
+                    className="input input-bordered w-full pl-8 bg-white dark:text-black"
                     required
                   />
                 </div>
@@ -121,12 +121,12 @@ const Register = () => {
               <div className="flex flex-col gap-3">
                 <label className="font-bold">Password</label>
                 <div className="relative">
-                  <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                  <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                   <input
                     name="password"
                     type={passShow ? "text" : "password"}
                     placeholder="Password"
-                    className="input input-bordered w-full pl-8 bg-white"
+                    className="input input-bordered w-full pl-8 bg-white dark:text-black"
                     required
                   />
                   <div
@@ -152,7 +152,7 @@ const Register = () => {
                   Terms and conditions
                 </p>
               </div>
-              {checked ? (
+              {/* {checked ? (
                 <button
                   type="submit"
                   className="btn btn-success text-white bg-primary-light hover:bg-primary-light border-none w-full mt-8 hover:opacity-90"
@@ -167,7 +167,15 @@ const Register = () => {
                 >
                   Register
                 </button>
-              )}
+              )} */}
+              <button
+                type="submit"
+                className={`btn btn-success text-white bg-primary-light hover:bg-primary-light border-none w-full mt-8 hover:opacity-90 
+  dark:text-gray-300 dark:hover:text-white dark:bg-primary-light dark:hover:bg-[#1299e7] `}
+                disabled={checked ? false : true}
+              >
+                Register
+              </button>
             </div>
           </form>
           <div className="text-center mt-6">

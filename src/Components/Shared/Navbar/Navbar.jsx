@@ -1,4 +1,4 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import useAuth from '../../../Hooks/useAuth';
 import { RiLogoutBoxLine } from 'react-icons/ri';
@@ -9,7 +9,6 @@ import { RxCross1 } from 'react-icons/rx';
 import useTheme from '../../../Providers/ThemeContext';
 import { HiOutlineMenuAlt1 } from 'react-icons/hi';
 import Notifications from '../../Notifications/Notifications/Notifications';
-import { FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -239,7 +238,7 @@ const Navbar = () => {
               className="btn text-2xl font-bold btn-ghost lg:hidden"
             >
               <p className="">
-                <HiOutlineMenuAlt1 className="text-gray-900 dark:text-white" />{' '}
+                <HiOutlineMenuAlt1 className="text-gray-900 dark:text-in-dark" />{' '}
               </p>
             </div>
 
@@ -353,7 +352,7 @@ const Navbar = () => {
                   className={` ${
                     pathname === '/dashboard'
                       ? 'text-[#076aa5] font-bold '
-                      : 'text-in-dark hover:text-[#076aa5] transition-all duration-300 ease-in-out'
+                      : 'dark:text-in-dark hover:text-[#076aa5] dark:hover:text-[#076aa5]  transition-all duration-300 ease-in-out'
                   } no-underline font-semibold text-lg lg:hover:bg-none  lg:p-0 w-full inline-block rounded-[10px]`}
                   to={'/dashboard'}
                 >
@@ -363,7 +362,7 @@ const Navbar = () => {
                   className={` ${
                     pathname === '/profile'
                       ? 'text-[#076aa5] font-bold '
-                      : 'text-in-dark hover:text-[#076aa5] transition-all duration-300 ease-in-out'
+                      : 'dark:text-in-dark hover:text-[#076aa5] dark:hover:text-[#076aa5]  transition-all duration-300 ease-in-out'
                   } no-underline font-semibold text-lg lg:hover:bg-none  lg:p-0 w-full inline-block rounded-[10px]`}
                   to={'/profile'}
                 >
@@ -372,7 +371,7 @@ const Navbar = () => {
 
                 <div className="h-[1px] bg-gray-400 w-full"></div>
                 <li onClick={handleLogOut} className="w-full">
-                  <a className=" flex items-center gap-2 text-in-dark w-full text-lg font-medium cursor-pointer hover:text-[#076aa5] transition-all duration-300 ease-in-out">
+                  <a className=" flex items-center gap-2 dark:text-in-dark w-full text-lg font-medium cursor-pointer dark:hover:text-[#076aa5]  hover:text-[#076aa5] transition-all duration-300 ease-in-out">
                     Logout
                     <span className="text-[#076aa5]">
                       <RiLogoutBoxLine />
@@ -386,7 +385,7 @@ const Navbar = () => {
           {!user && (
             <Link
               to="/login"
-              className="px-7 py-3 lg:px-5 xl:px-7 border-2 border-[#076aa5] md:border-2 md:border-[#076aa5] lg:hover:border-[#1d1d1d] lg:hover:text-white lg:hover:border-none lg:border-none rounded-md text-sm md:text-lg lg:text-[16px] xl:text-lg hover:bg-[#076aa5]  md:hover:bg-[#1d1d1d] font-medium  md:bg-none lg:py-2 xl:py-3 text-gray-700 dark:hover:bg-white dark:hover:text-gray-800 hover:text-white dark:text-white"
+              className="px-7 py-3 lg:px-5 xl:px-7 border-2 border-[#076aa5] md:border-2 md:border-[#076aa5] lg:hover:border-[#1d1d1d] lg:hover:text-white lg:hover:border-none lg:border-none rounded-md text-sm md:text-lg lg:text-[16px] xl:text-lg hover:bg-[#076aa5]  md:hover:bg-[#1d1d1d] font-medium  md:bg-none lg:py-2 xl:py-3 text-gray-700 dark:hover:bg-white dark:hover:text-gray-800 hover:text-white dark:text-in-dark"
             >
               Login/Register
             </Link>

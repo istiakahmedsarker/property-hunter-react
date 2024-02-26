@@ -122,7 +122,7 @@ const FavoriteProperty = () => {
         </div>
         <div className="mt-10">
           <Link to="/properties">
-          <button className="btn btn-sm btn-outline border-primary-light hover:bg-primary-light">Add Favorite</button>
+          <button className="btn btn-sm btn-outline dark:text-in-dark border-primary-light hover:bg-primary-light">Add Favorite</button>
           </Link>
         </div>
       </div>

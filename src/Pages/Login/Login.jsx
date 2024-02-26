@@ -35,12 +35,12 @@ const Login = () => {
             <div className="flex flex-col gap-3">
               <label className="font-bold">Email</label>
               <div className="relative">
-                <AiOutlineMail className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                <AiOutlineMail className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                 <input
                   name="email"
                   type="text"
                   placeholder="Email"
-                  className="input input-bordered w-full pl-8 bg-white"
+                  className="input input-bordered w-full pl-8 bg-white dark:text-black "
                   required
                 />
               </div>
@@ -48,12 +48,12 @@ const Login = () => {
             <div className="flex flex-col gap-3">
               <label className="font-bold">Password</label>
               <div className="relative">
-                <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                 <input
                   name="password"
                   type={passShow ? "text" : "password"}
                   placeholder="Password"
-                  className="input input-bordered w-full pl-8 bg-white"
+                  className="input input-bordered w-full pl-8 bg-white dark:text-black"
                   required
                 />
                 <div

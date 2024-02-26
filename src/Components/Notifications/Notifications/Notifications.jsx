@@ -28,7 +28,7 @@ const Notifications = () => {
   return (
     <div>
       <h3
-        className="flex cursor-pointer items-start"
+        className="flex cursor-pointer items-start dark:text-in-dark"
         onClick={handleModalOpen}
       >
         <IoNotificationsSharp className="text-2xl" />
@@ -39,7 +39,7 @@ const Notifications = () => {
       {/* notification Modal */}
       <div>
         <dialog id="my_modal_3" className="modal" open={modalOpen}>
-          <div className="modal-box bg-[#19181e] text-white">
+          <div className="modal-box bg-[#19181e] dark:text-in-dark">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
               <button
