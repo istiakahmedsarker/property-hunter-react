@@ -181,20 +181,6 @@ const SideNav = () => {
             )}
 
             <NavLink
-              to={'/dashboard/listing-summary'}
-              className={({ isActive }) =>
-                isActive
-                  ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
-                  : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
-              }
-            >
-              <div className="flex items-center gap-2">
-                <MdList />
-                Listing Summary
-              </div>
-            </NavLink>
-
-            <NavLink
               to={'/dashboard/announcement'}
               className={({ isActive }) =>
                 isActive

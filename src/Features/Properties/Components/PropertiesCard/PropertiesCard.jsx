@@ -207,9 +207,9 @@ const PropertiesCard = ({ card }) => {
               <Link to={`/propertiesDetails/${card._id}`} target="_blank">
                 <button
                   id="overlay-btn"
-                  className="flex items-center gap-4  z-40 opacity-100 border-gray-500 dark:border-gray-300 border-2 hover:border-primary-light text-white rounded-[100px] p-[1px]"
+                  className="flex items-center gap-4  z-40  opacity-100 border-gray-500 dark:border-gray-300 border-2 hover:border-primary-light text-white dark:text-in-dark rounded-[100px] p-[1px]"
                 >
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center hover:bg-primary-light text-gray-700 hover:text-white dark:text-gray-400 dark:hover:text-white dark:hover:bg-primary-light">
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center hover:bg-primary-light text-black dark:text-white hover:text-white dark:hover:text-white dark:hover:bg-primary-light">
                     <FaArrowRight id="arrow" className="" />
                   </div>
                 </button>

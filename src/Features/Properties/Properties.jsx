@@ -220,7 +220,7 @@ const Properties = () => {
                   <div key={index}>
                     {isGrid ? (
                       // skeleton used in list
-                      <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white grid lg:grid-cols-2 grid-cols-1 my-6">
+                      <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white dark:bg-card-dark grid lg:grid-cols-2 grid-cols-1 my-6">
                         <div className="w-full flex items-center justify-center">
                           {/* Swiper Skeleton */}
                           <div className="w-11/12 mx-auto h-52 bg-gray-300 rounded-lg">
@@ -261,7 +261,7 @@ const Properties = () => {
                       </div>
                     ) : (
                       // skeleton used in grid
-                      <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white animate-pulse">
+                      <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white dark:bg-card-dark animate-pulse">
                         <div className="w-full">
                           {/* Skeleton loader for slider */}
                           <div className="h-56 w-full bg-gray-300 rounded-lg relative"></div>

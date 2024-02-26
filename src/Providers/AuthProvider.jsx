@@ -63,10 +63,11 @@ const AuthProvider = ({ children }) => {
           withCredentials: true,
         });
 
-        // console.log(res.data.user.role);
         // console.log(res.data.user._id);
         setUserRole(res.data.user.role);
         setUserId(res.data.user._id);
+
+        localStorage.setItem('user:details', JSON.stringify(res?.data.user));
       } else {
         // remove jwt token
         await axios.post('/jwt/remove_token', loggedUser, {
@@ -93,7 +94,9 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

@@ -11,7 +11,7 @@ const useFavorite = () => {
     queryFn: async () => {
       try {
         const response = await instance.get(
-          `/property-favorite?usermail=${user.email}`
+          `/property-favorite?usermail=${user?.email}`
         );
         return response.data;
       } catch (error) {

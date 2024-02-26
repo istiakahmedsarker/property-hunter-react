@@ -69,10 +69,10 @@ const FavoriteProperty = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="whitespace-nowrap">
+          <tbody className="whitespace-nowrap dark:bg-card-dark dark:text-in-dark">
             {favorite && Array.isArray(favorite?.data) ? (
               favorite.data.map((item) => (
-                <tr key={item._id} className="even:bg-blue-50">
+                <tr key={item._id} className="even:bg-blue-50 dark:bg-card-dark dark:text-in-dark">
                   <td className="pl-6 w-8">
                   </td>
                   <td className="px-6 py-4 text-sm"></td>
@@ -84,7 +84,7 @@ const FavoriteProperty = () => {
                         className="w-16 h-16 rounded-md shrink-0"
                       />
                       <div className="ml-2">
-                        <p className="text-sm text-black">
+                        <p className="text-sm text-black dark:text-in-dark">
                           {item?.property_title || ""}
                         </p>
                       </div>

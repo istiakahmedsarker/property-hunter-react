@@ -31,6 +31,7 @@ import AudioVideoCall from "../Features/AudioVideoCall/AudioVideoCall";
 import NotificationDetails from "../Components/Notifications/NotificationDetails/NotificationDetails";
 import ModeratorHome from "../Pages/Dashboard/Moderator/Pages/ModeratorHome/ModeratorHome";
 import AboutUs from "../Features/AboutUs/AboutUs";
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Main></Main>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',

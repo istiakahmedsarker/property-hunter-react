@@ -51,7 +51,7 @@ const BlogDetails = () => {
 
       <img
         className="rounded-md w-full h-[50vh] sm:h-[80vh] object-cover mt-7"
-        src={images[0]}
+        src={images}
         alt="blog details image"
       />
 
