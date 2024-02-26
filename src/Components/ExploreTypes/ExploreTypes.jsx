@@ -38,15 +38,19 @@ const ExploreTypes = () => {
           onClick={() => handleTypeClick('house')}
           className="my-5"
         >
-          <div className="dark:text-gray-700 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg">
-            <div className="flex justify-center items-center">
-              <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
+          <div className="dark:bg-card-dark dark:text-gray-400 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg">
+            <div className="flex justify-center items-center ">
+              <h3 className="text-3xl w-16 h-16 px-3 py-3 rounded-full text-black bg-white flex justify-center items-center">
                 <MdOutlineHome />
               </h3>
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
-              <h3 className="text-xl font-bold">House</h3>
-              <h3>{}8 Properties</h3>
+              <h3 className="text-xl font-bold ">
+                House
+              </h3>
+              <h3 className="">
+                8 Properties
+              </h3>
             </div>
           </div>
         </Link>
@@ -55,15 +59,15 @@ const ExploreTypes = () => {
           onClick={() => handleTypeClick('apartment')}
           className="my-5"
         >
-          <div className="dark:text-gray-700 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg shadow-drop">
+          <div className="dark:bg-card-dark dark:text-gray-400 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out shadow-lg">
             <div className="flex justify-center items-center">
-              <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
+              <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black bg-white flex justify-center items-center">
                 <MdApartment />
               </h3>
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Apartment</h3>
-              <h3>{}8 Properties</h3>
+              <h3>{ }8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -73,7 +77,7 @@ const ExploreTypes = () => {
           onClick={() => handleTypeClick('villa')}
           className="my-5"
         >
-          <div className="dark:text-gray-700 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg shadow-drop">
+          <div className="dark:bg-card-dark dark:text-gray-400 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg">
             <div className="flex justify-center items-center">
               <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
                 <GiVillage />
@@ -81,7 +85,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Villa</h3>
-              <h3>{}8 Properties</h3>
+              <h3>{ }8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -91,15 +95,15 @@ const ExploreTypes = () => {
           onClick={() => handleTypeClick('office')}
           className="my-5"
         >
-          <div className="dark:text-gray-700 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg shadow-drop">
+          <div className="dark:bg-card-dark dark:text-gray-400 dark:hover:text-in-dark px-6 py-7 w-11/12 mx-auto bg-gray-100 rounded-2xl hover:bg-gray-900 transition-all duration-500 ease-in-out hover:text-white shadow-lg">
             <div className="flex justify-center items-center">
-              <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black   bg-white flex justify-center items-center">
+              <h3 className=" text-3xl w-16 h-16  px-3 py-3 rounded-full text-black  bg-white flex justify-center items-center">
                 <HiOutlineBuildingOffice2 />
               </h3>
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Office</h3>
-              <h3>{}8 Properties</h3>
+              <h3>{ }8 Properties</h3>
             </div>
           </div>
         </Link>
