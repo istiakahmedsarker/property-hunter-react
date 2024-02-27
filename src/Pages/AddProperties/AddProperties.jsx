@@ -1,16 +1,17 @@
-import React, { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import { FaUpload } from "react-icons/fa";
-import { GrFormPrevious } from "react-icons/gr";
-import Container from "../../Components/Container/Container";
-import toast from "react-hot-toast";
-import imagesUpload from "./UploadImage";
-import axios from "axios";
-import { RxCrossCircled } from "react-icons/rx";
+import React, { useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { FaUpload } from 'react-icons/fa';
+import { GrFormPrevious } from 'react-icons/gr';
+import Container from '../../Components/Container/Container';
+import toast from 'react-hot-toast';
+import imagesUpload from './UploadImage';
+import axios from 'axios';
+import { RxCrossCircled } from 'react-icons/rx';
+import PageTitle from '../../Features/PageTitle/PageTitle';
 
 const AddProperties = () => {
   const [formStep, setFormStep] = useState(0);
-  const [propertyType, setPropertyType] = useState("");
+  const [propertyType, setPropertyType] = useState('');
   // const [imagePreview, setImagePreview] = useState('');
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
@@ -28,27 +29,35 @@ const AddProperties = () => {
   //? Job preference
   const [selectedOptions, setSelectedOptions] = useState([]);
 
-  const handleSelectChange = (e) => {
-    const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
-    setSelectedOptions((prevSelected) => {
+  const handleSelectChange = e => {
+    const selectedValues = Array.from(
+      e.target.selectedOptions,
+      option => option.value
+    );
+    setSelectedOptions(prevSelected => {
       // Merge newly selected options with the existing ones
-      const mergedOptions = [...prevSelected, ...selectedValues.filter(option => !prevSelected.includes(option))];
+      const mergedOptions = [
+        ...prevSelected,
+        ...selectedValues.filter(option => !prevSelected.includes(option)),
+      ];
       return mergedOptions;
     });
   };
 
-  const handleRemoveOption = (option) => {
-    setSelectedOptions((prevSelected) => prevSelected.filter((selectedOption) => selectedOption !== option));
+  const handleRemoveOption = option => {
+    setSelectedOptions(prevSelected =>
+      prevSelected.filter(selectedOption => selectedOption !== option)
+    );
   };
 
   //? Form steps
-  const completeFormStep = (event) => {
+  const completeFormStep = event => {
     event.preventDefault();
-    setFormStep((curr) => curr + 1);
+    setFormStep(curr => curr + 1);
   };
 
   const goToPreviousStep = () => {
-    setFormStep((curr) => curr - 1);
+    setFormStep(curr => curr - 1);
   };
 
   //? Form Buttons
@@ -59,7 +68,7 @@ const AddProperties = () => {
       return (
         <div className="form-control mt-6">
           <button
-            type={`${formStep === 4 && "submit"}`}
+            type={`${formStep === 4 && 'submit'}`}
             className="btn bg-primary-light text-white border-none"
           >
             Add Property
@@ -70,7 +79,7 @@ const AddProperties = () => {
       return (
         <div className="form-control mt-6">
           <button
-            onClick={(event) => completeFormStep(event)}
+            onClick={event => completeFormStep(event)}
             type="button"
             className="btn bg-primary-light text-white border-none"
           >
@@ -87,9 +96,9 @@ const AddProperties = () => {
     watch,
 
     formState: { errors, isValid },
-  } = useForm({ mode: "all" });
+  } = useForm({ mode: 'all' });
 
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     // console.log(data)
     //? Property description
     const propertyTitle = data.propertyTitle;
@@ -118,8 +127,8 @@ const AddProperties = () => {
     const apartmentNumber = data.apartmentNumber;
     const price = data.price;
     const yearBuilt = data.yearBuilt;
-    const easement = data.easement.split(",");
-    const utilities = data.utilities.split(",");
+    const easement = data.easement.split(',');
+    const utilities = data.utilities.split(',');
 
     //? Additional information
     const parkingIncluded = data.parking;
@@ -164,14 +173,14 @@ const AddProperties = () => {
       !utilities ||
       !easement
     ) {
-      return toast.error("Please fill out the form correctly.");
+      return toast.error('Please fill out the form correctly.');
     }
 
     //  //? Validation if property is apartment
     //? Validation if property is apartment
-    if (propertyTYPE === "apartment") {
+    if (propertyTYPE === 'apartment') {
       if (!floorNumber || !bedroom || !blockName || !apartmentNumber) {
-        toast.error("Please fill out the apartment details correctly.");
+        toast.error('Please fill out the apartment details correctly.');
         return;
       }
     }
@@ -180,7 +189,6 @@ const AddProperties = () => {
       const images = await imagesUpload(imageFiles);
 
       if (images.length > 0) {
-
         //? Save to database.
 
         const property = {
@@ -214,17 +222,17 @@ const AddProperties = () => {
             email: email,
             phone: parseInt(phone),
           },
-          annualIncome : parseInt(annualIncome),
+          annualIncome: parseInt(annualIncome),
           savings: parseInt(savings),
-          jobPreference : jobPreference,
+          jobPreference: jobPreference,
         };
         const { data } = await axios.post(
-          "https://property-hunter-server-roan.vercel.app/api/v1/properties/",
+          'https://property-hunter-server-roan.vercel.app/api/v1/properties/',
           property
         );
         // console.log(data);
-        if (data.status === "success") {
-          toast.success("Successfully added the property.");
+        if (data.status === 'success') {
+          toast.success('Successfully added the property.');
           completeFormStep(event);
         }
       }
@@ -235,7 +243,7 @@ const AddProperties = () => {
   };
 
   //? Handle the images separately
-  const handleFileChange = (e) => {
+  const handleFileChange = e => {
     const file = e.target.files[0];
 
     if (file) {
@@ -248,11 +256,11 @@ const AddProperties = () => {
         //? Get the image files.
         let newFiles;
 
-        if (property === "propertyImg") {
+        if (property === 'propertyImg') {
           newFiles = [file, ...imageFiles.slice(1, 3)];
-        } else if (property === "propertyImg1") {
+        } else if (property === 'propertyImg1') {
           newFiles = [imageFiles[0], file, imageFiles[2]];
-        } else if (property === "propertyImg2") {
+        } else if (property === 'propertyImg2') {
           newFiles = [...imageFiles.slice(0, 2), file];
         } else {
           newFiles = imageFiles;
@@ -263,13 +271,13 @@ const AddProperties = () => {
         //? Make the image previews.
         let newPreviews;
 
-        if (property === "propertyImg") {
+        if (property === 'propertyImg') {
           // Replace the first image only
           newPreviews = [imagePreview, ...imagePreviews.slice(1, 3)];
-        } else if (property === "propertyImg1") {
+        } else if (property === 'propertyImg1') {
           // Replace the second image only
           newPreviews = [imagePreviews[0], imagePreview, imagePreviews[2]];
-        } else if (property === "propertyImg2") {
+        } else if (property === 'propertyImg2') {
           // Replace the third image only
           newPreviews = [...imagePreviews.slice(0, 2), imagePreview];
         } else {
@@ -286,13 +294,14 @@ const AddProperties = () => {
   const formRef = useRef(null);
 
   //? Handle the property type
-  const handlePropertyType = (e) => {
+  const handlePropertyType = e => {
     const propertyType = e.target.value;
     setPropertyType(propertyType);
   };
 
   return (
     <div className="relative min-h-screen flex items-center justify-center  bg-[#f6fff5] bg-[url('https://i.ibb.co/6tGzzDv/frames-for-your-heart-m-R1-CIDdu-GLc-unsplash.jpg')] bg-cover">
+      <PageTitle title="Property Hunter || Add property"></PageTitle>
       <div className="h-full w-full absolute z-0 opacity-60 bg-[#05133d] dark:opacity-80 dark:bg-[#101345]"></div>
 
       <Container>
@@ -325,10 +334,10 @@ const AddProperties = () => {
           <div className="w-full">
             <div
               className={`h-2 rounded-xl bg-primary-light ${formStep === 6 &&
-                "w-full"}  ${formStep === 4 && "[75%]"}  ${formStep === 0 &&
-                "w-[15%]"} ${formStep === 1 && "w-[30%]"} ${formStep === 2 &&
-                "w-[45%]"} ${formStep === 3 && "w-[60%]"} ${formStep === 5 &&
-                "w-[90%]"}`}
+                'w-full'}  ${formStep === 4 && '[75%]'}  ${formStep === 0 &&
+                'w-[15%]'} ${formStep === 1 && 'w-[30%]'} ${formStep === 2 &&
+                'w-[45%]'} ${formStep === 3 && 'w-[60%]'} ${formStep === 5 &&
+                'w-[90%]'}`}
             ></div>
 
             <div className=" w-full h-full   relative rounded-xl z-10 ">
@@ -350,7 +359,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("propertyTitle", { required: true })}
+                        {...register('propertyTitle', { required: true })}
                         name="propertyTitle"
                         type="text"
                         placeholder="property title"
@@ -376,7 +385,7 @@ const AddProperties = () => {
                         required
                         name="propertyType"
                         id="type"
-                        value={propertyType || ""}
+                        value={propertyType || ''}
                         className="input border-gray-600 input-bordered"
                       >
                         <option
@@ -404,7 +413,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("name", { required: true })}
+                        {...register('name', { required: true })}
                         name="name"
                         type="text"
                         placeholder="name"
@@ -423,7 +432,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("email", { required: true })}
+                        {...register('email', { required: true })}
                         name="email"
                         type="email"
                         placeholder="email "
@@ -442,7 +451,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("phone", { required: true })}
+                        {...register('phone', { required: true })}
                         name="phone"
                         type="text"
                         placeholder="phone"
@@ -482,7 +491,7 @@ const AddProperties = () => {
                             ))}
                         </div>
                         <input
-                          {...register("propertyImg", { required: true })}
+                          {...register('propertyImg', { required: true })}
                           name="propertyImg"
                           type="file"
                           className="hidden rounded-xl"
@@ -502,7 +511,7 @@ const AddProperties = () => {
 
                         {errors.propertyImg && (
                           <span className="dark:text-in-dark">
-                            {" "}
+                            {' '}
                             This field is required
                           </span>
                         )}
@@ -515,7 +524,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("propertyImg1", { required: true })}
+                        {...register('propertyImg1', { required: true })}
                         name="propertyImg1"
                         type="file"
                         id="file2"
@@ -545,7 +554,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("propertyImg2", { required: true })}
+                        {...register('propertyImg2', { required: true })}
                         name="propertyImg2"
                         type="file"
                         id="file3"
@@ -583,7 +592,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("address", { required: true })}
+                        {...register('address', { required: true })}
                         name="address"
                         type="text"
                         placeholder="address"
@@ -604,7 +613,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("state", { required: true })}
+                        {...register('state', { required: true })}
                         name="state"
                         type="text"
                         placeholder="state"
@@ -625,7 +634,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("city", { required: true })}
+                        {...register('city', { required: true })}
                         name="city"
                         type="text"
                         placeholder="city"
@@ -645,7 +654,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("zipCode", { required: true })}
+                        {...register('zipCode', { required: true })}
                         name="zipCode"
                         type="text"
                         placeholder="zip code "
@@ -665,7 +674,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("neighborhood", { required: true })}
+                        {...register('neighborhood', { required: true })}
                         name="neighborhood"
                         type="text"
                         placeholder="neighborhood"
@@ -685,7 +694,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("latitude", { required: true })}
+                        {...register('latitude', { required: true })}
                         name="latitude"
                         type="text"
                         placeholder="latitude"
@@ -706,7 +715,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("longitude", { required: true })}
+                        {...register('longitude', { required: true })}
                         name="longitude"
                         type="text"
                         placeholder="longitude"
@@ -728,7 +737,7 @@ const AddProperties = () => {
                     <h1 className=" dark:text-in-dark text-2xl md:text-4xl text-black col-span-8 font-semibold">
                       Property Details
                     </h1>
-                    {propertyType === "apartment" && (
+                    {propertyType === 'apartment' && (
                       <>
                         <div className="form-control col-span-4 md:col-span-2">
                           <label className="label">
@@ -737,7 +746,7 @@ const AddProperties = () => {
                             </span>
                           </label>
                           <input
-                            {...register("floorNumber", { required: true })}
+                            {...register('floorNumber', { required: true })}
                             name="floorNumber"
                             type="text"
                             placeholder="floor number"
@@ -758,7 +767,7 @@ const AddProperties = () => {
                             </span>
                           </label>
                           <input
-                            {...register("rooms", { required: true })}
+                            {...register('rooms', { required: true })}
                             name="rooms"
                             type="text"
                             placeholder="rooms"
@@ -779,7 +788,7 @@ const AddProperties = () => {
                             </span>
                           </label>
                           <input
-                            {...register("apartmentNumber", { required: true })}
+                            {...register('apartmentNumber', { required: true })}
                             name="apartmentNumber"
                             type="text"
                             placeholder="apartment number"
@@ -799,7 +808,7 @@ const AddProperties = () => {
                             </span>
                           </label>
                           <input
-                            {...register("blockName", { required: true })}
+                            {...register('blockName', { required: true })}
                             name="blockName"
                             type="text"
                             placeholder="block name"
@@ -821,7 +830,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("bathroom", { required: true })}
+                        {...register('bathroom', { required: true })}
                         name="bathroom"
                         type="text"
                         placeholder="bathroom"
@@ -843,7 +852,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("squareFootage", { required: true })}
+                        {...register('squareFootage', { required: true })}
                         name="squareFootage"
                         type="text"
                         placeholder="square footage"
@@ -864,7 +873,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("price", { required: true })}
+                        {...register('price', { required: true })}
                         name="price"
                         type="text"
                         placeholder="price"
@@ -885,7 +894,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("yearBuilt", { required: true })}
+                        {...register('yearBuilt', { required: true })}
                         name="yearBuilt"
                         type="text"
                         placeholder="year built"
@@ -906,7 +915,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("easement", { required: true })}
+                        {...register('easement', { required: true })}
                         name="easement"
                         type="text"
                         placeholder="easement"
@@ -927,7 +936,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("utilities", { required: true })}
+                        {...register('utilities', { required: true })}
                         name="utilities"
                         type="text"
                         placeholder="utilities"
@@ -956,7 +965,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <select
-                        {...register("parking", { required: true })}
+                        {...register('parking', { required: true })}
                         name="parking"
                         id="parking"
                         className="input border-gray-600 input-bordered"
@@ -985,7 +994,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <input
-                        {...register("parkingSpace", { required: true })}
+                        {...register('parkingSpace', { required: true })}
                         name="parkingSpace"
                         type="number"
                         placeholder="parkingSpace"
@@ -1006,7 +1015,7 @@ const AddProperties = () => {
                         </span>
                       </label>
                       <select
-                        {...register("propertyStatus", { required: true })}
+                        {...register('propertyStatus', { required: true })}
                         name="propertyStatus"
                         id="propertyStatus"
                         className="input  border-gray-600 input-bordered"
@@ -1037,7 +1046,7 @@ const AddProperties = () => {
                       </label>
 
                       <textarea
-                        {...register("description", { required: true })}
+                        {...register('description', { required: true })}
                         name="description"
                         placeholder="description"
                         className="px-5 py-3 border-2 rounded-xl border-gray-400"
@@ -1075,7 +1084,6 @@ const AddProperties = () => {
                           onChange={handleAutoCheckboxChange}
                           className=" border-gray-600 "
                         />
-
                       </div>
                       <div className="flex">
                         <label className="label">
@@ -1089,13 +1097,11 @@ const AddProperties = () => {
                           onChange={handleManualCheckboxChange}
                           className=" border-gray-600"
                         />
-
-                      
                       </div>
                     </div>
                     {autoInput && (
                       <div className="grid grid-cols-6 gap-1 md:gap-4">
-                        {" "}
+                        {' '}
                         <div className="form-control col-span-6 md:col-span-2">
                           <label className="label">
                             <span className="label-text dark:text-in-dark">
@@ -1103,7 +1109,7 @@ const AddProperties = () => {
                             </span>
                           </label>
                           <input
-                            {...register("annualIncome", { required: true })}
+                            {...register('annualIncome', { required: true })}
                             name="annualIncome"
                             type="text"
                             placeholder="annual income"
@@ -1117,7 +1123,7 @@ const AddProperties = () => {
                             </span>
                           </label>
                           <input
-                            {...register("savings", { required: true })}
+                            {...register('savings', { required: true })}
                             name="savings"
                             type="text"
                             placeholder="savings"
@@ -1127,15 +1133,16 @@ const AddProperties = () => {
                         <div className="form-control col-span-6 md:col-span-2">
                           <label className="label">
                             <span className="label-text dark:text-in-dark">
-                             Job Preferences
+                              Job Preferences
                             </span>
                           </label>
                           <select
                             multiple
-                            {...register("jobPreference", { required: true })}
+                            {...register('jobPreference', { required: true })}
                             name="jobPreference"
                             id="jobPreference"
-                            value={selectedOptions} onChange={handleSelectChange}
+                            value={selectedOptions}
+                            onChange={handleSelectChange}
                             className="input  border-gray-600 input-bordered"
                           >
                             <option
@@ -1177,20 +1184,24 @@ const AddProperties = () => {
                               Operations Manager
                             </option>
                           </select>
-                          
                         </div>
                         <div className="col-span-6">
-                        {/* Selected Options */}
-                        <p className="text-xl font-semibold dark:text-in-dark mb-4">Selected options:</p>
+                          {/* Selected Options */}
+                          <p className="text-xl font-semibold dark:text-in-dark mb-4">
+                            Selected options:
+                          </p>
                           <ul className="flex gap-6 flex-wrap">
-                            {selectedOptions.map((option) => (
-                              <li key={option} className=" py-2 md:py-3 px-3 md:px-5 rounded-lg text-white bg-[#1a6a35c1] inline-block  text-sm md:text-xl">
+                            {selectedOptions.map(option => (
+                              <li
+                                key={option}
+                                className=" py-2 md:py-3 px-3 md:px-5 rounded-lg text-white bg-[#1a6a35c1] inline-block  text-sm md:text-xl"
+                              >
                                 {option}
                                 <button
                                   onClick={() => handleRemoveOption(option)}
                                   className="bg-red-400 text-white rounded-full ml-4 "
                                 >
-                                  <RxCrossCircled className=""/>
+                                  <RxCrossCircled className="" />
                                 </button>
                               </li>
                             ))}

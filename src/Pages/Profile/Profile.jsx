@@ -89,15 +89,16 @@ const Profile = () => {
   };
   return (
     <div className=" text-center h-[calc(100vh-322px)]  pb-20 dark:bg-primary-dark">
+      <PageTitle title="Property Hunter || Profile"></PageTitle>
       <div
         style={{
           backgroundImage:
             "url('https://res.cloudinary.com/dwopkbaby/image/upload/v1708699566/property_hunter/ccnmixal4csgzoafoa5q.webp')",
-          height: "250px",
-          width: "100%",
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
+          height: '250px',
+          width: '100%',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
         }}
       ></div>
       <form onSubmit={handleUpdate}>
@@ -116,7 +117,7 @@ const Profile = () => {
                   ? uploadImage
                   : user?.data?.user?.image
                   ? user?.data?.user?.image
-                  : "https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg"
+                  : 'https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg'
               }
               alt="profile image"
             />
@@ -127,7 +128,7 @@ const Profile = () => {
               <div className="h-24 w-24 mx-auto  cursor-pointer relative">
                 <div
                   style={{
-                    backgroundImage: "url(./profile-camera.png)",
+                    backgroundImage: 'url(./profile-camera.png)',
                   }}
                   className="h-12 w-12 bg-center bg-cover absolute top-5 left-6 group-hover:hidden"
                 ></div>
@@ -151,7 +152,7 @@ const Profile = () => {
               />
             ) : (
               <h3 className="font-semibold text-xl text-primary-light">
-                {user?.data?.user?.name ? user?.data?.user?.name : "Not loaded"}
+                {user?.data?.user?.name ? user?.data?.user?.name : 'Not loaded'}
               </h3>
             )}
 
@@ -167,7 +168,7 @@ const Profile = () => {
               />
               <button
                 onClick={() => {
-                  setUpdate(false), setUploadImage("");
+                  setUpdate(false), setUploadImage('');
                 }}
                 className="bg-red-700 text-white py-2 px-4 rounded-md mt-4 cursor-pointer hover:opacity-90"
               >

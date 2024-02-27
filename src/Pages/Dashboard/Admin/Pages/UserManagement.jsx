@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import getAllUser from '../../../../../lib/getAllUser';
 import UserTable from './Table/UserTable';
+import PageTitle from '../../../../Features/PageTitle/PageTitle';
 // import { connect } from 'react-redux';
 // import { setUser } from '../../../../../lib/action';
 
@@ -18,6 +19,7 @@ const UserManagement = () => {
 
   return (
     <div>
+      <PageTitle title="Property Hunter || User Management"></PageTitle>
       <div className="fade-in-left ml-6 mt-7 px-7 py-7 shadow-lg drop-shadow-lg bg-white">
         <h1 className="text-2xl lg:text-4xl text-black text-left font-medium mb-2">
           Welcome back to Admin Dashboard!
