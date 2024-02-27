@@ -14,16 +14,16 @@ const RecommendedProperty = ({ type, id }) => {
   // filter property
   const filterData = data.filter(item => item._id !== id);
   // slice first four data
-  const slicedData = filterData.slice(0, 4);
+  const slicedData = filterData.slice(0, 6);
   return (
-    <div className=" w-full   px-5 pb-5">
+    <div className="dark:text-in-dark w-full px-0 pb-5">
       <div>
-        <h3 className="text-xl font-semibold py-5">
-          See More {type} type of Property
+        <h3 className="text-xl md:text-2xl font-semibold pb-7 py-5">
+         Similar {type} type of Properties
         </h3>
       </div>
       {/* show recommended property card */}
-      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 grid-cols-1 gap-4">
         {slicedData.map(recommended => (
           <RecommendedCard
             key={recommended._id}

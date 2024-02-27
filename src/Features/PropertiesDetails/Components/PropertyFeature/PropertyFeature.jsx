@@ -43,10 +43,12 @@ import { CiTempHigh } from 'react-icons/ci';
 const PropertyFeature = ({ details }) => {
   return (
     <div>
-      <h3 className="text-xl font-semibold py-5">Properties Features</h3>
+      <h3 className="text-xl md:text-2xl font-semibold py-5 dark:text-in-dark">Properties Features</h3>
+      <div className='flex items-center gap-2 flex-wrap'>
       {details.easement.map((easement, index) => (
-        <div key={index} className="py-2 flex items-center gap-4">
-          {easement === 'Swimming Pool' && <TbSwimming className="mr-2" />}
+        <div key={index} className=" py-2 flex items-center gap-4">
+          <p className='bg-gray-100 flex text-sm items-center px-3 py-1 flex-wrap rounded-xl text-gray-800 font-medium'>
+          {easement === 'Swimming Pool' &&  <TbSwimming className="mr-2" />}
           {easement === 'Private Marina Access' && (
             <TbSwimming className="mr-2" />
           )}
@@ -122,8 +124,10 @@ const PropertyFeature = ({ details }) => {
             <GiOfficeChair className="mr-2" />
           )}
           <span>{easement.charAt(0).toUpperCase() + easement.slice(1)}</span>
+          </p>
         </div>
       ))}
+      </div>
     </div>
   );
 };
