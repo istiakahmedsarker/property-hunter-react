@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import ListingSummary from "../Listing Summary/ListingSummary";
-import GetAllProperties from "../../../Moderator/Services/GetAllProperties";
-import GetAllPayments from "../../../../../Components/Services/GetAllPayments";
+import { useEffect, useState } from 'react';
+import ListingSummary from '../Listing Summary/ListingSummary';
+import GetAllProperties from '../../../Moderator/Services/GetAllProperties';
+import GetAllPayments from '../../../../../Components/Services/GetAllPayments';
+import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 
 export default function AdminHome() {
   const [totalPayments, setTotalPayments] = useState(0);
@@ -29,16 +30,16 @@ export default function AdminHome() {
     }
 
     if (!isPropertiesLoading) {
-      const villa = properties.filter((property) => {
+      const villa = properties.filter(property => {
         return property.propertyType === 'villa';
       });
-      const home = properties.filter((property) => {
+      const home = properties.filter(property => {
         return property.propertyType === 'home';
       });
-      const apartment = properties.filter((property) => {
+      const apartment = properties.filter(property => {
         return property.propertyType === 'apartment';
       });
-      const office = properties.filter((property) => {
+      const office = properties.filter(property => {
         return property.propertyType === 'office';
       });
 
@@ -49,15 +50,18 @@ export default function AdminHome() {
     }
   }, [isPaymentsLoading, payments, isPropertiesLoading, properties]);
 
-  return <div>
-    <ListingSummary 
-    totalPayments={totalPayments} 
-    apartment={apartment}
-    villa={villa}
-    office={office}
-    home={home}
-    isPropertiesLoading={isPropertiesLoading}
-    properties={properties}
-    />
-  </div>;
+  return (
+    <div>
+      <PageTitle title="Property Hunter || Admin Home"></PageTitle>
+      <ListingSummary
+        totalPayments={totalPayments}
+        apartment={apartment}
+        villa={villa}
+        office={office}
+        home={home}
+        isPropertiesLoading={isPropertiesLoading}
+        properties={properties}
+      />
+    </div>
+  );
 }
