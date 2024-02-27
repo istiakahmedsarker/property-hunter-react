@@ -10,7 +10,11 @@ import GoogleMap from './Components/GoogleMap/GoogleMap';
 import PropertyFeature from './Components/PropertyFeature/PropertyFeature';
 import PropertyUtilities from './Components/PropertyUtilities/PropertyUtilities';
 import PropertyOverview from './Components/PropertyOverview/PropertyOverview';
-import PageTitle from '../PageTitle/PageTitle';
+import { IoBedOutline, IoCalendarClearOutline, IoHomeOutline, IoLocationOutline } from "react-icons/io5";
+import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
+import { PiBathtub } from 'react-icons/pi';
+import { FaUsersViewfinder } from 'react-icons/fa6';
+import { RiHomeOfficeFill } from 'react-icons/ri';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -50,56 +54,73 @@ const PropertiesDetails = () => {
   //   window.open('/audioVideoCall', '_blank');
   // };
   return (
-    <div className="max-w-7xl mx-auto">
-      <PageTitle title="Property Hunter || Details"></PageTitle>
-      <div className="lg:w-1/3 w-full my-3">
-        <h3 className="font-semibold text-2xl py-5 px-4">
+    <div className=" w-full max-w-xl md:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto py-0 md:py-4 lg:py-8 px-4 md:px-0 lg:px-4 xl:px-0 space-y-6 md:space-y-12 ">
+   
+   {/* Title and necessary information */}
+   <div className="flex items-start justify-between w-full my-3 ">
+        {/* //? Title and Location */}
+       <div className='space-y-3 flex-1'>
+       <h3 className="font-semibold dark:text-in-dark text-gray-950 text-2xl md:text-4xl ">
           {details.propertyTitle}
         </h3>
-      </div>
+        <p className='flex text-gray-500 underline items-center text-[14px] md:text-xl font-medium gap-2'><IoLocationOutline/><span>{details.location.address},</span><span>{details.location.city},</span><span>{details.location.state}</span></p>
+       </div>
+         
 
+      </div>
+ 
       {/* image */}
       {details.propertyImages && details.propertyImages.length > 0 && (
-        <div className="lg:relative w-11/12 mx-auto">
-          <div className="grid  mx-auto lg:grid-cols-3 gap-1 md:grid-cols-1 grid-cols-1">
-            <div className="h-full">
+        <div className="lg:relative max-w-7xl w-full mr-auto">
+          <div className="grid  mx-auto  lg:grid-cols-6 md:grid-rows-4 gap-4 md:grid-cols-1 grid-cols-1">
+            <div className="relative h-full col-span-1 lg:col-span-4 row-span-4">
               <img
                 src={details.propertyImages[0]}
                 alt={details.propertyTitle}
-                className=" mx-auto w-full  h-96 rounded-sm "
+                className=" mx-auto w-full h-full object-cover rounded-xl"
               ></img>
+            <div className='bg-[#0b190631] opacity-10 h-full w-full absolute top-0 left-0'></div>
+              <div className='bg-[#2e8fff3d] opacity-10 h-full w-full absolute top-0 left-0'></div>
             </div>
-            <div className="h-full">
+            <div className="relative h-full col-span-1 lg:col-span-2 row-span-2">
               <img
                 src={details.propertyImages[1]}
                 alt={details.propertyTitle}
-                className="w-full mx-auto h-96  rounded-sm "
+                className="w-full mx-auto h-full object-cover rounded-xl "
               />
+              <div className='bg-[#0b190631] opacity-10 h-full w-full absolute top-0 left-0'></div>
+              <div className='bg-[#2e90ff7e] opacity-10 h-full w-full absolute top-0 left-0'></div>
             </div>
 
-            <div className="h-full">
+            <div className="relative h-full col-span-1 lg:col-span-2 row-span-2">
               <img
                 src={details.propertyImages[2]}
                 alt={details.propertyTitle}
-                className="w-full mx-auto h-96 rounded-sm "
+                className="w-full mx-auto h-full object-cover rounded-xl"
               />
+               <div className='bg-[#0b190631] opacity-10 h-full w-full absolute top-0 left-0'></div>
+              <div className='bg-[#2e90ff7e] opacity-10 h-full w-full absolute top-0 left-0'></div>
             </div>
           </div>
           {/* overview section */}
-          <PropertyOverview details={details}></PropertyOverview>
+          {/* <PropertyOverview details={details}></PropertyOverview> */}
         </div>
       )}
 
-      <div className="flex lg:flex-row flex-col gap-5 mt-10 ">
+
+      <div className="flex lg:flex-row flex-col gap-8 lg:gap-6 xl:gap-12 mt-10 dark:text-in-dark">
         <div className="lg:w-2/3 w-full">
-          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
+          <div className="w-full my-0 py-0  space-y-12">
+          
             {/* properties Description section */}
-            <div className="w-full px-5 ">
-              <h3 className="text-xl  font-semibold py-5">
+            <div className="w-full  space-y-8">
+              {/* Property details */}
+    <div className='space-y-4'>
+    <h3 className="text-xl md:text-2xl dark:text-in-dark text-gray-900 font-semibold">
                 Properties Description
               </h3>
               {/* see more description implementation */}
-              <p className="">
+              <p className="text-sm md:text-[16px] text-gray-500">
                 {isShowFullDescription
                   ? details.description
                   : `${details.description.slice(0, 210)}${
@@ -107,20 +128,28 @@ const PropertiesDetails = () => {
                     }`}
               </p>
               {details.description.length > 200 && (
-                <button className="text-blue-800" onClick={toggleDescription}>
+                <button className="text-blue-800 px-5 py-3 dark:bg-gray-300 dark:text-black bg-gray-100 rounded-lg" onClick={toggleDescription}>
                   {isShowFullDescription ? 'See less' : 'See more'}
                 </button>
               )}
+    </div>
+         
+        {/* Properties Overview */}
+
+        <div className='space-y-4'>
+        <h1 className='text-xl md:text-2xl dark:text-in-dark text-gray-900 font-semibold '>Property Overview</h1>
+        <PropertyOverview details={details}/>
+        </div>
 
               <div className="">
                 {/* properties details section */}
-                <h3 className="text-xl font-semibold py-5">
+                <h3 className="text-xl md:text-2xl font-semibold text-gray-900 dark:text-in-dark py-5">
                   Properties Details
                 </h3>
-                <div className="grid grid-cols-2  lg:gap-5 gap-2">
+                <div className="grid grid-cols-2  py-5 text-sm md:text-[16px]  lg:gap-5 gap-2">
                   <h3 className="grid grid-cols-2 ">
                     <span className="font-semibold">Price</span>
-                    <span>: $ {details.price}</span>
+                    <span >: $ {details.price}</span>
                   </h3>
                   {/* parking need to be conditional */}
                   {details.parking.included ? (
@@ -187,7 +216,7 @@ const PropertiesDetails = () => {
               </div>
             </div>
             {/* property feature section */}
-            <div className=" w-full  px-5 py-5  grid grid-cols-1">
+            <div className=" w-full  grid grid-cols-1">
               <PropertyFeature details={details}></PropertyFeature>
 
               {/* properties utilities section */}
@@ -195,69 +224,59 @@ const PropertiesDetails = () => {
             </div>
             {/* payment calculation */}
             <PaymentCalculation details={details}></PaymentCalculation>
-            {/* properties Address section */}
-            <div className=" w-full px-5 pb-5">
-              <h3 className="text-xl font-semibold py-5">Address</h3>
-              <div className="grid lg:grid-cols-2 grid-cols-2 lg:gap-5 gap-3">
-                <div>
-                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
-                    <span className="font-semibold"> Address</span>
-                    <span>: {details.location.address}</span>
-                  </h3>
-                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
-                    <span className="font-semibold"> City</span>{' '}
-                    <span>: {details.location.city}</span>
-                  </h3>
-                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
-                    <span className="font-semibold"> State</span>{' '}
-                    <span>: {details.location.state}</span>
-                  </h3>
-                </div>
-                {/* QR code implementation */}
-                <div className=" flex lg:justify-end md:flex-end flex-col">
-                  <QRcode></QRcode>
-                </div>
-              </div>
-              {/* map section */}
-              <GoogleMap details={details}></GoogleMap>
-            </div>
-            {/* recommended property section */}
-            <RecommendedProperty
-              cardDetails={cardDetails}
-              type={details?.propertyType}
-              id={details?._id}
-            ></RecommendedProperty>
+            
+          
           </div>
         </div>
+
         <div className="lg:w-1/3 w-full">
-          <div className="w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6 ">
-            {/* owner information */}
-            <div className="w-full  px-5">
-              <h3 className="text-xl font-semibold py-5">Owner address</h3>
-              <div>
-                <h3 className="flex gap-5 py-2">
-                  <span className="font-semibold"> Name</span>
-                  <span>: {details.ownerInformation.name}</span>
-                </h3>
-                <h3 className="flex gap-5 py-2">
-                  <span className="font-semibold"> Email</span>
-                  <span>: {details.ownerInformation.email}</span>
-                </h3>
-                {details.ownerInformation.phone ? (
-                  <h3 className="flex gap-5 py-2">
-                    <span className="font-semibold"> Phone</span>
-                    <span>: {details.ownerInformation.phone}</span>
-                  </h3>
-                ) : (
-                  ''
-                )}
-              </div>
-            </div>
-            {/* contact and schedule button */}
-            <div className="w-full px-5 py-5 ">
-              <div className="flex justify-center">
+          <div className="w-full space-y-8 ">
+          {/*//? Price */}
+         <div className='w-full flex-1 flex items-start justify-center lg:justify-start '>
+        <div className='space-y-3 '>
+        <h3 className='text-2xl md:text-4xl text-center lg:text-left text-gray-950 font-bold dark:text-in-dark'>
+          $ {details.price}
+        </h3>
+        <div className="grid grid-cols-3 lg:grid-cols-3 text-sm md:grid-cols-3 gap-2 text-gray-700 dark:text-gray-300">
+        {details?.rooms?.bedRooms ? (
+          <div className="flex items-center gap-2 ">
+           
+              <h3 className="font-medium">Bed</h3>
+              <h3>{details?.rooms?.bedRooms}</h3>
+        
+          </div>
+        ) : (
+          ''
+        )}
+
+
+        {details.rooms?.bathRooms ? (
+          <div className="flex  items-center gap-2">
+
+              <h3 className="font-medium">Bath</h3>
+              <h3>{details.rooms.bathRooms}</h3>
+           
+          </div>
+        ) : (
+          ''
+        )}
+
+        
+
+        <div className="flex  items-center gap-2">
+         
+         
+            <h3 className="font-medium">Sqft</h3>
+            <h3>{details.squareFootage}</h3>
+          </div>
+       
+      </div>
+        </div>
+        </div>
+            <div className="w-full py-5">
+              <div className="flex justify-start">
                 <button
-                  className="bg-[#076aa5] focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm rounded-r-none "
+                  className="bg-[#076aa5] focus:border-blue-500 border-2 text-black flex-1 px-4 py-3 rounded-xl rounded-r-none "
                   onClick={handleFormToggle}
                   style={{
                     backgroundColor:
@@ -270,7 +289,7 @@ const PropertiesDetails = () => {
                   {showForm ? 'Request Form' : 'Request Form'}
                 </button>
                 <button
-                  className="bg-[#076aa5] rounded-l-none   focus:border-blue-500 border-2 text-black px-4 py-3 rounded-sm"
+                  className="bg-[#076aa5] flex-1   focus:border-blue-500 border-2 text-black px-4 py-3 rounded-xl rounded-l-none"
                   onClick={handleScheduleToggle}
                   // onClick={handleVideoCall}
                   style={{
@@ -296,19 +315,15 @@ const PropertiesDetails = () => {
 
           {/*from open  */}
           <div>
-            <div className=" w-full my-6 rounded-sm shadow-lg drop-shadow-lg bg-white px-7 py-6">
+            <div className=" w-full my-6 rounded-sm py-6">
               <h3 className="text-xl font-semibold py-5">
                 Essential information Submit
               </h3>
               <button
-                className="w-full px-4 py-3 text-white bg-[#076aa5] my-4 rounded-sm"
+                className="w-full px-4 py-3 text-white bg-[#076aa5] my-4 rounded-lg"
                 onClick={toggleForm}
                 disabled={details.propertyStatus === 'sold' ? true : false}
-                // className={`${
-                //   activeButton === 'Close Form'
-                //     ? 'bg-white text-black border-blue-500 border-2'
-                //     : 'bg-blue-500 text-white'
-                // } rounded-r-none focus:border-blue-500 px-4 py-3 rounded-sm`}
+                
               >
                 {isFormOpen ? 'Close Form' : 'Open Form'}
               </button>
@@ -317,6 +332,38 @@ const PropertiesDetails = () => {
           </div>
         </div>
       </div>
+{/* properties Address section */}
+<div className="dark:text-in-dark w-full pb-5">
+              <h3 className="text-xl md:text-2xl font-semibold py-5">Location</h3>
+              <div className="grid lg:grid-cols-2 grid-cols-2 lg:gap-5 gap-3">
+                <div>
+                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
+                    <span className="font-semibold"> Address</span>
+                    <span>: {details.location.address}</span>
+                  </h3>
+                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
+                    <span className="font-semibold"> City</span>{' '}
+                    <span>: {details.location.city}</span>
+                  </h3>
+                  <h3 className=" lg:text-lg text-sm flex gap-3 lg:grid lg:grid-cols-2 py-2">
+                    <span className="font-semibold"> State</span>{' '}
+                    <span>: {details.location.state}</span>
+                  </h3>
+                </div>
+                {/* QR code implementation */}
+                <div className=" flex lg:justify-end md:flex-end flex-col">
+                  <QRcode></QRcode>
+                </div>
+              </div>
+              {/* map section */}
+              <GoogleMap details={details}></GoogleMap>
+            </div>
+        {/* recommended property section */}
+        <RecommendedProperty
+              cardDetails={cardDetails}
+              type={details?.propertyType}
+              id={details?._id}
+            ></RecommendedProperty>
       {/* for scroll to top button */}
       <TopButton></TopButton>
     </div>

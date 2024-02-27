@@ -1,31 +1,91 @@
-import { useEffect, useState } from 'react';
-import useAxios from '../../Hooks/useAxios';
-import useAuth from '../../Hooks/useAuth';
-import toast from 'react-hot-toast';
-import PageTitle from '../../Features/PageTitle/PageTitle';
+import { useEffect, useState } from "react";
+import useAxios from "../../Hooks/useAxios";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
+import axios from "axios";
+
+const preset_key = "property-hunter";
+const cloud_name = "dwopkbaby";
 const Profile = () => {
-  const axios = useAxios();
+  const myAxios = useAxios();
   const userAuth = useAuth();
   const [user, setUser] = useState({});
   const [update, setUpdate] = useState(false);
-  const [uploadImage, setUploadImage] = useState(null);
-  console.log('out of function', uploadImage);
+  const [uploadImage, setUploadImage] = useState("");
   useEffect(() => {
-    axios.get(`/users/email/${userAuth?.user?.email}`).then(res => {
+    myAxios.get(`/users/email/${userAuth?.user?.email}`).then((res) => {
       setUser(res?.data);
     });
-  }, [axios, userAuth?.user?.email]);
-  const handleImage = e => {
+  }, [myAxios, userAuth?.user?.email]);
+  const handleImage = (e) => {
     if (e.target.files && e.target.files[0]) {
       setUploadImage(URL.createObjectURL(e.target.files[0]));
     }
   };
-  const handleUpdate = e => {
+
+  const handleUpdate = (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
     const image = e.target.image.files[0];
-    toast.success('database not connected');
-    setUpdate(false);
-    setUploadImage('');
+    const formData = new FormData();
+    formData.append("file", image);
+    formData.append("upload_preset", preset_key);
+    formData.append("folder", "property-hunter");
+
+    if (image) {
+      axios
+        .post(
+          `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+          formData
+        )
+        .then(async (res) => {
+          if (res.status === 200) {
+            const imageURL = res.data?.url;
+            try {
+              await myAxios
+                .put(`/users/update-user/${user?.data?.user?._id}`, {
+                  name,
+                  image: imageURL || "",
+                })
+                .then(() => {
+                  toast.success("Profile Updated successfully");
+                  setUploadImage(imageURL);
+                  setUpdate(false);
+                })
+                .catch(() => {
+                  toast.success("Server Error");
+                });
+            } catch (error) {
+              if (error.response.data?.status === "Fail") {
+                toast.error("Server Error");
+                return;
+              }
+            }
+          }
+        });
+    } else {
+      try {
+        myAxios
+          .put(`/users/update-user/${user?.data?.user?._id}`, {
+            name,
+          })
+          .then(() => {
+            toast.success("Profile Updated successfully");
+            myAxios.get(`/users/${user?.data?.user?._id}`).then((res) => {
+              setUser(res?.data);
+            });
+            setUpdate(false);
+          })
+          .catch(() => {
+            toast.success("Server Error");
+          });
+      } catch (error) {
+        if (error.response.data?.status === "Fail") {
+          toast.error("Server Error");
+          return;
+        }
+      }
+    }
   };
   return (
     <div className=" text-center h-[calc(100vh-322px)]  pb-20 dark:bg-primary-dark">
@@ -53,7 +113,9 @@ const Profile = () => {
             <img
               className="h-24 w-24 mx-auto rounded-full border border-primary-light mb-4"
               src={
-                user?.data?.user?.image
+                uploadImage
+                  ? uploadImage
+                  : user?.data?.user?.image
                   ? user?.data?.user?.image
                   : 'https://cdn.vectorstock.com/i/preview-1x/08/19/gray-photo-placeholder-icon-design-ui-vector-35850819.jpg'
               }
@@ -71,7 +133,7 @@ const Profile = () => {
                   className="h-12 w-12 bg-center bg-cover absolute top-5 left-6 group-hover:hidden"
                 ></div>
                 <input
-                  onBlur={handleImage}
+                  onChange={handleImage}
                   type="file"
                   name="image"
                   className="file:bg-transparent file:text-transparent  file:border-none file:rounded-md mb-4 dark:text-white text-primary-light cursor-pointer file:cursor-pointer text-transparent h-24 w-24 mx-auto rounded-full "
