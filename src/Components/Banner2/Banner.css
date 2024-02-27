@@ -26,3 +26,7 @@
         opacity: 1;
     }
 }
+
+.border-custom {
+    border-color: #0e87cd;
+  }

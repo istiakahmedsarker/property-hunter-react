@@ -5,6 +5,7 @@ import CommentForm from '../../Features/Blog/Components/CommentForm/CommentForm'
 import { FaRegUserCircle } from 'react-icons/fa';
 import BlogComments from '../../Features/Blog/Components/BlogComments/BlogComments';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import BlogDetailsLoading from '../../Features/Blog/Components/BlogDetailsLoading/BlogDetailsLoading';
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -18,9 +19,10 @@ const BlogDetails = () => {
     },
   });
 
-  if (isPending) return <p>Loading</p>;
+  if (isPending) return <BlogDetailsLoading />;
 
-  const { heading, description, images, createdAt, comments } = data || {};
+  const { heading, description, images, createdAt, comments, author } =
+    data || {};
 
   const date = new Date(createdAt);
   const options = { year: 'numeric', month: 'short', day: 'numeric' };
@@ -35,7 +37,7 @@ const BlogDetails = () => {
         <div className="flex gap-2 items-center ">
           <FaRegUserCircle className="h-10 w-10" />
           <div>
-            <h5>Author</h5>
+            <h5>{author?.name}</h5>
             <h5>{formattedDate}</h5>
           </div>
         </div>
@@ -48,8 +50,8 @@ const BlogDetails = () => {
       <hr />
 
       <img
-        className="rounded-md w-full h-[80vh] object-cover mt-7"
-        src={images[0]}
+        className="rounded-md w-full h-[50vh] sm:h-[80vh] object-cover mt-7"
+        src={images}
         alt="blog details image"
       />
 

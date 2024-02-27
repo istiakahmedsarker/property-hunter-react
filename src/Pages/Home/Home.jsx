@@ -15,17 +15,17 @@ const Home = () => {
   return (
     <div className=" dark:bg-primary-dark ">
       <Banner />
-      <Agents />
       <ExploreTypes></ExploreTypes>
       <FeaturedProperties></FeaturedProperties>
       <LatestBlogHome></LatestBlogHome>
+      <SellBanner />
       <BuySellListCard></BuySellListCard>
       <Testimonials />
-      <WhyChooseUs />
-      <Chatbot />
-      <SellBanner />
-      <ContactUs />
       <NewsLetter />
+      <WhyChooseUs />
+      <Agents />
+      <Chatbot />
+      <ContactUs />
     </div>
   );
 };

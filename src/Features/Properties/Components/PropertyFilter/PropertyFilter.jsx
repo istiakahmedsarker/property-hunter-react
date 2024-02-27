@@ -29,7 +29,7 @@ const PropertyFilter = ({
       <h3 className="text-[#041e42] dark:text-in-dark font-semibold">Find your home</h3>
       <div className="relative -mt-5">
         <input
-          className="border-2 w-full pl-12 pr-5 py-3 md:text-lg text-stone-700 rounded-md"
+          className="border-2 w-full pl-12 pr-5 py-3 md:text-lg dark:bg-primary-dark text-stone-400 rounded-md"
           type="text"
           value={searchText}
           placeholder="Search here"
@@ -39,7 +39,7 @@ const PropertyFilter = ({
       </div>
 
       <select
-        className="border-[2px] border-stone-200 px-4 py-3 rounded-md w-full font-medium text-stone-400"
+        className="border-[2px] border-stone-200 px-4 py-3 rounded-md w-full font-medium dark:bg-primary-dark text-stone-400"
         value={selectedOption}
         onChange={e => setSelectedOption(e.target.value)}
       >

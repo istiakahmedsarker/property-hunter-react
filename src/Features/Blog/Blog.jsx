@@ -78,13 +78,6 @@ const Blog = () => {
               <LatestBlog key={blog._id} blog={blog} />
             ))}
           </div>
-
-          {/* <Link
-        to="/createBlog"
-        className="bg-[#EB6753] px-4 py-1.5 rounded-sm text-white font-semibold"
-      >
-        Create Blog
-      </Link> */}
         </div>
       </div>
     </div>

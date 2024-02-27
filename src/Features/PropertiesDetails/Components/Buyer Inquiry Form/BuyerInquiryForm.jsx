@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { GrFormPrevious } from "react-icons/gr";
 import "./Form.css";
 import toast from "react-hot-toast";
-import axios from "axios";
 import useAxios from "../../../../Hooks/useAxios";
 import useAuth from "../../../../Hooks/useAuth";
 
@@ -12,6 +11,8 @@ const BuyerInquiryForm = ({ details }) => {
   const [range, setRange] = useState(10000);
   const instance = useAxios();
   const { user } = useAuth();
+
+  console.log(details?.ownerInformation?.email, details?._id)
 
   const completeFormStep = event => {
     event.preventDefault();
@@ -54,6 +55,7 @@ const BuyerInquiryForm = ({ details }) => {
   const {
     register,
     handleSubmit,
+    reset,
     watch,
 
     formState: { errors, isValid },
@@ -79,12 +81,15 @@ const BuyerInquiryForm = ({ details }) => {
       buyer_property_title: details.propertyTitle,
       buyer_property_price: details.price,
       buyer_property_squareFootage: details.squareFootage,
+      buyer_property_ownerEmail: details?.ownerInformation?.email,
+      buyer_property_id: details?._id,
     }
   
     try {
       const res = await instance.post("/buyer-inquiries", buyerInquiries);
       console.log(res);
       if (res?.data?.status === "success") {
+        reset();
         toast.success('Please fill out the form correctly.');
       } else {
 

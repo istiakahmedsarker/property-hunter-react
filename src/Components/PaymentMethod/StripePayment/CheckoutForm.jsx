@@ -11,7 +11,7 @@ import useAuth from "../../../Hooks/useAuth";
 import useAxios from "../../../Hooks/useAxios";
 
 
-const CheckoutForm = ({ totalPrice: totalAmount }) => {
+const CheckoutForm = ({ totalPrice: totalAmount , propertyId, ownerEmail}) => {
   const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
@@ -36,8 +36,6 @@ const CheckoutForm = ({ totalPrice: totalAmount }) => {
 
     cardFromData();
   }, [instance, totalAmount]);
-
-  console.log("Address:", address, "name:", name);
 
 
 
@@ -100,6 +98,9 @@ const CheckoutForm = ({ totalPrice: totalAmount }) => {
           price: totalAmount,
           status: 'successful',
           country: address?.country,
+          owner_email: ownerEmail,
+          property_id: propertyId,
+
         }
 
         const res = await instance.post('/payments', payment)
@@ -119,7 +120,7 @@ const CheckoutForm = ({ totalPrice: totalAmount }) => {
 
   return (
     <div className="max-w-sm mx-auto mt-8 p-4 rounded-md card">
-      <h3 className="text-2xl font-semibold text-center text-[#eb6753]">Stripe Payment Gateway</h3>
+      <h3 className="text-2xl font-semibold text-center text-primary-light">Stripe Payment Gateway</h3>
       <form id="payment-form" onSubmit={handleSubmit}>
         <div className="form-control">
           <label className="label">
@@ -142,7 +143,7 @@ const CheckoutForm = ({ totalPrice: totalAmount }) => {
         <div className="mt-5">
           <button type="submit"
             disabled={!stripe || !clientSecret}
-            className="btn btn-sm bg-[#eb6753] text-white">
+            className="btn btn-sm bg-primary-light text-white">
             Pay Now
           </button>
           <p className="text-red-500 text-center">{error}</p>

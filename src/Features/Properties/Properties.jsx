@@ -17,7 +17,6 @@ const Properties = () => {
     sale: false,
   });
 
-
   const [typeCheckboxes, setTypeCheckboxes] = useState({
     all: true,
     apartment: false,
@@ -32,15 +31,15 @@ const Properties = () => {
   const limit = 6;
 
   const checkedItem = Object.keys(checkboxes).find(
-    checkbox => checkboxes[checkbox]
+    (checkbox) => checkboxes[checkbox]
   );
 
   const typeCheckedItem = Object.keys(typeCheckboxes).find(
-    checkbox => typeCheckboxes[checkbox]
+    (checkbox) => typeCheckboxes[checkbox]
   );
 
   const handleCheckboxChange = useCallback(
-    checkboxName => {
+    (checkboxName) => {
       const updatedCheckboxes = {};
 
       for (let key in checkboxes) {
@@ -54,7 +53,7 @@ const Properties = () => {
   );
 
   const handleTypeCheckboxChange = useCallback(
-    checkboxName => {
+    (checkboxName) => {
       const updatedCheckboxes = {};
 
       for (let key in typeCheckboxes) {
@@ -68,7 +67,7 @@ const Properties = () => {
   );
 
   const handleFormSubmit = useCallback(
-    event => {
+    (event) => {
       event.preventDefault();
       // Additional filter logic
       // You can place any additional logic here to fetch or update data
@@ -98,9 +97,11 @@ const Properties = () => {
       activePage,
       debouncedSearchValue,
     ],
-    api: `/properties?propertyStatus=${checkedItem === 'all' ? '' : checkedItem
-      }&propertyType=${typeCheckedItem === 'all' ? '' : typeCheckedItem
-      }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
+    api: `/properties?propertyStatus=${
+      checkedItem === 'all' ? '' : checkedItem
+    }&propertyType=${
+      typeCheckedItem === 'all' ? '' : typeCheckedItem
+    }&sort=${selectedOption}&page=${activePage}&limit=${limit}&title=${searchText}`,
   });
 
   // for pagination
@@ -138,16 +139,17 @@ const Properties = () => {
   return (
     <div className="max-w-7xl xl:mx-auto mx-4 pt-8 pb-20">
       <div className="flex items-center justify-between mb-10 mt-5">
-        <h3 className="text-3xl dark:text-in-dark font-semibold">Properties For sale</h3>
-        <button className="flex items-center gap-2 dark:bg-primary-light bg-stone-200 dark:text-in-dark rounded-lg px-6  py-2 md:hidden ">
+        <h3 className="text-3xl dark:text-in-dark font-semibold">
+          Properties For sale
+        </h3>
+
+        <label
+          htmlFor="my-drawer-4"
+          className="drawer-button cursor-pointer font-semibold  flex items-center gap-2 dark:bg-primary-light bg-stone-200 dark:text-in-dark rounded-lg px-6  py-2 md:hidden "
+        >
           <IoFilter />
-          <label
-            htmlFor="my-drawer-4"
-            className="drawer-button cursor-pointer font-semibold dark:text-in-dark"
-          >
-            Filter
-          </label>
-        </button>
+          <span> Filter</span>
+        </label>
       </div>
       <div className="drawer z-30 md:hidden overflow-hidden">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -161,7 +163,6 @@ const Properties = () => {
             setSelectedOption={setSelectedOption}
             handleCheckboxChange={handleCheckboxChange}
             handleTypeCheckboxChange={handleTypeCheckboxChange}
-
           />
         </div>
         <form onSubmit={handleFormSubmit} className="drawer-side">
@@ -208,13 +209,18 @@ const Properties = () => {
         {!propertiesData?.data?.properties?.length ? (
           <div className="col-span-7 lg:col-span-8 sm:w-[70%] mx-auto md:w-full">
             {/* Show skeletons based on the number of data items */}
-            <div className={`grid ${isGrid ? 'grid-cols-1' : 'grid-cols-2 '} gap-4`}>
-              {Array.from({ length: propertiesData?.data?.properties?.length || 6 }, (_, index) => (
-                <div key={index}>
-                  {
-                    isGrid ?
-                      // skeleton used in list 
-                      <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white grid lg:grid-cols-2 grid-cols-1 my-6">
+            <div
+              className={`grid ${
+                isGrid ? 'grid-cols-1' : 'grid-cols-2 '
+              } gap-4`}
+            >
+              {Array.from(
+                { length: propertiesData?.data?.properties?.length || 6 },
+                (_, index) => (
+                  <div key={index}>
+                    {isGrid ? (
+                      // skeleton used in list
+                      <div className="px-4 py-5 rounded-lg shadow-lg drop-shadow-lg bg-white dark:bg-card-dark grid lg:grid-cols-2 grid-cols-1 my-6">
                         <div className="w-full flex items-center justify-center">
                           {/* Swiper Skeleton */}
                           <div className="w-11/12 mx-auto h-52 bg-gray-300 rounded-lg">
@@ -253,13 +259,12 @@ const Properties = () => {
                           </div>
                         </div>
                       </div>
-                      :
-                      // skeleton used in grid 
-                      <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white animate-pulse">
+                    ) : (
+                      // skeleton used in grid
+                      <div className="px-4 w-[300px] lg:w-full mx-auto py-5 rounded-lg drop-shadow-lg bg-white dark:bg-card-dark animate-pulse">
                         <div className="w-full">
                           {/* Skeleton loader for slider */}
                           <div className="h-56 w-full bg-gray-300 rounded-lg relative"></div>
-
                         </div>
 
                         <div className="mt-4">
@@ -299,10 +304,10 @@ const Properties = () => {
                           </div>
                         </div>
                       </div>
-
-                  }
-                </div>
-              ))}
+                    )}
+                  </div>
+                )
+              )}
             </div>
           </div>
         ) : (
@@ -329,13 +334,13 @@ const Properties = () => {
 
               {!isGrid ? (
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-8 gap-y-10 -z-30">
-                  {propertiesData?.data?.properties?.map(card => (
+                  {propertiesData?.data?.properties?.map((card) => (
                     <PropertiesCard key={card._id} card={card}></PropertiesCard>
                   ))}
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 my-6 -z-30">
-                  {propertiesData?.data?.properties?.map(card => (
+                  {propertiesData?.data?.properties?.map((card) => (
                     <PropertiesCardList
                       key={card._id}
                       card={card}
@@ -348,21 +353,23 @@ const Properties = () => {
             {totalPage > 1 ? (
               <div className="flex items-center justify-center gap-5">
                 <button
-                  className={`${activePage === 1
-                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                    : 'bg-white p-3 shadow-md rounded-full'
-                    }`}
+                  className={`${
+                    activePage === 1
+                      ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                      : 'bg-white p-3 shadow-md rounded-full'
+                  }`}
                   onClick={previousPage}
                 >
                   <FaArrowLeft />
                 </button>
 
-                {pages.map(pageNo => (
+                {pages.map((pageNo) => (
                   <button
-                    className={`${activePage === pageNo
-                      ? 'bg-primary-light hidden md:inline font-semibold text-white px-4 py-2 rounded-full'
-                      : 'px-4 py-2 hidden md:inline rounded-full font-semibold bg-white shadow-md'
-                      } `}
+                    className={`${
+                      activePage === pageNo
+                        ? 'bg-primary-light hidden md:inline font-semibold text-white px-4 py-2 rounded-full'
+                        : 'px-4 py-2 hidden md:inline rounded-full font-semibold bg-white shadow-md'
+                    } `}
                     key={pageNo}
                     onClick={() => setActivePage(pageNo)}
                   >
@@ -370,14 +377,18 @@ const Properties = () => {
                   </button>
                 ))}
                 <button className="inline md:hidden dark:text-in-dark">
-                  <span className="font-bold dark:text-in-dark">{activePage}</span> of {totalPage}
+                  <span className="font-bold dark:text-in-dark">
+                    {activePage}
+                  </span>{' '}
+                  of {totalPage}
                 </button>
 
                 <button
-                  className={`${activePage === totalPage
-                    ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
-                    : 'bg-white  p-3 shadow-md rounded-full'
-                    }`}
+                  className={`${
+                    activePage === totalPage
+                      ? 'disabled bg-stone-400 rounded-full opacity-50 cursor-not-allowed p-3'
+                      : 'bg-white  p-3 shadow-md rounded-full'
+                  }`}
                   onClick={nextPage}
                 >
                   <FaArrowRight />
@@ -389,7 +400,6 @@ const Properties = () => {
           </div>
         )}
       </div>
-
 
       <TopButton />
     </div>
