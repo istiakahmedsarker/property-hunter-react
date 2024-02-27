@@ -10,6 +10,7 @@ import { io } from 'socket.io-client';
 import { RxAvatar } from 'react-icons/rx';
 import useTheme from '../../../Providers/ThemeContext';
 import { CiVideoOn } from 'react-icons/ci';
+import PageTitle from '../../PageTitle/PageTitle';
 
 const LiveChat = () => {
   const [user, setUser] = useState(
@@ -50,7 +51,7 @@ const LiveChat = () => {
     const loggedInUser = JSON.parse(localStorage.getItem('user:details'));
     const fetchConversations = async () => {
       const res = await fetch(
-        `http://localhost:8000/api/conversations/${loggedInUser.id}`,
+        `react-chat-app-server-production.up.railway.app/api/conversations/${loggedInUser.id}`,
         {
           method: 'GET',
           headers: {
@@ -84,7 +85,7 @@ const LiveChat = () => {
 
   const fetchMessages = async (conversationId, receiver) => {
     const res = await fetch(
-      `http://localhost:8000/api/message/${conversationId}?senderId = ${user?.id}&& receiverId=${receiver?.receiverId}`,
+      `react-chat-app-server-production.up.railway.app/api/message/${conversationId}?senderId = ${user?.id}&& receiverId=${receiver?.receiverId}`,
       {
         method: 'GET',
         headers: {
@@ -106,18 +107,21 @@ const LiveChat = () => {
     });
 
     // Send the message to the server
-    const res = await fetch(`http://localhost:8000/api/message`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        conversationId: messages?.conversationId,
-        senderId: user?.id,
-        message,
-        receiverId: messages?.receiver?.receiverId,
-      }),
-    });
+    const res = await fetch(
+      `react-chat-app-server-production.up.railway.app/api/message`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversationId: messages?.conversationId,
+          senderId: user?.id,
+          message,
+          receiverId: messages?.receiver?.receiverId,
+        }),
+      }
+    );
 
     // After sending the message, fetch the updated messages
     fetchMessages(messages?.conversationId, messages?.receiver);
@@ -133,8 +137,9 @@ const LiveChat = () => {
 
   return (
     <div className="w-full flex bg-white dark:bg-primary-dark overflow-x-hidden">
+      <PageTitle title="Property Hunter || Live Chat"></PageTitle>
       {/* all users on the right */}
-      <div className="w-[22%] border-2 dark:bg-primary-dark dark:border-primary-dark border-white h-screen  overflow-y-scroll">
+      <div className="w-[22%] lg:w-1/4 md:w-1/3 sm:w-1/2 border-2 dark:bg-primary-dark dark:border-primary-dark border-white h-screen overflow-y-scroll">
         <div className="flex justify-center items-center my-8">
           <img
             className="h-14 w-14 text-white"
@@ -191,7 +196,7 @@ const LiveChat = () => {
           )}
         </div>
       </div>
-      <div className="w-[58%] border-2 dark:bg-primary-dark border-white dark:border-primary-dark flex flex-col items-center bg-white h-screen">
+      <div className="w-[58%] lg:w-1/2 md:w-2/3 sm:w-full border-2 dark:bg-primary-dark border-white dark:border-primary-dark flex flex-col items-center bg-white h-screen">
         {messages?.receiver?.fullName && (
           <div className="border-2 w-[75%] bg-gray-300 dark:border-primary-dark flex  items-center mt-6  rounded-full px-14">
             <div>
@@ -271,7 +276,7 @@ const LiveChat = () => {
           </div>
         )}
       </div>
-      <div className="w-[20%] border-2 dark:bg-primary-dark border-white dark:border-primary-dark h-screen  overflow-y-scroll">
+      <div className="w-[20%] lg:w-1/4 md:w-1/3 sm:w-1/2 border-2 dark:bg-primary-dark border-white dark:border-primary-dark h-screen overflow-y-scroll">
         <h3 className="text-black text-center font-bold text-xl mt-5 dark:text-[#8f9396]">
           People
         </h3>

@@ -30,7 +30,7 @@ export default {
         'in-light': '#f9faff',
         'primary-dark': '#0d0d0d',
         'card-dark': '#1b1c1d',
-        'in-dark': 'white',
+        'in-dark': '#F4F4F4',
       },
       fontFamily: {
         gloria: ['Gloria Hallelujah', 'cursive'],

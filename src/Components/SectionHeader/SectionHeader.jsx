@@ -3,7 +3,7 @@ import AnnouncementBanner from "../../Pages/Dashboard/Announcement/Lottie/Announ
 
 const SectionHeader = ({ header }) => {
   return (
-    <div className="bg-gradient-to-tr from-primary-light dark:from-[#0886ce] dark:via-[white] via-[#202020] dark:to-[#d1f480f3] to-[#b2ec2b] flex flex-row-reverse h-[40vh] lg:h-[40vh] p-2 md:p-6 rounded-xl sticky top-0 px-4 md:px-8">
+    <div className="bg-gradient-to-tr from-primary-light dark:from-[#0886ce] dark:via-[white] via-[#202020] dark:to-[#d1f480f3] to-[#b2ec2b] flex flex-row-reverse h-[40vh] lg:h-[40vh] p-2 md:p-6 rounded-xl top-0 px-4 md:px-8">
         <div className="external-img  flex items-center justify-center w-auto lg:w-[300px] h-full">
           {/* <img src="https://i.ibb.co/6wBbg67/announcement.png" alt=""  className="h-full object-contain"/> */}
           <Lottie animationData={AnnouncementBanner} loop={true} className="h-full w-full object-contain"/>

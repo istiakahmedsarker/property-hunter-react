@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 
 const GetAllPayments = () => {
   const { data: payments, isLoading, refetch } = useQuery({

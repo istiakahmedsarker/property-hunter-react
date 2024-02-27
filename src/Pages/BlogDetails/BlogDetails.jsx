@@ -6,6 +6,7 @@ import { FaRegUserCircle } from 'react-icons/fa';
 import BlogComments from '../../Features/Blog/Components/BlogComments/BlogComments';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import BlogDetailsLoading from '../../Features/Blog/Components/BlogDetailsLoading/BlogDetailsLoading';
+import PageTitle from '../../Features/PageTitle/PageTitle';
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ const BlogDetails = () => {
 
   return (
     <div className="max-w-4xl text-stone-800 dark:text-stone-300  mx-auto mt-10 px-5 xl:px-0">
+      <PageTitle title="Property Hunter || Blog Details"></PageTitle>
       <h2 className="text-2xl  sm:text-3xl md:text-4xl font-bold ">
         {heading}
       </h2>
@@ -51,7 +53,7 @@ const BlogDetails = () => {
 
       <img
         className="rounded-md w-full h-[50vh] sm:h-[80vh] object-cover mt-7"
-        src={images[0]}
+        src={images}
         alt="blog details image"
       />
 

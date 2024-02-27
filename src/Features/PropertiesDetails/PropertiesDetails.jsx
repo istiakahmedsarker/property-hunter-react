@@ -10,6 +10,7 @@ import GoogleMap from './Components/GoogleMap/GoogleMap';
 import PropertyFeature from './Components/PropertyFeature/PropertyFeature';
 import PropertyUtilities from './Components/PropertyUtilities/PropertyUtilities';
 import PropertyOverview from './Components/PropertyOverview/PropertyOverview';
+import PageTitle from '../PageTitle/PageTitle';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -50,6 +51,7 @@ const PropertiesDetails = () => {
   // };
   return (
     <div className="max-w-7xl mx-auto">
+      <PageTitle title="Property Hunter || Details"></PageTitle>
       <div className="lg:w-1/3 w-full my-3">
         <h3 className="font-semibold text-2xl py-5 px-4">
           {details.propertyTitle}

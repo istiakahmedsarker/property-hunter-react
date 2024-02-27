@@ -45,18 +45,32 @@ const Banner = () => {
                 Hunt Your <br /> Dream Home
               </h1>
             </div>
-            <button
-              onClick={() => {
-                if (!user) {
-                  return navigate('/login');
-                } else {
-                  navigate('/properties');
-                }
-              }}
-              className="text-animation py-3 px-6 lg:px-8 rounded-sm  transition-bg duration-300 ease-in-out  text-white hover:bg-[#0e87cd] hover:drop-shadow-xl bg-primary-light"
-            >
-              Get Started
-            </button>
+            <div className="space-x-3">
+              <button
+                onClick={() => {
+                  if (!user) {
+                    return navigate('/login');
+                  } else {
+                    navigate('/properties');
+                  }
+                }}
+                className="text-animation rounded-full py-3 px-6 lg:px-8  transition-bg duration-300 ease-in-out  text-white hover:bg-[#0e87cd] hover:drop-shadow-xl bg-primary-light"
+              >
+                Get Started
+              </button>
+              {/* <button
+                onClick={() => {
+                  if (!user) {
+                    return navigate('/login');
+                  } else {
+                    navigate('/blogs');
+                  }
+                }}
+                className="text-animation rounded-full py-3 px-6 lg:px-8  transition-bg duration-300 ease-in-out bg-transparent border-2 border-custom text-white hover:bg-[#0e87cd] hover:drop-shadow-xl"
+              >
+                Blogs
+              </button> */}
+            </div>
           </div>
           <div className="flex-1 z-40 h-full">
             <div className="rounded-xl slide-right w-[35vw] ml-auto hidden  md:block  md:h-[300px] lg:h-[450px]">

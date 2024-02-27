@@ -8,13 +8,14 @@ import FroalaEditor from 'react-froala-wysiwyg';
 import { useForm, Controller } from 'react-hook-form';
 import 'froala-editor/js/plugins.pkgd.min.js';
 import useAuth from '../../Hooks/useAuth';
+import PageTitle from '../PageTitle/PageTitle';
 
 const BlogPost = () => {
   const inputRef = useRef(null);
   const [image, setImage] = useState(null);
   const { userId } = useAuth();
 
-  const handleOnChangeImage = (e) => {
+  const handleOnChangeImage = e => {
     const imgFile = e.target.files[0];
     setImage(imgFile);
   };
@@ -75,7 +76,7 @@ const BlogPost = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
+  const onSubmit = async data => {
     console.log(data);
     const imageFile = { image };
     console.log(imageFile);
@@ -121,6 +122,7 @@ const BlogPost = () => {
 
   return (
     <div className="mt-16 max-w-7xl xl:mx-auto px-6">
+      <PageTitle title="Property Hunter || Create Blog"></PageTitle>
       <Toaster />
       <h3 className="text-4xl dark:text-cyan-50 font-bold mb-5 md:mb-12 font-josep ">
         Write a blog

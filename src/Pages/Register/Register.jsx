@@ -1,26 +1,27 @@
-import { AiOutlineMail } from "react-icons/ai";
-import { CiLock, CiUser } from "react-icons/ci";
-import { FaGoogle, FaFacebookF, FaRegEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
-import toast from "react-hot-toast";
-import { useState } from "react";
-import TermCondition from "../TermCondition/TermCondition";
-import axios from "axios";
-import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
-import useAxios from "../../Hooks/useAxios";
+import { AiOutlineMail } from 'react-icons/ai';
+import { CiLock, CiUser } from 'react-icons/ci';
+import { FaGoogle, FaFacebookF, FaRegEye, FaEyeSlash } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import TermCondition from '../TermCondition/TermCondition';
+import axios from 'axios';
+import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
+import useAxios from '../../Hooks/useAxios';
+import PageTitle from '../../Features/PageTitle/PageTitle';
 
-const preset_key = "property-hunter";
-const cloud_name = "dwopkbaby";
+const preset_key = 'property-hunter';
+const cloud_name = 'dwopkbaby';
 const Register = () => {
   const [passShow, setPassShow] = useState(false);
   const [termShow, setTermShow] = useState(false);
-  const [checked, setChecked] = useState("");
+  const [checked, setChecked] = useState('');
   const toHome = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
   const myAxios = useAxios();
 
-  const handleLogin = (e) => {
+  const handleLogin = e => {
     e.preventDefault();
     const form = e.target;
     const image = form.image.files[0];
@@ -29,28 +30,28 @@ const Register = () => {
     const password = form.password.value;
 
     const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_preset", preset_key);
-    formData.append("folder", "property-hunter");
+    formData.append('file', image);
+    formData.append('upload_preset', preset_key);
+    formData.append('folder', 'property-hunter');
 
     axios
       .post(
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
         formData
       )
-      .then(async (res) => {
+      .then(async res => {
         if (res.status === 200) {
           const imageURL = res.data?.url;
           try {
-            await myAxios.post("/users", {
+            await myAxios.post('/users', {
               name,
               email,
-              role: "user",
-              image: imageURL || "",
+              role: 'user',
+              image: imageURL || '',
             });
           } catch (error) {
-            if (error.response.data?.status === "Fail") {
-              toast.error("This email already exist");
+            if (error.response.data?.status === 'Fail') {
+              toast.error('This email already exist');
               return;
             }
           }
@@ -59,15 +60,15 @@ const Register = () => {
             .then(() => {
               updateUserProfile(name, imageURL)
                 .then(() => {
-                  toast.success("Registration Successful");
-                  toHome("/");
+                  toast.success('Registration Successful');
+                  toHome('/');
                 })
-                .catch((err) => {
+                .catch(err => {
                   // console.log({ err });
-                  toast.error("Registration Failed!");
+                  toast.error('Registration Failed!');
                 });
             })
-            .catch((err) => {
+            .catch(err => {
               toast.error(err.message);
             });
         }
@@ -77,6 +78,7 @@ const Register = () => {
     <>
       {termShow && <TermCondition onClose={setTermShow} />}
       <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white dark:bg-card-dark dark:text-in-dark">
+        <PageTitle title="Property Hunter || Registration"></PageTitle>
         <div className="hidden lg:block  bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center w-1/3 rounded-l-lg"></div>
         <div className="w-full lg:w-2/3 py-8 px-10">
           <h2 className="font-bold mb-10 text-3xl">Please! Register Here</h2>
@@ -85,12 +87,12 @@ const Register = () => {
               <div className="flex flex-col gap-3">
                 <label className="font-bold">Name</label>
                 <div className="relative">
-                  <CiUser className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                  <CiUser className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                   <input
                     name="name"
                     type="text"
                     placeholder="Name"
-                    className="input input-bordered w-full pl-8 bg-white"
+                    className="input input-bordered w-full pl-8 bg-white dark:text-black"
                     required
                   />
                 </div>
@@ -101,19 +103,19 @@ const Register = () => {
                   <input
                     name="image"
                     type="file"
-                    className="file-input file-input-bordered file:bg-primary-light file:text-white w-full bg-white"
+                    className="file-input file-input-bordered file:bg-primary-light file:text-white w-full bg-white dark:text-black"
                   />
                 </div>
               </div>
               <div className="flex flex-col gap-3">
                 <label className="font-bold">Email</label>
                 <div className="relative">
-                  <AiOutlineMail className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                  <AiOutlineMail className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                   <input
                     name="email"
                     type="text"
                     placeholder="Email"
-                    className="input input-bordered w-full pl-8 bg-white"
+                    className="input input-bordered w-full pl-8 bg-white dark:text-black"
                     required
                   />
                 </div>
@@ -121,12 +123,12 @@ const Register = () => {
               <div className="flex flex-col gap-3">
                 <label className="font-bold">Password</label>
                 <div className="relative">
-                  <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl" />
+                  <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                   <input
                     name="password"
-                    type={passShow ? "text" : "password"}
+                    type={passShow ? 'text' : 'password'}
                     placeholder="Password"
-                    className="input input-bordered w-full pl-8 bg-white"
+                    className="input input-bordered w-full pl-8 bg-white dark:text-black"
                     required
                   />
                   <div
@@ -152,7 +154,7 @@ const Register = () => {
                   Terms and conditions
                 </p>
               </div>
-              {checked ? (
+              {/* {checked ? (
                 <button
                   type="submit"
                   className="btn btn-success text-white bg-primary-light hover:bg-primary-light border-none w-full mt-8 hover:opacity-90"
@@ -167,14 +169,22 @@ const Register = () => {
                 >
                   Register
                 </button>
-              )}
+              )} */}
+              <button
+                type="submit"
+                className={`btn btn-success text-white bg-primary-light hover:bg-primary-light border-none w-full mt-8 hover:opacity-90 
+  dark:text-gray-300 dark:hover:text-white dark:bg-primary-light dark:hover:bg-[#1299e7] `}
+                disabled={checked ? false : true}
+              >
+                Register
+              </button>
             </div>
           </form>
           <div className="text-center mt-6">
             <div className="space-y-6">
               <p>
-                Have an account?{" "}
-                <Link to={"/login"} className="text-primary-light">
+                Have an account?{' '}
+                <Link to={'/login'} className="text-primary-light">
                   Login
                 </Link>
               </p>
