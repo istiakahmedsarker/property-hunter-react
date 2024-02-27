@@ -110,7 +110,7 @@ const BuyerInquiryForm = ({ details }) => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center  bg-[#f6fff5] bg-[url('https://i.ibb.co/wdYwvVV/2150799631.jpg')] bg-cover rounded-xl overflow-hidden mt-6">
+      <div className="relative min-h-screen flex items-center justify-center  bg-[#f6fff5] bg-[url('https://i.ibb.co/wdYwvVV/2150799631.jpg')] bg-cover rounded-xl overflow-hidden mt-6">
       <div className="h-full w-full absolute z-0 opacity-50 bg-black"></div>
 
       <div className="px-8 min-h-screen py-12 relative z-20 w-full mx-auto flex flex-col items-center justify-center bg-transparent backdrop-blur-3xl backdrop-brightness-100  ">

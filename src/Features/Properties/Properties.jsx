@@ -9,6 +9,7 @@ import PropertyFilter from '../Properties/Components/PropertyFilter/PropertyFilt
 import { IoFilter } from 'react-icons/io5';
 import FilterComponent from './Components/FilterComponent/FilterComponent';
 import { Link } from 'react-router-dom';
+import PageTitle from '../PageTitle/PageTitle';
 
 const Properties = () => {
   const [checkboxes, setCheckboxes] = useState({
@@ -31,15 +32,15 @@ const Properties = () => {
   const limit = 6;
 
   const checkedItem = Object.keys(checkboxes).find(
-    (checkbox) => checkboxes[checkbox]
+    checkbox => checkboxes[checkbox]
   );
 
   const typeCheckedItem = Object.keys(typeCheckboxes).find(
-    (checkbox) => typeCheckboxes[checkbox]
+    checkbox => typeCheckboxes[checkbox]
   );
 
   const handleCheckboxChange = useCallback(
-    (checkboxName) => {
+    checkboxName => {
       const updatedCheckboxes = {};
 
       for (let key in checkboxes) {
@@ -53,7 +54,7 @@ const Properties = () => {
   );
 
   const handleTypeCheckboxChange = useCallback(
-    (checkboxName) => {
+    checkboxName => {
       const updatedCheckboxes = {};
 
       for (let key in typeCheckboxes) {
@@ -67,7 +68,7 @@ const Properties = () => {
   );
 
   const handleFormSubmit = useCallback(
-    (event) => {
+    event => {
       event.preventDefault();
       // Additional filter logic
       // You can place any additional logic here to fetch or update data
@@ -138,6 +139,7 @@ const Properties = () => {
 
   return (
     <div className="max-w-7xl xl:mx-auto mx-4 pt-8 pb-20">
+      <PageTitle title="Property Hunter || Properties"></PageTitle>
       <div className="flex items-center justify-between mb-10 mt-5">
         <h3 className="text-3xl dark:text-in-dark font-semibold">
           Properties For sale
@@ -334,13 +336,13 @@ const Properties = () => {
 
               {!isGrid ? (
                 <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-8 gap-y-10 -z-30">
-                  {propertiesData?.data?.properties?.map((card) => (
+                  {propertiesData?.data?.properties?.map(card => (
                     <PropertiesCard key={card._id} card={card}></PropertiesCard>
                   ))}
                 </div>
               ) : (
                 <div className="flex flex-col gap-2 my-6 -z-30">
-                  {propertiesData?.data?.properties?.map((card) => (
+                  {propertiesData?.data?.properties?.map(card => (
                     <PropertiesCardList
                       key={card._id}
                       card={card}
@@ -363,7 +365,7 @@ const Properties = () => {
                   <FaArrowLeft />
                 </button>
 
-                {pages.map((pageNo) => (
+                {pages.map(pageNo => (
                   <button
                     className={`${
                       activePage === pageNo
