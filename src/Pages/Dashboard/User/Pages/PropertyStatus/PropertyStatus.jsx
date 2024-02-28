@@ -1,30 +1,31 @@
-import useAxios from "../../../../../Hooks/useAxios";
-import usePropertyStatus from "../../../../../Hooks/usePropertyStatus";
-import { Link } from "react-router-dom";
-import { MdOutlineDeleteForever } from "react-icons/md";
-import Swal from "sweetalert2";
-import { FaHouseCircleExclamation } from "react-icons/fa6";
-import toast from "react-hot-toast";
+import useAxios from '../../../../../Hooks/useAxios';
+import usePropertyStatus from '../../../../../Hooks/usePropertyStatus';
+import { Link } from 'react-router-dom';
+import { MdOutlineDeleteForever } from 'react-icons/md';
+import Swal from 'sweetalert2';
+import { FaHouseCircleExclamation } from 'react-icons/fa6';
+import toast from 'react-hot-toast';
+import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 
 export default function PropertyStatus() {
   const instance = useAxios();
   const [status, refetch] = usePropertyStatus();
 
-  const handleDelete = (id) => {
+  const handleDelete = id => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#076aa5",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: '#076aa5',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
       width: '350px',
-    }).then((result) => {
+    }).then(result => {
       if (result.isConfirmed) {
-        instance.delete(`/buyer-inquiries/delete/${id}`).then((res) => {
+        instance.delete(`/buyer-inquiries/delete/${id}`).then(res => {
           refetch();
-          if (res?.data?.status === "success") {
+          if (res?.data?.status === 'success') {
             toast.success('Your file has been deleted');
           }
         });
@@ -33,10 +34,11 @@ export default function PropertyStatus() {
   };
   return (
     <div>
-      <div >
+      <PageTitle title="Property Hunter || Property status"></PageTitle>
+      <div>
         {status.length > 0 ? (
           <div className="grid lg:grid-cols-2 gap-8 mx-auto mt-10 mr-4">
-            {status.map((item) => (
+            {status.map(item => (
               <div
                 key={item._id}
                 className="bg-white grid sm:grid-cols-2 items-center shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4 relative"
@@ -58,13 +60,13 @@ export default function PropertyStatus() {
 
                   <div className="text-sm font-semibold text-gray-400 flex justify-between mt-2">
                     <h4>
-                      size{" "}
+                      size{' '}
                       <span className="text-gray-600">
                         : {item.buyer_property_squareFootage}sq Ft
                       </span>
                     </h4>
                     <h4>
-                      price{" "}
+                      price{' '}
                       <span className="text-gray-600">
                         : $ {item.buyer_property_price}
                       </span>
@@ -72,31 +74,31 @@ export default function PropertyStatus() {
                     <span></span>
                   </div>
                   <div>
-                    {item?.status === "pending" ? (
+                    {item?.status === 'pending' ? (
                       <p className="mt-2 text-sm text-gray-400">
                         Please wait as your request is pending. The seller can
                         pay only after accepting the request.
                       </p>
-                    ) : item?.status === "accepted" ? (
+                    ) : item?.status === 'accepted' ? (
                       <p className="mt-2 text-sm text-green-400">
                         Your request has been accepted, you can make the
                         payment.
                       </p>
-                    ) : item?.status === "rejected" ? (
+                    ) : item?.status === 'rejected' ? (
                       <p className="mt-2 text-sm text-red-500">
                         This property is not available, so send request for
                         another property.
                       </p>
                     ) : (
-                      ""
+                      ''
                     )}
                   </div>
                   <div className="flex justify-end mt-4 flex-wrap">
                     <Link to={`/dashboard/payment/${item._id}`}>
                       <button
                         disabled={
-                          item?.status === "pending" ||
-                          item?.status === "rejected"
+                          item?.status === 'pending' ||
+                          item?.status === 'rejected'
                         }
                         type="button"
                         className="btn-sm rounded text-white text-sm tracking-wider font-semibold border-none outline-none bg-primary-light hover:bg-gray-400 active:bg-primary-light disabled:bg-gray-300"
