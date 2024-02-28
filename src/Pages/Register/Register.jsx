@@ -9,6 +9,7 @@ import TermCondition from '../TermCondition/TermCondition';
 import axios from 'axios';
 import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
 import useAxios from '../../Hooks/useAxios';
+
 import PageTitle from '../../Features/PageTitle/PageTitle';
 
 const preset_key = 'property-hunter';
@@ -39,6 +40,8 @@ const Register = () => {
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
         formData
       )
+      .then((res) => {
+        if (res.status === 200) {
       .then(async res => {
         if (res.status === 200) {
           const imageURL = res.data?.url;
@@ -57,7 +60,21 @@ const Register = () => {
           }
 
           createUser(email, password)
-            .then(() => {
+            .then(async () => {
+              const imageURL = res.data?.url;
+              try {
+                await myAxios.post('/users', {
+                  name,
+                  email,
+                  role: 'user',
+                  image: imageURL || '',
+                });
+              } catch (error) {
+                if (error.response.data?.status === 'Fail') {
+                  toast.error('This email already exist');
+                  return;
+                }
+              }
               updateUserProfile(name, imageURL)
                 .then(() => {
                   toast.success('Registration Successful');
