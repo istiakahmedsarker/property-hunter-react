@@ -1,9 +1,5 @@
-import React from 'react';
 import useGetData from '../../Hooks/useGetData';
 import BlogCard from '../../Features/Blog/Components/BlogCard/BlogCard';
-import Marquee from 'react-fast-marquee';
-import LatestBlogHomeCard from './LatestBlogHomeCard/LatestBlogHomeCard';
-// Import Swiper from React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -28,7 +24,7 @@ const LatestBlogHome = () => {
   };
   // console.log(latestBlogsData?.data?.blogs);
   return (
-    <div className="w-11/12 mx-auto my-7 ">
+    <div className="max-w-7xl mx-4 xl:mx-auto my-7 ">
       <div className="my-6">
         {/* <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
           Our latest Blogs
@@ -87,10 +83,7 @@ const LatestBlogHome = () => {
                 key={idx}
                 className="swiper-slide h-full pt-0 md:pt-0 lg:pt-8 pb-8 md:pb-8 overflow-visible relative z-[10]"
               >
-                <LatestBlogHomeCard
-                  key={blog._id}
-                  blog={blog}
-                ></LatestBlogHomeCard>
+                <BlogCard key={blog._id} blog={blog}></BlogCard>
               </SwiperSlide>
             ))}
         </Swiper>

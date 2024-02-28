@@ -1,21 +1,21 @@
-import { AiOutlineMail } from "react-icons/ai";
-import { CiLock, CiUser } from "react-icons/ci";
-import { FaGoogle, FaFacebookF, FaRegEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
-import toast from "react-hot-toast";
-import { useState } from "react";
-import TermCondition from "../TermCondition/TermCondition";
-import axios from "axios";
-import GoogleLogin from "../../Components/GoogleLogin/GoogleLogin";
-import useAxios from "../../Hooks/useAxios";
+import { AiOutlineMail } from 'react-icons/ai';
+import { CiLock, CiUser } from 'react-icons/ci';
+import { FaGoogle, FaFacebookF, FaRegEye, FaEyeSlash } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import TermCondition from '../TermCondition/TermCondition';
+import axios from 'axios';
+import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
+import useAxios from '../../Hooks/useAxios';
 
-const preset_key = "property-hunter";
-const cloud_name = "dwopkbaby";
+const preset_key = 'property-hunter';
+const cloud_name = 'dwopkbaby';
 const Register = () => {
   const [passShow, setPassShow] = useState(false);
   const [termShow, setTermShow] = useState(false);
-  const [checked, setChecked] = useState("");
+  const [checked, setChecked] = useState('');
   const toHome = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
   const myAxios = useAxios();
@@ -29,42 +29,41 @@ const Register = () => {
     const password = form.password.value;
 
     const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_preset", preset_key);
-    formData.append("folder", "property-hunter");
+    formData.append('file', image);
+    formData.append('upload_preset', preset_key);
+    formData.append('folder', 'property-hunter');
 
     axios
       .post(
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
         formData
       )
-      .then(async (res) => {
+      .then((res) => {
         if (res.status === 200) {
-          const imageURL = res.data?.url;
-          try {
-            await myAxios.post("/users", {
-              name,
-              email,
-              role: "user",
-              image: imageURL || "",
-            });
-          } catch (error) {
-            if (error.response.data?.status === "Fail") {
-              toast.error("This email already exist");
-              return;
-            }
-          }
-
           createUser(email, password)
-            .then(() => {
+            .then(async () => {
+              const imageURL = res.data?.url;
+              try {
+                await myAxios.post('/users', {
+                  name,
+                  email,
+                  role: 'user',
+                  image: imageURL || '',
+                });
+              } catch (error) {
+                if (error.response.data?.status === 'Fail') {
+                  toast.error('This email already exist');
+                  return;
+                }
+              }
               updateUserProfile(name, imageURL)
                 .then(() => {
-                  toast.success("Registration Successful");
-                  toHome("/");
+                  toast.success('Registration Successful');
+                  toHome('/');
                 })
                 .catch((err) => {
                   // console.log({ err });
-                  toast.error("Registration Failed!");
+                  toast.error('Registration Failed!');
                 });
             })
             .catch((err) => {
@@ -124,7 +123,7 @@ const Register = () => {
                   <CiLock className="absolute top-1/2 -translate-y-1/2 left-2 text-xl dark:text-black" />
                   <input
                     name="password"
-                    type={passShow ? "text" : "password"}
+                    type={passShow ? 'text' : 'password'}
                     placeholder="Password"
                     className="input input-bordered w-full pl-8 bg-white dark:text-black"
                     required
@@ -181,8 +180,8 @@ const Register = () => {
           <div className="text-center mt-6">
             <div className="space-y-6">
               <p>
-                Have an account?{" "}
-                <Link to={"/login"} className="text-primary-light">
+                Have an account?{' '}
+                <Link to={'/login'} className="text-primary-light">
                   Login
                 </Link>
               </p>
