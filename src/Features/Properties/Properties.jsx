@@ -70,8 +70,6 @@ const Properties = () => {
   const handleFormSubmit = useCallback(
     event => {
       event.preventDefault();
-      // Additional filter logic
-      // You can place any additional logic here to fetch or update data
     },
     [] // Add dependencies if needed
   );
@@ -127,15 +125,6 @@ const Properties = () => {
     if (activePage === totalPage) return activePage;
     setActivePage(activePage + 1);
   };
-
-  // if (isPending) {
-  //   return (
-  //     <p className="h-[90vh] flex flex-col items-center justify-center text-center">
-  //       Loading...
-  //     </p>
-  //     // <video src="../../assets/Untitled design.mp4"></video>
-  //   );
-  // }
 
   return (
     <div className="max-w-7xl xl:mx-auto mx-4 pt-8 pb-20">

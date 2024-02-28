@@ -1,30 +1,17 @@
-import React, { useEffect, useState } from 'react';
 import { MdApartment, MdOutlineHome } from 'react-icons/md';
 import { GiVillage } from 'react-icons/gi';
 import { HiOutlineBuildingOffice2 } from 'react-icons/hi2';
 import { Link } from 'react-router-dom';
 import SectionTitle from '../SectionTitle/SectionTitle';
-// import useGetData from '../../Hooks/useGetData';
 
 const ExploreTypes = () => {
-  // const { data: propertiesData, isPending } = useGetData({
-  //   key: ['properties'],
-  //   api: `/properties?propertyType=apartment`,
-  // });
-  // console.log(propertiesData?.properties);
-  const handleTypeClick = (propertyType) => {
+  const handleTypeClick = propertyType => {
     history.push(`/properties?propertyType=${propertyType}`);
   };
 
   return (
     <div className="w-11/12 mx-auto md:my-20 dark:bg-primary-dark ">
       <div className="my-6 text-center">
-        {/* <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center font-bold md:mb-3 lg:mb-4 dark:text-in-dark">
-          Explore Properties Types
-        </h2>
-        <h3 className="text-sm font-semibold dark:text-in-dark">
-          All Types of Properties
-        </h3> */}
         <SectionTitle
           title="Properties"
           subTitle="Exploring All Types of Properties"
@@ -45,12 +32,8 @@ const ExploreTypes = () => {
               </h3>
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
-              <h3 className="text-xl font-bold ">
-                House
-              </h3>
-              <h3 className="">
-                8 Properties
-              </h3>
+              <h3 className="text-xl font-bold ">House</h3>
+              <h3 className="">8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -67,7 +50,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Apartment</h3>
-              <h3>{ }8 Properties</h3>
+              <h3>{}8 Properties</h3>
             </div>
           </div>
         </Link>
@@ -85,10 +68,9 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Villa</h3>
-              <h3>{ }8 Properties</h3>
+              <h3>{}8 Properties</h3>
             </div>
           </div>
-          
         </Link>
 
         <Link
@@ -104,7 +86,7 @@ const ExploreTypes = () => {
             </div>
             <div className="my-7 flex flex-col justify-center items-center">
               <h3 className="text-xl font-bold">Office</h3>
-              <h3>{ }8 Properties</h3>
+              <h3>{}8 Properties</h3>
             </div>
           </div>
         </Link>
