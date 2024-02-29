@@ -1,20 +1,13 @@
 import React from 'react';
-import { BiShapeSquare, BiSolidCarGarage } from 'react-icons/bi';
+import { BiSolidCarGarage } from 'react-icons/bi';
 import { FaUsersViewfinder } from 'react-icons/fa6';
-import {
-  IoBedOutline,
-  IoCalendarClearOutline,
-  IoHomeOutline,
-} from 'react-icons/io5';
-import { PiBathtub } from 'react-icons/pi';
+import { IoCalendarClearOutline, IoHomeOutline } from 'react-icons/io5';
 import { RiHomeOfficeFill } from 'react-icons/ri';
 
 const PropertyOverview = ({ details }) => {
   return (
     <div className="rounded-xl text-gray-700 ">
-    
       <div className="grid text-sm md:text-[16px] py-4 lg:grid-cols-3 md:grid-cols-2 dark:text-in-dark grid-cols-2 gap-6 text-gray-700">
-
         {details.rooms?.officeRooms ? (
           <div className="flex  items-center gap-5">
             <div>

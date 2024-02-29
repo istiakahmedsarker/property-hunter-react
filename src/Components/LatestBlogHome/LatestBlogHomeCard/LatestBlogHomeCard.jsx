@@ -25,7 +25,7 @@ const LatestBlogHomeCard = ({ blog }) => {
       </div>
       <h3 className=" font-semibold my-3 h-10 dark:text-in-dark ">{heading}</h3>
       <Link to={`/blogs/${_id}`} className="my-3 ">
-        <button className='text-animation py-3 px-6 lg:px-8 rounded-sm  transition-bg duration-300 ease-in-out  text-white hover:bg-[#0e8ad2] hover:drop-shadow-xl bg-primary-light'>
+        <button className="text-animation py-3 px-6 lg:px-8 rounded-sm  transition-bg duration-300 ease-in-out  text-white hover:bg-[#0e8ad2] hover:drop-shadow-xl bg-primary-light">
           Read more
         </button>
       </Link>

@@ -1,9 +1,10 @@
-import React from 'react';
 import useGetData from '../../Hooks/useGetData';
+
 import BlogCard from '../../Features/Blog/Components/BlogCard/BlogCard';
-import Marquee from 'react-fast-marquee';
+
 import LatestBlogHomeCard from './LatestBlogHomeCard/LatestBlogHomeCard';
 // Import Swiper from React components
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -28,14 +29,8 @@ const LatestBlogHome = () => {
   };
   // console.log(latestBlogsData?.data?.blogs);
   return (
-    <div className="max-w-7xl mx-auto my-7 ">
+    <div className="max-w-7xl mx-4 xl:mx-auto my-7 ">
       <div className="my-6">
-        {/* <h2 className="text-gray-900 text-[28px] md:text-[30px] lg:text-4xl text-center dark:text-in-dark font-bold md:mb-3 lg:mb-4">
-          Our latest Blogs
-        </h2>
-        <h3 className="text-sm font-semibold text-center dark:text-in-dark ">
-          Take a Moment to Read This
-        </h3> */}
         <SectionTitle
           title="Latest Blogs"
           subTitle="Take a Moment to Read our latest Blogs"
@@ -71,11 +66,11 @@ const LatestBlogHome = () => {
               slidesPerView: 3,
             },
           }}
-          onInit={(swiper) => {
+          onInit={swiper => {
             swiper.params.slidesPerView = getSlidesPerView();
             swiper.update();
           }}
-          onResize={(swiper) => {
+          onResize={swiper => {
             swiper.params.slidesPerView = getSlidesPerView();
             swiper.update();
           }}
@@ -87,18 +82,10 @@ const LatestBlogHome = () => {
                 key={idx}
                 className="swiper-slide h-full pt-0 md:pt-0 lg:pt-8 pb-8 md:pb-8 overflow-visible relative z-[10]"
               >
-                <LatestBlogHomeCard
-                  key={blog._id}
-                  blog={blog}
-                ></LatestBlogHomeCard>
+                <BlogCard key={blog._id} blog={blog}></BlogCard>
               </SwiperSlide>
             ))}
         </Swiper>
-        {/* <Marquee className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5  ">
-          {latestBlogsData?.blogs?.map(blog => (
-            <LatestBlogHomeCard key={blog._id} blog={blog}></LatestBlogHomeCard>
-          ))}
-        </Marquee> */}
       </div>
     </div>
   );

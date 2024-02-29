@@ -37,7 +37,16 @@ const BlogDetails = () => {
       </h2>
       <div className="flex items-center gap-5  mt-5 mb-5 font-semibold text-sm max-w-6xl justify-between">
         <div className="flex gap-2 items-center ">
-          <FaRegUserCircle className="h-10 w-10" />
+          {author?.image ? (
+            <img
+              src={author?.image}
+              className="w-10 h-10 object-cover rounded-full"
+              alt="author img"
+            />
+          ) : (
+            <FaRegUserCircle className="h-10 w-10" />
+          )}
+
           <div>
             <h5>{author?.name}</h5>
             <h5>{formattedDate}</h5>

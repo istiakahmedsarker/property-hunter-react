@@ -17,18 +17,8 @@ import useAuth from '../../../../../Hooks/useAuth';
 import { FaArrowRight } from 'react-icons/fa6';
 
 const RecommendedCard = ({ recommended }) => {
-  const {
-    _id,
-    propertyTitle,
-    propertyImages,
-    location,
-    squareFootage,
-    bedroom,
-    bathroom,
-    propertyStatus,
-    price,
-    favorites,
-  } = recommended || {};
+  const { _id, propertyTitle, propertyImages, location, price, favorites } =
+    recommended || {};
   console.log(recommended);
   // Favorite property
   const { user } = useAuth();
