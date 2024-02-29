@@ -1,26 +1,58 @@
 import { useEffect, useState } from 'react';
 import PropertiesCard from '../../Features/Properties/Components/PropertiesCard/PropertiesCard';
 import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
 import SectionTitle from '../SectionTitle/SectionTitle';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
 
 const FeaturedProperties = () => {
-  const { isPending, error, featuredPropertiesData } = useQuery({
-    queryKey: ['featuredPropertiesData'],
-    queryFn: async () => {
-      const res = await axios.get(`/featuredPropertiesData`);
-      return res?.data?.data?.blog;
-    },
-  });
+  const [featuredPropertiesData, setFeaturedPropertiesData] = useState([]);
 
-  // console.log(featuredPropertiesData)
+  const swiperParams = {
+    spaceBetween: 20,
+    slidesPerView: 3,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  };
+
+
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get('https://property-hunter-server-roan.vercel.app/api/v1/properties/top-favored');
+        const data = response.data?.data;
+        setFeaturedPropertiesData(data);
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+      }
+    }
+
+    // Call the function
+    fetchData();
+  }, []);
+
   return (
-    <div>
+    <div className='my-10'>
       <SectionTitle
         title="Featured Property"
         subTitle="Explore the Most Featured Items"
       />
-      {/* <PropertiesCard card={featuredPropertiesData}></PropertiesCard> */}
+      <div  className='max-w-7xl mx-auto '>
+        <Swiper {...swiperParams}>
+          {featuredPropertiesData.map((property, index) => (
+            <SwiperSlide key={index}>
+              <PropertiesCard card={property} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {/* Navigation Buttons */}
+      <div className="swiper-button-next"></div>
+      <div className="swiper-button-prev"></div>
     </div>
   );
 };

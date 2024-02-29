@@ -7,16 +7,20 @@ import toast from 'react-hot-toast';
 import { useState } from 'react';
 import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
 import PageTitle from '../../Features/PageTitle/PageTitle';
+import axios from 'axios';
 const Login = () => {
   const [passShow, setPassShow] = useState(false);
   const toHome = useNavigate();
   const { signIn } = useAuth();
-  const handleLogin = e => {
+
+  const handleLogin = async e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
+    const logInned = { email, password };
+    // console.log(email, password);
     signIn(email, password)
       .then(() => {
         toast.success('Logged in successful');
@@ -25,6 +29,22 @@ const Login = () => {
       .catch(() => {
         toast.error('Login Failed!');
       });
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/logIn', logInned, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const res = response.data;
+      
+      localStorage.setItem('user:details', JSON.stringify(res?.user));
+      console.log(res);
+    } catch (error) {
+      console.log(error.message || 'An error occurred during login');
+    }
+
   };
   return (
     <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white dark:bg-card-dark dark:text-in-dark">

@@ -35,6 +35,11 @@ const Register = () => {
     formData.append('upload_preset', preset_key);
     formData.append('folder', 'property-hunter');
 
+    const newUser = {
+      fullName: name,
+      email,
+      password
+    };
     axios
       .post(
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
@@ -90,6 +95,20 @@ const Register = () => {
             });
         }
       });
+
+      axios.post('https://http://localhost:8000/api/register', newUser, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error during signUp:', error);
+      });
+      
+
   };
   return (
     <>
