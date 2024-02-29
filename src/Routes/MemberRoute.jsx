@@ -1,17 +1,12 @@
 
-import useAuth from '../Hooks/useAuth';
-import useMember from '../Hooks/useMember';
+import useUserRole from '../Hooks/useUserRole';
 import { Navigate, useLocation } from 'react-router-dom';
 
 const MemberRoute = ({children}) => {
-    const {user,loading} = useAuth()
-    const isMember = useMember()
+    const userRole = useUserRole();
     const location = useLocation()
     
-    if(loading){
-        return <progress className="progress w-56"></progress>
-    }
-    if(user && isMember){
+    if(userRole === 'member' || userRole === 'admin'){
         return children
     }
 
