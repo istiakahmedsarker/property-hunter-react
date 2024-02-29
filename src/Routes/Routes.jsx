@@ -32,6 +32,9 @@ import NotificationDetails from "../Components/Notifications/NotificationDetails
 import ModeratorHome from "../Pages/Dashboard/Moderator/Pages/ModeratorHome/ModeratorHome";
 import AboutUs from "../Features/AboutUs/AboutUs";
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import MemberRoute from './MemberRoute';
+import AdminRoute from './AdminRoute';
+import PrivateRoute from '../Routes/PrivateRoute'
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -103,32 +106,46 @@ const router = createBrowserRouter([
   {
     // dashboard routes
     path: '/dashboard',
-    element: <Dashboard />,
+    element: <PrivateRoute>
+      <Dashboard />
+    </PrivateRoute>,
     children: [
       {
         path: '/dashboard/home',
-        element: <HomeDashboard />,
+        element: <PrivateRoute>
+          <HomeDashboard />
+        </PrivateRoute>,
       },
       {
         path: '/dashboard/announcement',
-        element: <Announcement />,
+        element: <PrivateRoute>
+          <Announcement />
+        </PrivateRoute>,
       },
       {
         path: '/dashboard/all-properties',
-        element: <AllProperties />,
+        element: <AdminRoute>
+          <AllProperties />
+        </AdminRoute>,
       },
       {
         path: '/dashboard/liveChat',
-        element: <LiveChat />,
+        element: <PrivateRoute>
+          <LiveChat />
+        </PrivateRoute>,
       },
       {
         path: '/dashboard/audioVideoCall',
-        element: <AudioVideoCall />,
+        element: <PrivateRoute>
+          <AudioVideoCall />
+        </PrivateRoute>,
       },
       //? Member only routes
       {
         path: '/dashboard/payment/:id',
-        element: <StripePayment />,
+        element: <MemberRoute>
+          <StripePayment />
+        </MemberRoute>,
         loader: ({ params }) =>
           fetch(
             `https://property-hunter-server-roan.vercel.app/api/v1/buyer-inquiries/${params.id}`
@@ -136,40 +153,58 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/payment-history',
-        element: <PaymentHistory />,
+        element: <MemberRoute>
+          <PaymentHistory />
+        </MemberRoute>,
       },
       {
         path: '/dashboard/property-status',
-        element: <PropertyStatus />,
+        element: <PrivateRoute>
+          <PropertyStatus />
+        </PrivateRoute>,
       },
       {
         path: '/dashboard/make-announcement',
-        element: <MakeAnnouncement />,
+        element: <MemberRoute>
+          <MakeAnnouncement />
+        </MemberRoute>,
       },
       {
         path: '/dashboard/admin',
-        element: <AdminHome />,
+        element: <AdminRoute>
+          <AdminHome />
+        </AdminRoute>,
       },
       {
         path: '/dashboard/all-users',
-        element: <UserManagement />,
+        element: <AdminRoute>
+          <UserManagement />
+        </AdminRoute>,
       },
       {
         path: '/dashboard/createBlog',
-        element: <BlogPost />,
+        element: <AdminRoute>
+          <BlogPost />
+        </AdminRoute>,
       },
       {
         path: '/dashboard/property-request',
-        element: <PropertyRequest />,
+        element: <Mod>
+          <PropertyRequest />
+        </Mod>,
       },
       {
         path: '/dashboard/manage-property-request',
-        element: <ManagePropertyRequest />,
+        element: <AdminRoute>
+          <ManagePropertyRequest />
+        </AdminRoute>,
       },
       //? Admin only routes
       {
         path: "/dashboard/moderator",
-        element: <ModeratorHome />,
+        element: <AdminRoute>
+          <ModeratorHome />
+        </AdminRoute>,
       },
     ],
   },
