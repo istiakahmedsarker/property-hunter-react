@@ -5,10 +5,12 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import { FaHouseCircleExclamation } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import useTheme from "../../../../../Providers/ThemeContext";
 
 export default function PropertyStatus() {
   const instance = useAxios();
   const [status, refetch] = usePropertyStatus();
+  const {themeMode} = useTheme();
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -20,6 +22,8 @@ export default function PropertyStatus() {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
       width: '350px',
+      color: themeMode === "dark" ? '#F4F4F4' : '',
+      background: themeMode === "dark" ? '#1b1c1d' : '',
     }).then((result) => {
       if (result.isConfirmed) {
         instance.delete(`/buyer-inquiries/delete/${id}`).then((res) => {
@@ -39,7 +43,7 @@ export default function PropertyStatus() {
             {status.map((item) => (
               <div
                 key={item._id}
-                className="bg-white grid sm:grid-cols-2 items-center shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4 relative"
+                className="bg-white dark:bg-card-dark grid sm:grid-cols-2 items-center w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4 relative dark:text-in-dark"
               >
                 <img
                   src={item.buyer_property_images}
@@ -59,13 +63,13 @@ export default function PropertyStatus() {
                   <div className="text-sm font-semibold text-gray-400 flex justify-between mt-2">
                     <h4>
                       size{" "}
-                      <span className="text-gray-600">
+                      <span className="text-gray-600 dark:text-in-dark">
                         : {item.buyer_property_squareFootage}sq Ft
                       </span>
                     </h4>
                     <h4>
                       price{" "}
-                      <span className="text-gray-600">
+                      <span className="text-gray-600 dark:text-in-dark">
                         : $ {item.buyer_property_price}
                       </span>
                     </h4>

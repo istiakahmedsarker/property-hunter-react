@@ -1,12 +1,15 @@
 import toast from "react-hot-toast";
 import useAxios from "../../../../../Hooks/useAxios";
-import useManageProperty from "../../../../../Hooks/useManageProperty";
 import { MdManageHistory } from "react-icons/md";
 import Swal from "sweetalert2";
+import usePropertyReqForMod from "../../../../../Hooks/usePropertyReqForMod";
+import LoadingAnimation from "../../../../../Components/LoadingAnimation/LoadingAnimation";
+import useTheme from "../../../../../Providers/ThemeContext";
 
 const PropertyRequest = () => {
   const instance = useAxios();
-  const [manageProperty, refetch] = useManageProperty();
+  const [propertyReqForMod, isLoading, refetch] = usePropertyReqForMod();
+  const {themeMode} = useTheme();
 
   const handleAccepted = async (_id) =>{
         const res = await instance.put(`/buyer-inquiries/status-accept/${_id}`);
@@ -28,6 +31,8 @@ const PropertyRequest = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, reject it!",
       width: "350px",
+      color: themeMode === "dark" ? '#F4F4F4' : '',
+      background: themeMode === "dark" ? '#1b1c1d' : '',
     }).then((result) => {
       if (result.isConfirmed) {
         instance.put(`buyer-inquiries/status-reject/${id}`).then((res) => {
@@ -40,14 +45,13 @@ const PropertyRequest = () => {
     });
   };
   return (
-    <div className="min-h-[calc(100vh-68px)]">
-      {manageProperty?.length > 0 ? (
+    <div className="">
+      { isLoading === true ? <LoadingAnimation/> : (propertyReqForMod?.length > 0 ? 
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white font-[sans-serif]">
             {/* head */}
             <thead className="bg-gray-700 whitespace-nowrap">
               <tr>
-                <th className="pl-6 w-8"></th>
                 <th className="px-6 py-3 text-left text-sm font-semibold text-white"></th>
                 <th className="px-0 py-3 text-left text-sm font-semibold text-white">
                   Property & Buyer Name
@@ -62,15 +66,17 @@ const PropertyRequest = () => {
                   Status
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold text-white">
-                  Action
+                  Accept
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-white">
+                  Reject
                 </th>
               </tr>
             </thead>
-            <tbody className="whitespace-nowrap">
-              {manageProperty?.map((item) => (
+            <tbody className="whitespace-nowrap dark:bg-card-dark dark:text-primary-light">
+              {propertyReqForMod?.map((item) => (
                 <tr key={item._id} className="even:bg-blue-50">
                   <td className="pl-6 w-8"></td>
-                  <td className="px-6 py-4 text-sm"></td>
                   <td className="px-0 py-4 text-sm">
                     <div className="flex items-center cursor-pointer">
                       <img
@@ -78,8 +84,8 @@ const PropertyRequest = () => {
                         alt={item.name || ""}
                         className="w-16 h-16 rounded-md shrink-0"
                       />
-                      <div className="ml-2">
-                        <p className="text-sm text-black">{item?.name || ""}</p>
+                      <div className="ml-2 text-wrap">
+                        <p className="text-sm ">{item?.name || ""}</p>
                       </div>
                     </div>
                   </td>
@@ -87,32 +93,47 @@ const PropertyRequest = () => {
                     $ {item?.annual_income || ""}
                   </td>
                   <td className="px-6 py-4 text-sm">$ {item?.savings || ""}</td>
+                  <td className="px-6 py-4 text-sm text-wrap"><span style={{
+                      backgroundColor:
+                        item?.status === "pending"
+                          ? "#FFC107"
+                          : item?.status === "accepted"
+                          ? "#4CAF50"
+                          : item?.status === "rejected"
+                          ? "#FF5757"
+                          : "",
+                      padding: "8px",
+                      borderRadius: "0.50rem",
+                      color: "#FFFFFF",
+                      cursor: "pointer",
+                    }}>
+                    {item?.status || ""}</span></td>
                   <td className="px-6 py-4 text-sm">
                   <span
                      onClick={() => {
-                      if (item?.status !== "accepted" && item?.status !== "rejected") {
+                      if (item?.status !== "accepted") {
                         handleAccepted(item._id);
                       }
                     }}
                     style={{
                       backgroundColor:
                         item?.status === "pending"
-                          ? "#076aa5"
+                          ? "#4CAF50"
                           : item?.status === "accepted"
-                          ? "gray"
+                          ? "#4CAF50"
                           : item?.status === "rejected"
-                          ? "red"
+                          ? "#4CAF50"
                           : "",
                       padding: "8px",
                       borderRadius: "0.50rem",
                       color: "#FFFFFF",
                       cursor: "pointer",
-                      opacity: item?.status === "accepted" || item?.status === "rejected" ? 0.6 : 1,
-                      ppointerEvents:
-                      item?.status === "accepted" || item?.status === "rejected" ? "disabled" : "auto",
+                      opacity: item?.status === "accepted" ? 0.6 : 1,
+                      pointerEvents:
+                      item?.status === "accepted" ? "disabled" : "auto",
                     }}
                     >
-                      {item?.status || ""}
+                      Accept
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm">
@@ -122,20 +143,20 @@ const PropertyRequest = () => {
                         item?.status === "pending"
                           ? "red"
                           : item?.status === "accepted"
-                          ? "gray"
+                          ? "red"
                           : item?.status === "rejected"
-                          ? "gray"
+                          ? "red"
                           : "",
                       padding: "8px",
                       borderRadius: "0.50rem",
                       color: "#FFFFFF",
                       cursor: "pointer",
-                      opacity: item?.status === "accepted" || item?.status === "rejected" ? 0.6 : 1,
+                      opacity: item?.status === "rejected" ? 0.6 : 1,
                       pointerEvents:
-                        item?.status === "accepted" || item?.status === "rejected" ? "disabled" : "auto",
+                        item?.status === "rejected" ? "disabled" : "auto",
                     }}
                     onClick={() => {
-                      if (item?.status !== "accepted" && item?.status !== "rejected") {
+                      if (item?.status !== "rejected") {
                         handleRejected(item._id);
                       }
                     }}
@@ -148,7 +169,7 @@ const PropertyRequest = () => {
             </tbody>
           </table>
         </div>
-      ) : (
+       : (
         <div className="flex flex-col justify-center items-center mt-10">
           <div>
             <h3>
@@ -161,7 +182,7 @@ const PropertyRequest = () => {
             </h3>
           </div>
         </div>
-      )}
+      ))}
     </div>
   );
 };

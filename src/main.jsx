@@ -22,7 +22,9 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Toaster />
+    <Toaster toastOptions={{
+    className: 'dark:bg-card-dark dark:text-in-dark',
+  }}/>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <ThemeProvider>

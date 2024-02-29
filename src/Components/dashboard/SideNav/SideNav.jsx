@@ -13,6 +13,7 @@ import { BsBuildingsFill, BsChatRightFill } from 'react-icons/bs';
 import { IoHomeSharp, IoStatsChart } from 'react-icons/io5';
 import useUserRole from '../../../Hooks/useUserRole';
 import useTheme from '../../../Providers/ThemeContext';
+import { BsSendFill } from "react-icons/bs";
 
 const SideNav = () => {
   const userRole = useUserRole();
@@ -155,6 +156,19 @@ const SideNav = () => {
                   <div className="flex items-center gap-2">
                     <FaUsers />
                     User Management
+                  </div>
+                </NavLink>
+                <NavLink
+                  to={'/dashboard/email-sender'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'py-[14px]  bg-[#076aa5] text-white px-6 '
+                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                  }
+                >
+                  <div className="flex items-center gap-2">
+                    <BsSendFill />
+                    Email Sender
                   </div>
                 </NavLink>
               </>

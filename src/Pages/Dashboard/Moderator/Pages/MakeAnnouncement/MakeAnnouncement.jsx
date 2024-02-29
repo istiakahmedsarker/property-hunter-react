@@ -3,7 +3,6 @@ import { useState, useRef } from "react";
 import { BsEmojiSmile } from "react-icons/bs";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-// import moment from "moment";
 import useAuth from "../../../../../Hooks/useAuth";
 import useAxios from "../../../../../Hooks/useAxios";
 
@@ -21,10 +20,6 @@ const MakeAnnouncement = () => {
 
   const handlePost = async (e) => {
     e.preventDefault();
-
-    // const postDate = moment()
-    //   .utc()
-    //   .toDate();
 
     const postNotice = { 
       admin_name: name, 
