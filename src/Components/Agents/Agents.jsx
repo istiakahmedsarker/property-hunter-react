@@ -5,7 +5,6 @@ import useAxios from '../../Hooks/useAxios';
 import SectionTitle from '../SectionTitle/SectionTitle';
 
 const Agents = () => {
-  // Dummy data, replace this with your actual data
   const axiosInstance = useAxios();
 
   const { data: agentsData, isLoading, error } = useQuery({
@@ -21,17 +20,18 @@ const Agents = () => {
       throw new Error('Error fetching agent data');
     }
   }
+
   return (
     <div>
-      <div className="font-[sans-serif] text-[#333]">
-        <div className="max-w-5xl mx-auto">
+      <div className="font-[sans-serif] text-[#333] max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mx-auto text-center">
             <SectionTitle
               title="Our Team"
               subTitle="The Collaborative Force Behind Our Success"
             />
           </div>
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-x-8 gap-y-10 max-md:justify-center mt-12 mx-2">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-x-28 gap-y-10 max-md:justify-center mt-12 mx-2">
             {agentsData?.map((agent, index) => (
               <AgentCard key={index} agents={agent} />
             ))}

@@ -1,68 +1,71 @@
-import toast from "react-hot-toast";
-import { useState, useRef } from "react";
-import { BsEmojiSmile } from "react-icons/bs";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
+import toast from 'react-hot-toast';
+import { useState, useRef } from 'react';
+import { BsEmojiSmile } from 'react-icons/bs';
+import data from '@emoji-mart/data';
+import Picker from '@emoji-mart/react';
 // import moment from "moment";
-import useAuth from "../../../../../Hooks/useAuth";
-import useAxios from "../../../../../Hooks/useAxios";
+import useAuth from '../../../../../Hooks/useAuth';
+import useAxios from '../../../../../Hooks/useAxios';
+import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 
 const MakeAnnouncement = () => {
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [heading, setHeading] = useState("");
-  const [notice, setNotice] = useState("");
+  const [name, setName] = useState('');
+  const [date, setDate] = useState('');
+  const [heading, setHeading] = useState('');
+  const [notice, setNotice] = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [emojiTarget, setEmojiTarget] = useState(null);
   const headingRef = useRef(null);
   const noticeRef = useRef(null);
-  const {user} = useAuth();
+  const { user } = useAuth();
   const instance = useAxios();
 
-  const handlePost = async (e) => {
+  const handlePost = async e => {
     e.preventDefault();
 
     // const postDate = moment()
     //   .utc()
     //   .toDate();
 
-    const postNotice = { 
-      admin_name: name, 
-      post_date: date, 
+    const postNotice = {
+      admin_name: name,
+      post_date: date,
       heading: heading,
       notice_details: notice,
-      user_email: user.email,  };
+      user_email: user.email,
+    };
 
     // console.log(postNotice);
 
-    const res = await instance .post("/announcement/create-announcement",
+    const res = await instance.post(
+      '/announcement/create-announcement',
       postNotice
     );
-    if (res?.data?.status === "success") {
+    if (res?.data?.status === 'success') {
       // Reset form fields
-      setName("");
-      setDate("");
-      setHeading("");
-      setNotice("");
+      setName('');
+      setDate('');
+      setHeading('');
+      setNotice('');
 
       // Hide emoji picker and reset emojiTarget
       setShowEmojiPicker(false);
       setEmojiTarget(null);
-      toast.success("Notice Post Successfully");
+      toast.success('Notice Post Successfully');
     } else {
-      toast.error("Notice Post Failed");
+      toast.error('Notice Post Failed');
     }
   };
 
-  const addEmoji = (e) => {
-    const sym = e.unified.split("_");
+  const addEmoji = e => {
+    const sym = e.unified.split('_');
     const codeArray = [];
-    sym.forEach((el) => codeArray.push("0x" + el));
+    sym.forEach(el => codeArray.push('0x' + el));
     let emoji = String.fromCodePoint(...codeArray);
 
-    if (emojiTarget === "heading") {
+    if (emojiTarget === 'heading') {
       setHeading(insertEmojiHeading(heading, emoji));
-    } else if (emojiTarget === "notice") {
+    } else if (emojiTarget === 'notice') {
       setNotice(insertEmojiNotice(notice, emoji));
     }
 
@@ -94,6 +97,7 @@ const MakeAnnouncement = () => {
 
   return (
     <div className="dark:bg-primary-dark h-screen flex justify-center items-center">
+      <PageTitle title="Property Hunter || Make Announcement"></PageTitle>
       <div className="card shrink-0 w-full lg:w-[50%] mx-auto  mb-40 dark:text-[#e4e6cd]">
         <form onSubmit={handlePost} className="card-body">
           <h3 className="text-xl font-semibold text-center">
@@ -111,7 +115,7 @@ const MakeAnnouncement = () => {
                 className="input input-bordered focus:outline-none focus:border-primary-light dark:bg-[#3a3b3c]"
                 required
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={e => setName(e.target.value)}
               />
             </div>
             <div className="form-control flex-1">
@@ -125,7 +129,7 @@ const MakeAnnouncement = () => {
                 className="input input-bordered focus:outline-none focus:border-primary-light dark:bg-[#3a3b3c] dark:text-white"
                 required
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={e => setDate(e.target.value)}
               />
             </div>
           </div>
@@ -140,12 +144,12 @@ const MakeAnnouncement = () => {
               className="input input-bordered focus:outline-none focus:border-primary-light relative dark:bg-[#3a3b3c]"
               required
               value={heading}
-              onChange={(e) => setHeading(e.target.value)}
+              onChange={e => setHeading(e.target.value)}
               ref={headingRef}
             />
             <span
               onClick={() => {
-                setEmojiTarget("heading");
+                setEmojiTarget('heading');
                 setShowEmojiPicker(!showEmojiPicker);
               }}
               className="cursor-pointer  absolute right-10 bottom-[250px]"
@@ -163,12 +167,12 @@ const MakeAnnouncement = () => {
               placeholder="Notice"
               required
               value={notice}
-              onChange={(e) => setNotice(e.target.value)}
+              onChange={e => setNotice(e.target.value)}
               ref={noticeRef}
             />
             <span
               onClick={() => {
-                setEmojiTarget("notice");
+                setEmojiTarget('notice');
                 setShowEmojiPicker(!showEmojiPicker);
               }}
               className="cursor-pointer  absolute right-10 bottom-36"

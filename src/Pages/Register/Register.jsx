@@ -10,6 +10,8 @@ import axios from 'axios';
 import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
 import useAxios from '../../Hooks/useAxios';
 
+import PageTitle from '../../Features/PageTitle/PageTitle';
+
 const preset_key = 'property-hunter';
 const cloud_name = 'dwopkbaby';
 const Register = () => {
@@ -20,7 +22,7 @@ const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
   const myAxios = useAxios();
 
-  const handleLogin = (e) => {
+  const handleLogin = e => {
     e.preventDefault();
     const form = e.target;
     const image = form.image.files[0];
@@ -33,6 +35,11 @@ const Register = () => {
     formData.append('upload_preset', preset_key);
     formData.append('folder', 'property-hunter');
 
+    const newUser = {
+      fullName: name,
+      email,
+      password
+    };
     axios
       .post(
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
@@ -40,6 +47,23 @@ const Register = () => {
       )
       .then((res) => {
         if (res.status === 200) {
+      .then(async res => {
+        if (res.status === 200) {
+          const imageURL = res.data?.url;
+          try {
+            await myAxios.post('/users', {
+              name,
+              email,
+              role: 'user',
+              image: imageURL || '',
+            });
+          } catch (error) {
+            if (error.response.data?.status === 'Fail') {
+              toast.error('This email already exist');
+              return;
+            }
+          }
+
           createUser(email, password)
             .then(async () => {
               const imageURL = res.data?.url;
@@ -61,21 +85,36 @@ const Register = () => {
                   toast.success('Registration Successful');
                   toHome('/');
                 })
-                .catch((err) => {
+                .catch(err => {
                   // console.log({ err });
                   toast.error('Registration Failed!');
                 });
             })
-            .catch((err) => {
+            .catch(err => {
               toast.error(err.message);
             });
         }
       });
+
+      axios.post('https://http://localhost:8000/api/register', newUser, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error during signUp:', error);
+      });
+      
+
   };
   return (
     <>
       {termShow && <TermCondition onClose={setTermShow} />}
       <div className="max-w-4xl flex mx-auto my-10 rounded-lg shadow-sm border bg-white dark:bg-card-dark dark:text-in-dark">
+        <PageTitle title="Property Hunter || Registration"></PageTitle>
         <div className="hidden lg:block  bg-[url('/bg-login.jpg')] bg-no-repeat bg-cover bg-center w-1/3 rounded-l-lg"></div>
         <div className="w-full lg:w-2/3 py-8 px-10">
           <h2 className="font-bold mb-10 text-3xl">Please! Register Here</h2>

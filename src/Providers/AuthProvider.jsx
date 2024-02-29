@@ -63,11 +63,9 @@ const AuthProvider = ({ children }) => {
           withCredentials: true,
         });
 
-        // console.log(res.data.user._id);
+        // console.log(res.data);
         setUserRole(res.data.user.role);
         setUserId(res.data.user._id);
-
-        localStorage.setItem('user:details', JSON.stringify(res?.data.user));
       } else {
         // remove jwt token
         await axios.post('/jwt/remove_token', loggedUser, {

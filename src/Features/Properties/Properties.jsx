@@ -9,6 +9,8 @@ import PropertyFilter from '../Properties/Components/PropertyFilter/PropertyFilt
 import { IoFilter } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import NoItems from '../../Components/NoItems/NoItems';
+import PageTitle from '../PageTitle/PageTitle';
+
 
 const Properties = () => {
   const [checkboxes, setCheckboxes] = useState({
@@ -33,15 +35,15 @@ const Properties = () => {
   const limit = 6;
 
   const checkedItem = Object.keys(checkboxes).find(
-    (checkbox) => checkboxes[checkbox]
+    checkbox => checkboxes[checkbox]
   );
 
   const typeCheckedItem = Object.keys(typeCheckboxes).find(
-    (checkbox) => typeCheckboxes[checkbox]
+    checkbox => typeCheckboxes[checkbox]
   );
 
   const handleCheckboxChange = useCallback(
-    (checkboxName) => {
+    checkboxName => {
       const updatedCheckboxes = {};
 
       for (let key in checkboxes) {
@@ -55,7 +57,7 @@ const Properties = () => {
   );
 
   const handleTypeCheckboxChange = useCallback(
-    (checkboxName) => {
+    checkboxName => {
       const updatedCheckboxes = {};
 
       for (let key in typeCheckboxes) {
@@ -112,6 +114,7 @@ const Properties = () => {
     setActivePage(activePage + 1);
   };
 
+
   if (error)
     return (
       <h3 className="h-[85vh] flex flex-col items-center justify-center font-semibold text-2xl text-red-500">
@@ -119,8 +122,10 @@ const Properties = () => {
       </h3>
     );
 
+
   return (
     <div className="max-w-7xl xl:mx-auto mx-4 pt-8 pb-20">
+      <PageTitle title="Property Hunter || Properties"></PageTitle>
       <div className="flex items-center justify-between mb-10 mt-5">
         <h3 className="text-2xl sm:text-3xl md:text-4xl dark:text-in-dark font-bold font-josep">
           Properties
@@ -316,6 +321,7 @@ const Properties = () => {
                       </button>
                     )}
                   </div>
+
 
                   {!isGrid ? (
                     <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-8 gap-y-10 -z-30">

@@ -85,7 +85,19 @@ const SideNav = () => {
                     Property Request
                   </div>
                 </NavLink>
-
+                <NavLink
+                  to={'/dashboard/payment-history'}
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'py-[14px]  px-6 bg-[#076aa5] border-r-4  text-white  '
+                      : 'py-[14px]  px-6   dark:text-[#e4e6cd]'
+                  }
+                >
+                  <div className="flex items-center gap-2">
+                    <FaFileInvoiceDollar />
+                    Payment History
+                  </div>
+                </NavLink>
                 <NavLink
                   to={'/dashboard/make-announcement'}
                   className={({ isActive }) =>

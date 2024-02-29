@@ -11,9 +11,11 @@ import { MdOutlineFireplace, MdOutlineSecurity } from 'react-icons/md';
 const PropertyUtilities = ({ details }) => {
   return (
     <div>
-      <h3 className="text-xl font-semibold py-5">Utilities</h3>
+      <h3 className=" text-xl md:text-2xl font-semibold py-5">Utilities</h3>
+      <div className="flex dark:text-in-dark items-center gap-2 flex-wrap">
       {details.utilities.map((utility, index) => (
-        <div key={index} className="py-2 flex items-center gap-4 ">
+        <div key={index} className="py-2 dark:text-in-dark flex items-center gap-4 ">
+           <p className='bg-gray-100 text-sm flex items-center px-3 py-1 flex-wrap rounded-xl text-gray-800 font-medium'>
           {utility === 'Water' && <FaHouseFloodWater className="mr-2" />}
           {utility === 'Electricity' && <TbSunElectricity className="mr-2" />}
           {utility === 'Wifi' && <IoWifi className="mr-2" />}
@@ -31,8 +33,10 @@ const PropertyUtilities = ({ details }) => {
           )}
           {/*  */}
           <span>{utility.charAt(0).toUpperCase() + utility.slice(1)}</span>
+          </p>
         </div>
       ))}
+      </div>
     </div>
   );
 };

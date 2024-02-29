@@ -10,6 +10,7 @@ import { io } from 'socket.io-client';
 import { RxAvatar } from 'react-icons/rx';
 import useTheme from '../../../Providers/ThemeContext';
 import { CiVideoOn } from 'react-icons/ci';
+import PageTitle from '../../PageTitle/PageTitle';
 
 const LiveChat = () => {
   const [user, setUser] = useState(
@@ -106,18 +107,21 @@ const LiveChat = () => {
     });
 
     // Send the message to the server
-    const res = await fetch(`react-chat-app-server-production.up.railway.app/api/message`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        conversationId: messages?.conversationId,
-        senderId: user?.id,
-        message,
-        receiverId: messages?.receiver?.receiverId,
-      }),
-    });
+    const res = await fetch(
+      `react-chat-app-server-production.up.railway.app/api/message`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          conversationId: messages?.conversationId,
+          senderId: user?.id,
+          message,
+          receiverId: messages?.receiver?.receiverId,
+        }),
+      }
+    );
 
     // After sending the message, fetch the updated messages
     fetchMessages(messages?.conversationId, messages?.receiver);
@@ -133,6 +137,7 @@ const LiveChat = () => {
 
   return (
     <div className="w-full flex bg-white dark:bg-primary-dark overflow-x-hidden">
+      <PageTitle title="Property Hunter || Live Chat"></PageTitle>
       {/* all users on the right */}
       <div className="w-[22%] lg:w-1/4 md:w-1/3 sm:w-1/2 border-2 dark:bg-primary-dark dark:border-primary-dark border-white h-screen overflow-y-scroll">
         <div className="flex justify-center items-center my-8">

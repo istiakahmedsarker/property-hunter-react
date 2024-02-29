@@ -3,7 +3,7 @@ import ContactForm from '../ContactFrom/ContactFrom';
 
 const ContactUs = () => {
   return (
-    <div>
+    <div className='my-10'>
       <div>
         <SectionTitle
           title="Contact Us"

@@ -5,9 +5,11 @@ import CommentForm from '../../Features/Blog/Components/CommentForm/CommentForm'
 import { FaRegUserCircle } from 'react-icons/fa';
 import BlogComments from '../../Features/Blog/Components/BlogComments/BlogComments';
 import BlogDetailsLoading from '../../Features/Blog/Components/BlogDetailsLoading/BlogDetailsLoading';
+
 import { useState } from 'react';
 import useAxios from '../../Hooks/useAxios';
 import useAuth from '../../Hooks/useAuth';
+import PageTitle from '../../Features/PageTitle/PageTitle';
 
 const BlogDetails = () => {
   const [error, setError] = useState(null);
@@ -46,6 +48,7 @@ const BlogDetails = () => {
 
   return (
     <div className="max-w-4xl text-stone-800 dark:text-stone-300  mx-auto mt-10 px-5 xl:px-0">
+      <PageTitle title="Property Hunter || Blog Details"></PageTitle>
       <h2 className="text-2xl  sm:text-3xl md:text-4xl font-bold ">
         {heading}
       </h2>

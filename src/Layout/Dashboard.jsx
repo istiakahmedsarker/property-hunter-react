@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import SideNav from '../Components/dashboard/SideNav/SideNav';
 import { ThemeProvider } from '../Providers/ThemeContext';
 import { useEffect, useState } from 'react';
+import PageTitle from '../Features/PageTitle/PageTitle';
 
 const Dashboard = () => {
   const [themeMode, setThemeMode] = useState('light');
@@ -31,6 +32,7 @@ const Dashboard = () => {
 
   return (
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
+      <PageTitle title="Property Hunter || Dashboard"></PageTitle>
       <div className="flex dark:bg-primary-dark relative items-start align-top">
         <div className="lg:w-[280px] z-50 min-h-screen sticky top-0 dark:bg-primary-dark bg-[#e5ebee]">
           <SideNav />
