@@ -9,7 +9,7 @@ import Agents from '../../Components/Agents/Agents';
 import BuySellListCard from '../../Components/BuySellListCard/BuySellListCard';
 import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
 import NewsLetter from '../../Components/NewsLetter/NewsLetter';
-import Chatbot from '../../Features/Chatbot/Chatbot';
+// import Chatbot from '../../Features/Chatbot/Chatbot';
 import PageTitle from '../../Features/PageTitle/PageTitle';
 
 const Home = () => {
@@ -26,7 +26,7 @@ const Home = () => {
       <NewsLetter />
       <WhyChooseUs />
       <Agents />
-      <Chatbot />
+      {/* <Chatbot /> */}
       <ContactUs />
     </div>
   );
