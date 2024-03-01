@@ -6,7 +6,7 @@ const ModeratorRoute = ({ children }) => {
     const location = useLocation()
 
     // console.log(isAdmin)
-    if(userRole === 'moderator'){
+    if(userRole === 'moderator' || userRole === 'admin'){
         return children
     }
 
