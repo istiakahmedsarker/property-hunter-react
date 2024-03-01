@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../../../Hooks/useAuth";
 import useAxios from "../../../Hooks/useAxios";
+import moment from "moment";
 
 
 const CheckoutForm = ({ totalPrice: totalAmount , propertyId, ownerEmail}) => {
@@ -26,15 +27,15 @@ const CheckoutForm = ({ totalPrice: totalAmount , propertyId, ownerEmail}) => {
   useEffect(() => {
     async function cardFromData() {
       if (totalAmount > 0) {
-        await instance.post("/create-payment-intent", { price: totalAmount })
+        await instance.post("/create-payment-intent",{ price: totalAmount })
           .then((res) => {
-            // console.log(res.data.clientSecret);
+            console.log("payment-intent:",res.data.clientSecret);
             setClientSecret(res.data.clientSecret);
           });
       }
     }
-
     cardFromData();
+
   }, [instance, totalAmount]);
 
 
@@ -54,7 +55,7 @@ const CheckoutForm = ({ totalPrice: totalAmount , propertyId, ownerEmail}) => {
       return;
     }
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { error } = await stripe.createPaymentMethod({
       type: "card",
       card,
     });
@@ -100,6 +101,8 @@ const CheckoutForm = ({ totalPrice: totalAmount , propertyId, ownerEmail}) => {
           country: address?.country,
           owner_email: ownerEmail,
           property_id: propertyId,
+          date: moment().utc().toDate(),
+          
 
         }
 
@@ -110,8 +113,8 @@ const CheckoutForm = ({ totalPrice: totalAmount , propertyId, ownerEmail}) => {
         if (res?.data?.status === "success") {
 
           console.log('Payment successfully');
-          // navigate('/dashboard/paymentHistory');
           toast.success(`${user.email} Payment successfully`);
+          navigate('/dashboard/paymentHistory');
           
         }
       }

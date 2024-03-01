@@ -34,10 +34,10 @@ const Dashboard = () => {
     <ThemeProvider value={{ themeMode, darkTheme, lightTheme }}>
       <PageTitle title="Property Hunter || Dashboard"></PageTitle>
       <div className="flex dark:bg-primary-dark relative items-start align-top">
-        <div className="lg:w-[280px] z-50 min-h-screen sticky top-0 dark:bg-primary-dark bg-[#e5ebee]">
+        <div className="lg:w-[280px] z-50  sticky top-0 dark:bg-primary-dark bg-[#e5ebee]">
           <SideNav />
         </div>
-        <div className="flex-1 md:mx-0 dark:bg-[#000509] min-h-screen">
+        <div className="flex-1 md:mx-0 dark:bg-[#000509] ">
           <Outlet />
         </div>
       </div>

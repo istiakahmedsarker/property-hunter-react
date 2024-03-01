@@ -8,6 +8,7 @@ import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 export default function ManagePropertyRequest() {
   const instance = useAxios();
   const [manageProperty, refetch] = useManageProperty();
+  const {themeMode} = useTheme();
 
   const handleAccepted = async _id => {
     const res = await instance.put(`/buyer-inquiries/status-accept/${_id}`);
@@ -41,6 +42,32 @@ export default function ManagePropertyRequest() {
       }
     });
   };
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#076aa5",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      width: "350px",
+      color: themeMode === "dark" ? '#F4F4F4' : '',
+      background: themeMode === "dark" ? '#1b1c1d' : '',
+      
+    }).then((result) => {
+      if (result.isConfirmed) {
+        instance.delete(`/buyer-inquiries/delete/${id}`)
+        .then((res) => {
+          if (res?.data?.status === "success") {
+            toast.success(`This property has been deleted`)
+            refetch();
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="min-h-[calc(100vh-68px)]">
       <PageTitle title="Property Hunter || Property Request"></PageTitle>
@@ -50,7 +77,6 @@ export default function ManagePropertyRequest() {
             {/* head */}
             <thead className="bg-gray-700 whitespace-nowrap">
               <tr>
-                <th className="pl-6 w-8"></th>
                 <th className="px-6 py-3 text-left text-sm font-semibold text-white"></th>
                 <th className="px-0 py-3 text-left text-sm font-semibold text-white">
                   Property & Buyer Name
@@ -65,6 +91,12 @@ export default function ManagePropertyRequest() {
                   Status
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold text-white">
+                  Accept
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-white">
+                  Reject
+                </th>
+                <th className="mx-auto px-6 py-3 text-left text-sm font-semibold text-white">
                   Action
                 </th>
               </tr>
@@ -73,7 +105,6 @@ export default function ManagePropertyRequest() {
               {manageProperty?.map(item => (
                 <tr key={item._id} className="even:bg-blue-50">
                   <td className="pl-6 w-8"></td>
-                  <td className="px-6 py-4 text-sm"></td>
                   <td className="px-0 py-4 text-sm">
                     <div className="flex items-center cursor-pointer">
                       <img
@@ -165,6 +196,12 @@ export default function ManagePropertyRequest() {
                     >
                       Reject
                     </span>
+                  </td>
+                  <td className="px-6 py-4 text-2xl text-[#FF5757] mx-auto">
+                      <TiDeleteOutline 
+                      onClick={()=>handleDelete(item._id)}
+                      className="cursor-pointer"
+                      />
                   </td>
                 </tr>
               ))}

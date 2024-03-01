@@ -27,5 +27,6 @@ npm i socket.io-client
 npm i react-froala-wysiwyg --save
 npm i froala-editor
 npm i lottie-react
+npm install moment
 npm i react-helmet
 npm i react-calendly
