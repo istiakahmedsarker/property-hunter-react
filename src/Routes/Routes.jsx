@@ -32,7 +32,10 @@ import NotificationDetails from "../Components/Notifications/NotificationDetails
 import ModeratorHome from "../Pages/Dashboard/Moderator/Pages/ModeratorHome/ModeratorHome";
 import AboutUs from "../Features/AboutUs/AboutUs";
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
-import EmailSender from '../Components/EmailSender/EmailSender';
+import MemberRoute from './MemberRoute';
+import AdminRoute from './AdminRoute';
+import PrivateRoute from '../Routes/PrivateRoute'
+import ModeratorRoute from '../Routes/ModeratorRoute'
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -73,7 +76,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/addProperties',
-        element: <AddProperties />,
+        element: <PrivateRoute>
+        <AddProperties />
+        </PrivateRoute>,
       },
       {
         path: '/login',
@@ -85,11 +90,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/favorite',
-        element: <FavoriteProperty />,
+        element: <PrivateRoute>
+        <FavoriteProperty />
+        </PrivateRoute>,
       },
       {
         path: '/notificationDetails/:id',
-        element: <NotificationDetails />,
+        element: <PrivateRoute>
+        <NotificationDetails />
+        </PrivateRoute>,
         loader: ({ params }) =>
           fetch(
             `https://property-hunter-server-roan.vercel.app/api/v1/announcement/${params.id}`
@@ -97,7 +106,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <Profile />,
+        element: <PrivateRoute>
+        <Profile />
+        </PrivateRoute>,
       },
     ],
   },
@@ -129,7 +140,9 @@ const router = createBrowserRouter([
       //? Member only routes
       {
         path: '/dashboard/payment/:id',
-        element: <StripePayment />,
+        element: <PrivateRoute>
+          <StripePayment />
+        </PrivateRoute>,
         loader: ({ params }) =>
           fetch(
             `https://property-hunter-server-roan.vercel.app/api/v1/buyer-inquiries/${params.id}`
@@ -145,7 +158,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/make-announcement',
-        element: <MakeAnnouncement />,
+        element: <ModeratorRoute>
+          <MakeAnnouncement />
+        </ModeratorRoute>,
       },
       {
         path: '/dashboard/admin',
@@ -157,11 +172,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/createBlog',
-        element: <BlogPost />,
+        element: <ModeratorRoute>
+          <BlogPost />
+        </ModeratorRoute>,
       },
       {
         path: '/dashboard/property-request',
-        element: <PropertyRequest />,
+        element: <ModeratorRoute>
+          <PropertyRequest />
+        </ModeratorRoute>,
       },
       {
         path: '/dashboard/manage-property-request',
@@ -170,11 +189,9 @@ const router = createBrowserRouter([
       //? Admin only routes
       {
         path: "/dashboard/moderator",
-        element: <ModeratorHome />,
-      },
-      {
-        path: "/dashboard/email-sender",
-        element: <EmailSender />,
+        element: <ModeratorRoute>
+          <ModeratorHome />
+        </ModeratorRoute>,
       },
     ],
   },

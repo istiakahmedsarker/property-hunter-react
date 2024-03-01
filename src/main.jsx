@@ -7,6 +7,7 @@ import AuthProvider from './Providers/AuthProvider';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from './Providers/ThemeContext';
+import { ChatContextProvider } from './Providers/ChatContextProvider';
 // for redux
 // import { Provider } from 'react-redux';
 // import store from '../lib/store';
@@ -27,9 +28,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   }}/>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <ThemeProvider>
-          <RouterProvider router={router} />
-        </ThemeProvider>
+        <ChatContextProvider>
+          <ThemeProvider>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </ChatContextProvider>
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
