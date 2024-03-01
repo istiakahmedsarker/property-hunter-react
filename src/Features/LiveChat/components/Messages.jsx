@@ -1,8 +1,9 @@
 // Import necessary modules and components from Firebase and React
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
-import { ChatContext } from "../context/ChatContext";
-import { db } from "../firebase";
+import { ChatContext } from "../../../Providers/ChatContextProvider";
+// import { db } from "../firebase";
+import { db } from "../../../Firebase/firebase.config";
 import Message from "./Message";
 
 // Define the functional component for displaying chat messages

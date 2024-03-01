@@ -2,8 +2,8 @@
 import React, { useContext, useState } from "react";
 import Img from "../img/img.png";
 import Attach from "../img/attach.png";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
+// import { AuthContext } from "../context/AuthContext";
+import { ChatContext } from "../../../Providers/ChatContextProvider";
 import {
   arrayUnion,
   doc,
@@ -11,9 +11,10 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
-import { db, storage } from "../firebase";
+import { db } from "../../../Firebase/firebase.config";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import useAuth from "../../../Hooks/useAuth";
 
 // Define the functional component for the input section (for typing and sending messages)
 const Input = () => {
@@ -22,10 +23,11 @@ const Input = () => {
   const [img, setImg] = useState(null);
 
   // Access the current user information from the AuthContext using useContext
-  const { currentUser } = useContext(AuthContext);
+  // const { currentUser } = useContext(AuthContext);
   // Access the chat-related state from the ChatContext using useContext
   const { data } = useContext(ChatContext);
 
+  const { user } = useAuth();
   // Function to handle sending messages
   const handleSend = async () => {
     // If an image is selected, handle image upload and update the messages in Firestore
@@ -49,7 +51,7 @@ const Input = () => {
               messages: arrayUnion({
                 id: uuid(),
                 text,
-                senderId: currentUser.uid,
+                senderId: user.uid,
                 date: Timestamp.now(),
                 img: downloadURL,
               }),
@@ -63,14 +65,14 @@ const Input = () => {
         messages: arrayUnion({
           id: uuid(),
           text,
-          senderId: currentUser.uid,
+          senderId: user.uid,
           date: Timestamp.now(),
         }),
       });
     }
 
     // Update the last message and date in the userChats documents for both users
-    await updateDoc(doc(db, "userChats", currentUser.uid), {
+    await updateDoc(doc(db, "userChats", user.uid), {
       [data.chatId + ".lastMessage"]: {
         text,
       },

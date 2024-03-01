@@ -5,7 +5,7 @@ import Add from "../img/add.png";
 import More from "../img/more.png";
 import Messages from "./Messages";
 import Input from "./Input";
-import { ChatContext } from "../context/ChatContext";
+import { ChatContext } from "../../../Providers/ChatContextProvider";
 
 // Define the functional component for the Chat view
 const Chat = () => {

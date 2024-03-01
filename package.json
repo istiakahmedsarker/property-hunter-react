@@ -51,7 +51,8 @@
     "socket.io-client": "^4.7.4",
     "sort-by": "^1.2.0",
     "stripe": "^14.15.0",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^9.3.4",

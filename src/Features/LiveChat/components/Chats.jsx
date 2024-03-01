@@ -1,9 +1,9 @@
 // Import necessary modules and components from Firebase and React
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
-import { db } from "../firebase";
+import { ChatContext } from "../../../Providers/ChatContextProvider";
+import { db } from "../../../Firebase/firebase.config";
+import useAuth from "../../../Hooks/useAuth";
 
 // Define the functional component for displaying user chats
 const Chats = () => {
@@ -11,7 +11,8 @@ const Chats = () => {
   const [chats, setChats] = useState([]);
 
   // Access the current user information from the AuthContext using useContext
-  const { currentUser } = useContext(AuthContext);
+  // const { currentUser } = useContext(AuthContext);
+  const { user } = useAuth();
   // Access the dispatch function from the ChatContext using useContext
   const { dispatch } = useContext(ChatContext);
 
@@ -20,7 +21,7 @@ const Chats = () => {
     // Define a function to get user chats and subscribe to changes
     const getChats = () => {
       // Set up a snapshot listener on the userChats document in Firestore
-      const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+      const unsub = onSnapshot(doc(db, "userChats", user.uid), (doc) => {
         // Update the chats state with the data from the document
         setChats(doc.data());
       });
@@ -32,8 +33,8 @@ const Chats = () => {
     };
 
     // Check if there is a current user before calling the getChats function
-    currentUser.uid && getChats();
-  }, [currentUser.uid]); // The useEffect hook is triggered when the currentUser.uid changes
+    user.uid && getChats();
+  }, [user.uid]); // The useEffect hook is triggered when the currentUser.uid changes
 
   // Define a function to handle selecting a chat user
   const handleSelect = (user) => {
@@ -45,7 +46,7 @@ const Chats = () => {
   return (
     <div className="chats">
       {/* Map over the user chats and display each user chat */}
-      {Object.entries(chats)?.sort((a, b) => b[1].date - a[1].date).map((chat) => (
+      {Object?.entries(chats)?.sort((a, b) => b[1].date - a[1].date).map((chat) => (
         <div
           className="userChat"
           key={chat[0]}

@@ -1,12 +1,13 @@
 // Import necessary modules and components from React
 import React, { useContext, useEffect, useRef } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
+import { ChatContext } from "../../../Providers/ChatContextProvider";
+import useAuth from "../../../Hooks/useAuth";
 
 // Define the functional component for displaying a single message
 const Message = ({ message }) => {
   // Access the current user information from the AuthContext using useContext
-  const { currentUser } = useContext(AuthContext);
+  
+  const { user } = useAuth();
   // Access chat-related state from the ChatContext using useContext
   const { data } = useContext(ChatContext);
 
@@ -22,15 +23,15 @@ const Message = ({ message }) => {
   return (
     <div
       ref={ref} // Attach the ref to the message div for scrolling into view
-      className={`message ${message.senderId === currentUser.uid && "owner"}`}
+      className={`message ${message.senderId === user.uid && "owner"}`}
     >
       {/* Container for message information */}
       <div className="messageInfo">
         {/* Display the profile picture of the sender */}
         <img
           src={
-            message.senderId === currentUser.uid
-              ? currentUser.photoURL
+            message.senderId === user.uid
+              ? user.photoURL
               : data.user.photoURL
           }
           alt=""

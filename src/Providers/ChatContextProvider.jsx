@@ -1,6 +1,6 @@
 // Import necessary modules and components from React
-import { createContext, useContext, useReducer } from "react";
-import { AuthContext } from "./AuthContext";
+import { createContext, useReducer } from "react";
+import useAuth from "../Hooks/useAuth";
 
 // Create a new context for managing chat-related state
 export const ChatContext = createContext();
@@ -8,9 +8,8 @@ export const ChatContext = createContext();
 // Define a component that provides the ChatContext to its children
 export const ChatContextProvider = ({ children }) => {
     // Access the currentUser from the AuthContext using useContext
-    const { currentUser } = useContext(AuthContext);
-
-// Define the initial state for the chat-related context
+    const {user} = useAuth()
+    // Define the initial state for the chat-related context
     const INITIAL_STATE = {
         chatId: "null", // Initial chat ID
         user: {}, // Initial user data
@@ -23,9 +22,9 @@ export const ChatContextProvider = ({ children }) => {
                 return {
                     user: action.payload, // Update user data
                     chatId:
-                        currentUser.uid > action.payload.uid
-                            ? currentUser.uid + action.payload.uid
-                            : action.payload.uid + currentUser.uid, // Generate a unique chat ID based on user IDs
+                        user?.uid > action.payload.uid
+                            ? user?.uid + action.payload.uid
+                            : action.payload.uid + user?.uid, // Generate a unique chat ID based on user IDs
                 };
 
             default:

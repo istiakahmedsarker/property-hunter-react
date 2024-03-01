@@ -11,8 +11,9 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
-import { db } from "../firebase";
-import { AuthContext } from "../context/AuthContext";
+// import { db } from "../firebase";
+import { db } from "../../../Firebase/firebase.config";
+import useAuth from "../../../Hooks/useAuth";
 
 // Define the functional component for user search
 const Search = () => {
@@ -22,8 +23,10 @@ const Search = () => {
   const [err, setErr] = useState(false);
 
   // Access the current user information from the AuthContext using useContext
-  const { currentUser } = useContext(AuthContext);
-
+  // const { currentUser } = useContext(AuthContext);
+  
+  const  auth  = useAuth();
+  const currentUser = {auth}
   // Function to handle user search
   const handleSearch = async () => {
     // Create a Firestore query to find users with the specified display name
