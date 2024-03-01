@@ -49,50 +49,58 @@ const Register = () => {
       .then(async res => {
         if (res.status === 200) {
           const imageURL = res.data?.url;
-          try {
-            await myAxios.post('/users', {
-              name,
-              email,
-              role: 'user',
-              image: imageURL || '',
-            });
-          } catch (error) {
-            if (error.response.data?.status === 'Fail') {
-              toast.error('This email already exist');
-              return;
-            }
-          }
 
-          createUser(email, password)
-            .then(async () => {
-              const imageURL = res.data?.url;
-              try {
-                await myAxios.post('/users', {
-                  name,
-                  email,
-                  role: 'user',
-                  image: imageURL || '',
-                });
-              } catch (error) {
-                if (error.response.data?.status === 'Fail') {
-                  toast.error('This email already exist');
-                  return;
-                }
-              }
-              updateUserProfile(name, imageURL)
-                .then(() => {
-                  toast.success('Registration Successful');
-                  toHome('/');
+          // Post user data to your server
+          myAxios.post('/users', {
+            name,
+            email,
+            role: 'user',
+            image: imageURL || '',
+          })
+            .then(() => {
+              // Create user in authentication system
+              createUser(email, password)
+                .then(async () => {
+                  try {
+                    // Post user data again (if needed) after authentication
+                    await myAxios.post('/users', {
+                      name,
+                      email,
+                      role: 'user',
+                      image: imageURL || '',
+                    });
+
+                    // Update user profile (if needed)
+                    updateUserProfile(name, imageURL)
+                      .then(() => {
+                        toast.success('Registration Successful');
+                        toHome('/');
+                      })
+                      .catch(err => {
+                        toast.error('Registration Failed!');
+                      });
+                  } catch (error) {
+                    if (error.response.data?.status === 'Fail') {
+                      toast.error('This email already exists');
+                      return;
+                    }
+                  }
                 })
                 .catch(err => {
-                  // console.log({ err });
-                  toast.error('Registration Failed!');
+                  toast.error(err.message);
                 });
             })
-            .catch(err => {
-              toast.error(err.message);
+            .catch(error => {
+              if (error.response.data?.status === 'Fail') {
+                toast.error('This email already exists');
+                return;
+              }
             });
         }
+      })
+      .catch(error => {
+        // Handle Cloudinary upload error
+        console.error('Cloudinary Upload Error:', error);
       });
 
     axios
