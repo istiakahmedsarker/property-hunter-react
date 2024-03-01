@@ -1,52 +1,51 @@
-import toast from "react-hot-toast";
-import useAxios from "../../../../../Hooks/useAxios";
-import { MdManageHistory } from "react-icons/md";
-import Swal from "sweetalert2";
-import usePropertyReqForMod from "../../../../../Hooks/usePropertyReqForMod";
-import LoadingAnimation from "../../../../../Components/LoadingAnimation/LoadingAnimation";
-import useTheme from "../../../../../Providers/ThemeContext";
+import toast from 'react-hot-toast';
+import useAxios from '../../../../../Hooks/useAxios';
+import useManageProperty from '../../../../../Hooks/useManageProperty';
+import { MdManageHistory } from 'react-icons/md';
+import Swal from 'sweetalert2';
+import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 
 const PropertyRequest = () => {
   const instance = useAxios();
   const [propertyReqForMod, isLoading, refetch] = usePropertyReqForMod();
   const {themeMode} = useTheme();
 
-  const handleAccepted = async (_id) =>{
-        const res = await instance.put(`/buyer-inquiries/status-accept/${_id}`);
-        if (res?.data?.status === "success") {
-          refetch();
-          toast.success('Buyer request has been accepted');
-        }else(error) =>{
-          toast.error(error.message)
-        }
-  }
+  const handleAccepted = async _id => {
+    const res = await instance.put(`/buyer-inquiries/status-accept/${_id}`);
+    if (res?.data?.status === 'success') {
+      refetch();
+      toast.success('Buyer request has been accepted');
+    } else
+      error => {
+        toast.error(error.message);
+      };
+  };
 
-  const handleRejected = (id) => {
+  const handleRejected = id => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to revert this!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#076aa5",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, reject it!",
-      width: "350px",
-      color: themeMode === "dark" ? '#F4F4F4' : '',
-      background: themeMode === "dark" ? '#1b1c1d' : '',
-    }).then((result) => {
+      confirmButtonColor: '#076aa5',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, reject it!',
+      width: '350px',
+    }).then(result => {
       if (result.isConfirmed) {
-        instance.put(`buyer-inquiries/status-reject/${id}`).then((res) => {
+        instance.put(`buyer-inquiries/status-reject/${id}`).then(res => {
           refetch();
-          if (res?.data?.status === "success") {
-            toast.success(`This property has been rejected`)
+          if (res?.data?.status === 'success') {
+            toast.success(`This property has been rejected`);
           }
         });
       }
     });
   };
   return (
-    <div className="">
-      { isLoading === true ? <LoadingAnimation/> : (propertyReqForMod?.length > 0 ? 
+    <div className="min-h-[calc(100vh-68px)]">
+      <PageTitle title="Property Hunter || Property Request"></PageTitle>
+      {manageProperty?.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white font-[sans-serif]">
             {/* head */}
@@ -73,93 +72,98 @@ const PropertyRequest = () => {
                 </th>
               </tr>
             </thead>
-            <tbody className="whitespace-nowrap dark:bg-card-dark dark:text-primary-light">
-              {propertyReqForMod?.map((item) => (
+            <tbody className="whitespace-nowrap">
+              {manageProperty?.map(item => (
                 <tr key={item._id} className="even:bg-blue-50">
                   <td className="pl-6 w-8"></td>
                   <td className="px-0 py-4 text-sm">
                     <div className="flex items-center cursor-pointer">
                       <img
-                        src={item?.buyer_property_images || ""}
-                        alt={item.name || ""}
+                        src={item?.buyer_property_images || ''}
+                        alt={item.name || ''}
                         className="w-16 h-16 rounded-md shrink-0"
                       />
-                      <div className="ml-2 text-wrap">
-                        <p className="text-sm ">{item?.name || ""}</p>
+                      <div className="ml-2">
+                        <p className="text-sm text-black">{item?.name || ''}</p>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 text-sm">
-                    $ {item?.annual_income || ""}
+                    $ {item?.annual_income || ''}
                   </td>
-                  <td className="px-6 py-4 text-sm">$ {item?.savings || ""}</td>
-                  <td className="px-6 py-4 text-sm text-wrap"><span style={{
-                      backgroundColor:
-                        item?.status === "pending"
-                          ? "#FFC107"
-                          : item?.status === "accepted"
-                          ? "#4CAF50"
-                          : item?.status === "rejected"
-                          ? "#FF5757"
-                          : "",
-                      padding: "8px",
-                      borderRadius: "0.50rem",
-                      color: "#FFFFFF",
-                      cursor: "pointer",
-                    }}>
-                    {item?.status || ""}</span></td>
+                  <td className="px-6 py-4 text-sm">$ {item?.savings || ''}</td>
                   <td className="px-6 py-4 text-sm">
-                  <span
-                     onClick={() => {
-                      if (item?.status !== "accepted") {
-                        handleAccepted(item._id);
-                      }
-                    }}
-                    style={{
-                      backgroundColor:
-                        item?.status === "pending"
-                          ? "#4CAF50"
-                          : item?.status === "accepted"
-                          ? "#4CAF50"
-                          : item?.status === "rejected"
-                          ? "#4CAF50"
-                          : "",
-                      padding: "8px",
-                      borderRadius: "0.50rem",
-                      color: "#FFFFFF",
-                      cursor: "pointer",
-                      opacity: item?.status === "accepted" ? 0.6 : 1,
-                      pointerEvents:
-                      item?.status === "accepted" ? "disabled" : "auto",
-                    }}
+                    <span
+                      onClick={() => {
+                        if (
+                          item?.status !== 'accepted' &&
+                          item?.status !== 'rejected'
+                        ) {
+                          handleAccepted(item._id);
+                        }
+                      }}
+                      style={{
+                        backgroundColor:
+                          item?.status === 'pending'
+                            ? '#076aa5'
+                            : item?.status === 'accepted'
+                            ? 'gray'
+                            : item?.status === 'rejected'
+                            ? 'red'
+                            : '',
+                        padding: '8px',
+                        borderRadius: '0.50rem',
+                        color: '#FFFFFF',
+                        cursor: 'pointer',
+                        opacity:
+                          item?.status === 'accepted' ||
+                          item?.status === 'rejected'
+                            ? 0.6
+                            : 1,
+                        ppointerEvents:
+                          item?.status === 'accepted' ||
+                          item?.status === 'rejected'
+                            ? 'disabled'
+                            : 'auto',
+                      }}
                     >
-                      Accept
+                      {item?.status || ''}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm">
-                    <span 
-                    style={{
-                      backgroundColor:
-                        item?.status === "pending"
-                          ? "red"
-                          : item?.status === "accepted"
-                          ? "red"
-                          : item?.status === "rejected"
-                          ? "red"
-                          : "",
-                      padding: "8px",
-                      borderRadius: "0.50rem",
-                      color: "#FFFFFF",
-                      cursor: "pointer",
-                      opacity: item?.status === "rejected" ? 0.6 : 1,
-                      pointerEvents:
-                        item?.status === "rejected" ? "disabled" : "auto",
-                    }}
-                    onClick={() => {
-                      if (item?.status !== "rejected") {
-                        handleRejected(item._id);
-                      }
-                    }}
+                    <span
+                      style={{
+                        backgroundColor:
+                          item?.status === 'pending'
+                            ? 'red'
+                            : item?.status === 'accepted'
+                            ? 'gray'
+                            : item?.status === 'rejected'
+                            ? 'gray'
+                            : '',
+                        padding: '8px',
+                        borderRadius: '0.50rem',
+                        color: '#FFFFFF',
+                        cursor: 'pointer',
+                        opacity:
+                          item?.status === 'accepted' ||
+                          item?.status === 'rejected'
+                            ? 0.6
+                            : 1,
+                        pointerEvents:
+                          item?.status === 'accepted' ||
+                          item?.status === 'rejected'
+                            ? 'disabled'
+                            : 'auto',
+                      }}
+                      onClick={() => {
+                        if (
+                          item?.status !== 'accepted' &&
+                          item?.status !== 'rejected'
+                        ) {
+                          handleRejected(item._id);
+                        }
+                      }}
                     >
                       Reject
                     </span>

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowsDownUp, Cube, DotsThreeOutline, Pencil, Trash } from 'phosphor-react';
+import axios from 'axios';
+import useAuth from '../../../Hooks/useAuth'
 
 const fakePaymentData = {
     customer_name: "John Doe",
@@ -9,7 +11,21 @@ const fakePaymentData = {
 };
 
 const PaymentHistory = () => {
-    const {customer_name,transaction_date,price,status} = fakePaymentData
+    const { customer_name, transaction_date, price, status } = fakePaymentData
+
+    const user = useAuth()
+    const email = user.email
+    console.log(email)
+    useEffect(() => {
+        axios.get(`https://property-hunter-server-roan.vercel.app/api/v1/payments?useremail=${email}`)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error during signUp:', error);
+            });
+    }, [])
+
     return (
         <table className="w-full border border-collapse border-gray-200">
             <thead>
