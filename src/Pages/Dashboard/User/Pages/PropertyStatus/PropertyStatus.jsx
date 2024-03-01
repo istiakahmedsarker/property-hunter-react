@@ -10,6 +10,7 @@ import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 export default function PropertyStatus() {
   const instance = useAxios();
   const [status, refetch] = usePropertyStatus();
+  const {themeMode} = useTheme();
 
   const handleDelete = id => {
     Swal.fire({
@@ -41,7 +42,7 @@ export default function PropertyStatus() {
             {status.map(item => (
               <div
                 key={item._id}
-                className="bg-white grid sm:grid-cols-2 items-center shadow-[0_2px_18px_-6px_rgba(0,0,0,0.2)] w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4 relative"
+                className="bg-white dark:bg-card-dark grid sm:grid-cols-2 items-center w-full max-w-xl rounded-lg font-[sans-serif] overflow-hidden mx-auto mt-4 relative dark:text-in-dark"
               >
                 <img
                   src={item.buyer_property_images}

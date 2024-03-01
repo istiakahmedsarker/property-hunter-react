@@ -7,7 +7,8 @@ import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 
 const PropertyRequest = () => {
   const instance = useAxios();
-  const [manageProperty, refetch] = useManageProperty();
+  const [propertyReqForMod, isLoading, refetch] = usePropertyReqForMod();
+  const {themeMode} = useTheme();
 
   const handleAccepted = async _id => {
     const res = await instance.put(`/buyer-inquiries/status-accept/${_id}`);
@@ -50,7 +51,6 @@ const PropertyRequest = () => {
             {/* head */}
             <thead className="bg-gray-700 whitespace-nowrap">
               <tr>
-                <th className="pl-6 w-8"></th>
                 <th className="px-6 py-3 text-left text-sm font-semibold text-white"></th>
                 <th className="px-0 py-3 text-left text-sm font-semibold text-white">
                   Property & Buyer Name
@@ -65,7 +65,10 @@ const PropertyRequest = () => {
                   Status
                 </th>
                 <th className="px-6 py-3 text-left text-sm font-semibold text-white">
-                  Action
+                  Accept
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-semibold text-white">
+                  Reject
                 </th>
               </tr>
             </thead>
@@ -73,7 +76,6 @@ const PropertyRequest = () => {
               {manageProperty?.map(item => (
                 <tr key={item._id} className="even:bg-blue-50">
                   <td className="pl-6 w-8"></td>
-                  <td className="px-6 py-4 text-sm"></td>
                   <td className="px-0 py-4 text-sm">
                     <div className="flex items-center cursor-pointer">
                       <img
@@ -171,7 +173,7 @@ const PropertyRequest = () => {
             </tbody>
           </table>
         </div>
-      ) : (
+       : (
         <div className="flex flex-col justify-center items-center mt-10">
           <div>
             <h3>
@@ -184,7 +186,7 @@ const PropertyRequest = () => {
             </h3>
           </div>
         </div>
-      )}
+      ))}
     </div>
   );
 };

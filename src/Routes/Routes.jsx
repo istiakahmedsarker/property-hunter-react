@@ -32,6 +32,7 @@ import NotificationDetails from "../Components/Notifications/NotificationDetails
 import ModeratorHome from "../Pages/Dashboard/Moderator/Pages/ModeratorHome/ModeratorHome";
 import AboutUs from "../Features/AboutUs/AboutUs";
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import EmailSender from '../Components/EmailSender/EmailSender';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -170,6 +171,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/moderator",
         element: <ModeratorHome />,
+      },
+      {
+        path: "/dashboard/email-sender",
+        element: <EmailSender />,
       },
     ],
   },

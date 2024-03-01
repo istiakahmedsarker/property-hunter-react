@@ -5,6 +5,7 @@ import "./Form.css";
 import toast from "react-hot-toast";
 import useAxios from "../../../../Hooks/useAxios";
 import useAuth from "../../../../Hooks/useAuth";
+import moment from "moment";
 
 const BuyerInquiryForm = ({ details }) => {
   const [formStep, setFormStep] = useState(0);
@@ -83,8 +84,10 @@ const BuyerInquiryForm = ({ details }) => {
       buyer_property_squareFootage: details.squareFootage,
       buyer_property_ownerEmail: details?.ownerInformation?.email,
       buyer_property_id: details?._id,
+      date: moment().utc().toDate(),
     }
   
+    console.log("buyer inquiries:", buyerInquiries);
     try {
       const res = await instance.post("/buyer-inquiries", buyerInquiries);
       console.log(res);

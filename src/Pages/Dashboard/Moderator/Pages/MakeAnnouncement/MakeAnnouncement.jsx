@@ -23,10 +23,6 @@ const MakeAnnouncement = () => {
   const handlePost = async e => {
     e.preventDefault();
 
-    // const postDate = moment()
-    //   .utc()
-    //   .toDate();
-
     const postNotice = {
       admin_name: name,
       post_date: date,
