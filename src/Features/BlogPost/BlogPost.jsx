@@ -77,9 +77,9 @@ const BlogPost = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async data => {
-    console.log(data);
+    // console.log(data);
     const imageFile = { image };
-    console.log(imageFile);
+    // console.log(imageFile);
     const imgRes = await toast.promise(
       axios.post(
         'https://api.imgbb.com/1/upload?key=b9e7fd7e7e867150e5dff9ee884e9359',
@@ -103,7 +103,7 @@ const BlogPost = () => {
       author: userId,
     };
 
-    console.log(postData);
+    // console.log(postData);
 
     const res = await toast.promise(
       axios.post('http://localhost:7000/api/v1/blogs', postData),

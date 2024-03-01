@@ -9,14 +9,14 @@ const ContactForm = () => {
 
   const handleEmailSubmit = (e) => {
     e.preventDefault();
-    console.log(form.current);
+    // console.log(form.current);
     emailjs
     .sendForm('service_ughdi7l', 'template_6i8xsgh', form.current, {
       publicKey: 'titDrKbThG2GbQDRw',
     })
     .then(
       (result) => {
-        console.log(result.text);
+        // console.log(result.text);
         if (result.text === "OK") {
           form.current.reset();
           navigate('/');
@@ -24,7 +24,7 @@ const ContactForm = () => {
         }
       },
       (error) => {
-        console.log(error.text);
+        // console.log(error.text);
       }
     );
   

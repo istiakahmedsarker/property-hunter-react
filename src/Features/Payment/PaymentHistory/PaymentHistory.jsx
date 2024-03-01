@@ -15,11 +15,11 @@ const PaymentHistory = () => {
 
     const user = useAuth()
     const email = user.email
-    console.log(email)
+    // console.log(email)
     useEffect(() => {
         axios.get(`https://property-hunter-server-roan.vercel.app/api/v1/payments?useremail=${email}`)
             .then(response => {
-                console.log(response.data);
+                // console.log(response.data);
             })
             .catch(error => {
                 console.error('Error during signUp:', error);

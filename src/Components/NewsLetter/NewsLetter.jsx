@@ -32,7 +32,7 @@ const NewsLetter = () => {
       subscribed_time,
       time_stamp: time_stamp.getTime(),
     };
-    console.log(subscriberInfo);
+    // console.log(subscriberInfo);
     use_axios
       .post("/subscriber/add-subscriber", subscriberInfo)
       .then((res) => {

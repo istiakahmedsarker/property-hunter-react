@@ -5,7 +5,7 @@ const NotificationDetails = () => {
   const notification = useLoaderData();
  const notice = notification?.data?.announcement;
 
- console.log(notification);
+//  console.log(notification);
 
   return (
     <div className="min-h-[calc(100vh-68px)] flex justify-center mt-[8%] mx-auto">

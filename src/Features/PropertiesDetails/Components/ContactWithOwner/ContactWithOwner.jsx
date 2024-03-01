@@ -16,12 +16,12 @@ const ContactWithOwner = ({ details }) => {
       )
       .then(
         result => {
-          console.log(result.text);
-          console.log('message sent');
+          // console.log(result.text);
+          // console.log('message sent');
           toast.success('Message send successfully');
         },
         error => {
-          console.log(error.text);
+          // console.log(error.text);
         }
       );
     e.target.reset();

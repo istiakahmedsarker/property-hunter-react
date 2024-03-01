@@ -38,7 +38,7 @@ const useAxiosSecure = () => {
         // logOut();
         // navigate('/login');
       }
-      console.log('error', error.response.data.message);
+      // console.log('error', error.response.data.message);
       return Promise.reject(error);
     }
   );

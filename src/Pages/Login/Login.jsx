@@ -40,9 +40,9 @@ const Login = () => {
       const res = response.data;
       
       localStorage.setItem('user:details', JSON.stringify(res?.user));
-      console.log(res);
+      // console.log(res);
     } catch (error) {
-      console.log(error.message || 'An error occurred during login');
+      // console.log(error.message || 'An error occurred during login');
     }
 
   };
