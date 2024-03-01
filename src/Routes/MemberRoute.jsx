@@ -6,7 +6,7 @@ const MemberRoute = ({children}) => {
     const userRole = useUserRole();
     const location = useLocation()
     
-    if(userRole === 'member' || userRole === 'admin'){
+    if(userRole === 'member' || userRole === 'admin' || userRole === 'moderator'){
         return children
     }
 

@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { FaHouseCircleExclamation } from 'react-icons/fa6';
 import toast from 'react-hot-toast';
 import PageTitle from '../../../../../Features/PageTitle/PageTitle';
+import useTheme from '../../../../../Providers/ThemeContext';
 
 export default function PropertyStatus() {
   const instance = useAxios();

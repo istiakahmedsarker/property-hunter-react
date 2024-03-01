@@ -167,9 +167,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/make-announcement',
-        element: <MemberRoute>
+        element: <ModeratorRoute>
           <MakeAnnouncement />
-        </MemberRoute>,
+        </ModeratorRoute>,
       },
       {
         path: '/dashboard/admin',
@@ -185,9 +185,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/createBlog',
-        element: <AdminRoute>
+        element: <ModeratorRoute>
           <BlogPost />
-        </AdminRoute>,
+        </ModeratorRoute>,
       },
       {
         path: '/dashboard/property-request',
