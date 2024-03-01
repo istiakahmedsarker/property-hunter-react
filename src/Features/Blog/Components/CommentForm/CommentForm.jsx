@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import GiveRating from '../../../../Components/GiveRating/GiveRating';
-import useAxios from '../../../../Hooks/useAxios';
 import useAuth from '../../../../Hooks/useAuth';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 function CommentForm({ id, refetch }) {
   const [starRating, setStarRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
-  const axios = useAxios();
+  const axios = useAxiosSecure();
   const user = useAuth();
 
   const {
@@ -19,28 +20,29 @@ function CommentForm({ id, refetch }) {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log({ ...data, rating: starRating, blogId: id });
     if (!starRating) {
       setErrorMsg(' This field is required');
       return;
     }
 
-    const res = await axios.post('/comments', {
-      ...data,
-      rating: starRating,
-      blogId: id,
-      authorImg: user?.user.photoURL,
-      authorEmail: user?.user.email,
-    });
+    try {
+      const res = await axios.post('/comments', {
+        ...data,
+        rating: starRating,
+        blogId: id,
+        authorImg: user?.user?.photoURL,
+        authorEmail: user?.user?.email,
+      });
 
-    if (res?.data.status === 'success') {
-      refetch();
-      reset();
-      setErrorMsg('');
-      setStarRating(0);
+      if (res?.data.status === 'success') {
+        refetch();
+        reset();
+        setErrorMsg('');
+        setStarRating(0);
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
     }
-
-    console.log('res :', res.data.status);
   };
 
   return (

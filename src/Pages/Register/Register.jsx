@@ -38,11 +38,15 @@ const Register = () => {
     const newUser = {
       fullName: name,
       email,
-      password
+      password,
     };
     axios
-      .post(`https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`, formData)
-      .then((res) => {
+      .post(
+        `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
+        formData
+      )
+
+      .then(async res => {
         if (res.status === 200) {
           const imageURL = res.data?.url;
 
@@ -99,20 +103,18 @@ const Register = () => {
         console.error('Cloudinary Upload Error:', error);
       });
 
-
-    axios.post('https://http://localhost:8000/api/register', newUser, {
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
+    axios
+      .post('https://http://localhost:8000/api/register', newUser, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
       .then(response => {
         console.log(response.data);
       })
       .catch(error => {
         console.error('Error during signUp:', error);
       });
-
-
   };
   return (
     <>

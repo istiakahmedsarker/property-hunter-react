@@ -7,11 +7,14 @@ import { FaRegHeart } from "react-icons/fa6";
 import './favoriteStyle.css';
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import useTheme from "../../Providers/ThemeContext";
 
 const FavoriteProperty = () => {
   const [favorite, refetch] = useFavorite();
   const instance = useAxios();
   const { user } = useAuth();
+  const {themeMode} = useTheme();
+
   const handleDelete = (id, propertyId) => {
     Swal.fire({
       title: "Are you sure?",
@@ -23,6 +26,8 @@ const FavoriteProperty = () => {
       cancelButtonColor: "#FF0000",
       confirmButtonText: "Yes, delete it!",
       width: "350px",
+      color: themeMode === "dark" ? '#F4F4F4' : '',
+      background: themeMode === "dark" ? '#1b1c1d' : '',
     }).then((result) => {
       if (result.isConfirmed) {
         instance.delete(`/property-favorite/delete/${id}`).then((res) => {
@@ -69,10 +74,10 @@ const FavoriteProperty = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="whitespace-nowrap dark:bg-card-dark dark:text-in-dark">
+          <tbody className="whitespace-nowrap dark:bg-card-dark dark:text-primary-light">
             {favorite && Array.isArray(favorite?.data) ? (
               favorite.data.map((item) => (
-                <tr key={item._id} className="even:bg-blue-50 dark:bg-card-dark dark:text-in-dark">
+                <tr key={item._id} className="even:bg-blue-50 ">
                   <td className="pl-6 w-8">
                   </td>
                   <td className="px-6 py-4 text-sm"></td>
@@ -84,7 +89,7 @@ const FavoriteProperty = () => {
                         className="w-16 h-16 rounded-md shrink-0"
                       />
                       <div className="ml-2">
-                        <p className="text-sm text-black dark:text-in-dark">
+                        <p className="text-sm">
                           {item?.property_title || ""}
                         </p>
                       </div>

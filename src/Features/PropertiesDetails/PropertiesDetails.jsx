@@ -11,6 +11,7 @@ import PropertyFeature from './Components/PropertyFeature/PropertyFeature';
 import PropertyUtilities from './Components/PropertyUtilities/PropertyUtilities';
 import PropertyOverview from './Components/PropertyOverview/PropertyOverview';
 import { IoLocationOutline } from 'react-icons/io5';
+import Schedule from './Components/Schedule/Schedule';
 
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
@@ -284,14 +285,18 @@ const PropertiesDetails = () => {
                         : 'none',
                   }}
                 >
-                  {showSchedule ? 'Schedule a Tour' : 'Schedule a Tour'}
+                  {showSchedule ? 'Video call' : 'Video call'}
                 </button>
               </div>
 
               {showForm && (
                 <ContactWithOwner details={details}></ContactWithOwner>
               )}
-              {showSchedule && <div className="py-5">Select Your Schedule</div>}
+              {showSchedule && (
+                <div className="py-5">
+                  <Schedule></Schedule>
+                </div>
+              )}
             </div>
           </div>
 

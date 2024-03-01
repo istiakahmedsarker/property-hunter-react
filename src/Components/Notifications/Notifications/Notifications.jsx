@@ -28,28 +28,28 @@ const Notifications = () => {
   return (
     <div>
       <h3
-        className="flex cursor-pointer items-start dark:text-in-dark"
+        className="flex cursor-pointer items-start dark:text-in-dark relative"
         onClick={handleModalOpen}
       >
         <IoNotificationsSharp className="text-2xl" />
-        <span className="bg-[#eb6753] text-white px-2 rounded-badge text-xs -ml-2 -mt-1">
+        <span className="bg-primary-light text-white px-2 rounded-badge text-xs -ml-2 -mt-1">
           {latestAnnouncementCount}
         </span>
       </h3>
       {/* notification Modal */}
-      <div>
+      <div className=" ">
         <dialog id="my_modal_3" className="modal" open={modalOpen}>
-          <div className="modal-box bg-[#19181e] dark:text-in-dark">
+          <div className="modal-box bg-secondary-light dark:text-in-dark dark:bg-primary-dark">
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
               <button
-                className="btn btn-sm btn-outline hover:bg-[#eb6753] hover:border-none btn-ghost absolute text-sm right-2 top-2 text-white"
+                className="btn btn-sm btn-outline hover:bg-primary-light text-primary-light hover:dark:bg-primary-light hover:border-none btn-ghost absolute text-sm right-2 top-2 hover:text-white"
                 onClick={closeModal}
               >
                 ✕
               </button>
             </form>
-            <div>
+            <div className="announcement-container">
               {newAnnouncement.length > 0 ? (
                 newAnnouncement.map((notice) => (
                   <div key={notice._id}>
@@ -59,7 +59,7 @@ const Notifications = () => {
                         to={`/notificationDetails/${notice._id}`}
                         onClick={closeModal}
                       >
-                        <span className="text-base font-normal text-[#eb6753]">
+                        <span className="text-base font-normal text-primary-light">
                           view
                         </span>
                       </Link>{" "}

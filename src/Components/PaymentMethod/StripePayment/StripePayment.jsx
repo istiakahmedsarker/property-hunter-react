@@ -9,12 +9,10 @@ const stripePromise = loadStripe(
 
 const StripePayment = () => {
   const checkOutProperty = useLoaderData();
-  console.log(checkOutProperty?.data?.data);
 
 
-  const propertyId = checkOutProperty?.data?.data?.properties?._id;
-  const ownerEmail = checkOutProperty?.data?.data?.properties?.ownerInformation?.email;
-  console.log(checkOutProperty?.data);
+  const propertyId = checkOutProperty?.data?.data?.buyer_property_id;
+  const ownerEmail = checkOutProperty?.data?.data?.buyer_property_ownerEmail;
 
   const price = checkOutProperty?.data?.data?.buyer_property_price;
   const propertyPrice = price.toLocaleString("en-US", {
@@ -58,9 +56,10 @@ const StripePayment = () => {
         <div className="flex-1 z-40">
           <Elements stripe={stripePromise}>
             <CheckoutForm 
-            totalPrice={totalPrice} 
-            propertyId={propertyId} 
-            ownerEmail={ownerEmail}/>
+            totalPrice={totalPrice}
+            propertyId={propertyId}
+            ownerEmail={ownerEmail} 
+            />
           </Elements>
         </div>
       </div>

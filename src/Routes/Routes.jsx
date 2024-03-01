@@ -35,6 +35,7 @@ import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import MemberRoute from './MemberRoute';
 import AdminRoute from './AdminRoute';
 import PrivateRoute from '../Routes/PrivateRoute'
+import EmailSender from '../Components/EmailSender/EmailSender';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -205,6 +206,10 @@ const router = createBrowserRouter([
         element: <AdminRoute>
           <ModeratorHome />
         </AdminRoute>,
+      },
+      {
+        path: "/dashboard/email-sender",
+        element: <EmailSender />,
       },
     ],
   },
