@@ -1,11 +1,15 @@
 
 const AgentCard = ({ agents }) => {
-    const { name, role, image, description} = agents || {}
+    const { name, role, image, description } = agents || {}
 
     return (
-        <div className="border rounded-md overflow-hidden max-md:max-w-[300px]">
-            <img src={image} alt={`Profile of ${name}`} className="w-full h-60 object-contain object-top bg-gray-300" />
-            <div className="p-4">
+        <div className="border rounded-md overflow-hidden flex flex-col items-center">
+            <img
+                src={image}
+                alt={`Profile of ${name}`}
+                className="w-full h-64 object-cover"
+            />
+            <div className="p-4 flex flex-col items-center">
                 <h4 className="text-base font-extrabold dark:text-white">{name}</h4>
                 <p className="text-xs mt-1 dark:text-white">{role}</p>
                 <div className="mt-4">

@@ -9,6 +9,7 @@ import TermCondition from '../TermCondition/TermCondition';
 import axios from 'axios';
 import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
 import useAxios from '../../Hooks/useAxios';
+
 import PageTitle from '../../Features/PageTitle/PageTitle';
 
 const preset_key = 'property-hunter';
@@ -34,11 +35,17 @@ const Register = () => {
     formData.append('upload_preset', preset_key);
     formData.append('folder', 'property-hunter');
 
+    const newUser = {
+      fullName: name,
+      email,
+      password,
+    };
     axios
       .post(
         `https://api.cloudinary.com/v1_1/${cloud_name}/image/upload`,
         formData
       )
+
       .then(async res => {
         if (res.status === 200) {
           const imageURL = res.data?.url;
@@ -57,7 +64,21 @@ const Register = () => {
           }
 
           createUser(email, password)
-            .then(() => {
+            .then(async () => {
+              const imageURL = res.data?.url;
+              try {
+                await myAxios.post('/users', {
+                  name,
+                  email,
+                  role: 'user',
+                  image: imageURL || '',
+                });
+              } catch (error) {
+                if (error.response.data?.status === 'Fail') {
+                  toast.error('This email already exist');
+                  return;
+                }
+              }
               updateUserProfile(name, imageURL)
                 .then(() => {
                   toast.success('Registration Successful');
@@ -72,6 +93,19 @@ const Register = () => {
               toast.error(err.message);
             });
         }
+      });
+
+    axios
+      .post('https://http://localhost:8000/api/register', newUser, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error('Error during signUp:', error);
       });
   };
   return (

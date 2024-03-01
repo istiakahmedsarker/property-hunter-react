@@ -10,7 +10,7 @@ import PageTitle from '../../../../../Features/PageTitle/PageTitle';
 
 const PaymentHistory = () => {
   const { payments } = GetAllPayments();
-  console.log(payments);
+  // console.log(payments);
   return (
     <div className="min-h-screen bg-[#f5f5f5] py-10">
       <PageTitle title="Property Hunter || Payment History"></PageTitle>

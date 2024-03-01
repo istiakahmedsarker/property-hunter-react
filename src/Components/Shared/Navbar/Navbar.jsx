@@ -111,12 +111,6 @@ const Navbar = () => {
               +{favorite?.data?.length}
             </span>
           </h3>
-          <h3 className="flex items-center gap-1">
-            <GiSelfLove className="text-lg" />
-            <span className="bg-[#eb6753] dark:bg-[#cfa55b] dark:hover:bg-[#9e7d42] text-white px-2 text-sm rounded-full hover:text-[#eb6753] transition-all duration-300 ease-in-out">
-              +{favorite?.data?.length}
-            </span>
-          </h3>
         </Link>
       </li>
     </>
