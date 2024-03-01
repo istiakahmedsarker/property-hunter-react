@@ -14,7 +14,7 @@ const useGetData = ({ key, api }) => {
         return res?.data;
       } catch (error) {
         // console.log(error);
-        setError(error.message);
+        setError('Something went very wrong');
       }
     },
   });
