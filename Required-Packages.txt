@@ -28,3 +28,4 @@ npm i react-froala-wysiwyg --save
 npm i froala-editor
 npm i lottie-react
 npm i react-helmet
+npm i react-calendly
