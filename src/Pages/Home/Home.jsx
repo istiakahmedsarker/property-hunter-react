@@ -11,6 +11,7 @@ import WhyChooseUs from '../../Components/WhyChooseUs/WhyChooseUs';
 import NewsLetter from '../../Components/NewsLetter/NewsLetter';
 // import Chatbot from '../../Features/Chatbot/Chatbot';
 import PageTitle from '../../Features/PageTitle/PageTitle';
+import TopButton from '../../Features/Properties/Components/TopButton/TopButton';
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
       <NewsLetter />
       <WhyChooseUs />
       <Agents />
+      <TopButton></TopButton>
       {/* <Chatbot /> */}
       <ContactUs />
     </div>

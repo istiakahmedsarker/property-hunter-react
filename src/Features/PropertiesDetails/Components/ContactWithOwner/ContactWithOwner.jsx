@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import toast from 'react-hot-toast';
 const ContactWithOwner = ({ details }) => {
   const form = useRef();
 
@@ -17,6 +18,7 @@ const ContactWithOwner = ({ details }) => {
         result => {
           console.log(result.text);
           console.log('message sent');
+          toast.success('Message send successfully');
         },
         error => {
           console.log(error.text);
@@ -36,24 +38,24 @@ const ContactWithOwner = ({ details }) => {
           />
         </div>
         <div>
-        <div>
-                <h3 className="flex gap-5 py-2">
-                  <span className="font-semibold"> Name</span>
-                  <span>: {details.ownerInformation.name}</span>
-                </h3>
-                <h3 className="flex gap-5 py-2">
-                  <span className="font-semibold"> Email</span>
-                  <span>: {details.ownerInformation.email}</span>
-                </h3>
-                {details.ownerInformation.phone ? (
-                  <h3 className="flex gap-5 py-2">
-                    <span className="font-semibold"> Phone</span>
-                    <span>: {details.ownerInformation.phone}</span>
-                  </h3>
-                ) : (
-                  ''
-                )}
-              </div>
+          <div>
+            <h3 className="flex gap-5 py-2">
+              <span className="font-semibold"> Name</span>
+              <span>: {details.ownerInformation.name}</span>
+            </h3>
+            <h3 className="flex gap-5 py-2">
+              <span className="font-semibold"> Email</span>
+              <span>: {details.ownerInformation.email}</span>
+            </h3>
+            {details.ownerInformation.phone ? (
+              <h3 className="flex gap-5 py-2">
+                <span className="font-semibold"> Phone</span>
+                <span>: {details.ownerInformation.phone}</span>
+              </h3>
+            ) : (
+              ''
+            )}
+          </div>
         </div>
       </div>
       <form
