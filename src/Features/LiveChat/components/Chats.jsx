@@ -45,26 +45,30 @@ const Chats = () => {
   // Render JSX for the Chats component
   return (
     <div className="chats">
-      {/* Map over the user chats and display each user chat */}
-      {Object?.entries(chats)?.sort((a, b) => b[1].date - a[1].date).map((chat) => (
-        <div
-          className="userChat"
-          key={chat[0]}
-          onClick={() => handleSelect(chat[1].userInfo)}
-        >
-          {/* Display the user's profile picture */}
-          <img src={chat[1].userInfo.photoURL} alt="" />
-          {/* Display user chat information */}
-          <div className="userChatInfo">
-            {/* Display the user's display name */}
-            <span>{chat[1].userInfo.displayName}</span>
-            {/* Display the last message in the chat */}
-            <p>{chat[1].lastMessage?.text}</p>
-          </div>
-        </div>
-      ))}
+      {/* Check if chats is truthy before mapping over it */}
+      {chats &&
+        Object.entries(chats)
+          .sort((a, b) => b[1].date - a[1].date)
+          .map((chat) => (
+            <div
+              className="userChat"
+              key={chat[0]}
+              onClick={() => handleSelect(chat[1].userInfo)}
+            >
+              {/* Display the user's profile picture */}
+              <img src={chat[1].userInfo.photoURL} alt="" />
+              {/* Display user chat information */}
+              <div className="userChatInfo">
+                {/* Display the user's display name */}
+                <span>{chat[1].userInfo.displayName}</span>
+                {/* Display the last message in the chat */}
+                <p>{chat[1].lastMessage?.text}</p>
+              </div>
+            </div>
+          ))}
     </div>
   );
+
 };
 
 // Export the Chats component
