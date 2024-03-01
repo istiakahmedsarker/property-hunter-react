@@ -36,6 +36,7 @@ import MemberRoute from './MemberRoute';
 import AdminRoute from './AdminRoute';
 import PrivateRoute from '../Routes/PrivateRoute'
 import EmailSender from '../Components/EmailSender/EmailSender';
+import ModeratorRoute from './ModeratorRoute';
 // import Payment from '../Components/PaymentMethod/Payment';
 // import ContactUs from '../Components/Contract/ContactUs/ContactUs';
 
@@ -190,9 +191,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/property-request',
-        element: <Mod>
+        element: <ModeratorRoute>
           <PropertyRequest />
-        </Mod>,
+        </ModeratorRoute>,
       },
       {
         path: '/dashboard/manage-property-request',
