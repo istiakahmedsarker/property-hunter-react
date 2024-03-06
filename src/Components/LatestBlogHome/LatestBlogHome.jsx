@@ -2,7 +2,6 @@ import useGetData from '../../Hooks/useGetData';
 
 import BlogCard from '../../Features/Blog/Components/BlogCard/BlogCard';
 
-import LatestBlogHomeCard from './LatestBlogHomeCard/LatestBlogHomeCard';
 // Import Swiper from React components
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -29,7 +28,7 @@ const LatestBlogHome = () => {
   };
   // console.log(latestBlogsData?.data?.blogs);
   return (
-    <div className="max-w-7xl mx-4 xl:mx-auto my-7 ">
+    <div className="max-w-7xl mx-4 xl:mx-auto my-7 md:my-20 ">
       <div className="my-6">
         <SectionTitle
           title="Latest Blogs"
@@ -66,11 +65,11 @@ const LatestBlogHome = () => {
               slidesPerView: 3,
             },
           }}
-          onInit={swiper => {
+          onInit={(swiper) => {
             swiper.params.slidesPerView = getSlidesPerView();
             swiper.update();
           }}
-          onResize={swiper => {
+          onResize={(swiper) => {
             swiper.params.slidesPerView = getSlidesPerView();
             swiper.update();
           }}
@@ -82,7 +81,7 @@ const LatestBlogHome = () => {
                 key={idx}
                 className="swiper-slide h-full pt-0 md:pt-0 lg:pt-8 pb-8 md:pb-8 overflow-visible relative z-[10]"
               >
-                <BlogCard key={blog._id} blog={blog}></BlogCard>
+                <BlogCard key={blog._id} blog={blog} />
               </SwiperSlide>
             ))}
         </Swiper>
