@@ -36,6 +36,7 @@ const PropertiesCard = ({ card }) => {
     favorites,
   } = card || {};
 
+  // console.log(card.rooms)
   // Favorite property
   const { user } = useAuth();
   // state for user count and set favorite value
@@ -173,7 +174,7 @@ const PropertiesCard = ({ card }) => {
               </span>
               <span className="text-sm lg:text-sm xl:text-sm font-medium">
                 {" "}
-                {card.bedroom} Bed
+                {card.rooms.bedRooms} Bed
               </span>
             </h3>
             <h3 className="flex items-center px-4 py-2 dark:bg-gray-900 dark:text-gray-300 bg-gray-50 rounded-lg gap-2">
@@ -182,7 +183,7 @@ const PropertiesCard = ({ card }) => {
               </span>
               <span className="text-sm lg:text-sm xl:text-sm  font-medium">
                 {" "}
-                {card.bathroom} Bath
+                {card.rooms.bathRooms} Bath
               </span>
             </h3>
             <h3 className="flex items-center px-4 py-2 dark:bg-gray-900 dark:text-gray-300 bg-gray-50 rounded-lg gap-1">

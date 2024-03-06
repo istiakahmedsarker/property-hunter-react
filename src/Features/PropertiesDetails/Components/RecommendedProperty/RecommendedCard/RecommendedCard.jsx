@@ -19,7 +19,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 const RecommendedCard = ({ recommended }) => {
   const { _id, propertyTitle, propertyImages, location, price, favorites } =
     recommended || {};
-  console.log(recommended);
+  // console.log(recommended);
   // Favorite property
   const { user } = useAuth();
   // state for user count and set favorite value

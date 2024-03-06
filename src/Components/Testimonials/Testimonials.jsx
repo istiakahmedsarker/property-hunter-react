@@ -29,7 +29,7 @@ const Testimonials = () => {
 
   // console.log(reviews);
   return (
-    <div className="bg-[#ebf2f6] dark:bg-primary-dark relative">
+    <div className="bg-[#ebf2f6] dark:bg-primary-dark relative my-7 md:my-20">
       <img
         src="https://i.ibb.co/xJRtgZC/Qotes.png"
         alt=""

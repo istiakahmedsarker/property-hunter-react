@@ -3,7 +3,7 @@ const PaymentCalculation = ({ details }) => {
   const price = details.price;
   // console.log(price);
   const [propertyPrice] = useState(price);
-  console.log(propertyPrice);
+  // console.log(propertyPrice);
   const [downPaymentPercentage] = useState(25);
   const [installmentDuration, setInstallmentDuration] = useState(6);
 

@@ -1,9 +1,10 @@
 import toast from 'react-hot-toast';
 import useAxios from '../../../../../Hooks/useAxios';
-import useManageProperty from '../../../../../Hooks/useManageProperty';
+import usePropertyReqForMod from '../../../../../Hooks/usePropertyReqForMod';
 import { MdManageHistory } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import PageTitle from '../../../../../Features/PageTitle/PageTitle';
+import useTheme from '../../../../../Providers/ThemeContext';
 
 const PropertyRequest = () => {
   const instance = useAxios();
@@ -45,7 +46,7 @@ const PropertyRequest = () => {
   return (
     <div className="min-h-[calc(100vh-68px)]">
       <PageTitle title="Property Hunter || Property Request"></PageTitle>
-      {manageProperty?.length > 0 ? (
+      {manageProperty && manageProperty.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white font-[sans-serif]">
             {/* head */}
@@ -73,7 +74,7 @@ const PropertyRequest = () => {
               </tr>
             </thead>
             <tbody className="whitespace-nowrap">
-              {manageProperty?.map(item => (
+              {manageProperty.map(item => (
                 <tr key={item._id} className="even:bg-blue-50">
                   <td className="pl-6 w-8"></td>
                   <td className="px-0 py-4 text-sm">
@@ -120,10 +121,10 @@ const PropertyRequest = () => {
                           item?.status === 'rejected'
                             ? 0.6
                             : 1,
-                        ppointerEvents:
+                        pointerEvents:
                           item?.status === 'accepted' ||
                           item?.status === 'rejected'
-                            ? 'disabled'
+                            ? 'none'
                             : 'auto',
                       }}
                     >
@@ -153,7 +154,7 @@ const PropertyRequest = () => {
                         pointerEvents:
                           item?.status === 'accepted' ||
                           item?.status === 'rejected'
-                            ? 'disabled'
+                            ? 'none'
                             : 'auto',
                       }}
                       onClick={() => {
@@ -173,7 +174,7 @@ const PropertyRequest = () => {
             </tbody>
           </table>
         </div>
-       : (
+      ) : (
         <div className="flex flex-col justify-center items-center mt-10">
           <div>
             <h3>
@@ -186,7 +187,7 @@ const PropertyRequest = () => {
             </h3>
           </div>
         </div>
-      ))}
+      )}
     </div>
   );
 };

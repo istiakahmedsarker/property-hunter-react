@@ -13,7 +13,7 @@ const BuyerInquiryForm = ({ details }) => {
   const instance = useAxios();
   const { user } = useAuth();
 
-  console.log(details?.ownerInformation?.email, details?._id)
+  // console.log(details?.ownerInformation?.email, details?._id)
 
   const completeFormStep = event => {
     event.preventDefault();
@@ -63,7 +63,7 @@ const BuyerInquiryForm = ({ details }) => {
   } = useForm({ mode: 'all' });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
 
     //? information.
     const buyerInquiries = {
@@ -87,10 +87,10 @@ const BuyerInquiryForm = ({ details }) => {
       date: moment().utc().toDate(),
     }
   
-    console.log("buyer inquiries:", buyerInquiries);
+    // console.log("buyer inquiries:", buyerInquiries);
     try {
       const res = await instance.post("/buyer-inquiries", buyerInquiries);
-      console.log(res);
+      // console.log(res);
       if (res?.data?.status === "success") {
         reset();
         toast.success('Please fill out the form correctly.');

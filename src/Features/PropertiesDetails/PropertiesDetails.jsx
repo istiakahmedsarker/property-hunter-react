@@ -16,7 +16,7 @@ import Schedule from './Components/Schedule/Schedule';
 const PropertiesDetails = () => {
   const cardDetails = useLoaderData();
   const details = cardDetails?.data?.property || {};
-  console.log(details);
+  // console.log(details);
   //state for show full description
   const [isShowFullDescription, setIsShowFullDescription] = useState(false);
   // state for open the form

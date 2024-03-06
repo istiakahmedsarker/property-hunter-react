@@ -23,7 +23,7 @@ const Agents = () => {
 
   return (
     <div>
-      <div className="font-[sans-serif] text-[#333] max-w-7xl mx-auto">
+      <div className="font-[sans-serif] text-[#333] max-w-7xl mx-auto my-7 md:my-24">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-2xl mx-auto text-center">
             <SectionTitle

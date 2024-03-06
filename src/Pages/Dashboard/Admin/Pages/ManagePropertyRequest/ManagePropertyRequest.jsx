@@ -2,8 +2,10 @@ import useAxios from '../../../../../Hooks/useAxios';
 import useManageProperty from '../../../../../Hooks/useManageProperty';
 import Swal from 'sweetalert2';
 import { MdManageHistory } from 'react-icons/md';
+import { TiDeleteOutline } from "react-icons/ti";
 import toast from 'react-hot-toast';
 import PageTitle from '../../../../../Features/PageTitle/PageTitle';
+import useTheme from '../../../../../Providers/ThemeContext';
 
 export default function ManagePropertyRequest() {
   const instance = useAxios();

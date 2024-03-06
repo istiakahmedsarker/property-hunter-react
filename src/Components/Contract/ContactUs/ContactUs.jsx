@@ -3,16 +3,16 @@ import ContactForm from '../ContactFrom/ContactFrom';
 
 const ContactUs = () => {
   return (
-    <div className='my-10'>
+    <div className="my-20 mx-4">
       <div>
         <SectionTitle
           title="Contact Us"
           subTitle="Reach Out for Any Inquiries or Assistance"
         />
         <div id="contact-us">
-          <div className="max-w-screen-xl mx-auto p-5">
-            <div className="grid grid-cols-1 md:grid-cols-12 border rounded-[15px]">
-              <div className="bg-gray-900 md:col-span-4 p-10 text-white rounded-l-[15px]">
+          <div className="max-w-screen-xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12  rounded-[15px]">
+              <div className="bg-gray-900 md:col-span-4 p-10 text-white rounded-t-[15px] md:rounded-tr-none md:rounded-l-[15px]">
                 <p className="mt-4 text-sm leading-7 font-regular uppercase">
                   Contact
                 </p>
@@ -125,7 +125,7 @@ const ContactUs = () => {
                 </div>
               </div>
               {/* Contact From */}
-              <div className="md:col-span-8 p-10">
+              <div className="md:col-span-8 p-10 rounded-b-[15px] md:rounded-r-[15px] bg-in-dark dark:bg-card-dark">
                 <ContactForm />
               </div>
             </div>

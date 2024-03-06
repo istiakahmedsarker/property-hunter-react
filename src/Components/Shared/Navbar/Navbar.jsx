@@ -260,7 +260,7 @@ const Navbar = () => {
           <a className=" text-[18px] md:text-xl flex items-center gap-2">
             <img
               className="hidden md:inline mix-blend h-6 md:h-10 w-6 md:w-10 object-cover"
-              src="https://i.ibb.co/CJrmqqw/Screenshot-2024-01-15-161908-removebg-preview.png"
+              src="https://i.ibb.co/HTfhbsP/91-FB4107-1-D54-40-F9-82-B6-C77-B8147-E45-B.webp"
               alt=""
             />
 

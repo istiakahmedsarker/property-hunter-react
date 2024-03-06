@@ -2,7 +2,7 @@ import React from 'react';
 import UserTableRow from './UserTableRow';
 
 const UserTable = ({ userCards }) => {
-  console.log(userCards);
+  // console.log(userCards);
   return (
     <div>
       <table className="table">
